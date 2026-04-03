@@ -20,7 +20,12 @@ Malemort-sur-Correze to Ussel, 185km northeast through the Massif Central. Throu
 
 ## Getting Started
 
+Requires Node.js 22+ and Python 3.11+.
+
 ```bash
+# Use correct Node version (if using nvm)
+nvm use
+
 # Install Node.js dependencies
 npm install
 
