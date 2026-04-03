@@ -34,7 +34,9 @@ const props = defineProps({
   segment: { type: Number, required: true },
   segments: { type: Array, default: () => [] },
   routeCoords: { type: Array, default: () => [] },
-  townCoords: { type: Object, default: () => ({}) }
+  townCoords: { type: Object, default: () => ({}) },
+  riderStats: { type: Object, default: null },
+  riderConfig: { type: Object, default: null }
 })
 
 const mapContainer = ref(null)
@@ -175,10 +177,87 @@ async function initMap(el) {
     'Cycling': cyclOSM,
     'Satellite': satellite
   }
+  // Rider progress layer
+  const riderGroup = L.layerGroup()
+  if (props.riderStats?.riders && props.riderConfig?.riders && props.routeCoords.length > 1) {
+    // Build cumulative distance lookup from route coords
+    const cumDists = [0]
+    for (let i = 1; i < props.routeCoords.length; i++) {
+      const [lng1, lat1] = [props.routeCoords[i - 1][0], props.routeCoords[i - 1][1]]
+      const [lng2, lat2] = [props.routeCoords[i][0], props.routeCoords[i][1]]
+      cumDists.push(cumDists[i - 1] + haversine(lat1, lng1, lat2, lng2))
+    }
+    const totalMeters = cumDists[cumDists.length - 1]
+
+    // Calculate positions and group riders at same distance for offset
+    const riderPositions = []
+    for (const rider of props.riderConfig.riders) {
+      const stats = props.riderStats.riders[rider.id]
+      if (!stats || !stats.totalDistanceCapped) continue
+
+      const targetMeters = stats.totalDistanceCapped * 1000
+      let coordIdx = 0
+      for (let i = 0; i < cumDists.length; i++) {
+        if (cumDists[i] >= targetMeters) {
+          coordIdx = i
+          break
+        }
+        coordIdx = i
+      }
+      riderPositions.push({ rider, stats, coordIdx })
+    }
+
+    // Group by coordIdx to detect overlaps
+    const groups = {}
+    for (const rp of riderPositions) {
+      const key = rp.coordIdx
+      if (!groups[key]) groups[key] = []
+      groups[key].push(rp)
+    }
+
+    for (const key of Object.keys(groups)) {
+      const group = groups[key]
+      const coordIdx = parseInt(key)
+      const coord = props.routeCoords[coordIdx]
+
+      // Calculate perpendicular direction to route at this point
+      const prevIdx = Math.max(0, coordIdx - 1)
+      const nextIdx = Math.min(props.routeCoords.length - 1, coordIdx + 1)
+      const dx = props.routeCoords[nextIdx][0] - props.routeCoords[prevIdx][0]
+      const dy = props.routeCoords[nextIdx][1] - props.routeCoords[prevIdx][1]
+      // Perpendicular: rotate 90 degrees
+      const len = Math.sqrt(dx * dx + dy * dy) || 1
+      const perpLng = -dy / len
+      const perpLat = dx / len
+
+      const spread = 0.001 // ~100m offset between riders
+      const offset0 = -(group.length - 1) / 2
+
+      for (let i = 0; i < group.length; i++) {
+        const { rider, stats: rStats } = group[i]
+        const offsetAmount = (offset0 + i) * spread
+        const lat = coord[1] + perpLat * offsetAmount
+        const lng = coord[0] + perpLng * offsetAmount
+
+        const riderIcon = L.divIcon({
+          html: `<div style="font-size:20px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4));background:${rider.color};border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:2px solid white">🚴</div>`,
+          className: '',
+          iconSize: [28, 28],
+          iconAnchor: [14, 14]
+        })
+        L.marker([lat, lng], { icon: riderIcon, zIndexOffset: i * 10 })
+          .bindTooltip(rider.name, { direction: 'top', offset: [0, -12], permanent: false })
+          .bindPopup(`<b style="color:${rider.color}">${rider.name}</b><br>${rStats.totalDistanceCapped} km of ${props.riderConfig.totalDistance} km`)
+          .addTo(riderGroup)
+      }
+    }
+  }
+
   const overlays = {
     'Cycle Routes': cycleRoutes,
     'Hillshade': hillshade,
-    'Towns & Climbs': poiGroup
+    'Towns & Climbs': poiGroup,
+    'Rider Progress': riderGroup
   }
   L.control.layers(baseLayers, overlays, { position: 'topleft' }).addTo(map)
 
