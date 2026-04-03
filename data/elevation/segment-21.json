@@ -192,6 +192,38 @@
     617,
     481
   ],
+  "power_50kmh": [
+    627,
+    0,
+    415,
+    627,
+    1021,
+    840,
+    1191,
+    1010,
+    1244,
+    1021,
+    840,
+    1212,
+    394,
+    904,
+    627,
+    627,
+    649,
+    1042,
+    1074,
+    319,
+    532,
+    627,
+    0,
+    1563,
+    627,
+    1021,
+    702,
+    627,
+    978,
+    808
+  ],
   "summary": {
     "avg_gradient": 2.9,
     "max_gradient": 10.3,
@@ -200,8 +232,10 @@
     "avg_power_30kmh": 259,
     "avg_power_35kmh": 349,
     "avg_power_40kmh": 464,
+    "avg_power_50kmh": 772,
     "estimated_time_30kmh": "14:10",
     "estimated_time_35kmh": "12:08",
-    "estimated_time_40kmh": "10:37"
+    "estimated_time_40kmh": "10:37",
+    "estimated_time_50kmh": "8:30"
   }
 }
