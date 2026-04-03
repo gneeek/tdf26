@@ -33,7 +33,7 @@
     <nav class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
       <NuxtLink
         v-if="prev"
-        :to="prev._path"
+        :to="prev.path || prev._path"
         class="text-correze-red hover:underline"
       >
         &larr; {{ prev.title }}
@@ -41,7 +41,7 @@
       <span v-else></span>
       <NuxtLink
         v-if="next"
-        :to="next._path"
+        :to="next.path || next._path"
         class="text-correze-red hover:underline"
       >
         {{ next.title }} &rarr;
@@ -55,25 +55,31 @@ import segmentsJson from '~/data/segments.json'
 
 const route = useRoute()
 const { data: page } = await useAsyncData(`entry-${route.path}`, () =>
-  queryContent(route.path).findOne()
+  queryCollection('entries')
+    .path(route.path)
+    .first()
 )
 
 const today = new Date().toISOString().split('T')[0]
 
 const { data: prev } = await useAsyncData(`prev-${route.path}`, () =>
-  queryContent('entries')
-    .where({ segment: { $lt: page.value?.segment }, draft: false, publishDate: { $lte: today } })
-    .sort({ segment: -1 })
+  queryCollection('entries')
+    .where('segment', '<', page.value?.segment)
+    .where('draft', '=', false)
+    .where('publishDate', '<=', today)
+    .order('segment', 'DESC')
     .limit(1)
-    .findOne()
+    .first()
 )
 
 const { data: next } = await useAsyncData(`next-${route.path}`, () =>
-  queryContent('entries')
-    .where({ segment: { $gt: page.value?.segment }, draft: false, publishDate: { $lte: today } })
-    .sort({ segment: 1 })
+  queryCollection('entries')
+    .where('segment', '>', page.value?.segment)
+    .where('draft', '=', false)
+    .where('publishDate', '<=', today)
+    .order('segment', 'ASC')
     .limit(1)
-    .findOne()
+    .first()
 )
 
 const segments = segmentsJson
