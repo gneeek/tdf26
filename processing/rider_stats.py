@@ -67,8 +67,20 @@ def calculate_stats(daily_log, rider_config):
         # Days below 3km
         days_below_three = sum(1 for d in daily_dists if d < 3)
 
-        # --- Stats using CAPPED daily distances (max daily_cap per day) ---
-        capped_dists = [min(d, daily_cap) for d in daily_dists]
+        # --- Daily average using ACTUAL distances ---
+        daily_avg_actual = statistics.mean(daily_dists) if daily_dists else 0
+
+        # --- Stats using CAPPED daily distances with carry-over ---
+        # Cap is 2km/day, but unused cap rolls to the next day.
+        # E.g., ride 1km on day 1 -> day 2 cap is 3km (2 + 1 unused)
+        capped_dists = []
+        carry = 0.0
+        for d in daily_dists:
+            available = daily_cap + carry
+            credited = min(d, available)
+            capped_dists.append(credited)
+            carry = available - credited
+
         total_capped = sum(capped_dists)
         daily_avg_capped = statistics.mean(capped_dists) if capped_dists else 0
         distance_remaining = max(0, total_distance - total_capped)
@@ -82,6 +94,7 @@ def calculate_stats(daily_log, rider_config):
 
         result["riders"][rider_id] = {
             "totalDistanceCapped": round(total_capped, 1),
+            "dailyAverageActual": round(daily_avg_actual, 2),
             "dailyAverageCapped": round(daily_avg_capped, 2),
             "longestDay": round(longest_day, 1),
             "shortestDay": round(shortest_day, 1),
