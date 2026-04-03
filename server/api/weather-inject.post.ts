@@ -5,17 +5,17 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const { filename, weather } = body
 
-  if (!filename || !weather) {
-    throw createError({ statusCode: 400, message: 'Missing filename or weather data' })
+  if (!filename) {
+    throw createError({ statusCode: 400, message: 'Missing filename' })
   }
 
   const filePath = join(resolve('content/entries'), filename)
   let content = readFileSync(filePath, 'utf8')
 
-  const weatherJson = JSON.stringify(weather)
+  const weatherValue = weather ? JSON.stringify(weather) : 'null'
   content = content.replace(
     /^weather:.*$/m,
-    `weather: ${weatherJson}`
+    `weather: ${weatherValue}`
   )
 
   writeFileSync(filePath, content)

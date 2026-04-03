@@ -26,7 +26,7 @@
               <th class="text-left py-2 pr-2 text-gray-500 font-medium w-10">#</th>
               <th class="text-left py-2 pr-2 text-gray-500 font-medium">Title</th>
               <th class="text-left py-2 px-2 text-gray-500 font-medium">Current Weather</th>
-              <th class="text-center py-2 px-2 text-gray-500 font-medium w-32">Actions</th>
+              <th class="text-left py-2 px-2 text-gray-500 font-medium">Fetch</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-100">
@@ -36,46 +36,36 @@
               <td class="py-2 px-2">
                 <span v-if="entry.weather" class="text-sm text-gray-600">
                   {{ entry.weather.current.temp }}&deg;C, {{ entry.weather.current.conditions }}, {{ entry.weather.current.wind }}
+                  <button @click="deleteWeather(entry)" class="text-xs text-red-500 hover:underline ml-2">delete</button>
                 </span>
                 <span v-else class="text-gray-400 italic">None</span>
               </td>
-              <td class="text-center py-2 px-2 space-x-2">
+              <td class="py-2 px-2">
+                <div v-if="preview && preview.filename === entry.filename" class="flex items-center gap-2">
+                  <span class="text-sm font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+                    {{ preview.weather.current.temp }}&deg;C, {{ preview.weather.current.conditions }}, {{ preview.weather.current.wind }}
+                  </span>
+                  <button
+                    @click="injectWeather(entry)"
+                    :disabled="injecting === entry.filename"
+                    class="text-xs text-green-600 hover:underline disabled:opacity-50"
+                  >
+                    {{ injecting === entry.filename ? 'Saving...' : 'Save' }}
+                  </button>
+                  <button @click="preview = null" class="text-xs text-gray-400 hover:underline">Cancel</button>
+                </div>
+                <span v-else-if="fetching === entry.filename" class="text-xs text-gray-400">Fetching...</span>
                 <button
+                  v-else
                   @click="fetchWeather(entry)"
-                  :disabled="fetching === entry.filename"
-                  class="text-xs text-blue-600 hover:underline disabled:opacity-50"
+                  class="text-xs text-blue-600 hover:underline"
                 >
-                  {{ fetching === entry.filename ? 'Fetching...' : 'Fetch' }}
-                </button>
-                <button
-                  v-if="preview && preview.filename === entry.filename"
-                  @click="injectWeather(entry)"
-                  :disabled="injecting === entry.filename"
-                  class="text-xs text-green-600 hover:underline disabled:opacity-50"
-                >
-                  {{ injecting === entry.filename ? 'Saving...' : 'Save' }}
+                  Fetch
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-
-    <!-- Preview -->
-    <div v-if="preview" class="bg-white rounded-lg shadow-sm p-6 mt-6">
-      <h2 class="text-lg font-semibold text-gray-700 mb-3">Preview: {{ preview.title }}</h2>
-      <div class="flex items-center gap-6">
-        <div class="text-3xl font-bold text-gray-800">
-          {{ preview.weather.current.temp }}&deg;C
-        </div>
-        <div class="text-sm text-gray-600">
-          <div>{{ preview.weather.current.conditions }}</div>
-          <div class="text-gray-400">Wind: {{ preview.weather.current.wind }}</div>
-        </div>
-        <div class="text-xs text-gray-400">
-          ({{ preview.lat.toFixed(4) }}, {{ preview.lng.toFixed(4) }})
-        </div>
       </div>
     </div>
 
@@ -91,6 +81,16 @@ definePageMeta({ layout: 'admin' })
 const entries = ref([])
 const apiKey = ref('')
 const showKey = ref(false)
+
+// Persist API key in localStorage
+if (typeof window !== 'undefined') {
+  apiKey.value = localStorage.getItem('owm_api_key') || ''
+}
+watch(apiKey, (val) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('owm_api_key', val)
+  }
+})
 const fetching = ref(null)
 const injecting = ref(null)
 const preview = ref(null)
@@ -156,6 +156,21 @@ async function injectWeather(entry) {
     messageError.value = true
   } finally {
     injecting.value = null
+  }
+}
+
+async function deleteWeather(entry) {
+  try {
+    await $fetch('/api/weather-inject', {
+      method: 'POST',
+      body: { filename: entry.filename, weather: null }
+    })
+    entry.weather = null
+    message.value = `Weather removed from ${entry.title}`
+    messageError.value = false
+  } catch {
+    message.value = 'Error removing weather'
+    messageError.value = true
   }
 }
 
