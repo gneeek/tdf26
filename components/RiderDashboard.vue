@@ -50,7 +50,13 @@
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Daily avg</td>
+            <td class="py-1.5 pr-2 text-gray-500">Daily avg (actual)</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
+              {{ r.stats.dailyAverageActual }} km
+            </td>
+          </tr>
+          <tr>
+            <td class="py-1.5 pr-2 text-gray-500">Daily avg (capped)</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
               {{ r.stats.dailyAverageCapped }} km
             </td>
