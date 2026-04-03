@@ -63,16 +63,24 @@
           v-for="(img, idx) in suggestions"
           :key="idx"
           class="cursor-pointer group"
-          @click="selectImage(img)"
+          @click="toggleImage(img)"
         >
-          <div class="relative overflow-hidden rounded border border-gray-200 hover:border-blue-400 transition-colors">
+          <div
+            class="relative overflow-hidden rounded border-2 transition-all"
+            :class="isSelected(img) ? 'border-green-500 opacity-70' : 'border-gray-200 hover:border-blue-400'"
+          >
             <img
               :src="img.url"
               :alt="img.description || img.title"
               class="w-full h-36 object-cover"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+            <!-- Green checkmark for selected -->
+            <div v-if="isSelected(img)" class="absolute top-1 left-1 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shadow">
+              &#10003;
+            </div>
+            <!-- Hover overlay for unselected -->
+            <div v-else class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
               <span class="text-white text-xs bg-blue-600 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                 Select
               </span>
@@ -139,15 +147,21 @@ async function fetchSuggestions() {
   }
 }
 
-function selectImage(img) {
-  // Check if already selected
-  if (selected.value.some(s => s.src === img.url)) return
+function isSelected(img) {
+  return selected.value.some(s => s.src === img.url)
+}
 
-  selected.value.push({
-    src: img.url,
-    alt: img.description || img.title || '',
-    attribution: `${img.artist}, ${img.license}, Wikimedia Commons`
-  })
+function toggleImage(img) {
+  if (isSelected(img)) {
+    selected.value = selected.value.filter(s => s.src !== img.url)
+  } else {
+    const artist = (img.artist || '').replace(/<[^>]*>/g, '').trim()
+    selected.value.push({
+      src: img.url,
+      alt: (img.description || img.title || '').replace(/<[^>]*>/g, '').trim(),
+      attribution: `${artist}, ${img.license}, Wikimedia Commons`
+    })
+  }
 }
 
 function removeSelected(idx) {
