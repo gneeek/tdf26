@@ -71,16 +71,17 @@ async function initMap(el) {
   const L = leafletModule.default || leafletModule
 
   const segmentData = props.segments.find(s => s.segment === props.segment)
-  if (!segmentData) return
+  const isOverview = props.segment === 0
 
-  const center = [
-    (segmentData.start_lat + segmentData.end_lat) / 2,
-    (segmentData.start_lng + segmentData.end_lng) / 2
-  ]
+  if (!segmentData && !isOverview) return
+
+  const center = segmentData
+    ? [(segmentData.start_lat + segmentData.end_lat) / 2, (segmentData.start_lng + segmentData.end_lng) / 2]
+    : [45.35, 1.85]
 
   map = L.map(el, {
     scrollWheelZoom: false
-  }).setView(center, 12)
+  }).setView(center, isOverview ? 10 : 12)
 
   // --- Base layers ---
   const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -167,51 +168,70 @@ async function initMap(el) {
   }
   L.control.layers(baseLayers, overlays, { position: 'topleft' }).addTo(map)
 
-  // Full route in light gray
+  // Full route
   if (props.routeCoords.length > 0) {
-    const fullRoute = props.routeCoords.map(c => [c[1], c[0]]) // [lng,lat] -> [lat,lng]
-    L.polyline(fullRoute, {
-      color: '#d1d5db',
-      weight: 3,
-      opacity: 0.6
+    const fullRoute = props.routeCoords.map(c => [c[1], c[0]])
+    const routeLine = L.polyline(fullRoute, {
+      color: isOverview ? '#8B2500' : '#d1d5db',
+      weight: isOverview ? 4 : 3,
+      opacity: isOverview ? 0.9 : 0.6
     }).addTo(map)
+
+    if (isOverview) {
+      map.fitBounds(routeLine.getBounds(), { padding: [30, 30] })
+
+      const first = props.segments[0]
+      const last = props.segments[props.segments.length - 1]
+      if (first) {
+        L.marker([first.start_lat, first.start_lng], {
+          icon: L.divIcon({
+            html: '<div style="background:#16a34a;color:white;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:4px;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,0.3)">Malemort</div>',
+            className: '', iconAnchor: [0, 12]
+          })
+        }).addTo(map)
+      }
+      if (last) {
+        L.marker([last.end_lat, last.end_lng], {
+          icon: L.divIcon({
+            html: '<div style="background:#dc2626;color:white;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:4px;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,0.3)">Ussel</div>',
+            className: '', iconAnchor: [0, 12]
+          })
+        }).addTo(map)
+      }
+    }
   }
 
-  // Current segment highlighted
-  const segStart = segmentData.km_start
-  const segEnd = segmentData.km_end
-  const segCoords = getSegmentCoords(props.routeCoords, segStart, segEnd)
+  // Current segment highlighted (not in overview mode)
+  if (!isOverview && segmentData) {
+    const segStart = segmentData.km_start
+    const segEnd = segmentData.km_end
+    const segCoords = getSegmentCoords(props.routeCoords, segStart, segEnd)
 
-  if (segCoords.length > 1) {
-    const segLine = L.polyline(segCoords.map(c => [c[1], c[0]]), {
-      color: '#8B2500',
-      weight: 5,
-      opacity: 0.9
-    }).addTo(map)
-    map.fitBounds(segLine.getBounds(), { padding: [30, 30] })
+    if (segCoords.length > 1) {
+      const segLine = L.polyline(segCoords.map(c => [c[1], c[0]]), {
+        color: '#8B2500',
+        weight: 5,
+        opacity: 0.9
+      }).addTo(map)
+      map.fitBounds(segLine.getBounds(), { padding: [30, 30] })
+    }
+
+    const startIcon = L.divIcon({
+      html: '<div style="width:12px;height:12px;background:#16a34a;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>',
+      className: '', iconSize: [16, 16], iconAnchor: [8, 8]
+    })
+    L.marker([segmentData.start_lat, segmentData.start_lng], { icon: startIcon })
+      .bindPopup(`<b>Start:</b> Km ${segmentData.km_start}`)
+      .addTo(map)
+
+    const endIcon = L.divIcon({
+      html: '<div style="width:12px;height:12px;background:#dc2626;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>',
+      className: '', iconSize: [16, 16], iconAnchor: [8, 8]
+    })
+    L.marker([segmentData.end_lat, segmentData.end_lng], { icon: endIcon })
+      .bindPopup(`<b>End:</b> Km ${segmentData.km_end}`)
+      .addTo(map)
   }
-
-  // Start marker
-  const startIcon = L.divIcon({
-    html: '<div style="width:12px;height:12px;background:#16a34a;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>',
-    className: '',
-    iconSize: [16, 16],
-    iconAnchor: [8, 8]
-  })
-  L.marker([segmentData.start_lat, segmentData.start_lng], { icon: startIcon })
-    .bindPopup(`<b>Start:</b> Km ${segmentData.km_start}`)
-    .addTo(map)
-
-  // End marker
-  const endIcon = L.divIcon({
-    html: '<div style="width:12px;height:12px;background:#dc2626;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>',
-    className: '',
-    iconSize: [16, 16],
-    iconAnchor: [8, 8]
-  })
-  L.marker([segmentData.end_lat, segmentData.end_lng], { icon: endIcon })
-    .bindPopup(`<b>End:</b> Km ${segmentData.km_end}`)
-    .addTo(map)
 }
 
 // Watch for the ref to become available (ClientOnly delays DOM rendering)
