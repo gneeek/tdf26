@@ -89,7 +89,7 @@ try {
 }
 
 const elevationData = ref(null)
-if (page.value?.segment) {
+if (page.value?.segment != null) {
   try {
     const segNum = String(page.value.segment).padStart(2, '0')
     const data = await import(`~/data/elevation/segment-${segNum}.json`)
