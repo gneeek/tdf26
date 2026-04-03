@@ -1,11 +1,14 @@
 <template>
   <ClientOnly>
     <div
-      ref="mapWrapper"
       class="relative rounded-lg overflow-hidden shadow-sm"
-      :class="isFullscreen ? 'fixed inset-0 z-50 rounded-none' : ''"
+      :class="isFullscreen ? 'z-50 rounded-none' : ''"
+      :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
     >
-      <div ref="mapContainer" class="w-full" :class="isFullscreen ? 'h-screen' : 'h-[400px]'" />
+      <div
+        ref="mapContainer"
+        :style="isFullscreen ? 'width:100%;height:100%' : 'width:100%;height:400px'"
+      />
       <button
         @click="toggleFullscreen"
         class="absolute top-2 right-2 z-[1000] bg-white border-2 border-gray-300 rounded px-2 py-1 text-sm font-bold text-gray-600 hover:bg-gray-100 shadow cursor-pointer"
@@ -33,21 +36,25 @@ const props = defineProps({
 })
 
 const mapContainer = ref(null)
-const mapWrapper = ref(null)
 const isFullscreen = ref(false)
 let map = null
+let mapInitialized = false
+
+function resizeMap() {
+  nextTick(() => {
+    setTimeout(() => { if (map) map.invalidateSize() }, 100)
+  })
+}
 
 function toggleFullscreen() {
   isFullscreen.value = !isFullscreen.value
-  nextTick(() => {
-    if (map) map.invalidateSize()
-  })
+  resizeMap()
 }
 
 function onKeydown(e) {
   if (e.key === 'Escape' && isFullscreen.value) {
     isFullscreen.value = false
-    nextTick(() => { if (map) map.invalidateSize() })
+    resizeMap()
   }
 }
 
@@ -56,9 +63,9 @@ if (typeof window !== 'undefined') {
   onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 }
 
-// Watch for the ref to become available (ClientOnly delays DOM rendering)
-watch(mapContainer, async (el) => {
-  if (!el || map) return
+async function initMap(el) {
+  if (mapInitialized || !el) return
+  mapInitialized = true
 
   const leafletModule = await import('leaflet')
   const L = leafletModule.default || leafletModule
@@ -125,6 +132,11 @@ watch(mapContainer, async (el) => {
   L.marker([segmentData.end_lat, segmentData.end_lng], { icon: endIcon })
     .bindPopup(`<b>End:</b> Km ${segmentData.km_end}`)
     .addTo(map)
+}
+
+// Watch for the ref to become available (ClientOnly delays DOM rendering)
+watch(mapContainer, (el) => {
+  if (el) initMap(el)
 })
 
 function getSegmentCoords(allCoords, kmStart, kmEnd) {
