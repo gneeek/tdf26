@@ -14,41 +14,42 @@
       </p>
     </section>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-serif font-bold text-gray-800 mb-4">The Route</h2>
-      <RouteOverviewMap
-        :segments="segments"
-        :route-coords="routeCoords"
-        :published-segments="publishedSegmentNumbers"
-      />
-      <p class="text-xs text-gray-400 mt-2">
-        Published segments shown in red. Click for details.
-      </p>
-    </section>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      <div class="lg:col-span-2">
+        <section class="mb-8">
+          <h2 class="text-2xl font-serif font-bold text-gray-800 mb-4">The Route</h2>
+          <SegmentMap
+            :segment="0"
+            :segments="segments"
+            :route-coords="routeCoords"
+          />
+          <p class="text-xs text-gray-400 mt-2">
+            Full 185km route. Use layer controls for topo, cycling, and satellite views.
+          </p>
+        </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-      <section class="lg:col-span-2">
-        <h2 class="text-2xl font-serif font-bold text-gray-800 mb-6">Latest Entries</h2>
-        <div v-if="entries && entries.length" class="space-y-6">
-          <article v-for="entry in entries" :key="entry._path" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-            <NuxtLink :to="entry._path" class="block">
-              <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
-                Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
-              </span>
-              <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
-              <h3 class="text-xl font-serif font-bold text-gray-900 mt-1">{{ entry.title }}</h3>
-              <p v-if="entry.subtitle" class="text-gray-600 mt-1">{{ entry.subtitle }}</p>
-              <time class="text-sm text-gray-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
-            </NuxtLink>
-          </article>
-        </div>
-        <p v-else class="text-gray-500 italic">No entries published yet.</p>
-      </section>
+        <section>
+          <h2 class="text-2xl font-serif font-bold text-gray-800 mb-6">Latest Entries</h2>
+          <div v-if="entries && entries.length" class="space-y-6">
+            <article v-for="entry in entries" :key="entry._path" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+              <NuxtLink :to="entry._path" class="block">
+                <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
+                  Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
+                </span>
+                <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
+                <h3 class="text-xl font-serif font-bold text-gray-900 mt-1">{{ entry.title }}</h3>
+                <p v-if="entry.subtitle" class="text-gray-600 mt-1">{{ entry.subtitle }}</p>
+                <time class="text-sm text-gray-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
+              </NuxtLink>
+            </article>
+          </div>
+          <p v-else class="text-gray-500 italic">No entries published yet.</p>
+        </section>
+      </div>
 
       <aside>
         <RiderDashboard />
-
-        <div class="mt-8">
+        <div class="mt-6">
           <PublishSchedule />
         </div>
       </aside>
@@ -78,12 +79,6 @@ const { data: entries } = await useAsyncData('entries', () =>
     .sort({ publishDate: -1 })
     .limit(5)
     .find()
-)
-
-const publishedSegmentNumbers = computed(() =>
-  (entries.value || [])
-    .filter(e => e.segment > 0)
-    .map(e => e.segment)
 )
 
 function formatDate(dateStr) {
