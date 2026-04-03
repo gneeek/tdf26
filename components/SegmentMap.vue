@@ -10,7 +10,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, watch, nextTick } from 'vue'
+import 'leaflet/dist/leaflet.css'
 
 const props = defineProps({
   segment: { type: Number, required: true },
@@ -21,10 +22,12 @@ const props = defineProps({
 const mapContainer = ref(null)
 let map = null
 
-onMounted(async () => {
-  if (!mapContainer.value) return
+// Watch for the ref to become available (ClientOnly delays DOM rendering)
+watch(mapContainer, async (el) => {
+  if (!el || map) return
 
-  const L = await import('leaflet')
+  const leafletModule = await import('leaflet')
+  const L = leafletModule.default || leafletModule
 
   const segmentData = props.segments.find(s => s.segment === props.segment)
   if (!segmentData) return
@@ -34,7 +37,7 @@ onMounted(async () => {
     (segmentData.start_lng + segmentData.end_lng) / 2
   ]
 
-  map = L.map(mapContainer.value, {
+  map = L.map(el, {
     scrollWheelZoom: false
   }).setView(center, 12)
 
@@ -69,7 +72,7 @@ onMounted(async () => {
 
   // Start marker
   const startIcon = L.divIcon({
-    html: '<div class="w-4 h-4 bg-green-600 rounded-full border-2 border-white shadow"></div>',
+    html: '<div style="width:12px;height:12px;background:#16a34a;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>',
     className: '',
     iconSize: [16, 16],
     iconAnchor: [8, 8]
@@ -80,7 +83,7 @@ onMounted(async () => {
 
   // End marker
   const endIcon = L.divIcon({
-    html: '<div class="w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow"></div>',
+    html: '<div style="width:12px;height:12px;background:#dc2626;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>',
     className: '',
     iconSize: [16, 16],
     iconAnchor: [8, 8]
@@ -88,18 +91,11 @@ onMounted(async () => {
   L.marker([segmentData.end_lat, segmentData.end_lng], { icon: endIcon })
     .bindPopup(`<b>End:</b> Km ${segmentData.km_end}`)
     .addTo(map)
-
-  // Notable point markers
-  if (segmentData.towns?.length) {
-    // Towns use a simple circle marker
-    // In the future these will have real coordinates; for now use interpolated positions
-  }
 })
 
 function getSegmentCoords(allCoords, kmStart, kmEnd) {
   if (!allCoords.length) return []
 
-  // Calculate cumulative distance and extract segment
   const coords = []
   let cumDist = 0
 
