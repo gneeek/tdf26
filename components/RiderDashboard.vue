@@ -5,7 +5,7 @@
     <!-- Progress bars -->
     <div class="space-y-3 mb-6">
       <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
-        <span class="w-16 text-sm font-medium truncate" :style="{ color: rider.color }">
+        <span class="w-16 text-sm font-medium truncate" :style="{ color: rider.textColor }">
           {{ rider.name }}
         </span>
         <div class="flex-1 bg-gray-100 rounded-full h-5 relative overflow-hidden">
@@ -36,7 +36,7 @@
               v-for="rider in rankedRiders"
               :key="rider.id"
               class="text-center py-2 px-2 font-medium"
-              :style="{ color: rider.color }"
+              :style="{ color: rider.textColor }"
             >
               {{ rider.name }}
             </th>
@@ -100,7 +100,7 @@
       <h4 class="text-sm font-semibold text-gray-600 mb-3">Daily Distance</h4>
       <div class="space-y-2">
         <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
-          <span class="w-16 text-xs truncate" :style="{ color: rider.color }">{{ rider.name }}</span>
+          <span class="w-16 text-xs truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
           <svg class="flex-1 h-6" :viewBox="`0 0 ${sparklineWidth} 24`" preserveAspectRatio="none">
             <polyline
               :points="sparklinePoints(rider.id)"
@@ -118,6 +118,18 @@
 
 <script setup>
 import { computed } from 'vue'
+
+function displayColor(hex) {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+  if (luminance > 0.85) {
+    return `rgb(${Math.round(r * 0.5)}, ${Math.round(g * 0.5)}, ${Math.round(b * 0.5)})`
+  }
+  return hex
+}
+
 import riderConfigJson from '~/data/riders/rider-config.json'
 import statsJson from '~/data/riders/stats.json'
 import dailyLogJson from '~/data/riders/daily-log.json'
@@ -131,6 +143,7 @@ const rankedRiders = computed(() => {
   return riderConfig.riders
     .map(r => ({
       ...r,
+      textColor: displayColor(r.color),
       stats: stats.riders[r.id] || {},
     }))
     .sort((a, b) => (a.stats.place || 99) - (b.stats.place || 99))
