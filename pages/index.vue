@@ -50,7 +50,8 @@
       <aside>
         <RiderDashboard />
         <div class="mt-6">
-          <PublishSchedule />
+          <PublishSchedule v-if="isDev" />
+          <StageDetails v-else />
         </div>
       </aside>
     </div>
@@ -60,6 +61,7 @@
 <script setup>
 import segmentsJson from '~/data/segments.json'
 
+const isDev = process.dev
 const today = new Date().toISOString().split('T')[0]
 
 const segments = segmentsJson
