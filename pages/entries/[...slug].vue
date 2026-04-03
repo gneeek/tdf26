@@ -13,6 +13,7 @@
       :segment="page.segment"
       :segments="segments"
       :route-coords="routeCoords"
+      :town-coords="townCoords"
       class="mb-8"
     />
 
@@ -52,6 +53,7 @@
 
 <script setup>
 import segmentsJson from '~/data/segments.json'
+import townCoordsJson from '~/data/town-coords.json'
 
 const route = useRoute()
 const { data: page } = await useAsyncData(`entry-${route.path}`, () =>
@@ -83,6 +85,7 @@ const { data: next } = await useAsyncData(`next-${route.path}`, () =>
 )
 
 const segments = segmentsJson
+const townCoords = townCoordsJson
 
 // Load route coordinates
 const routeCoords = ref([])

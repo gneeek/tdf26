@@ -22,6 +22,7 @@
             :segment="0"
             :segments="segments"
             :route-coords="routeCoords"
+            :town-coords="townCoords"
           />
           <p class="text-xs text-gray-400 mt-2">
             Full 185km route. Use layer controls for topo, cycling, and satellite views.
@@ -63,11 +64,13 @@
 
 <script setup>
 import segmentsJson from '~/data/segments.json'
+import townCoordsJson from '~/data/town-coords.json'
 
 const isDev = process.dev
 const today = new Date().toISOString().split('T')[0]
 
 const segments = segmentsJson
+const townCoords = townCoordsJson
 
 const overviewElevation = ref(null)
 try {
