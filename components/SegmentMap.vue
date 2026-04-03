@@ -82,10 +82,90 @@ async function initMap(el) {
     scrollWheelZoom: false
   }).setView(center, 12)
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  // --- Base layers ---
+  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 18
-  }).addTo(map)
+  })
+
+  const topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+    maxZoom: 17
+  })
+
+  const cyclOSM = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.cyclosm.org">CyclOSM</a> &amp; OSM contributors',
+    maxZoom: 18
+  })
+
+  const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri, Maxar, Earthstar Geographics',
+    maxZoom: 18
+  })
+
+  // Default base layer
+  osm.addTo(map)
+
+  // --- Overlay layers ---
+  const cycleRoutes = L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://waymarkedtrails.org">Waymarked Trails</a>',
+    maxZoom: 18,
+    opacity: 0.7
+  })
+
+  const hillshade = L.tileLayer('https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png', {
+    attribution: 'Hillshade &copy; SRTM',
+    maxZoom: 17,
+    opacity: 0.4
+  })
+
+  // Towns and climbs markers overlay
+  const poiGroup = L.layerGroup()
+  const allSegments = props.segments
+  for (const seg of allSegments) {
+    // Town markers
+    if (seg.towns?.length) {
+      const midLat = (seg.start_lat + seg.end_lat) / 2
+      const midLng = (seg.start_lng + seg.end_lng) / 2
+      const townIcon = L.divIcon({
+        html: '<div style="width:8px;height:8px;background:#2563eb;border-radius:50%;border:1px solid white;box-shadow:0 1px 2px rgba(0,0,0,0.3)"></div>',
+        className: '',
+        iconSize: [10, 10],
+        iconAnchor: [5, 5]
+      })
+      L.marker([midLat, midLng], { icon: townIcon })
+        .bindPopup(`<b>${seg.towns.join(', ')}</b><br>Segment ${seg.segment}`)
+        .addTo(poiGroup)
+    }
+    // Climb markers
+    if (seg.climbs?.length) {
+      const midLat = (seg.start_lat + seg.end_lat) / 2
+      const midLng = (seg.start_lng + seg.end_lng) / 2
+      const climbIcon = L.divIcon({
+        html: '<div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #dc2626;filter:drop-shadow(0 1px 1px rgba(0,0,0,0.3))"></div>',
+        className: '',
+        iconSize: [12, 10],
+        iconAnchor: [6, 10]
+      })
+      L.marker([midLat, midLng], { icon: climbIcon })
+        .bindPopup(`<b>${seg.climbs.join(', ')}</b><br>Segment ${seg.segment}`)
+        .addTo(poiGroup)
+    }
+  }
+
+  // --- Layer control ---
+  const baseLayers = {
+    'Street': osm,
+    'Topographic': topo,
+    'Cycling': cyclOSM,
+    'Satellite': satellite
+  }
+  const overlays = {
+    'Cycle Routes': cycleRoutes,
+    'Hillshade': hillshade,
+    'Towns & Climbs': poiGroup
+  }
+  L.control.layers(baseLayers, overlays, { position: 'topleft' }).addTo(map)
 
   // Full route in light gray
   if (props.routeCoords.length > 0) {
