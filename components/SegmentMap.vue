@@ -1,6 +1,19 @@
 <template>
   <ClientOnly>
-    <div ref="mapContainer" class="w-full h-[400px] rounded-lg overflow-hidden shadow-sm" />
+    <div
+      ref="mapWrapper"
+      class="relative rounded-lg overflow-hidden shadow-sm"
+      :class="isFullscreen ? 'fixed inset-0 z-50 rounded-none' : ''"
+    >
+      <div ref="mapContainer" class="w-full" :class="isFullscreen ? 'h-screen' : 'h-[400px]'" />
+      <button
+        @click="toggleFullscreen"
+        class="absolute top-2 right-2 z-[1000] bg-white border-2 border-gray-300 rounded px-2 py-1 text-sm font-bold text-gray-600 hover:bg-gray-100 shadow cursor-pointer"
+        :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
+      >
+        {{ isFullscreen ? '✕' : '⛶' }}
+      </button>
+    </div>
     <template #fallback>
       <div class="w-full h-[400px] rounded-lg bg-gray-200 flex items-center justify-center text-gray-500">
         Loading map...
@@ -10,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch, nextTick, onUnmounted } from 'vue'
 import 'leaflet/dist/leaflet.css'
 
 const props = defineProps({
@@ -20,7 +33,28 @@ const props = defineProps({
 })
 
 const mapContainer = ref(null)
+const mapWrapper = ref(null)
+const isFullscreen = ref(false)
 let map = null
+
+function toggleFullscreen() {
+  isFullscreen.value = !isFullscreen.value
+  nextTick(() => {
+    if (map) map.invalidateSize()
+  })
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape' && isFullscreen.value) {
+    isFullscreen.value = false
+    nextTick(() => { if (map) map.invalidateSize() })
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('keydown', onKeydown)
+  onUnmounted(() => window.removeEventListener('keydown', onKeydown))
+}
 
 // Watch for the ref to become available (ClientOnly delays DOM rendering)
 watch(mapContainer, async (el) => {
