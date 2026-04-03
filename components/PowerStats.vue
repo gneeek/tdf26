@@ -1,6 +1,6 @@
 <template>
   <div v-if="summary" class="bg-white rounded-lg shadow-sm p-6">
-    <h3 class="text-lg font-semibold text-gray-700 mb-4">Power Estimates</h3>
+    <h3 class="text-lg font-semibold text-gray-700 mb-4">Power Stats</h3>
     <p class="text-xs text-gray-400 mb-4">Reference: 70kg rider + 8kg bike, CdA 0.35, Crr 0.005</p>
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -40,6 +40,10 @@
         <div class="flex-1 text-center">
           <div class="font-mono font-bold text-gray-600">{{ summary.estimated_time_40kmh }}</div>
           <div class="text-xs text-gray-400">@40 km/h</div>
+        </div>
+        <div class="flex-1 text-center">
+          <div class="font-mono font-bold text-gray-600">{{ summary.estimated_time_50kmh || '-' }}</div>
+          <div class="text-xs text-gray-400">@50 km/h</div>
         </div>
       </div>
     </div>

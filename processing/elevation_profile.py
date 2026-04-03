@@ -108,10 +108,11 @@ def process_segment(gpx_path, segment_num):
     elevation = [round(float(smoothed[i]), 1) for i in indices]
     gradient = [round(float(gradients[i]), 1) for i in indices]
 
-    # Power at three speeds
+    # Power at four speeds
     power_30 = [round(calculate_power(g, 30)) for g in gradient]
     power_35 = [round(calculate_power(g, 35)) for g in gradient]
     power_40 = [round(calculate_power(g, 40)) for g in gradient]
+    power_50 = [round(calculate_power(g, 50)) for g in gradient]
 
     # Summary stats
     all_gradients = np.array(gradients)
@@ -129,9 +130,11 @@ def process_segment(gpx_path, segment_num):
         "avg_power_30kmh": round(float(np.mean(power_30))),
         "avg_power_35kmh": round(float(np.mean(power_35))),
         "avg_power_40kmh": round(float(np.mean(power_40))),
+        "avg_power_50kmh": round(float(np.mean(power_50))),
         "estimated_time_30kmh": format_time(total_km / 30 * 60),
         "estimated_time_35kmh": format_time(total_km / 35 * 60),
         "estimated_time_40kmh": format_time(total_km / 40 * 60),
+        "estimated_time_50kmh": format_time(total_km / 50 * 60),
     }
 
     return {
@@ -142,6 +145,7 @@ def process_segment(gpx_path, segment_num):
         "power_30kmh": power_30,
         "power_35kmh": power_35,
         "power_40kmh": power_40,
+        "power_50kmh": power_50,
         "summary": summary,
     }
 
