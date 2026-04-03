@@ -3,15 +3,22 @@
 #
 # Usage: ./scripts/publish.sh [--dry-run] [--skip-deploy]
 #
-# Environment variables:
+# Environment variables (loaded from .env if present):
 #   OPENWEATHERMAP_API_KEY  - API key for weather data (optional)
-#   DEPLOY_TARGET           - rsync target (e.g., user@vps:/var/www/correze-travelogue/)
+#   DEPLOY_TARGET           - SSH target (e.g., correze:/var/www/correze-travelogue/)
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 VENV_PYTHON="$PROJECT_DIR/processing/.venv/bin/python"
+
+# Load .env if it exists
+if [ -f "$PROJECT_DIR/.env" ]; then
+    set -a
+    source "$PROJECT_DIR/.env"
+    set +a
+fi
 
 DRY_RUN=false
 SKIP_DEPLOY=false
@@ -31,7 +38,7 @@ for arg in "$@"; do
             echo ""
             echo "Environment variables:"
             echo "  OPENWEATHERMAP_API_KEY  API key for weather data (optional)"
-            echo "  DEPLOY_TARGET           rsync target (e.g., user@vps:/var/www/site/)"
+            echo "  DEPLOY_TARGET           SSH target (e.g., correze:/var/www/site/)"
             exit 0
             ;;
         --dry-run)
@@ -76,8 +83,21 @@ else
 fi
 echo ""
 
-# Step 3: Generate static site
-echo "--- Step 3: Building static site ---"
+# Step 3: Commit content changes to dev
+echo "--- Step 3: Committing content changes ---"
+cd "$PROJECT_DIR"
+if git diff --quiet content/ 2>/dev/null && git diff --cached --quiet content/ 2>/dev/null; then
+    echo "No content changes to commit."
+else
+    git add content/
+    git commit -m "Update content (publish $(date +%Y-%m-%d))"
+    git push
+    echo "Content changes committed and pushed."
+fi
+echo ""
+
+# Step 4: Generate static site
+echo "--- Step 4: Building static site ---"
 cd "$PROJECT_DIR"
 
 # Source nvm if available
@@ -87,19 +107,22 @@ export NVM_DIR="$HOME/.nvm"
 npx nuxt generate
 echo ""
 
-# Step 4: Deploy
+# Step 5: Deploy
 if [ "$SKIP_DEPLOY" = true ]; then
-    echo "--- Step 4: Deploy skipped ---"
+    echo "--- Step 5: Deploy skipped ---"
 elif [ -n "$DEPLOY_TARGET" ]; then
-    echo "--- Step 4: Deploying to $DEPLOY_TARGET ---"
+    echo "--- Step 5: Deploying to $DEPLOY_TARGET ---"
     if [ "$DRY_RUN" = true ]; then
         echo "(dry run - not deploying)"
     else
-        rsync -avz --delete .output/public/ "$DEPLOY_TARGET"
+        # Deploy via SSH: tar and pipe to remote
+        echo "Uploading to $DEPLOY_TARGET..."
+        tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}"
+        echo "Deploy complete."
     fi
 else
-    echo "--- Step 4: No DEPLOY_TARGET set, skipping deploy ---"
-    echo "Set DEPLOY_TARGET to deploy (e.g., user@vps:/var/www/correze-travelogue/)"
+    echo "--- Step 5: No DEPLOY_TARGET set, skipping deploy ---"
+    echo "Set DEPLOY_TARGET in .env (e.g., correze:/var/www/correze-travelogue/)"
 fi
 
 echo ""
