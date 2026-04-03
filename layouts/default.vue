@@ -5,7 +5,12 @@
         <NuxtLink to="/" class="text-xl font-serif font-bold hover:text-yellow-300 transition-colors">
           Corrèze Travelogue
         </NuxtLink>
-        <span class="text-sm text-red-200">Tour de France 2026 — Stage 9</span>
+        <div class="flex items-center gap-4">
+          <span class="text-sm text-red-200">Tour de France 2026 — Stage 9</span>
+          <NuxtLink v-if="isDev" to="/admin" class="text-xs bg-white/20 px-2 py-1 rounded hover:bg-white/30 transition-colors">
+            Admin
+          </NuxtLink>
+        </div>
       </nav>
     </header>
 
@@ -21,3 +26,7 @@
     </footer>
   </div>
 </template>
+
+<script setup>
+const isDev = process.dev
+</script>
