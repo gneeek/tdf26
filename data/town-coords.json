@@ -1,0 +1,107 @@
+{
+  "Malemort": {
+    "type": "town",
+    "lat": 45.1752984,
+    "lng": 1.574502
+  },
+  "Brive-la-Gaillarde": {
+    "type": "town",
+    "lat": 45.1584982,
+    "lng": 1.5332389
+  },
+  "Turenne": {
+    "type": "town",
+    "lat": 45.053482,
+    "lng": 1.5814221
+  },
+  "Collonges-la-Rouge": {
+    "type": "town",
+    "lat": 45.0604597,
+    "lng": 1.6551231
+  },
+  "Beynat": {
+    "type": "town",
+    "lat": 45.124713,
+    "lng": 1.7218235
+  },
+  "Tulle": {
+    "type": "town",
+    "lat": 45.2678347,
+    "lng": 1.7706797
+  },
+  "Naves": {
+    "type": "town",
+    "lat": 45.312319,
+    "lng": 1.7666474
+  },
+  "Chaumeil": {
+    "type": "town",
+    "lat": 45.4555541,
+    "lng": 1.8808583
+  },
+  "Treignac": {
+    "type": "town",
+    "lat": 45.5365916,
+    "lng": 1.7935339
+  },
+  "Bugeat": {
+    "type": "town",
+    "lat": 45.5975774,
+    "lng": 1.9281816
+  },
+  "Meymac": {
+    "type": "town",
+    "lat": 45.5366795,
+    "lng": 2.1464895
+  },
+  "Ussel": {
+    "type": "town",
+    "lat": 45.5456877,
+    "lng": 2.3118583
+  },
+  "Puy Boubou": {
+    "type": "climb",
+    "lat": 45.0677317,
+    "lng": 1.640618
+  },
+  "Côte de Lagleygeolle": {
+    "type": "climb",
+    "lat": 45.0782793,
+    "lng": 1.6965828
+  },
+  "Côte de Miel": {
+    "type": "climb",
+    "lat": 45.1363007,
+    "lng": 1.7651832
+  },
+  "Côte des Naves": {
+    "type": "climb",
+    "lat": 45.312319,
+    "lng": 1.7666474
+  },
+  "Puy de Lachaud": {
+    "type": "climb",
+    "lat": 45.336,
+    "lng": 1.784
+  },
+  "Suc au May": {
+    "type": "climb",
+    "lat": 45.4713728,
+    "lng": 1.8424529
+  },
+  "Côte de la Croix de Pey": {
+    "type": "climb",
+    "lat": 45.5192072,
+    "lng": 1.8741342
+  },
+  "Mont Bessou": {
+    "type": "climb",
+    "lat": 45.5701029,
+    "lng": 2.1231273
+  },
+  "Côte des Gardes": {
+    "type": "climb",
+    "lat": 45.527,
+    "lng": 2.174
+  }
+}

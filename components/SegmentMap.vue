@@ -33,7 +33,8 @@ import 'leaflet/dist/leaflet.css'
 const props = defineProps({
   segment: { type: Number, required: true },
   segments: { type: Array, default: () => [] },
-  routeCoords: { type: Array, default: () => [] }
+  routeCoords: { type: Array, default: () => [] },
+  townCoords: { type: Object, default: () => ({}) }
 })
 
 const mapContainer = ref(null)
@@ -121,37 +122,49 @@ async function initMap(el) {
     opacity: 0.4
   })
 
-  // Towns and climbs markers overlay
+  // Towns and climbs markers overlay using real coordinates
   const poiGroup = L.layerGroup()
-  const allSegments = props.segments
-  for (const seg of allSegments) {
-    // Town markers
+  const townCoordsData = props.townCoords || {}
+  const placed = new Set()
+
+  for (const seg of props.segments) {
     if (seg.towns?.length) {
-      const midLat = (seg.start_lat + seg.end_lat) / 2
-      const midLng = (seg.start_lng + seg.end_lng) / 2
-      const townIcon = L.divIcon({
-        html: '<div style="width:8px;height:8px;background:#2563eb;border-radius:50%;border:1px solid white;box-shadow:0 1px 2px rgba(0,0,0,0.3)"></div>',
-        className: '',
-        iconSize: [10, 10],
-        iconAnchor: [5, 5]
-      })
-      L.marker([midLat, midLng], { icon: townIcon })
-        .bindPopup(`<b>${seg.towns.join(', ')}</b><br>Segment ${seg.segment}`)
-        .addTo(poiGroup)
+      for (const town of seg.towns) {
+        if (placed.has(town)) continue
+        placed.add(town)
+        const coords = townCoordsData[town]
+        const lat = coords?.lat || (seg.start_lat + seg.end_lat) / 2
+        const lng = coords?.lng || (seg.start_lng + seg.end_lng) / 2
+        const townIcon = L.divIcon({
+          html: '<div style="font-size:22px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4))">🏘️</div>',
+          className: '',
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        })
+        L.marker([lat, lng], { icon: townIcon })
+          .bindTooltip(town, { direction: 'top', offset: [0, -10] })
+          .bindPopup(`<b>${town}</b><br>Segment ${seg.segment}`)
+          .addTo(poiGroup)
+      }
     }
-    // Climb markers
     if (seg.climbs?.length) {
-      const midLat = (seg.start_lat + seg.end_lat) / 2
-      const midLng = (seg.start_lng + seg.end_lng) / 2
-      const climbIcon = L.divIcon({
-        html: '<div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #dc2626;filter:drop-shadow(0 1px 1px rgba(0,0,0,0.3))"></div>',
-        className: '',
-        iconSize: [12, 10],
-        iconAnchor: [6, 10]
-      })
-      L.marker([midLat, midLng], { icon: climbIcon })
-        .bindPopup(`<b>${seg.climbs.join(', ')}</b><br>Segment ${seg.segment}`)
-        .addTo(poiGroup)
+      for (const climb of seg.climbs) {
+        if (placed.has(climb)) continue
+        placed.add(climb)
+        const coords = townCoordsData[climb]
+        const lat = coords?.lat || (seg.start_lat + seg.end_lat) / 2
+        const lng = coords?.lng || (seg.start_lng + seg.end_lng) / 2
+        const climbIcon = L.divIcon({
+          html: '<div style="font-size:22px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4))">⛰️</div>',
+          className: '',
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        })
+        L.marker([lat, lng], { icon: climbIcon })
+          .bindTooltip(climb, { direction: 'top', offset: [0, -10] })
+          .bindPopup(`<b>${climb}</b><br>Segment ${seg.segment}`)
+          .addTo(poiGroup)
+      }
     }
   }
 
