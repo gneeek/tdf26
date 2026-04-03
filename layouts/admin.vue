@@ -8,6 +8,7 @@
           </NuxtLink>
           <div class="hidden md:flex items-center gap-4 text-sm">
             <NuxtLink to="/admin/riders" class="text-gray-300 hover:text-white">Riders</NuxtLink>
+            <NuxtLink to="/admin/rider-config" class="text-gray-300 hover:text-white">Config</NuxtLink>
             <NuxtLink to="/admin/entries" class="text-gray-300 hover:text-white">Entries</NuxtLink>
             <NuxtLink to="/admin/images" class="text-gray-300 hover:text-white">Images</NuxtLink>
             <NuxtLink to="/admin/weather" class="text-gray-300 hover:text-white">Weather</NuxtLink>
