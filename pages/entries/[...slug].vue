@@ -54,26 +54,33 @@
 import segmentsJson from '~/data/segments.json'
 
 const route = useRoute()
+const slug = route.path.replace(/^\//, '')
 const { data: page } = await useAsyncData(`entry-${route.path}`, () =>
-  queryContent(route.path).findOne()
+  queryCollection('entries')
+    .path(slug)
+    .first()
 )
 
 const today = new Date().toISOString().split('T')[0]
 
 const { data: prev } = await useAsyncData(`prev-${route.path}`, () =>
-  queryContent('entries')
-    .where({ segment: { $lt: page.value?.segment }, draft: false, publishDate: { $lte: today } })
-    .sort({ segment: -1 })
+  queryCollection('entries')
+    .where('segment', '<', page.value?.segment)
+    .where('draft', '=', false)
+    .where('publishDate', '<=', today)
+    .order('segment', 'DESC')
     .limit(1)
-    .findOne()
+    .first()
 )
 
 const { data: next } = await useAsyncData(`next-${route.path}`, () =>
-  queryContent('entries')
-    .where({ segment: { $gt: page.value?.segment }, draft: false, publishDate: { $lte: today } })
-    .sort({ segment: 1 })
+  queryCollection('entries')
+    .where('segment', '>', page.value?.segment)
+    .where('draft', '=', false)
+    .where('publishDate', '<=', today)
+    .order('segment', 'ASC')
     .limit(1)
-    .findOne()
+    .first()
 )
 
 const segments = segmentsJson
