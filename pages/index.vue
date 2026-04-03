@@ -26,13 +26,16 @@
           <p class="text-xs text-gray-400 mt-2">
             Full 185km route. Use layer controls for topo, cycling, and satellite views.
           </p>
+          <ClientOnly>
+            <ElevationChart :elevation-data="overviewElevation" class="mt-6" />
+          </ClientOnly>
         </section>
 
         <section>
           <h2 class="text-2xl font-serif font-bold text-gray-800 mb-6">Latest Entries</h2>
           <div v-if="entries && entries.length" class="space-y-6">
-            <article v-for="entry in entries" :key="entry._path" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-              <NuxtLink :to="entry._path" class="block">
+            <article v-for="entry in entries" :key="entry.path || entry._path" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+              <NuxtLink :to="entry.path || entry._path" class="block">
                 <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
                   Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
                 </span>
@@ -65,6 +68,14 @@ const isDev = process.dev
 const today = new Date().toISOString().split('T')[0]
 
 const segments = segmentsJson
+
+const overviewElevation = ref(null)
+try {
+  const data = await import('~/data/elevation/segment-00.json')
+  overviewElevation.value = data.default || data
+} catch {
+  overviewElevation.value = null
+}
 
 const routeCoords = ref([])
 try {
