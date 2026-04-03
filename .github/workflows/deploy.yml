@@ -31,6 +31,11 @@ jobs:
           python -m venv processing/.venv
           processing/.venv/bin/pip install -r processing/requirements.txt
 
+      - name: Seed rider data if missing
+        run: |
+          [ -f data/riders/daily-log.json ] || cp data/riders/daily-log.example.json data/riders/daily-log.json
+          [ -f data/riders/stats.json ] || cp data/riders/stats.example.json data/riders/stats.json
+
       - name: Regenerate rider stats
         run: |
           processing/.venv/bin/python processing/rider_stats.py \
