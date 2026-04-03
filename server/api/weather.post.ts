@@ -45,6 +45,7 @@ export default defineEventHandler(async (event) => {
     const data = await resp.json()
 
     const weather = {
+      fetchedAt: new Date().toISOString().split('T')[0],
       current: {
         temp: Math.round(data.main.temp),
         conditions: data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1),
