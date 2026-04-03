@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: 'npm'
@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -30,6 +30,11 @@ jobs:
         run: |
           python -m venv processing/.venv
           processing/.venv/bin/pip install -r processing/requirements.txt
+
+      - name: Seed rider data if missing
+        run: |
+          [ -f data/riders/daily-log.json ] || cp data/riders/daily-log.example.json data/riders/daily-log.json
+          [ -f data/riders/stats.json ] || cp data/riders/stats.example.json data/riders/stats.json
 
       - name: Regenerate rider stats
         run: |
