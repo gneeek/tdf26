@@ -2,38 +2,29 @@
   <article v-if="page" class="max-w-3xl mx-auto">
     <header class="mb-8">
       <span class="text-sm text-correze-red font-semibold">
-        Segment {{ page.segment }} — Km {{ page.kmStart }}–{{ page.kmEnd }}
+        Segment {{ page.segment }} - Km {{ page.kmStart }}-{{ page.kmEnd }}
       </span>
       <h1 class="text-4xl font-serif font-bold text-gray-900 mt-2">{{ page.title }}</h1>
       <p v-if="page.subtitle" class="text-xl text-gray-500 mt-2 font-serif">{{ page.subtitle }}</p>
       <time class="text-sm text-gray-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
     </header>
 
-    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
-      <h2 class="text-lg font-semibold text-gray-700 mb-3">Segment Stats</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <div>
-          <div class="text-2xl font-bold text-correze-red">{{ (page.kmEnd - page.kmStart).toFixed(1) }} km</div>
-          <div class="text-xs text-gray-500">Distance</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-correze-green">{{ elevationData?.summary?.elevation_gain || '—' }} m</div>
-          <div class="text-xs text-gray-500">Elevation Gain</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-gray-600">{{ elevationData?.summary?.avg_gradient || '—' }}%</div>
-          <div class="text-xs text-gray-500">Avg Gradient</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-correze-gold">{{ elevationData?.summary?.avg_power_35kmh || '—' }} W</div>
-          <div class="text-xs text-gray-500">Est. Power @35km/h</div>
-        </div>
-      </div>
-    </div>
+    <SegmentMap
+      :segment="page.segment"
+      :segments="segments"
+      :route-coords="routeCoords"
+      class="mb-8"
+    />
+
+    <ElevationChart :elevation-data="elevationData" class="mb-8" />
+
+    <PowerStats :elevation-data="elevationData" class="mb-8" />
 
     <div class="prose prose-lg max-w-none font-serif">
       <ContentRenderer :value="page" />
     </div>
+
+    <ImageGallery :images="page.images" />
 
     <nav class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
       <NuxtLink
@@ -56,6 +47,8 @@
 </template>
 
 <script setup>
+import segmentsJson from '~/data/segments.json'
+
 const route = useRoute()
 const { data: page } = await useAsyncData(`entry-${route.path}`, () =>
   queryContent(route.path).findOne()
@@ -78,6 +71,18 @@ const { data: next } = await useAsyncData(`next-${route.path}`, () =>
     .limit(1)
     .findOne()
 )
+
+const segments = segmentsJson
+
+// Load route coordinates
+const routeCoords = ref([])
+try {
+  const routeData = await import('~/data/route.json')
+  const data = routeData.default || routeData
+  routeCoords.value = data.features?.[0]?.geometry?.coordinates || []
+} catch {
+  routeCoords.value = []
+}
 
 const elevationData = ref(null)
 if (page.value?.segment) {
