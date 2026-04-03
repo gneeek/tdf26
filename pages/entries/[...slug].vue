@@ -14,6 +14,8 @@
       :segments="segments"
       :route-coords="routeCoords"
       :town-coords="townCoords"
+      :rider-stats="riderStats"
+      :rider-config="riderConfig"
       class="mb-8"
     />
 
@@ -54,6 +56,7 @@
 <script setup>
 import segmentsJson from '~/data/segments.json'
 import townCoordsJson from '~/data/town-coords.json'
+import riderConfigJson from '~/data/riders/rider-config.json'
 
 const route = useRoute()
 const { data: page } = await useAsyncData(`entry-${route.path}`, () =>
@@ -86,6 +89,15 @@ const { data: next } = await useAsyncData(`next-${route.path}`, () =>
 
 const segments = segmentsJson
 const townCoords = townCoordsJson
+const riderConfig = riderConfigJson
+
+const riderStats = ref(null)
+try {
+  const data = await import('~/data/riders/stats.json')
+  riderStats.value = data.default || data
+} catch {
+  riderStats.value = null
+}
 
 // Load route coordinates
 const routeCoords = ref([])
