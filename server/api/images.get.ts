@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'fs'
+import { readFileSync, existsSync, readdirSync } from 'fs'
 import { resolve, join } from 'path'
 
 export default defineEventHandler((event) => {
@@ -21,7 +21,6 @@ export default defineEventHandler((event) => {
 
   // Load current entry images from frontmatter
   const entriesDir = resolve('content/entries')
-  const { readdirSync } = require('fs')
   const files = readdirSync(entriesDir).filter((f: string) => f.endsWith('.md'))
   let entryImages = []
   let entryFilename = ''
