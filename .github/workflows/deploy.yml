@@ -1,0 +1,61 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          python -m venv processing/.venv
+          processing/.venv/bin/pip install -r processing/requirements.txt
+
+      - name: Regenerate rider stats
+        run: |
+          processing/.venv/bin/python processing/rider_stats.py \
+            --daily-log data/riders/daily-log.json \
+            --rider-config data/riders/rider-config.json \
+            --output data/riders/stats.json
+
+      - name: Build static site
+        run: npx nuxt generate
+
+      - name: Deploy to server
+        if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
+          VM_PATH: ${{ secrets.VM_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$VM_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          echo "Deploying to $VM_USER@$VM_HOST:$VM_PATH..."
+          tar -czf - -C .output/public . | \
+            ssh -i ~/.ssh/deploy_key "$VM_USER@$VM_HOST" \
+            "mkdir -p $VM_PATH && tar -xzf - -C $VM_PATH"
+          echo "Deploy complete."
