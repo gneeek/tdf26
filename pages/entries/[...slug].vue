@@ -33,7 +33,7 @@
     <nav class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
       <NuxtLink
         v-if="prev"
-        :to="prev._path"
+        :to="prev.path || prev._path"
         class="text-correze-red hover:underline"
       >
         &larr; {{ prev.title }}
@@ -41,7 +41,7 @@
       <span v-else></span>
       <NuxtLink
         v-if="next"
-        :to="next._path"
+        :to="next.path || next._path"
         class="text-correze-red hover:underline"
       >
         {{ next.title }} &rarr;
@@ -54,10 +54,9 @@
 import segmentsJson from '~/data/segments.json'
 
 const route = useRoute()
-const slug = route.path.replace(/^\//, '')
 const { data: page } = await useAsyncData(`entry-${route.path}`, () =>
   queryCollection('entries')
-    .path(slug)
+    .path(route.path)
     .first()
 )
 
