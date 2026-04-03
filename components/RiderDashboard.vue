@@ -1,6 +1,20 @@
 <template>
-  <div v-if="stats && Object.keys(stats.riders).length" class="bg-white rounded-lg shadow-sm p-6 mt-8">
-    <h3 class="text-lg font-semibold text-gray-700 mb-4">Rider Standings</h3>
+  <div
+    v-if="stats && Object.keys(stats.riders).length"
+    class="bg-white rounded-lg shadow-sm p-6 mt-8 relative"
+    :class="isFullscreen ? 'z-50 overflow-auto' : ''"
+    :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
+  >
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-gray-700">Rider Standings</h3>
+      <button
+        @click="toggleFullscreen"
+        class="text-sm font-bold text-gray-500 hover:text-gray-700 cursor-pointer"
+        :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
+      >
+        {{ isFullscreen ? '✕' : '⛶' }}
+      </button>
+    </div>
 
     <!-- Progress bars -->
     <div class="space-y-3 mb-6">
@@ -123,7 +137,24 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onUnmounted } from 'vue'
+
+const isFullscreen = ref(false)
+
+function toggleFullscreen() {
+  isFullscreen.value = !isFullscreen.value
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape' && isFullscreen.value) {
+    isFullscreen.value = false
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('keydown', onKeydown)
+  onUnmounted(() => window.removeEventListener('keydown', onKeydown))
+}
 
 function displayColor(hex) {
   const r = parseInt(hex.slice(1, 3), 16)
