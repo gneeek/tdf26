@@ -8,7 +8,7 @@ kmEnd: 7.1
 gpxFile: /gpx/segment-01.gpx
 elevationData: /data/elevation/segment-01.json
 images: []
-weather: {"current": {"temp": 14, "conditions": "Partly cloudy", "wind": "11 km/h SW"}, "forecast": "Mild and dry through the weekend, temperatures rising to 18C by Sunday"}
+weather: {"current": {"temp": 10, "conditions": "Overcast clouds", "wind": "1 km/h WNW"}, "forecast": null}
 draft: false
 ---
 
