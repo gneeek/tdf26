@@ -92,4 +92,4 @@ Justin, Marian, Nan, and Wally log daily cycling distances from April through Ju
 
 ## License
 
-Content and code in this repository are not licensed for redistribution. Images sourced from Wikimedia Commons retain their original Creative Commons licenses.
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details. Images sourced from Wikimedia Commons retain their original Creative Commons licenses.
