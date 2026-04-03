@@ -1,15 +1,16 @@
 <template>
   <div
     v-if="stats && Object.keys(stats.riders).length"
-    class="bg-white rounded-lg shadow-sm p-6 mt-8 relative"
-    :class="isFullscreen ? 'z-50 overflow-auto' : ''"
+    class="bg-white rounded-lg shadow-sm mt-8 relative"
+    :class="isFullscreen ? 'z-[9999] overflow-auto p-12 text-lg' : 'p-6 text-sm'"
     :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
   >
     <div class="flex items-center justify-between mb-4">
-      <h3 class="text-lg font-semibold text-gray-700">Rider Standings</h3>
+      <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-gray-700">Rider Standings</h3>
       <button
         @click="toggleFullscreen"
-        class="text-sm font-bold text-gray-500 hover:text-gray-700 cursor-pointer"
+        class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
+        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200'"
         :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
       >
         {{ isFullscreen ? '✕' : '⛶' }}
@@ -22,7 +23,7 @@
         <span class="w-16 text-sm font-medium truncate" :style="{ color: rider.textColor }">
           {{ rider.name }}
         </span>
-        <div class="flex-1 bg-gray-100 rounded-full h-5 relative overflow-hidden">
+        <div class="flex-1 bg-gray-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
           <div
             class="h-full rounded-full transition-all duration-500"
             :style="{
@@ -42,14 +43,15 @@
 
     <!-- Stats table -->
     <div class="overflow-x-auto">
-      <table class="w-full text-sm">
+      <table class="w-full" :class="isFullscreen ? 'text-xl' : 'text-sm'">
         <thead>
           <tr class="border-b border-gray-200">
             <th class="text-left py-2 pr-2 text-gray-500 font-medium">Stat</th>
             <th
               v-for="rider in rankedRiders"
               :key="rider.id"
-              class="text-center py-2 px-2 font-medium"
+              class="text-center font-medium border-l border-gray-200"
+              :class="isFullscreen ? 'py-2 px-3' : 'py-1 px-1 text-xs'"
               :style="{ color: rider.textColor }"
             >
               {{ rider.name }}
@@ -59,56 +61,60 @@
         <tbody class="divide-y divide-gray-100">
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Total (capped)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
-              {{ r.stats.totalDistanceCapped }} km
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.totalDistanceCapped }}<br><span class="text-gray-400">km</span>
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Daily avg (actual)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
-              {{ r.stats.dailyAverageActual }} km
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.dailyAverageActual }}<br><span class="text-gray-400">km</span>
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Daily avg (capped)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
-              {{ r.stats.dailyAverageCapped }} km
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.dailyAverageCapped }}<br><span class="text-gray-400">km</span>
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Longest day</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
-              {{ r.stats.longestDay }} km
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.longestDay }}<br><span class="text-gray-400">km</span>
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Best 3-day</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
-              {{ r.stats.bestThreeDayCombo }} km
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.bestThreeDayCombo }}<br><span class="text-gray-400">km</span>
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Recent 5-day avg</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
-              {{ r.stats.recentFiveDayAverage }} km
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.recentFiveDayAverage }}<br><span class="text-gray-400">km</span>
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Days &lt;3km</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.daysBelowThreeKm }}
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Remaining</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono">
-              {{ r.stats.distanceRemaining }} km
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.distanceRemaining }}<br><span class="text-gray-400">km</span>
             </td>
           </tr>
           <tr>
             <td class="py-1.5 pr-2 text-gray-500">Est. finish</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono text-xs">
-              {{ r.stats.estimatedFinishDate || '-' }}
+              <template v-if="r.stats.estimatedFinishDate">
+                <span class="text-gray-400 block" :class="isFullscreen ? 'text-base' : 'text-[0.65rem]'" style="line-height:1">{{ formatFinishMonth(r.stats.estimatedFinishDate) }}</span>
+                <span class="block" :class="isFullscreen ? 'text-2xl' : ''">{{ formatFinishDay(r.stats.estimatedFinishDate) }}</span>
+              </template>
+              <template v-else>-</template>
             </td>
           </tr>
         </tbody>
@@ -130,6 +136,12 @@
               stroke-linejoin="round"
             />
           </svg>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 mt-1">
+        <span class="w-16"></span>
+        <div class="flex-1 flex justify-between text-[9px] text-gray-400">
+          <span v-for="label in sparklineDateLabels" :key="label">{{ label }}</span>
         </div>
       </div>
     </div>
@@ -186,7 +198,31 @@ const rankedRiders = computed(() => {
     .sort((a, b) => (a.stats.place || 99) - (b.stats.place || 99))
 })
 
+function formatFinishMonth(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00')
+  return d.toLocaleDateString('en-US', { month: 'short' })
+}
+
+function formatFinishDay(dateStr) {
+  return parseInt(dateStr.slice(8))
+}
+
 const sparklineWidth = computed(() => Math.max(dailyLog.entries.length * 4, 100))
+
+const sparklineDateLabels = computed(() => {
+  const entries = dailyLog.entries
+  if (entries.length < 2) return []
+  const maxLabels = 5
+  const step = Math.max(1, Math.floor(entries.length / (maxLabels - 1)))
+  const labels = []
+  for (let i = 0; i < entries.length; i += step) {
+    const d = entries[i].date
+    labels.push(d.slice(5)) // MM-DD
+  }
+  const last = entries[entries.length - 1].date.slice(5)
+  if (labels[labels.length - 1] !== last) labels.push(last)
+  return labels
+})
 
 function sparklinePoints(riderId) {
   const entries = dailyLog.entries

@@ -11,7 +11,8 @@
       />
       <button
         @click="toggleFullscreen"
-        class="absolute top-2 right-2 z-[1000] bg-white border-2 border-gray-300 rounded px-2 py-1 text-sm font-bold text-gray-600 hover:bg-gray-100 shadow cursor-pointer"
+        class="absolute top-2 right-2 z-[1000] w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors shadow"
+        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-100'"
         :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
       >
         {{ isFullscreen ? '✕' : '⛶' }}
