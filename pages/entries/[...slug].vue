@@ -26,6 +26,8 @@
 
     <ImageGallery :images="page.images" />
 
+    <RiderDashboard />
+
     <nav class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
       <NuxtLink
         v-if="prev"
