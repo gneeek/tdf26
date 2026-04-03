@@ -3,7 +3,7 @@ import { resolve } from 'path'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const { skipDeploy = true, dryRun = false } = body
+  const { steps = ['stats'] } = body
 
   const projectDir = resolve('.')
   const venvPython = resolve('processing/.venv/bin/python')
@@ -14,37 +14,38 @@ export default defineEventHandler(async (event) => {
     try {
       const output = execSync(cmd, {
         cwd: projectDir,
-        timeout: 120000,
+        timeout: 60000,
         encoding: 'utf8',
-        env: { ...process.env, PATH: process.env.PATH }
+        shell: '/bin/bash'
       })
-      logs.push(output.trim())
+      if (output.trim()) logs.push(output.trim())
       logs.push(`✓ ${label} complete`)
     } catch (err: any) {
-      logs.push(`✗ ${label} failed: ${err.message}`)
+      const stderr = err.stderr ? err.stderr.trim() : ''
+      logs.push(stderr || err.message)
+      logs.push(`✗ ${label} failed`)
       throw createError({ statusCode: 500, message: `${label} failed`, data: { logs } })
     }
   }
 
-  // Step 1: Rider stats
-  run('Rider Stats', `${venvPython} processing/rider_stats.py --daily-log data/riders/daily-log.json --rider-config data/riders/rider-config.json --output data/riders/stats.json`)
+  if (steps.includes('stats')) {
+    run('Rider Stats', `${venvPython} processing/rider_stats.py --daily-log data/riders/daily-log.json --rider-config data/riders/rider-config.json --output data/riders/stats.json`)
+  }
 
-  // Step 2: Build
-  run('Build Site', 'npx nuxt generate')
-
-  // Step 3: Deploy
-  if (skipDeploy || dryRun) {
-    logs.push('--- Deploy ---')
-    logs.push(dryRun ? '(dry run - skipped)' : '(skip deploy - skipped)')
-  } else {
-    const target = process.env.DEPLOY_TARGET
-    if (target) {
-      run('Deploy', `scp -r .output/public/* ${target}`)
+  if (steps.includes('weather')) {
+    const apiKey = process.env.OPENWEATHERMAP_API_KEY
+    if (apiKey) {
+      run('Weather', `${venvPython} processing/weather.py --entry current --api-key ${apiKey} --segments-json data/segments.json --entries-dir content/entries`)
     } else {
-      logs.push('--- Deploy ---')
-      logs.push('No DEPLOY_TARGET set, skipped')
+      logs.push('--- Weather ---')
+      logs.push('No OPENWEATHERMAP_API_KEY set, skipped')
     }
   }
+
+  logs.push('')
+  logs.push('To build and deploy, run from the terminal:')
+  logs.push('  ./scripts/publish.sh --skip-deploy   # build only')
+  logs.push('  ./scripts/publish.sh                 # build + deploy')
 
   return { success: true, logs }
 })
