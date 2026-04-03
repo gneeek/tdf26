@@ -37,7 +37,7 @@
                   {{ entry.draft ? 'Draft' : 'Published' }}
                 </span>
               </td>
-              <td class="text-center py-2 px-2">
+              <td class="text-center py-2 px-2 space-x-2">
                 <button
                   @click="toggleDraft(entry)"
                   class="text-xs hover:underline"
@@ -45,6 +45,12 @@
                 >
                   {{ entry.draft ? 'Publish' : 'Unpublish' }}
                 </button>
+                <NuxtLink
+                  :to="`/admin/edit/${entry.filename}`"
+                  class="text-xs text-blue-600 hover:underline"
+                >
+                  Edit
+                </NuxtLink>
               </td>
             </tr>
           </tbody>
