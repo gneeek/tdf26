@@ -20,7 +20,12 @@ Malemort-sur-Correze to Ussel, 185km northeast through the Massif Central. Throu
 
 ## Getting Started
 
+Requires Node.js 22+ and Python 3.11+.
+
 ```bash
+# Use correct Node version (if using nvm)
+nvm use
+
 # Install Node.js dependencies
 npm install
 
@@ -65,6 +70,13 @@ OPENWEATHERMAP_API_KEY=xxx processing/.venv/bin/python processing/weather.py --e
 ```
 
 ### Publishing
+
+Copy `.env.example` to `.env` and fill in your values:
+
+```bash
+cp .env.example .env
+# Edit .env with your DEPLOY_TARGET and OPENWEATHERMAP_API_KEY
+```
 
 ```bash
 # Full publish pipeline (stats + weather + build + deploy)

@@ -15,6 +15,7 @@ venv/
 # Environment
 .env
 .env.*
+!.env.example
 
 # OS
 .DS_Store
@@ -23,6 +24,10 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Rider data (managed locally, synced to VM via admin)
+data/riders/daily-log.json
+data/riders/stats.json
 
 # Build artifacts
 *.log
