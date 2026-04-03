@@ -76,11 +76,12 @@ try {
 }
 
 const { data: entries } = await useAsyncData('entries', () =>
-  queryContent('entries')
-    .where({ draft: false, publishDate: { $lte: today } })
-    .sort({ publishDate: -1 })
+  queryCollection('entries')
+    .where('draft', '=', false)
+    .where('publishDate', '<=', today)
+    .order('publishDate', 'DESC')
     .limit(5)
-    .find()
+    .all()
 )
 
 function formatDate(dateStr) {
