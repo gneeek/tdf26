@@ -47,14 +47,61 @@ import {
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Filler, Tooltip)
 
 const zoomReady = ref(false)
+
+// Custom plugin to draw town/climb labels directly on canvas
+const labelPlugin = {
+  id: 'elevationLabels',
+  afterDraw(chart) {
+    const ctx = chart.ctx
+    const xScale = chart.scales.x
+    const yScale = chart.scales.y
+    const dataset = chart.data.datasets[0]
+    const labels = chart.options.plugins.elevationLabels?.items || []
+
+    ctx.save()
+    for (const label of labels) {
+      const xPixel = xScale.getPixelForValue(label.xIdx)
+      if (xPixel === undefined || isNaN(xPixel)) continue
+
+      // Get the elevation value at this index and position label relative to it
+      const elevation = dataset.data[label.xIdx]
+      if (elevation === undefined) continue
+      const elevPixel = yScale.getPixelForValue(elevation)
+
+      // Draw emoji centered on the elevation point
+      const emojiY = label.type === 'climb'
+        ? elevPixel - 8
+        : elevPixel + 8
+      ctx.font = '12px sans-serif'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+      ctx.fillText(label.emoji, xPixel, emojiY)
+
+      // Draw name below/above the emoji
+      const nameY = label.type === 'climb'
+        ? emojiY - 14
+        : emojiY + 14 + (label.extraOffset || 0)
+      ctx.font = '10px sans-serif'
+      ctx.textBaseline = 'middle'
+      ctx.fillStyle = label.color
+      ctx.fillText(label.name, xPixel, nameY)
+    }
+    ctx.restore()
+  }
+}
+
+ChartJS.register(labelPlugin)
+
 onMounted(async () => {
-  const mod = await import('chartjs-plugin-zoom')
-  ChartJS.register(mod.default)
+  const zoomMod = await import('chartjs-plugin-zoom')
+  ChartJS.register(zoomMod.default)
   zoomReady.value = true
 })
 
 const props = defineProps({
-  elevationData: { type: Object, default: null }
+  elevationData: { type: Object, default: null },
+  segments: { type: Array, default: () => [] },
+  currentSegment: { type: Number, default: 0 }
 })
 
 const chartRef = ref(null)
@@ -130,6 +177,80 @@ const chartData = computed(() => {
   }
 })
 
+function buildLabelItems() {
+  if (!props.segments.length || !props.elevationData) return []
+
+  const distances = props.elevationData.distance
+  const items = []
+  const placed = new Set()
+  let idx = 0
+
+  for (const seg of props.segments) {
+    if (props.currentSegment > 0 && seg.segment !== props.currentSegment) continue
+
+    const segMidKm = (seg.km_start + seg.km_end) / 2
+
+    if (seg.towns?.length) {
+      for (const town of seg.towns) {
+        if (placed.has(town)) continue
+        placed.add(town)
+        // Find closest x index
+        let bestIdx = 0
+        let bestDist = Infinity
+        for (let i = 0; i < distances.length; i++) {
+          const d = Math.abs(distances[i] - segMidKm)
+          if (d < bestDist) { bestDist = d; bestIdx = i }
+        }
+        items.push({
+          xIdx: bestIdx,
+          emoji: '🏘️',
+          name: town,
+          color: '#2563eb',
+          type: 'town',
+          extraOffset: idx === 0 ? 12 : 0
+        })
+        idx++
+      }
+    }
+    if (seg.climbs?.length) {
+      for (const climb of seg.climbs) {
+        if (placed.has(climb)) continue
+        placed.add(climb)
+        // Find the highest elevation point within this segment's range
+        const elevations = props.elevationData.elevation
+        let peakIdx = 0
+        let peakElev = -Infinity
+        for (let i = 0; i < distances.length; i++) {
+          if (distances[i] >= seg.km_start && distances[i] <= seg.km_end) {
+            if (elevations[i] > peakElev) {
+              peakElev = elevations[i]
+              peakIdx = i
+            }
+          }
+        }
+        // Fallback if nothing found in range
+        if (peakElev === -Infinity) {
+          let bestDist = Infinity
+          for (let i = 0; i < distances.length; i++) {
+            const d = Math.abs(distances[i] - seg.km_end)
+            if (d < bestDist) { bestDist = d; peakIdx = i }
+          }
+        }
+        items.push({
+          xIdx: peakIdx,
+          emoji: '⛰️',
+          name: climb,
+          color: '#dc2626',
+          type: 'climb',
+          extraOffset: 0
+        })
+        idx++
+      }
+    }
+  }
+  return items
+}
+
 const chartOptions = computed(() => ({
   responsive: true,
   maintainAspectRatio: false,
@@ -170,12 +291,25 @@ const chartOptions = computed(() => ({
         onZoom: () => { isZoomed.value = true },
         onZoomComplete: () => { isZoomed.value = true }
       }
-    }
+    },
+    elevationLabels: {
+      items: buildLabelItems()
+    },
   },
   scales: {
     x: {
       title: { display: true, text: 'Distance (km)' },
-      ticks: { maxTicksLimit: 8 }
+      ticks: {
+        maxTicksLimit: 8,
+        callback: function(value, index, ticks) {
+          // Always show last tick
+          if (index === ticks.length - 1 && props.elevationData) {
+            const dists = props.elevationData.distance
+            return dists[dists.length - 1].toFixed(0) + ' km'
+          }
+          return this.getLabelForValue(value)
+        }
+      }
     },
     y: {
       title: { display: true, text: 'Elevation (m)' },
