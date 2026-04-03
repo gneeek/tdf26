@@ -1,0 +1,11 @@
+{
+  "riders": [
+    { "id": "justin", "name": "Justin", "color": "#DAA520" },
+    { "id": "marian", "name": "Marian", "color": "#FFFFFF" },
+    { "id": "nan", "name": "Nan", "color": "#FF00FF" },
+    { "id": "wally", "name": "Wally", "color": "#8B0000" }
+  ],
+  "totalDistance": 185,
+  "dailyCap": 2,
+  "startDate": "2026-04-02"
+}
