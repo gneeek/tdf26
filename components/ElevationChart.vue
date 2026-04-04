@@ -171,6 +171,14 @@ const chartData = computed(() => {
   }
 })
 
+// Known town km positions along the route
+const townKmPositions = {
+  'Malemort': 0, 'Brive-la-Gaillarde': 4.5, 'Turenne': 17,
+  'Collonges-la-Rouge': 23.5, 'Beynat': 37.5, 'Tulle': 65.5,
+  'Naves': 73.5, 'Chaumeil': 90, 'Treignac': 116.5,
+  'Bugeat': 130, 'Meymac': 157.5, 'Ussel': 182.5,
+}
+
 function buildLabelItems() {
   if (!props.segments.length || !props.elevationData) return []
 
@@ -179,20 +187,25 @@ function buildLabelItems() {
   const placed = new Set()
   let idx = 0
 
+  // For individual segments, offset km positions
+  const kmOffset = props.currentSegment > 0
+    ? (props.segments.find(s => s.segment === props.currentSegment)?.km_start || 0)
+    : 0
+
   for (const seg of props.segments) {
     if (props.currentSegment > 0 && seg.segment !== props.currentSegment) continue
-
-    const segMidKm = (seg.km_start + seg.km_end) / 2
 
     if (seg.towns?.length) {
       for (const town of seg.towns) {
         if (placed.has(town)) continue
         placed.add(town)
+        // Use known km position if available, otherwise segment midpoint
+        const townKm = (townKmPositions[town] ?? ((seg.km_start + seg.km_end) / 2)) - kmOffset
         // Find closest x index
         let bestIdx = 0
         let bestDist = Infinity
         for (let i = 0; i < distances.length; i++) {
-          const d = Math.abs(distances[i] - segMidKm)
+          const d = Math.abs(distances[i] - townKm)
           if (d < bestDist) { bestDist = d; bestIdx = i }
         }
         items.push({
