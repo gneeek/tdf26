@@ -22,13 +22,19 @@ This year sees us completing Stage 9 from Malemort to Ussel. It looks like a dec
 
 Between now and then, we're going to ride it ourselves. Not all at once, and not at 45 kilometers an hour. Instead, we'll cover the route in 26 segments, each roughly 7 kilometers long, published twice a week.
 
-## The Route
+## The Location
 
 ![Location of Malemort-sur-Correze in France](/images/introduction/malemort_map.png)
 
 The road climbs from the limestone lowlands around Brive-la-Gaillarde into the granite heart of the Massif Central. It passes through medieval villages built from red sandstone, descends into the valley of Tulle - the departmental capital, famous for lace and accordions - then climbs again through the wild Monedieres hills and across the vast, empty Plateau de Millevaches before dropping into Ussel.
 
 Along the way: nine categorized climbs, including the fierce Suc au May at 7.7%. Two "Plus Beaux Villages de France." A summit at 977 meters on Mont Bessou, the highest point in the Correze. And everywhere, the quiet green countryside that most of the world has never heard of.
+
+## The Route
+
+The official Stage 9 parcours covers 185km with roughly 3,300 metres of climbing. The profile tells the story: a gradual ramp from the lowlands into the hills, with the hardest climbing concentrated in the second half between Tulle and Meymac.
+
+![Stage 9 elevation profile - Malemort to Ussel, 185km](/images/introduction/stage9_profile.png)
 
 ## The Four Riders
 
