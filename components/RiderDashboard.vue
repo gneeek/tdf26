@@ -20,9 +20,13 @@
     <!-- Progress bars -->
     <div class="space-y-3 mb-6">
       <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
-        <span class="w-16 text-sm font-medium truncate" :style="{ color: rider.textColor }">
-          {{ rider.name }}
-        </span>
+        <div class="w-24 flex items-center gap-1 shrink-0">
+          <span class="text-sm font-medium truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
+          <svg v-if="jerseys.yellow === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Yellow Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#FFD100" stroke="#B8960A" stroke-width="1"/></svg>
+          <svg v-if="jerseys.green === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Green Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
+          <svg v-if="jerseys.polkaDot === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Polka Dot Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/><circle cx="7" cy="16" r="1.5" fill="#DC2626"/><circle cx="17" cy="16" r="1.5" fill="#DC2626"/></svg>
+          <svg v-if="jerseys.red === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Lanterne Rouge"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#DC2626" stroke="#991B1B" stroke-width="1"/></svg>
+        </div>
         <div class="flex-1 bg-stone-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
           <div
             class="h-full rounded-full transition-all duration-500"
@@ -106,6 +110,18 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
             <td class="py-1.5 pr-2 text-stone-500">Days &lt;3km</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.daysBelowThreeKm }}
+            </td>
+          </tr>
+          <tr v-if="hasPoints">
+            <td class="py-1.5 pr-2 text-stone-500">Sprint pts</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              <span :class="jerseys.green === r.id ? 'text-green-600 font-bold' : ''">{{ riderPoints(r.id).sprintPoints }}</span>
+            </td>
+          </tr>
+          <tr v-if="hasPoints">
+            <td class="py-1.5 pr-2 text-stone-500">Climb pts</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              <span :class="jerseys.polkaDot === r.id ? 'text-red-600 font-bold' : ''">{{ riderPoints(r.id).climbPoints }}</span>
             </td>
           </tr>
           <tr>
@@ -194,6 +210,60 @@ const stats = statsJson
 const riderConfig = riderConfigJson
 const dailyLog = dailyLogJson
 const totalDistance = riderConfig.totalDistance
+
+let pointsData = { riders: {} }
+try {
+  pointsData = await import('~/data/riders/points.json').then(m => m.default || m)
+} catch {
+  // points.json may not exist yet
+}
+
+const hasPoints = computed(() =>
+  Object.values(pointsData.riders).some(r => r.totalPoints > 0)
+)
+
+function riderPoints(riderId) {
+  return pointsData.riders[riderId] || { sprintPoints: 0, climbPoints: 0, totalPoints: 0 }
+}
+
+const jerseys = computed(() => {
+  const riders = rankedRiders.value
+  if (!riders.length) return {}
+
+  // Yellow: place 1 (already ranked by capped distance, tiebreak: actual distance)
+  const yellow = riders[0]?.id || null
+
+  // Red: last place
+  const red = riders.length > 1 ? riders[riders.length - 1]?.id : null
+
+  // Green: highest sprint points (only if any points exist)
+  let green = null
+  if (hasPoints.value) {
+    let maxSprint = 0
+    for (const r of riders) {
+      const pts = riderPoints(r.id).sprintPoints
+      if (pts > maxSprint) {
+        maxSprint = pts
+        green = r.id
+      }
+    }
+  }
+
+  // Polka dot: highest climb points (only if any points exist)
+  let polkaDot = null
+  if (hasPoints.value) {
+    let maxClimb = 0
+    for (const r of riders) {
+      const pts = riderPoints(r.id).climbPoints
+      if (pts > maxClimb) {
+        maxClimb = pts
+        polkaDot = r.id
+      }
+    }
+  }
+
+  return { yellow, green, polkaDot, red }
+})
 
 const rankedRiders = computed(() => {
   return riderConfig.riders
