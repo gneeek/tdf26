@@ -236,6 +236,7 @@
     "estimated_time_30kmh": "14:10",
     "estimated_time_35kmh": "12:09",
     "estimated_time_40kmh": "10:38",
-    "estimated_time_50kmh": "8:30"
+    "estimated_time_50kmh": "8:30",
+    "time_unit": "min:sec"
   }
 }

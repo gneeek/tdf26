@@ -134,6 +134,7 @@ def process_segment(gpx_path, segment_num):
         "estimated_time_35kmh": format_time(total_km / 35 * 60),
         "estimated_time_40kmh": format_time(total_km / 40 * 60),
         "estimated_time_50kmh": format_time(total_km / 50 * 60),
+        "time_unit": "hr:min" if total_km / 50 * 60 >= 60 else "min:sec",
     }
 
     return {
