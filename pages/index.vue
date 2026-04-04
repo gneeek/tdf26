@@ -22,12 +22,15 @@
             :segment="0"
             :segments="segments"
             :route-coords="routeCoords"
+            :town-coords="townCoords"
+            :rider-stats="riderStats"
+            :rider-config="riderConfig"
           />
           <p class="text-xs text-gray-400 mt-2">
             Full 185km route. Use layer controls for topo, cycling, and satellite views.
           </p>
           <ClientOnly>
-            <ElevationChart :elevation-data="overviewElevation" class="mt-6" />
+            <ElevationChart :elevation-data="overviewElevation" :segments="segments" :current-segment="0" class="mt-6" />
           </ClientOnly>
         </section>
 
@@ -63,11 +66,23 @@
 
 <script setup>
 import segmentsJson from '~/data/segments.json'
+import townCoordsJson from '~/data/town-coords.json'
+import riderConfigJson from '~/data/riders/rider-config.json'
 
 const isDev = process.dev
 const today = new Date().toISOString().split('T')[0]
 
 const segments = segmentsJson
+const townCoords = townCoordsJson
+const riderConfig = riderConfigJson
+
+const riderStats = ref(null)
+try {
+  const data = await import('~/data/riders/stats.json')
+  riderStats.value = data.default || data
+} catch {
+  riderStats.value = null
+}
 
 const overviewElevation = ref(null)
 try {

@@ -33,7 +33,10 @@ import 'leaflet/dist/leaflet.css'
 const props = defineProps({
   segment: { type: Number, required: true },
   segments: { type: Array, default: () => [] },
-  routeCoords: { type: Array, default: () => [] }
+  routeCoords: { type: Array, default: () => [] },
+  townCoords: { type: Object, default: () => ({}) },
+  riderStats: { type: Object, default: null },
+  riderConfig: { type: Object, default: null }
 })
 
 const mapContainer = ref(null)
@@ -121,37 +124,49 @@ async function initMap(el) {
     opacity: 0.4
   })
 
-  // Towns and climbs markers overlay
+  // Towns and climbs markers overlay using real coordinates
   const poiGroup = L.layerGroup()
-  const allSegments = props.segments
-  for (const seg of allSegments) {
-    // Town markers
+  const townCoordsData = props.townCoords || {}
+  const placed = new Set()
+
+  for (const seg of props.segments) {
     if (seg.towns?.length) {
-      const midLat = (seg.start_lat + seg.end_lat) / 2
-      const midLng = (seg.start_lng + seg.end_lng) / 2
-      const townIcon = L.divIcon({
-        html: '<div style="width:8px;height:8px;background:#2563eb;border-radius:50%;border:1px solid white;box-shadow:0 1px 2px rgba(0,0,0,0.3)"></div>',
-        className: '',
-        iconSize: [10, 10],
-        iconAnchor: [5, 5]
-      })
-      L.marker([midLat, midLng], { icon: townIcon })
-        .bindPopup(`<b>${seg.towns.join(', ')}</b><br>Segment ${seg.segment}`)
-        .addTo(poiGroup)
+      for (const town of seg.towns) {
+        if (placed.has(town)) continue
+        placed.add(town)
+        const coords = townCoordsData[town]
+        const lat = coords?.lat || (seg.start_lat + seg.end_lat) / 2
+        const lng = coords?.lng || (seg.start_lng + seg.end_lng) / 2
+        const townIcon = L.divIcon({
+          html: '<div style="font-size:22px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4))">🏘️</div>',
+          className: '',
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        })
+        L.marker([lat, lng], { icon: townIcon })
+          .bindTooltip(town, { direction: 'top', offset: [0, -10] })
+          .bindPopup(`<b>${town}</b><br>Segment ${seg.segment}`)
+          .addTo(poiGroup)
+      }
     }
-    // Climb markers
     if (seg.climbs?.length) {
-      const midLat = (seg.start_lat + seg.end_lat) / 2
-      const midLng = (seg.start_lng + seg.end_lng) / 2
-      const climbIcon = L.divIcon({
-        html: '<div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #dc2626;filter:drop-shadow(0 1px 1px rgba(0,0,0,0.3))"></div>',
-        className: '',
-        iconSize: [12, 10],
-        iconAnchor: [6, 10]
-      })
-      L.marker([midLat, midLng], { icon: climbIcon })
-        .bindPopup(`<b>${seg.climbs.join(', ')}</b><br>Segment ${seg.segment}`)
-        .addTo(poiGroup)
+      for (const climb of seg.climbs) {
+        if (placed.has(climb)) continue
+        placed.add(climb)
+        const coords = townCoordsData[climb]
+        const lat = coords?.lat || (seg.start_lat + seg.end_lat) / 2
+        const lng = coords?.lng || (seg.start_lng + seg.end_lng) / 2
+        const climbIcon = L.divIcon({
+          html: '<div style="font-size:22px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4))">⛰️</div>',
+          className: '',
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        })
+        L.marker([lat, lng], { icon: climbIcon })
+          .bindTooltip(climb, { direction: 'top', offset: [0, -10] })
+          .bindPopup(`<b>${climb}</b><br>Segment ${seg.segment}`)
+          .addTo(poiGroup)
+      }
     }
   }
 
@@ -162,10 +177,87 @@ async function initMap(el) {
     'Cycling': cyclOSM,
     'Satellite': satellite
   }
+  // Rider progress layer
+  const riderGroup = L.layerGroup()
+  if (props.riderStats?.riders && props.riderConfig?.riders && props.routeCoords.length > 1) {
+    // Build cumulative distance lookup from route coords
+    const cumDists = [0]
+    for (let i = 1; i < props.routeCoords.length; i++) {
+      const [lng1, lat1] = [props.routeCoords[i - 1][0], props.routeCoords[i - 1][1]]
+      const [lng2, lat2] = [props.routeCoords[i][0], props.routeCoords[i][1]]
+      cumDists.push(cumDists[i - 1] + haversine(lat1, lng1, lat2, lng2))
+    }
+    const totalMeters = cumDists[cumDists.length - 1]
+
+    // Calculate positions and group riders at same distance for offset
+    const riderPositions = []
+    for (const rider of props.riderConfig.riders) {
+      const stats = props.riderStats.riders[rider.id]
+      if (!stats || !stats.totalDistanceCapped) continue
+
+      const targetMeters = stats.totalDistanceCapped * 1000
+      let coordIdx = 0
+      for (let i = 0; i < cumDists.length; i++) {
+        if (cumDists[i] >= targetMeters) {
+          coordIdx = i
+          break
+        }
+        coordIdx = i
+      }
+      riderPositions.push({ rider, stats, coordIdx })
+    }
+
+    // Group by coordIdx to detect overlaps
+    const groups = {}
+    for (const rp of riderPositions) {
+      const key = rp.coordIdx
+      if (!groups[key]) groups[key] = []
+      groups[key].push(rp)
+    }
+
+    for (const key of Object.keys(groups)) {
+      const group = groups[key]
+      const coordIdx = parseInt(key)
+      const coord = props.routeCoords[coordIdx]
+
+      // Calculate perpendicular direction to route at this point
+      const prevIdx = Math.max(0, coordIdx - 1)
+      const nextIdx = Math.min(props.routeCoords.length - 1, coordIdx + 1)
+      const dx = props.routeCoords[nextIdx][0] - props.routeCoords[prevIdx][0]
+      const dy = props.routeCoords[nextIdx][1] - props.routeCoords[prevIdx][1]
+      // Perpendicular: rotate 90 degrees
+      const len = Math.sqrt(dx * dx + dy * dy) || 1
+      const perpLng = -dy / len
+      const perpLat = dx / len
+
+      const spread = 0.001 // ~100m offset between riders
+      const offset0 = -(group.length - 1) / 2
+
+      for (let i = 0; i < group.length; i++) {
+        const { rider, stats: rStats } = group[i]
+        const offsetAmount = (offset0 + i) * spread
+        const lat = coord[1] + perpLat * offsetAmount
+        const lng = coord[0] + perpLng * offsetAmount
+
+        const riderIcon = L.divIcon({
+          html: `<div style="font-size:20px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4));background:${rider.color};border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:2px solid white">🚴</div>`,
+          className: '',
+          iconSize: [28, 28],
+          iconAnchor: [14, 14]
+        })
+        L.marker([lat, lng], { icon: riderIcon, zIndexOffset: i * 10 })
+          .bindTooltip(rider.name, { direction: 'top', offset: [0, -12], permanent: false })
+          .bindPopup(`<b style="color:${rider.color}">${rider.name}</b><br>${rStats.totalDistanceCapped} km of ${props.riderConfig.totalDistance} km`)
+          .addTo(riderGroup)
+      }
+    }
+  }
+
   const overlays = {
     'Cycle Routes': cycleRoutes,
     'Hillshade': hillshade,
-    'Towns & Climbs': poiGroup
+    'Towns & Climbs': poiGroup,
+    'Rider Progress': riderGroup
   }
   L.control.layers(baseLayers, overlays, { position: 'topleft' }).addTo(map)
 
