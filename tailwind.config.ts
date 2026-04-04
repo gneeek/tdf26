@@ -60,6 +60,14 @@ export default {
             '--tw-prose-quotes': colors.stone['700'],
             '--tw-prose-quote-borders': '#8B2500',
             '--tw-prose-captions': colors.stone['500'],
+            'h1, h2, h3, h4': {
+              fontFamily: 'Georgia, Cambria, "Times New Roman", serif',
+              fontWeight: '600',
+              letterSpacing: '0.01em',
+            },
+            p: {
+              lineHeight: '1.8',
+            },
           },
         },
       },

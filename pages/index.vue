@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="mb-12">
-      <h1 class="text-4xl font-serif font-bold text-correze-red mb-4">
+      <h1 class="text-4xl font-serif font-semibold text-correze-red mb-4 tracking-wide">
         Malemort to Ussel
       </h1>
       <p class="text-xl text-stone-600 font-serif leading-relaxed">
