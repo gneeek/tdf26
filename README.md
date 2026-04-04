@@ -36,6 +36,19 @@ npx nuxt dev
 npx nuxt generate
 ```
 
+### Testing
+
+```bash
+# Run JavaScript/Vue tests (Vitest)
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run Python tests (pytest)
+processing/.venv/bin/python -m pytest processing/tests/
+```
+
 ### Python data pipeline
 
 ```bash
