@@ -31,7 +31,7 @@
                   v-for="entry in entries"
                   :key="entry.path"
                   :to="entry.path"
-                  class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-accent/10 hover:text-stone-900 transition-colors"
+                  class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors"
                   @click="parcoursOpen = false"
                 >
                   <span>{{ entry.title }}</span>
