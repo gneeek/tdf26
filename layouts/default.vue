@@ -1,54 +1,56 @@
 <template>
   <div class="min-h-screen bg-stone-50">
     <header class="bg-correze-red text-white relative z-50">
-      <nav class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-6">
-          <NuxtLink to="/" class="text-xl font-serif font-bold hover:text-accent transition-colors">
+      <nav class="max-w-5xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3 sm:gap-6">
+          <NuxtLink to="/" class="text-lg sm:text-xl font-serif font-bold hover:text-accent transition-colors">
             Correze Travelogue
           </NuxtLink>
-          <div class="relative">
-            <button
-              class="text-sm font-medium hover:text-accent transition-colors cursor-pointer flex items-center gap-1"
-              @click="toggleParcours"
-            >
-              Parcours
-              <svg
-                class="w-3 h-3 transition-transform"
-                :class="parcoursOpen ? 'rotate-180' : ''"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <button
+                class="text-sm font-medium hover:text-accent transition-colors cursor-pointer flex items-center gap-1"
+                @click="toggleParcours"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div
-              v-if="parcoursOpen"
-              class="absolute top-full left-0 mt-2 w-72 bg-stone-50 rounded-lg shadow-lg border border-stone-200 py-2 max-h-96 overflow-y-auto"
-            >
-              <div v-if="entries && entries.length">
-                <NuxtLink
-                  v-for="entry in entries"
-                  :key="entry.path"
-                  :to="entry.path"
-                  class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-amber-100 hover:text-correze-red transition-colors"
-                  @click="parcoursOpen = false"
+                Parcours
+                <svg
+                  class="w-3 h-3 transition-transform"
+                  :class="parcoursOpen ? 'rotate-180' : ''"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <span>{{ entry.title }}</span>
-                  <span class="text-xs text-stone-400 whitespace-nowrap">{{ formatDate(entry.publishDate) }}</span>
-                </NuxtLink>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                v-if="parcoursOpen"
+                class="absolute top-full left-0 mt-2 w-72 bg-stone-50 rounded-lg shadow-lg border border-stone-200 py-2 max-h-96 overflow-y-auto"
+              >
+                <div v-if="entries && entries.length">
+                  <NuxtLink
+                    v-for="entry in entries"
+                    :key="entry.path"
+                    :to="entry.path"
+                    class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-amber-100 hover:text-correze-red transition-colors"
+                    @click="parcoursOpen = false"
+                  >
+                    <span>{{ entry.title }}</span>
+                    <span class="text-xs text-stone-400 whitespace-nowrap">{{ formatDate(entry.publishDate) }}</span>
+                  </NuxtLink>
+                </div>
+                <p v-else class="px-4 py-2 text-sm text-stone-400 italic">
+                  No entries published yet
+                </p>
               </div>
-              <p v-else class="px-4 py-2 text-sm text-stone-400 italic">
-                No entries published yet
-              </p>
             </div>
+            <NuxtLink to="/rules" class="text-sm hover:text-accent transition-colors">
+              Rules
+            </NuxtLink>
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <NuxtLink to="/rules" class="text-sm hover:text-accent transition-colors hidden sm:inline">
-            Rules
-          </NuxtLink>
-          <span class="text-sm text-red-200 hidden sm:inline">Tour de France 2026 - Stage 9</span>
+          <span class="text-sm text-red-200 hidden md:inline">Tour de France 2026 - Stage 9</span>
           <NuxtLink
             v-if="isDev"
             to="/admin"
@@ -65,15 +67,15 @@
     </main>
 
     <footer class="bg-stone-900 text-stone-400 mt-16">
-      <div class="max-w-5xl mx-auto px-4 py-6 text-sm flex items-center justify-between">
-        <div class="flex items-center gap-6">
+      <div class="max-w-5xl mx-auto px-4 py-6 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
           <div>
             <p>Correze Travelogue - Malemort to Ussel, 185km</p>
             <p class="mt-1">Stage 9, Tour de France 2026 - Sunday, July 12</p>
           </div>
-          <span class="text-stone-600 border-l border-stone-700 pl-6">Designed in Maxwelltown, Dumfries</span>
+          <span class="text-stone-600 sm:border-l sm:border-stone-700 sm:pl-6">Designed in Maxwelltown, Dumfries</span>
         </div>
-        <div class="flex flex-col items-end gap-2">
+        <div class="flex flex-col items-start sm:items-end gap-2">
           <span class="text-stone-500 text-xs uppercase tracking-wider">Contact</span>
           <div class="flex items-center gap-3">
             <a href="mailto:mtown@iamsosmrt.com" class="text-stone-500 hover:text-white transition-colors" title="Email">
