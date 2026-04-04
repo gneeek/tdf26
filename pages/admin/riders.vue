@@ -11,7 +11,7 @@
           v-model="entryDate"
           type="date"
           class="border border-gray-300 rounded px-3 py-2 text-sm w-48"
-        />
+        >
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div v-for="rider in riders" :key="rider.id">
@@ -25,14 +25,14 @@
             min="0"
             class="border border-gray-300 rounded px-3 py-2 text-sm w-full"
             placeholder="0"
-          />
+          >
         </div>
       </div>
       <div class="flex items-center gap-4">
         <button
-          @click="submitEntry"
           :disabled="submitting"
           class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+          @click="submitEntry"
         >
           {{ submitting ? 'Saving...' : 'Save Entry' }}
         </button>
@@ -68,7 +68,7 @@
                 {{ entry.distances[rider.id] || 0 }}
               </td>
               <td class="text-center py-2 px-2">
-                <button @click="editEntry(entry)" class="text-blue-600 hover:underline text-xs">
+                <button class="text-blue-600 hover:underline text-xs" @click="editEntry(entry)">
                   edit
                 </button>
               </td>
@@ -128,7 +128,7 @@ async function submitEntry() {
   saveError.value = false
 
   try {
-    const result = await $fetch('/api/riders', {
+    await $fetch('/api/riders', {
       method: 'POST',
       body: {
         date: entryDate.value,
@@ -142,7 +142,7 @@ async function submitEntry() {
     for (const r of riders.value) {
       entryDistances.value[r.id] = 0
     }
-  } catch (err) {
+  } catch {
     saveMessage.value = 'Error saving entry.'
     saveError.value = true
   } finally {

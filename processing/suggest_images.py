@@ -5,9 +5,8 @@ import argparse
 import json
 import os
 import time
-import urllib.request
 import urllib.parse
-
+import urllib.request
 
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 USER_AGENT = "CorrezeTravelogue/1.0 (cycling travelogue project)"

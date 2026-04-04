@@ -9,7 +9,6 @@ import os
 import gpxpy
 import gpxpy.gpx
 
-
 # Known waypoints with approximate km positions along the route
 KNOWN_TOWNS = {
     "Malemort": 0,

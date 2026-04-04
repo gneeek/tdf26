@@ -10,8 +10,8 @@
           :type="showKey ? 'text' : 'password'"
           placeholder="OpenWeatherMap API key"
           class="border border-gray-300 rounded px-3 py-2 text-sm flex-1 font-mono"
-        />
-        <button @click="showKey = !showKey" class="text-sm text-gray-500 hover:underline">
+        >
+        <button class="text-sm text-gray-500 hover:underline" @click="showKey = !showKey">
           {{ showKey ? 'Hide' : 'Show' }}
         </button>
       </div>
@@ -36,7 +36,7 @@
               <td class="py-2 px-2">
                 <span v-if="entry.weather" class="text-sm text-gray-600">
                   {{ entry.weather.current.temp }}&deg;C, {{ entry.weather.current.conditions }}, {{ entry.weather.current.wind }}
-                  <button @click="deleteWeather(entry)" class="text-xs text-red-500 hover:underline ml-2">delete</button>
+                  <button class="text-xs text-red-500 hover:underline ml-2" @click="deleteWeather(entry)">delete</button>
                 </span>
                 <span v-else class="text-gray-400 italic">None</span>
               </td>
@@ -46,19 +46,19 @@
                     {{ preview.weather.current.temp }}&deg;C, {{ preview.weather.current.conditions }}, {{ preview.weather.current.wind }}
                   </span>
                   <button
-                    @click="injectWeather(entry)"
                     :disabled="injecting === entry.filename"
                     class="text-xs text-green-600 hover:underline disabled:opacity-50"
+                    @click="injectWeather(entry)"
                   >
                     {{ injecting === entry.filename ? 'Saving...' : 'Save' }}
                   </button>
-                  <button @click="preview = null" class="text-xs text-gray-400 hover:underline">Cancel</button>
+                  <button class="text-xs text-gray-400 hover:underline" @click="preview = null">Cancel</button>
                 </div>
                 <span v-else-if="fetching === entry.filename" class="text-xs text-gray-400">Fetching...</span>
                 <button
                   v-else
-                  @click="fetchWeather(entry)"
                   class="text-xs text-blue-600 hover:underline"
+                  @click="fetchWeather(entry)"
                 >
                   Fetch
                 </button>

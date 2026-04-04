@@ -10,10 +10,10 @@
         :style="isFullscreen ? 'width:100%;height:100%' : 'width:100%;height:400px'"
       />
       <button
-        @click="toggleFullscreen"
         class="absolute top-2 right-2 z-[1000] w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors shadow"
         :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-100'"
         :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
+        @click="toggleFullscreen"
       >
         {{ isFullscreen ? '✕' : '⛶' }}
       </button>
@@ -187,8 +187,6 @@ async function initMap(el) {
       const [lng2, lat2] = [props.routeCoords[i][0], props.routeCoords[i][1]]
       cumDists.push(cumDists[i - 1] + haversine(lat1, lng1, lat2, lng2))
     }
-    const totalMeters = cumDists[cumDists.length - 1]
-
     // Calculate positions and group riders at same distance for offset
     const riderPositions = []
     for (const rider of props.riderConfig.riders) {

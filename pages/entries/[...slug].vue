@@ -41,7 +41,7 @@
       >
         &larr; {{ prev.title }}
       </NuxtLink>
-      <span v-else></span>
+      <span v-else/>
       <NuxtLink
         v-if="next"
         :to="next.path || next._path"
