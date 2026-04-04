@@ -5,7 +5,7 @@
     :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
   >
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-lg font-semibold text-gray-700">Elevation Profile</h3>
+      <h3 class="text-lg font-semibold text-stone-700">Elevation Profile</h3>
       <div class="flex items-center gap-2">
         <button
           v-if="isZoomed"
@@ -16,7 +16,7 @@
         </button>
         <button
           class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
-          :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200'"
+          :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-stone-100 text-stone-500 border-stone-300 hover:bg-stone-200'"
           :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
           @click="toggleFullscreen"
         >
@@ -27,8 +27,8 @@
     <div v-if="chartData" :class="isFullscreen ? 'h-[calc(100vh-160px)]' : 'h-[250px]'">
       <Line ref="chartRef" :data="chartData" :options="chartOptions" />
     </div>
-    <p v-else class="text-gray-400 italic text-sm">Elevation data not available.</p>
-    <p v-if="chartData" class="text-xs text-gray-400 mt-2">Scroll to zoom, drag to pan. Double-click to reset.</p>
+    <p v-else class="text-stone-400 italic text-sm">Elevation data not available.</p>
+    <p v-if="chartData" class="text-xs text-stone-400 mt-2">Scroll to zoom, drag to pan. Double-click to reset.</p>
   </div>
 </template>
 

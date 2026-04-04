@@ -11,7 +11,7 @@
       />
       <button
         class="absolute top-2 right-2 z-[1000] w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors shadow"
-        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-100'"
+        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-white text-stone-600 border-stone-300 hover:bg-stone-100'"
         :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
         @click="toggleFullscreen"
       >
@@ -19,7 +19,7 @@
       </button>
     </div>
     <template #fallback>
-      <div class="w-full h-[400px] rounded-lg bg-gray-200 flex items-center justify-center text-gray-500">
+      <div class="w-full h-[400px] rounded-lg bg-stone-200 flex items-center justify-center text-stone-500">
         Loading map...
       </div>
     </template>

@@ -1,28 +1,28 @@
 <template>
   <div class="bg-white rounded-lg shadow-sm p-6">
-    <h3 class="text-lg font-semibold text-gray-700 mb-4">Stage Details</h3>
+    <h3 class="text-lg font-semibold text-stone-700 mb-4">Stage Details</h3>
 
     <div class="mb-5">
-      <h4 class="text-sm font-semibold text-gray-500 mb-2">Towns</h4>
+      <h4 class="text-sm font-semibold text-stone-500 mb-2">Towns</h4>
       <div class="space-y-1">
         <div v-for="town in towns" :key="town.name" class="flex justify-between text-sm">
-          <span class="text-gray-700">{{ town.name }}</span>
-          <span class="font-mono text-gray-400">km {{ town.km }} &middot; {{ town.elevation }}m</span>
+          <span class="text-stone-700">{{ town.name }}</span>
+          <span class="font-mono text-stone-400">km {{ town.km }} &middot; {{ town.elevation }}m</span>
         </div>
       </div>
     </div>
 
     <div>
-      <h4 class="text-sm font-semibold text-gray-500 mb-2">Climbs</h4>
+      <h4 class="text-sm font-semibold text-stone-500 mb-2">Climbs</h4>
       <div class="space-y-1">
         <div v-for="climb in climbs" :key="climb.name" class="flex justify-between text-sm">
-          <span class="text-gray-700">{{ climb.name }}</span>
-          <span class="font-mono text-gray-400">km {{ climb.km }} &middot; {{ climb.gradient }}%</span>
+          <span class="text-stone-700">{{ climb.name }}</span>
+          <span class="font-mono text-stone-400">km {{ climb.km }} &middot; {{ climb.gradient }}%</span>
         </div>
       </div>
     </div>
 
-    <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">
+    <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-400">
       185 km &middot; 9 climbs &middot; +3,390m elevation
     </div>
   </div>

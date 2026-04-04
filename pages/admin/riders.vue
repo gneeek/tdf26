@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Rider Daily Distances</h1>
+    <h1 class="text-2xl font-bold text-stone-800 mb-6">Rider Daily Distances</h1>
 
     <!-- Entry form -->
     <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">Add / Edit Entry</h2>
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">Add / Edit Entry</h2>
       <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-600 mb-1">Date</label>
+        <label class="block text-sm font-medium text-stone-600 mb-1">Date</label>
         <input
           v-model="entryDate"
           type="date"
-          class="border border-gray-300 rounded px-3 py-2 text-sm w-48"
+          class="border border-stone-300 rounded px-3 py-2 text-sm w-48"
         >
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
@@ -23,7 +23,7 @@
             type="number"
             step="0.1"
             min="0"
-            class="border border-gray-300 rounded px-3 py-2 text-sm w-full"
+            class="border border-stone-300 rounded px-3 py-2 text-sm w-full"
             placeholder="0"
           >
         </div>
@@ -31,7 +31,7 @@
       <div class="flex items-center gap-4">
         <button
           :disabled="submitting"
-          class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+          class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700 disabled:opacity-50"
           @click="submitEntry"
         >
           {{ submitting ? 'Saving...' : 'Save Entry' }}
@@ -44,12 +44,12 @@
 
     <!-- History table -->
     <div class="bg-white rounded-lg shadow-sm p-6">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">History</h2>
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">History</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-gray-200">
-              <th class="text-left py-2 pr-4 text-gray-500 font-medium">Date</th>
+            <tr class="border-b border-stone-200">
+              <th class="text-left py-2 pr-4 text-stone-500 font-medium">Date</th>
               <th
                 v-for="rider in riders"
                 :key="rider.id"
@@ -58,12 +58,12 @@
               >
                 {{ rider.name }}
               </th>
-              <th class="text-center py-2 px-2 text-gray-500 font-medium">Actions</th>
+              <th class="text-center py-2 px-2 text-stone-500 font-medium">Actions</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-100">
+          <tbody class="divide-y divide-stone-100">
             <tr v-for="entry in reversedEntries" :key="entry.date">
-              <td class="py-2 pr-4 font-mono text-gray-600">{{ entry.date }}</td>
+              <td class="py-2 pr-4 font-mono text-stone-600">{{ entry.date }}</td>
               <td v-for="rider in riders" :key="rider.id" class="text-center py-2 px-2 font-mono">
                 {{ entry.distances[rider.id] || 0 }}
               </td>
@@ -76,7 +76,7 @@
           </tbody>
         </table>
       </div>
-      <p v-if="!entries.length" class="text-gray-400 italic text-sm">No entries yet.</p>
+      <p v-if="!entries.length" class="text-stone-400 italic text-sm">No entries yet.</p>
     </div>
   </div>
 </template>

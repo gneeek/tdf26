@@ -4,9 +4,9 @@
       <span class="text-sm text-correze-red font-semibold">
         Segment {{ page.segment }} - Km {{ page.kmStart }}-{{ page.kmEnd }}
       </span>
-      <h1 class="text-4xl font-serif font-bold text-gray-900 mt-2">{{ page.title }}</h1>
-      <p v-if="page.subtitle" class="text-xl text-gray-500 mt-2 font-serif">{{ page.subtitle }}</p>
-      <time class="text-sm text-gray-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
+      <h1 class="text-4xl font-serif font-bold text-stone-900 mt-2">{{ page.title }}</h1>
+      <p v-if="page.subtitle" class="text-xl text-stone-500 mt-2 font-serif">{{ page.subtitle }}</p>
+      <time class="text-sm text-stone-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
     </header>
 
     <SegmentMap
@@ -33,7 +33,7 @@
 
     <RiderDashboard />
 
-    <nav class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
+    <nav class="mt-12 pt-8 border-t border-stone-200 flex justify-between">
       <NuxtLink
         v-if="prev"
         :to="prev.path || prev._path"
