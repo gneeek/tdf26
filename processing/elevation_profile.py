@@ -150,7 +150,11 @@ def process_segment(gpx_path, segment_num):
 
 
 def format_time(minutes):
-    """Format minutes as MM:SS string."""
+    """Format minutes as time string. Returns H:MM for >= 60min, M:SS otherwise."""
+    if minutes >= 60:
+        h = int(minutes // 60)
+        m = int(minutes % 60)
+        return f"{h}:{m:02d}"
     m = int(minutes)
     s = int((minutes - m) * 60)
     return f"{m}:{s:02d}"
