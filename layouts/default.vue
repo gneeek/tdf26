@@ -63,10 +63,12 @@
 
     <footer class="bg-stone-900 text-stone-400 mt-16">
       <div class="max-w-5xl mx-auto px-4 py-6 text-sm flex items-center justify-between">
-        <div>
-          <p>Correze Travelogue - Malemort to Ussel, 185km</p>
-          <p class="mt-1">Stage 9, Tour de France 2026 - Sunday, July 12</p>
-          <p class="text-stone-600 mt-2">Designed in Maxwelltown, Dumfries</p>
+        <div class="flex items-center gap-6">
+          <div>
+            <p>Correze Travelogue - Malemort to Ussel, 185km</p>
+            <p class="mt-1">Stage 9, Tour de France 2026 - Sunday, July 12</p>
+          </div>
+          <span class="text-stone-600 border-l border-stone-700 pl-6">Designed in Maxwelltown, Dumfries</span>
         </div>
         <div class="flex flex-col items-end gap-2">
           <span class="text-stone-500 text-xs uppercase tracking-wider">Contact</span>
