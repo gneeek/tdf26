@@ -46,8 +46,8 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
     <div class="overflow-x-auto">
       <table class="w-full" :class="isFullscreen ? 'text-xl' : 'text-sm'">
         <thead>
-          <tr class="border-b border-stone-200">
-            <th class="text-left py-2 pr-2 text-stone-500 font-medium">Stat</th>
+          <tr class="bg-amber-100 border-b border-stone-200">
+            <th class="text-left py-2 pr-2 text-stone-600 font-medium">Stat</th>
             <th
               v-for="rider in rankedRiders"
               :key="rider.id"
