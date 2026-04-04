@@ -29,6 +29,7 @@
 <script setup>
 import { ref, watch, nextTick, onUnmounted } from 'vue'
 import 'leaflet/dist/leaflet.css'
+import attractionsData from '~/data/attractions.json'
 
 const props = defineProps({
   segment: { type: Number, required: true },
@@ -251,10 +252,50 @@ async function initMap(el) {
     }
   }
 
+  // Attractions layer
+  const attractionsGroup = L.layerGroup()
+  const categoryEmoji = {
+    food: '🍷', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
+    museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
+  }
+
+  // Filter attractions by proximity to current segment
+  for (const poi of attractionsData) {
+    // For overview, show all. For segments, show nearby ones.
+    if (!isOverview) {
+      const seg = props.segments.find(s => s.segment === props.segment)
+      if (seg) {
+        const midLat = (seg.start_lat + seg.end_lat) / 2
+        const midLng = (seg.start_lng + seg.end_lng) / 2
+        const dist = Math.sqrt((poi.lat - midLat) ** 2 + (poi.lng - midLng) ** 2)
+        if (dist > 0.15) continue // ~15km radius
+      }
+    }
+
+    const emoji = categoryEmoji[poi.category] || '📍'
+    const poiIcon = L.divIcon({
+      html: `<div style="font-size:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))">${emoji}</div>`,
+      className: '',
+      iconSize: [22, 22],
+      iconAnchor: [11, 11]
+    })
+
+    let popupHtml = `<b>${poi.name}</b><br><span style="font-size:12px;color:#666">${poi.description}</span>`
+    if (poi.link) {
+      popupHtml += `<br><a href="${poi.link}" target="_blank" rel="noopener" style="font-size:12px">More info</a>`
+    }
+
+    L.marker([poi.lat, poi.lng], { icon: poiIcon })
+      .bindTooltip(poi.name, { direction: 'top', offset: [0, -8] })
+      .bindPopup(popupHtml)
+      .addTo(attractionsGroup)
+  }
+
   const overlays = {
     'Cycle Routes': cycleRoutes,
     'Hillshade': hillshade,
     'Towns & Climbs': poiGroup,
+    'Attractions': attractionsGroup,
     'Rider Progress': riderGroup
   }
   L.control.layers(baseLayers, overlays, { position: 'topleft' }).addTo(map)
