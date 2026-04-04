@@ -1,23 +1,23 @@
 <template>
-  <div class="min-h-screen bg-gray-100">
-    <header class="bg-gray-900 text-white">
+  <div class="min-h-screen bg-stone-100">
+    <header class="bg-stone-900 text-white">
       <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-6">
-          <NuxtLink to="/admin" class="text-lg font-bold hover:text-yellow-300 transition-colors">
+          <NuxtLink to="/admin" class="text-lg font-bold hover:text-accent transition-colors">
             Admin
           </NuxtLink>
           <div class="hidden md:flex items-center gap-4 text-sm">
-            <NuxtLink to="/admin/riders" class="text-gray-300 hover:text-white">Riders</NuxtLink>
-            <NuxtLink to="/admin/rider-config" class="text-gray-300 hover:text-white">Config</NuxtLink>
-            <NuxtLink to="/admin/entries" class="text-gray-300 hover:text-white">Entries</NuxtLink>
-            <NuxtLink to="/admin/images" class="text-gray-300 hover:text-white">Images</NuxtLink>
-            <NuxtLink to="/admin/weather" class="text-gray-300 hover:text-white">Weather</NuxtLink>
-            <NuxtLink to="/admin/schedule" class="text-gray-300 hover:text-white">Schedule</NuxtLink>
-            <NuxtLink to="/admin/publish" class="text-gray-300 hover:text-white">Publish</NuxtLink>
-            <NuxtLink to="/admin/settings" class="text-gray-300 hover:text-white">Settings</NuxtLink>
+            <NuxtLink to="/admin/riders" class="text-stone-300 hover:text-white">Riders</NuxtLink>
+            <NuxtLink to="/admin/rider-config" class="text-stone-300 hover:text-white">Config</NuxtLink>
+            <NuxtLink to="/admin/entries" class="text-stone-300 hover:text-white">Entries</NuxtLink>
+            <NuxtLink to="/admin/images" class="text-stone-300 hover:text-white">Images</NuxtLink>
+            <NuxtLink to="/admin/weather" class="text-stone-300 hover:text-white">Weather</NuxtLink>
+            <NuxtLink to="/admin/schedule" class="text-stone-300 hover:text-white">Schedule</NuxtLink>
+            <NuxtLink to="/admin/publish" class="text-stone-300 hover:text-white">Publish</NuxtLink>
+            <NuxtLink to="/admin/settings" class="text-stone-300 hover:text-white">Settings</NuxtLink>
           </div>
         </div>
-        <NuxtLink to="/" class="text-sm text-gray-400 hover:text-white">
+        <NuxtLink to="/" class="text-sm text-stone-400 hover:text-white">
           View Site &rarr;
         </NuxtLink>
       </nav>

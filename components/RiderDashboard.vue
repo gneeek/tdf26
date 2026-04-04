@@ -6,10 +6,10 @@
     :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
   >
     <div class="flex items-center justify-between mb-4">
-      <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-gray-700">Rider Standings</h3>
+      <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-stone-700">Rider Standings</h3>
       <button
         class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
-        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200'"
+        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-stone-100 text-stone-500 border-stone-300 hover:bg-stone-200'"
         :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
         @click="toggleFullscreen"
       >
@@ -23,7 +23,7 @@
         <span class="w-16 text-sm font-medium truncate" :style="{ color: rider.textColor }">
           {{ rider.name }}
         </span>
-        <div class="flex-1 bg-gray-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
+        <div class="flex-1 bg-stone-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
           <div
             class="h-full rounded-full transition-all duration-500"
             :style="{
@@ -34,11 +34,11 @@
           />
           <span
 class="absolute inset-0 flex items-center justify-center text-xs font-mono"
-                :class="rider.stats.totalDistanceCapped > totalDistance * 0.4 ? 'text-white' : 'text-gray-600'">
+                :class="rider.stats.totalDistanceCapped > totalDistance * 0.4 ? 'text-white' : 'text-stone-600'">
             {{ rider.stats.totalDistanceCapped }} km
           </span>
         </div>
-        <span class="w-8 text-xs text-gray-400 text-right">#{{ rider.stats.place }}</span>
+        <span class="w-8 text-xs text-stone-400 text-right">#{{ rider.stats.place }}</span>
       </div>
     </div>
 
@@ -46,12 +46,12 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
     <div class="overflow-x-auto">
       <table class="w-full" :class="isFullscreen ? 'text-xl' : 'text-sm'">
         <thead>
-          <tr class="border-b border-gray-200">
-            <th class="text-left py-2 pr-2 text-gray-500 font-medium">Stat</th>
+          <tr class="border-b border-stone-200">
+            <th class="text-left py-2 pr-2 text-stone-500 font-medium">Stat</th>
             <th
               v-for="rider in rankedRiders"
               :key="rider.id"
-              class="text-center font-medium border-l border-gray-200"
+              class="text-center font-medium border-l border-stone-200"
               :class="isFullscreen ? 'py-2 px-3' : 'py-1 px-1 text-xs'"
               :style="{ color: rider.textColor }"
             >
@@ -59,60 +59,60 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
             </th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100">
+        <tbody class="divide-y divide-stone-100">
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Total (capped)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.totalDistanceCapped }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Total (capped)</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.totalDistanceCapped }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Daily avg (actual)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.dailyAverageActual }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Daily avg (actual)</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.dailyAverageActual }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Daily avg (capped)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.dailyAverageCapped }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Daily avg (capped)</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.dailyAverageCapped }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Longest day</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.longestDay }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Longest day</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.longestDay }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Best 3-day</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.bestThreeDayCombo }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Best 3-day</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.bestThreeDayCombo }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Recent 5-day avg</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.recentFiveDayAverage }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Recent 5-day avg</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.recentFiveDayAverage }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Days &lt;3km</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+            <td class="py-1.5 pr-2 text-stone-500">Days &lt;3km</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.daysBelowThreeKm }}
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Remaining</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.distanceRemaining }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Remaining</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.distanceRemaining }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Est. finish</td>
+            <td class="py-1.5 pr-2 text-stone-500">Est. finish</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono text-xs">
               <template v-if="r.stats.estimatedFinishDate">
-                <span class="text-gray-400 block" :class="isFullscreen ? 'text-base' : 'text-[0.65rem]'" style="line-height:1">{{ formatFinishMonth(r.stats.estimatedFinishDate) }}</span>
+                <span class="text-stone-400 block" :class="isFullscreen ? 'text-base' : 'text-[0.65rem]'" style="line-height:1">{{ formatFinishMonth(r.stats.estimatedFinishDate) }}</span>
                 <span class="block" :class="isFullscreen ? 'text-2xl' : ''">{{ formatFinishDay(r.stats.estimatedFinishDate) }}</span>
               </template>
               <template v-else>-</template>
@@ -124,7 +124,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
 
     <!-- Sparklines -->
     <div v-if="dailyLog.entries.length > 1" class="mt-6 border-t pt-4">
-      <h4 class="text-sm font-semibold text-gray-600 mb-3">Daily Distance</h4>
+      <h4 class="text-sm font-semibold text-stone-600 mb-3">Daily Distance</h4>
       <div class="space-y-2">
         <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
           <span class="w-16 text-xs truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
@@ -141,7 +141,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
       </div>
       <div class="flex items-center gap-3 mt-1">
         <span class="w-16"/>
-        <div class="flex-1 flex justify-between text-[9px] text-gray-400">
+        <div class="flex-1 flex justify-between text-[9px] text-stone-400">
           <span v-for="label in sparklineDateLabels" :key="label">{{ label }}</span>
         </div>
       </div>
