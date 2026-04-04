@@ -29,6 +29,8 @@
 
     <ImageGallery :images="page.images" />
 
+    <NearbyAttractions :segment="page.segment" />
+
     <HistoricalContext :segment="page.segment" />
 
     <WeatherWidget :weather="page.weather" />
