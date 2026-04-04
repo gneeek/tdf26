@@ -256,7 +256,7 @@ function buildRiderAnnotations() {
   const annotations = {}
   for (const rider of props.riderConfig.riders) {
     const stats = props.riderStats.riders[rider.id]
-    if (!stats || !stats.totalDistanceCapped) continue
+    if (!stats || stats.totalDistanceCapped == null) continue
 
     const riderKm = stats.totalDistanceCapped - kmOffset
     if (riderKm < 0 || riderKm > distances[distances.length - 1]) continue
