@@ -97,6 +97,7 @@ def calculate_points(daily_log, rider_config, points_config, seed=42):
                 "type": loc["type"],
                 "segment": loc["segment"],
                 "km": km_mark,
+                "category": loc.get("category"),
                 "awards": [],
                 "reached": False,
             })
@@ -128,6 +129,7 @@ def calculate_points(daily_log, rider_config, points_config, seed=42):
             "type": loc["type"],
             "segment": loc["segment"],
             "km": km_mark,
+            "category": loc.get("category"),
             "awards": awards,
             "reached": True,
         })
