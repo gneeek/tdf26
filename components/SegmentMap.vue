@@ -257,6 +257,7 @@ async function initMap(el) {
   const categoryEmoji = {
     food: '🍷', cheese: '🧀', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
     museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
+    memorial: '🕯️', industrial: '🏭', craft: '🔨',
   }
 
   // Filter attractions by proximity to current segment
