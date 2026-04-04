@@ -30,6 +30,7 @@
 import { ref, watch, nextTick, onUnmounted } from 'vue'
 import 'leaflet/dist/leaflet.css'
 import attractionsData from '~/data/attractions.json'
+import townsDetailData from '~/data/towns-detail.json'
 
 const props = defineProps({
   segment: { type: Number, required: true },
@@ -144,9 +145,16 @@ async function initMap(el) {
           iconSize: [26, 26],
           iconAnchor: [13, 13]
         })
+        const detail = townsDetailData.find(t => t.name === town)
+        let popupHtml = `<b>${town}</b>`
+        if (detail) {
+          if (detail.population) popupHtml += `<br><span style="font-size:12px;color:#666">Pop. ${detail.population.toLocaleString()}</span>`
+          if (detail.description) popupHtml += `<br><span style="font-size:12px;color:#666">${detail.description}</span>`
+        }
+        popupHtml += `<br><span style="font-size:11px;color:#8B2500">Segment ${seg.segment} (km ${seg.km_start}-${seg.km_end})</span>`
         L.marker([lat, lng], { icon: townIcon })
           .bindTooltip(town, { direction: 'top', offset: [0, -10] })
-          .bindPopup(`<b>${town}</b><br>Segment ${seg.segment}`)
+          .bindPopup(popupHtml)
           .addTo(poiGroup)
       }
     }
