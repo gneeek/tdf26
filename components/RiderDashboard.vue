@@ -55,6 +55,12 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
               :class="isFullscreen ? 'py-2 px-3' : 'py-1 px-1 text-xs'"
               :style="{ color: rider.textColor }"
             >
+              <span
+                v-if="isFullscreen"
+                class="inline-flex items-center justify-center w-8 h-8 rounded-full text-base mb-1"
+                :style="{ backgroundColor: rider.color }"
+              >🚴</span>
+              <br v-if="isFullscreen">
               {{ rider.name }}
             </th>
           </tr>
