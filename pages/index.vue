@@ -6,7 +6,7 @@
         alt="Malemort to Ussel - Tour de France 2026 Virtual Challenge - 185km"
         class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-6"
       >
-      <h1 class="text-4xl font-serif font-semibold text-correze-red mb-4 tracking-wide">
+      <h1 class="text-3xl sm:text-4xl font-serif font-semibold text-correze-red mb-4 tracking-wide">
         Malemort to Ussel
       </h1>
       <p class="text-xl text-stone-600 font-serif leading-relaxed">
