@@ -44,6 +44,7 @@
             <span class="w-px bg-stone-300 mx-1"/>
             <button class="toolbar-btn" title="Quote" @click="insertLinePrefix('> ')">&ldquo;</button>
             <button class="toolbar-btn" title="Link" @click="wrapMd('[', '](url)')">Link</button>
+            <button class="toolbar-btn" title="Insert Image" @click="showImagePicker = true">Img</button>
           </div>
           <textarea
             ref="editorRef"
@@ -67,6 +68,56 @@
         <div class="bg-white rounded-lg shadow-sm p-6 h-full overflow-auto">
           <h2 class="text-sm font-semibold text-stone-600 mb-4">Preview</h2>
           <div class="prose prose-lg max-w-none font-serif" v-html="renderedPreview" />
+        </div>
+      </div>
+    </div>
+    <!-- Image picker modal -->
+    <div v-if="showImagePicker" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" @click.self="showImagePicker = false">
+      <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b">
+          <h3 class="font-semibold text-stone-800">Insert Image</h3>
+          <button class="text-stone-400 hover:text-stone-600" @click="showImagePicker = false">x</button>
+        </div>
+        <div class="p-4 border-b">
+          <input
+            v-model="imageSearch"
+            type="text"
+            placeholder="Filter images..."
+            class="w-full border border-stone-300 rounded px-3 py-2 text-sm"
+          >
+        </div>
+        <div class="flex-1 overflow-auto p-4">
+          <div v-if="availableImages.length" class="grid grid-cols-3 gap-3">
+            <button
+              v-for="img in filteredImages"
+              :key="img"
+              class="relative group cursor-pointer rounded overflow-hidden border-2 border-transparent hover:border-correze-red transition-colors"
+              @click="insertImage(img)"
+            >
+              <img :src="img" :alt="img.split('/').pop()" class="w-full h-24 object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs p-1 truncate">
+                {{ img.split('/').pop() }}
+              </div>
+            </button>
+          </div>
+          <p v-else class="text-stone-400 text-sm italic">No images found in public/images/</p>
+        </div>
+        <div class="p-4 border-t">
+          <p class="text-xs text-stone-400">Or enter a URL manually:</p>
+          <div class="flex gap-2 mt-2">
+            <input
+              v-model="manualImageUrl"
+              type="text"
+              placeholder="https://..."
+              class="flex-1 border border-stone-300 rounded px-3 py-2 text-sm"
+            >
+            <button
+              class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700"
+              @click="insertImage(manualImageUrl); manualImageUrl = ''"
+            >
+              Insert
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -181,6 +232,46 @@ function wrapMd(before, after) {
 
 const renderedPreview = computed(() => marked(body.value || ''))
 
+// --- Image picker ---
+const showImagePicker = ref(false)
+const imageSearch = ref('')
+const manualImageUrl = ref('')
+const availableImages = ref([])
+
+const filteredImages = computed(() => {
+  if (!imageSearch.value) return availableImages.value
+  const q = imageSearch.value.toLowerCase()
+  return availableImages.value.filter(img => img.toLowerCase().includes(q))
+})
+
+async function loadImages() {
+  try {
+    const data = await $fetch('/api/list-images')
+    availableImages.value = data.images || []
+  } catch {
+    availableImages.value = []
+  }
+}
+
+function insertImage(src) {
+  if (!src) return
+  const el = editorRef.value
+  const imgName = src.split('/').pop()?.replace(/\.[^.]+$/, '') || 'image'
+  const md = `\n![${imgName}](${src})\n`
+  if (el) {
+    const pos = el.selectionStart
+    body.value = body.value.slice(0, pos) + md + body.value.slice(pos)
+    nextTick(() => {
+      el.selectionStart = pos + md.length
+      el.selectionEnd = pos + md.length
+      el.focus()
+    })
+  } else {
+    body.value += md
+  }
+  showImagePicker.value = false
+}
+
 async function loadEntry() {
   const data = await $fetch('/api/entry-content', {
     params: { filename }
@@ -216,7 +307,10 @@ async function saveEntry() {
   }
 }
 
-onMounted(() => loadEntry())
+onMounted(() => {
+  loadEntry()
+  loadImages()
+})
 </script>
 
 <style scoped>
