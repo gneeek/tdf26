@@ -9,7 +9,6 @@ import os
 import gpxpy
 import numpy as np
 
-
 # Reference rider parameters
 RIDER_MASS = 70  # kg
 BIKE_MASS = 8    # kg

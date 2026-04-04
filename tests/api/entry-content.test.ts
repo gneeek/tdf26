@@ -1,6 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mockEvent } from './helpers'
 
+import getHandler from '~/server/api/entry-content.get'
+import postHandler from '~/server/api/entry-content.post'
+
 const { mockedReadFile, mockedWriteFile } = vi.hoisted(() => ({
   mockedReadFile: vi.fn(),
   mockedWriteFile: vi.fn(),
@@ -11,9 +14,6 @@ vi.mock('fs', () => ({
   writeFileSync: mockedWriteFile,
   default: { readFileSync: mockedReadFile, writeFileSync: mockedWriteFile },
 }))
-
-import getHandler from '~/server/api/entry-content.get'
-import postHandler from '~/server/api/entry-content.post'
 
 describe('GET /api/entry-content', () => {
   beforeEach(() => vi.clearAllMocks())

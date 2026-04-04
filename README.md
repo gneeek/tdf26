@@ -41,6 +41,22 @@ npx nuxt dev
 npx nuxt generate
 ```
 
+### Linting
+
+```bash
+# Lint JavaScript/Vue/TypeScript (ESLint)
+npm run lint
+
+# Auto-fix ESLint issues
+npm run lint:fix
+
+# Lint Python (Ruff)
+processing/.venv/bin/ruff check processing/
+
+# Auto-fix Ruff issues
+processing/.venv/bin/ruff check processing/ --fix
+```
+
 ### Testing
 
 ```bash

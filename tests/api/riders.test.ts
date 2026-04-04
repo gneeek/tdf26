@@ -1,6 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mockEvent } from './helpers'
 
+import getHandler from '~/server/api/riders.get'
+import postHandler from '~/server/api/riders.post'
+
 const { mockedReadFile, mockedWriteFile, mockedExec } = vi.hoisted(() => ({
   mockedReadFile: vi.fn(),
   mockedWriteFile: vi.fn(),
@@ -17,9 +20,6 @@ vi.mock('child_process', () => ({
   execSync: mockedExec,
   default: { execSync: mockedExec },
 }))
-
-import getHandler from '~/server/api/riders.get'
-import postHandler from '~/server/api/riders.post'
 
 const sampleConfig = JSON.stringify({
   riders: [{ id: 'alice', name: 'Alice', color: '#FF0000' }],

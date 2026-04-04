@@ -2,7 +2,6 @@
 
 import json
 import os
-import tempfile
 
 import pytest
 
@@ -12,7 +11,6 @@ from processing.elevation_profile import (
     haversine,
     process_segment,
 )
-
 
 # Minimal GPX for a segment with some elevation change
 SEGMENT_GPX = """\

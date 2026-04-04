@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mockEvent } from './helpers'
 
+import handler from '~/server/api/entry-status.post'
+
 const { mockedReadFile, mockedWriteFile } = vi.hoisted(() => ({
   mockedReadFile: vi.fn(),
   mockedWriteFile: vi.fn(),
@@ -11,8 +13,6 @@ vi.mock('fs', () => ({
   writeFileSync: mockedWriteFile,
   default: { readFileSync: mockedReadFile, writeFileSync: mockedWriteFile },
 }))
-
-import handler from '~/server/api/entry-status.post'
 
 describe('POST /api/entry-status', () => {
   beforeEach(() => vi.clearAllMocks())

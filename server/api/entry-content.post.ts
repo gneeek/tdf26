@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs'
+import { writeFileSync } from 'fs'
 import { resolve, join } from 'path'
 
 export default defineEventHandler(async (event) => {
