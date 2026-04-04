@@ -2,6 +2,8 @@
 
 ![CI](https://img.shields.io/github/actions/workflow/status/gneeek/tdf26/ci.yml?branch=dev&label=tests)
 ![Deploy](https://img.shields.io/github/actions/workflow/status/gneeek/tdf26/deploy.yml?branch=main&label=deploy)
+![JS Coverage](https://img.shields.io/badge/dynamic/json?url=https://gist.githubusercontent.com/gneeek/dab3942a64c63c4c3e8131f680f6e320/raw/coverage.json&query=$.js.message&label=JS%20coverage&color=auto)
+![Python Coverage](https://img.shields.io/badge/dynamic/json?url=https://gist.githubusercontent.com/gneeek/dab3942a64c63c4c3e8131f680f6e320/raw/coverage.json&query=$.py.message&label=Python%20coverage&color=auto)
 
 A cycling travelogue blog following the 185km route of Stage 9 of the 2026 Tour de France, from Malemort to Ussel through the Correze department of France.
 
