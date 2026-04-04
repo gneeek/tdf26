@@ -31,18 +31,22 @@
       <div class="flex gap-4 text-sm">
         <div class="flex-1 text-center">
           <div class="font-mono font-bold text-stone-600">{{ summary.estimated_time_30kmh }}</div>
+          <div class="text-xs text-stone-400">min:sec</div>
           <div class="text-xs text-stone-400">@30 km/h</div>
         </div>
         <div class="flex-1 text-center">
           <div class="font-mono font-bold text-correze-red">{{ summary.estimated_time_35kmh }}</div>
+          <div class="text-xs text-stone-400">min:sec</div>
           <div class="text-xs text-stone-400">@35 km/h</div>
         </div>
         <div class="flex-1 text-center">
           <div class="font-mono font-bold text-stone-600">{{ summary.estimated_time_40kmh }}</div>
+          <div class="text-xs text-stone-400">min:sec</div>
           <div class="text-xs text-stone-400">@40 km/h</div>
         </div>
         <div class="flex-1 text-center">
           <div class="font-mono font-bold text-stone-600">{{ summary.estimated_time_50kmh || '-' }}</div>
+          <div class="text-xs text-stone-400">min:sec</div>
           <div class="text-xs text-stone-400">@50 km/h</div>
         </div>
       </div>
