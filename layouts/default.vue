@@ -45,6 +45,9 @@
           </div>
         </div>
         <div class="flex items-center gap-4">
+          <NuxtLink to="/rules" class="text-sm hover:text-accent transition-colors hidden sm:inline">
+            Rules
+          </NuxtLink>
           <span class="text-sm text-red-200 hidden sm:inline">Tour de France 2026 - Stage 9</span>
           <NuxtLink
             v-if="isDev"
