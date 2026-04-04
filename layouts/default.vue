@@ -3,7 +3,8 @@
     <header class="bg-correze-red text-white relative z-50">
       <nav class="max-w-5xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
         <div class="flex items-center gap-3 sm:gap-6">
-          <NuxtLink to="/" class="text-lg sm:text-xl font-serif font-bold hover:text-accent transition-colors">
+          <NuxtLink to="/" class="flex items-center gap-2 text-lg sm:text-xl font-serif font-bold hover:text-accent transition-colors">
+            <img src="/images/logo.svg" alt="" class="w-6 h-6 sm:w-7 sm:h-7 invert brightness-200">
             Correze Travelogue
           </NuxtLink>
           <div class="flex items-center gap-3">
@@ -66,8 +67,9 @@
       <slot />
     </main>
 
-    <footer class="bg-stone-900 text-stone-400 mt-16">
-      <div class="max-w-5xl mx-auto px-4 py-6 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <footer class="bg-stone-900 text-stone-400 mt-16 relative overflow-hidden">
+      <img src="/images/logo.svg" alt="" class="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-24 opacity-5">
+      <div class="max-w-5xl mx-auto px-4 py-6 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative">
         <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
           <div>
             <p>Correze Travelogue - Malemort to Ussel, 185km</p>
