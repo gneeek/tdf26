@@ -178,6 +178,10 @@ import riderConfigJson from '~/data/riders/rider-config.json'
 import statsJson from '~/data/riders/stats.json'
 import dailyLogJson from '~/data/riders/daily-log.json'
 
+const props = defineProps({
+  snapshot: { type: Object, default: null },
+})
+
 const isFullscreen = ref(false)
 
 function toggleFullscreen() {
@@ -206,16 +210,18 @@ function displayColor(hex) {
   return hex
 }
 
-const stats = statsJson
 const riderConfig = riderConfigJson
-const dailyLog = dailyLogJson
+const stats = props.snapshot?.stats || statsJson
+const dailyLog = props.snapshot?.log || dailyLogJson
 const totalDistance = riderConfig.totalDistance
 
-let pointsData = { riders: {} }
-try {
-  pointsData = await import('~/data/riders/points.json').then(m => m.default || m)
-} catch {
-  // points.json may not exist yet
+let pointsData = props.snapshot?.points || { riders: {} }
+if (!props.snapshot) {
+  try {
+    pointsData = await import('~/data/riders/points.json').then(m => m.default || m)
+  } catch {
+    // points.json may not exist yet
+  }
 }
 
 const hasPoints = computed(() =>
