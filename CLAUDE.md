@@ -225,7 +225,7 @@ The name alone should give our four riders pause...
 {
   "riders": [
     { "id": "justin", "name": "Justin", "color": "#DAA520" },
-    { "id": "marian", "name": "Marian", "color": "#FFFFFF" },
+    { "id": "marian", "name": "Marian", "color": "#4682B4" },
     { "id": "nan", "name": "Nan", "color": "#FF00FF" },
     { "id": "wally", "name": "Wally", "color": "#8B0000" }
   ],
