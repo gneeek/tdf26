@@ -76,7 +76,7 @@ def calculate_stats(daily_log, rider_config):
         carry = 0.0
         for d in daily_dists:
             available = daily_cap + carry
-            credited = min(d, available)
+            credited = min(d, available - 1)
             capped_dists.append(credited)
             carry = available - credited
 
