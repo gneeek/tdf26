@@ -12,7 +12,6 @@ import gpxpy.gpx
 # Known waypoints with approximate km positions along the route
 KNOWN_TOWNS = {
     "Malemort": 0,
-    "Brive-la-Gaillarde": 4.5,
     "Turenne": 17,
     "Collonges-la-Rouge": 23.5,
     "Beynat": 37.5,

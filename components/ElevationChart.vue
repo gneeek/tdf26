@@ -174,7 +174,7 @@ const chartData = computed(() => {
 
 // Known town km positions along the route
 const townKmPositions = {
-  'Malemort': 0, 'Brive-la-Gaillarde': 4.5, 'Turenne': 17,
+  'Malemort': 0, 'Turenne': 17,
   'Collonges-la-Rouge': 23.5, 'Beynat': 37.5, 'Tulle': 65.5,
   'Naves': 73.5, 'Chaumeil': 90, 'Treignac': 116.5,
   'Bugeat': 130, 'Meymac': 157.5, 'Ussel': 182.5,
