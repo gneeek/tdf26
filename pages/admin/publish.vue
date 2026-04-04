@@ -11,20 +11,20 @@
 
       <div class="flex flex-wrap gap-3 mb-4">
         <label class="flex items-center gap-2 text-sm">
-          <input v-model="runStats" type="checkbox" class="rounded" checked />
+          <input v-model="runStats" type="checkbox" class="rounded" checked >
           Regenerate rider stats
         </label>
         <label class="flex items-center gap-2 text-sm">
-          <input v-model="runWeather" type="checkbox" class="rounded" />
+          <input v-model="runWeather" type="checkbox" class="rounded" >
           Fetch weather for current entry
         </label>
       </div>
 
       <div class="flex items-center gap-4">
         <button
-          @click="runSteps"
           :disabled="running"
           class="bg-gray-900 text-white px-6 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+          @click="runSteps"
         >
           {{ running ? 'Running...' : 'Run' }}
         </button>

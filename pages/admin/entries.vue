@@ -24,10 +24,10 @@
               <td class="text-center py-2 px-2">
                 <input
                   :value="entry.publishDate"
-                  @change="updateDate(entry, $event)"
                   type="date"
                   class="border border-gray-300 rounded px-2 py-1 text-xs w-full"
-                />
+                  @change="updateDate(entry, $event)"
+                >
               </td>
               <td class="text-center py-2 px-2">
                 <span
@@ -39,9 +39,9 @@
               </td>
               <td class="text-center py-2 px-2 space-x-2">
                 <button
-                  @click="toggleDraft(entry)"
                   class="text-xs hover:underline"
                   :class="entry.draft ? 'text-green-600' : 'text-yellow-600'"
+                  @click="toggleDraft(entry)"
                 >
                   {{ entry.draft ? 'Publish' : 'Unpublish' }}
                 </button>
@@ -59,10 +59,10 @@
     </div>
 
     <div class="mt-4 flex gap-4">
-      <button @click="setAllDraft(true)" class="text-sm text-yellow-600 hover:underline">
+      <button class="text-sm text-yellow-600 hover:underline" @click="setAllDraft(true)">
         Set all to draft
       </button>
-      <button @click="setAllDraft(false)" class="text-sm text-green-600 hover:underline">
+      <button class="text-sm text-green-600 hover:underline" @click="setAllDraft(false)">
         Publish all
       </button>
     </div>

@@ -10,9 +10,9 @@
           {{ saveMessage }}
         </span>
         <button
-          @click="saveEntry"
           :disabled="saving"
           class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+          @click="saveEntry"
         >
           {{ saving ? 'Saving...' : 'Save' }}
         </button>
@@ -35,15 +35,15 @@
           <h2 class="text-sm font-semibold text-gray-600 mb-2">Content (Markdown)</h2>
           <!-- Toolbar -->
           <div class="flex gap-1 mb-2 flex-shrink-0">
-            <button @click="insertLinePrefix('# ')" class="toolbar-btn font-bold" title="Heading 1">H1</button>
-            <button @click="insertLinePrefix('## ')" class="toolbar-btn font-bold" title="Heading 2">H2</button>
-            <button @click="insertLinePrefix('### ')" class="toolbar-btn font-bold" title="Heading 3">H3</button>
-            <span class="w-px bg-gray-300 mx-1"></span>
-            <button @click="wrapMd('**', '**')" class="toolbar-btn font-bold" title="Bold">B</button>
-            <button @click="wrapMd('*', '*')" class="toolbar-btn italic" title="Italic">I</button>
-            <span class="w-px bg-gray-300 mx-1"></span>
-            <button @click="insertLinePrefix('> ')" class="toolbar-btn" title="Quote">&ldquo;</button>
-            <button @click="wrapMd('[', '](url)')" class="toolbar-btn" title="Link">Link</button>
+            <button class="toolbar-btn font-bold" title="Heading 1" @click="insertLinePrefix('# ')">H1</button>
+            <button class="toolbar-btn font-bold" title="Heading 2" @click="insertLinePrefix('## ')">H2</button>
+            <button class="toolbar-btn font-bold" title="Heading 3" @click="insertLinePrefix('### ')">H3</button>
+            <span class="w-px bg-gray-300 mx-1"/>
+            <button class="toolbar-btn font-bold" title="Bold" @click="wrapMd('**', '**')">B</button>
+            <button class="toolbar-btn italic" title="Italic" @click="wrapMd('*', '*')">I</button>
+            <span class="w-px bg-gray-300 mx-1"/>
+            <button class="toolbar-btn" title="Quote" @click="insertLinePrefix('> ')">&ldquo;</button>
+            <button class="toolbar-btn" title="Link" @click="wrapMd('[', '](url)')">Link</button>
           </div>
           <textarea
             ref="editorRef"
@@ -59,7 +59,7 @@
         class="w-2 cursor-col-resize flex-shrink-0 flex items-center justify-center hover:bg-gray-300 rounded"
         @mousedown="startResize"
       >
-        <div class="w-0.5 h-8 bg-gray-400 rounded"></div>
+        <div class="w-0.5 h-8 bg-gray-400 rounded"/>
       </div>
 
       <!-- Preview pane -->
@@ -74,6 +74,9 @@
 </template>
 
 <script setup>
+// --- Markdown preview ---
+import { marked } from 'marked'
+
 definePageMeta({ layout: 'admin' })
 
 const route = useRoute()
@@ -175,9 +178,6 @@ function wrapMd(before, after) {
     el.focus()
   })
 }
-
-// --- Markdown preview ---
-import { marked } from 'marked'
 
 const renderedPreview = computed(() => marked(body.value || ''))
 
