@@ -95,6 +95,66 @@
     <p v-else-if="loaded && !fetching" class="text-stone-400 italic text-sm">
       No suggestions found. Click "Fetch from Wikimedia" to search.
     </p>
+
+    <!-- Flickr search -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mt-6">
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">Flickr CC Search</h2>
+      <div class="flex items-center gap-3 mb-4">
+        <input
+          v-model="flickrQuery"
+          type="text"
+          placeholder="Search Flickr (e.g. Turenne castle, Correze landscape)..."
+          class="flex-1 border border-stone-300 rounded px-3 py-2 text-sm"
+          @keyup.enter="searchFlickr"
+        >
+        <button
+          :disabled="flickrSearching"
+          class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700 disabled:opacity-50"
+          @click="searchFlickr"
+        >
+          {{ flickrSearching ? 'Searching...' : 'Search' }}
+        </button>
+        <button
+          :disabled="flickrSearching"
+          class="text-sm text-blue-600 hover:underline disabled:opacity-50"
+          @click="searchFlickrByLocation"
+        >
+          Search near segment
+        </button>
+      </div>
+      <div v-if="flickrResults.length" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div
+          v-for="photo in flickrResults"
+          :key="photo.id"
+          class="cursor-pointer group"
+          @click="selectFlickrImage(photo)"
+        >
+          <div
+            class="relative overflow-hidden rounded border-2 transition-all"
+            :class="isSelected({ url: photo.url }) ? 'border-green-500 opacity-70' : 'border-stone-200 hover:border-blue-400'"
+          >
+            <img
+              :src="photo.url"
+              :alt="photo.title"
+              class="w-full h-36 object-cover"
+              loading="lazy"
+            >
+            <div v-if="isSelected({ url: photo.url })" class="absolute top-1 left-1 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shadow">
+              &#10003;
+            </div>
+            <div v-else class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="text-white text-xs bg-blue-600 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Select</span>
+            </div>
+          </div>
+          <p class="text-xs text-stone-600 mt-1 truncate">{{ photo.title }}</p>
+          <p class="text-xs text-stone-400 truncate">{{ photo.owner }} - {{ photo.license }}</p>
+        </div>
+      </div>
+      <p v-if="flickrSearched && !flickrResults.length && !flickrSearching" class="text-stone-400 italic text-sm">
+        No Flickr results found.
+      </p>
+      <p v-if="flickrError" class="text-red-600 text-sm mt-2">{{ flickrError }}</p>
+    </div>
   </div>
 </template>
 
@@ -188,6 +248,70 @@ async function saveSelection() {
     saveError.value = true
   } finally {
     saving.value = false
+  }
+}
+
+// --- Flickr search ---
+const flickrQuery = ref('')
+const flickrResults = ref([])
+const flickrSearching = ref(false)
+const flickrSearched = ref(false)
+const flickrError = ref('')
+
+async function searchFlickr() {
+  if (!flickrQuery.value) return
+  flickrSearching.value = true
+  flickrSearched.value = false
+  flickrError.value = ''
+  try {
+    const data = await $fetch('/api/flickr-search', {
+      method: 'POST',
+      body: { query: flickrQuery.value }
+    })
+    flickrResults.value = data.photos
+    flickrSearched.value = true
+  } catch (err) {
+    flickrError.value = err.data?.message || 'Flickr search failed'
+    flickrResults.value = []
+    flickrSearched.value = true
+  } finally {
+    flickrSearching.value = false
+  }
+}
+
+async function searchFlickrByLocation() {
+  const seg = segmentsJson.find(s => s.segment === selectedSegment.value)
+  if (!seg) return
+  const lat = (seg.start_lat + seg.end_lat) / 2
+  const lng = (seg.start_lng + seg.end_lng) / 2
+  flickrSearching.value = true
+  flickrSearched.value = false
+  flickrError.value = ''
+  try {
+    const data = await $fetch('/api/flickr-search', {
+      method: 'POST',
+      body: { lat, lng, query: flickrQuery.value || undefined }
+    })
+    flickrResults.value = data.photos
+    flickrSearched.value = true
+  } catch (err) {
+    flickrError.value = err.data?.message || 'Flickr search failed'
+    flickrResults.value = []
+    flickrSearched.value = true
+  } finally {
+    flickrSearching.value = false
+  }
+}
+
+function selectFlickrImage(photo) {
+  if (isSelected({ url: photo.url })) {
+    selected.value = selected.value.filter(s => s.src !== photo.url)
+  } else {
+    selected.value.push({
+      src: photo.url,
+      alt: photo.title,
+      attribution: `${photo.owner}, ${photo.license}, Flickr`
+    })
   }
 }
 
