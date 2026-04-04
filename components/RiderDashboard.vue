@@ -65,7 +65,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
             </th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-stone-100">
+        <tbody class="divide-y divide-stone-100 [&>tr:nth-child(even)]:bg-stone-50">
           <tr>
             <td class="py-1.5 pr-2 text-stone-500">Total (capped)</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
