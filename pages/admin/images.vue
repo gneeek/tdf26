@@ -95,6 +95,59 @@
     <p v-else-if="loaded && !fetching" class="text-stone-400 italic text-sm">
       No suggestions found. Click "Fetch from Wikimedia" to search.
     </p>
+
+    <!-- Wikipedia image search -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mt-6">
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">Wikipedia Article Images</h2>
+      <div class="flex items-center gap-3 mb-4">
+        <input
+          v-model="wikiQuery"
+          type="text"
+          placeholder="Search Wikipedia (e.g. Turenne, Collonges-la-Rouge)..."
+          class="flex-1 border border-stone-300 rounded px-3 py-2 text-sm"
+          @keyup.enter="searchWikipedia"
+        >
+        <button
+          :disabled="wikiSearching"
+          class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700 disabled:opacity-50"
+          @click="searchWikipedia"
+        >
+          {{ wikiSearching ? 'Searching...' : 'Search' }}
+        </button>
+      </div>
+      <div v-if="wikiResults.length" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div
+          v-for="img in wikiResults"
+          :key="img.title"
+          class="cursor-pointer group"
+          @click="selectWikiImage(img)"
+        >
+          <div
+            class="relative overflow-hidden rounded border-2 transition-all"
+            :class="isSelected({ url: img.url }) ? 'border-green-500 opacity-70' : 'border-stone-200 hover:border-blue-400'"
+          >
+            <img
+              :src="img.url"
+              :alt="img.title"
+              class="w-full h-36 object-cover"
+              loading="lazy"
+            >
+            <div v-if="isSelected({ url: img.url })" class="absolute top-1 left-1 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shadow">
+              &#10003;
+            </div>
+            <div v-else class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <span class="text-white text-xs bg-blue-600 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Select</span>
+            </div>
+          </div>
+          <p class="text-xs text-stone-600 mt-1 truncate">{{ img.title }}</p>
+          <a :href="img.articleUrl" target="_blank" rel="noopener" class="text-xs text-correze-red hover:underline">Wikipedia article</a>
+        </div>
+      </div>
+      <p v-if="wikiSearched && !wikiResults.length && !wikiSearching" class="text-stone-400 italic text-sm">
+        No Wikipedia images found.
+      </p>
+      <p v-if="wikiError" class="text-red-600 text-sm mt-2">{{ wikiError }}</p>
+    </div>
   </div>
 </template>
 
@@ -188,6 +241,46 @@ async function saveSelection() {
     saveError.value = true
   } finally {
     saving.value = false
+  }
+}
+
+// --- Wikipedia search ---
+const wikiQuery = ref('')
+const wikiResults = ref([])
+const wikiSearching = ref(false)
+const wikiSearched = ref(false)
+const wikiError = ref('')
+
+async function searchWikipedia() {
+  if (!wikiQuery.value) return
+  wikiSearching.value = true
+  wikiSearched.value = false
+  wikiError.value = ''
+  try {
+    const data = await $fetch('/api/wikipedia-images', {
+      method: 'POST',
+      body: { query: wikiQuery.value }
+    })
+    wikiResults.value = data.images
+    wikiSearched.value = true
+  } catch (err) {
+    wikiError.value = err.data?.message || 'Wikipedia search failed'
+    wikiResults.value = []
+    wikiSearched.value = true
+  } finally {
+    wikiSearching.value = false
+  }
+}
+
+function selectWikiImage(img) {
+  if (isSelected({ url: img.url })) {
+    selected.value = selected.value.filter(s => s.src !== img.url)
+  } else {
+    selected.value.push({
+      src: img.url,
+      alt: img.title,
+      attribution: `Wikipedia, ${img.articleUrl}`
+    })
   }
 }
 
