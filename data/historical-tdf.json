@@ -1,0 +1,64 @@
+[
+  {
+    "segments": [1, 2],
+    "events": [
+      {
+        "year": 1951,
+        "stage": "Stage 11",
+        "route": "Brive to Agen",
+        "description": "Hugo Koblet's legendary 135km solo breakaway, holding off Coppi, Bobet, Bartali, Magni, Geminiani, and Robic. One of the greatest solo rides in Tour history."
+      },
+      {
+        "year": 2012,
+        "stage": "Stage 18",
+        "route": "Blagnac to Brive",
+        "description": "Mark Cavendish sprint victory in the rainbow jersey of world champion. Bradley Wiggins in yellow on his way to becoming the first British Tour winner."
+      },
+      {
+        "year": 1996,
+        "stage": "Stage 15",
+        "route": "Departure from Brive",
+        "description": "The Tour departed from Brive-la-Gaillarde heading to Villeneuve-sur-Lot."
+      }
+    ]
+  },
+  {
+    "segments": [9, 10],
+    "events": [
+      {
+        "year": null,
+        "stage": null,
+        "route": null,
+        "description": "Tulle, the departmental capital, has hosted Tour du Limousin stages and is the base for local cycling clubs. The L'Agglomeree cyclosportive, departing from Tulle in April 2026, covers 40km of the Stage 9 route including Suc au May."
+      }
+    ]
+  },
+  {
+    "segments": [14, 15, 16],
+    "events": [
+      {
+        "year": 2024,
+        "stage": "Stage 11",
+        "route": "Evaux-les-Bains to Le Lioran",
+        "description": "211km through the Massif Central with 4,350m climbing. Vingegaard vs Pogacar on terrain very similar to Stage 9's second half. The battle on these hills foreshadowed what the 2026 peloton will face."
+      }
+    ]
+  },
+  {
+    "segments": [25, 26],
+    "events": [
+      {
+        "year": null,
+        "stage": null,
+        "route": null,
+        "description": "Ussel served as a stage town for the now-defunct Paris-Correze professional race (UCI 2.1) which ran through the 2000s. The 2026 Tour marks Ussel's first appearance as a Tour de France stage town."
+      },
+      {
+        "year": 2026,
+        "stage": "Stage 10",
+        "route": "Aurillac to Le Lioran",
+        "description": "The day after Stage 9, the peloton rides the adjacent Cantal roads from Aurillac to Le Lioran - the same finale where Vingegaard beat Pogacar in a photo finish in 2024."
+      }
+    ]
+  }
+]
