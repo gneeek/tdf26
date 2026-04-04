@@ -1,5 +1,10 @@
 # Correze Travelogue
 
+![CI](https://img.shields.io/github/actions/workflow/status/gneeek/tdf26/ci.yml?branch=dev&label=tests)
+![Deploy](https://img.shields.io/github/actions/workflow/status/gneeek/tdf26/deploy.yml?branch=main&label=deploy)
+![JS Coverage](https://img.shields.io/badge/dynamic/json?url=https://gist.githubusercontent.com/gneeek/dab3942a64c63c4c3e8131f680f6e320/raw/coverage.json&query=$.js.message&label=JS%20coverage&color=auto)
+![Python Coverage](https://img.shields.io/badge/dynamic/json?url=https://gist.githubusercontent.com/gneeek/dab3942a64c63c4c3e8131f680f6e320/raw/coverage.json&query=$.py.message&label=Python%20coverage&color=auto)
+
 A cycling travelogue blog following the 185km route of Stage 9 of the 2026 Tour de France, from Malemort to Ussel through the Correze department of France.
 
 26 blog entries, one per 7km segment, published twice weekly (Sunday and Wednesday) from April to July 2026. The peloton rides this road on Sunday, July 12.
@@ -45,8 +50,14 @@ npm test
 # Run tests in watch mode
 npm run test:watch
 
+# Run JavaScript tests with coverage
+npm run test:coverage
+
 # Run Python tests (pytest)
 processing/.venv/bin/python -m pytest processing/tests/
+
+# Run Python tests with coverage
+processing/.venv/bin/python -m pytest processing/tests/ --cov=processing
 ```
 
 ### Python data pipeline

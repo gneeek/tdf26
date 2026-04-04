@@ -7,7 +7,12 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     include: ['tests/**/*.test.ts', 'tests/**/*.test.js'],
-    globals: true
+    globals: true,
+    coverage: {
+      provider: 'v8',
+      include: ['components/**', 'pages/**', 'server/**'],
+      reporter: ['text', 'json-summary']
+    }
   },
   resolve: {
     alias: {
