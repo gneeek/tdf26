@@ -90,6 +90,15 @@ class TestFormatTime:
     def test_fractional_minutes(self):
         assert format_time(10.5) == "10:30"
 
+    def test_hours(self):
+        assert format_time(370.0) == "6:10"
+
+    def test_hours_exact(self):
+        assert format_time(120.0) == "2:00"
+
+    def test_just_under_hour(self):
+        assert format_time(59.5) == "59:30"
+
     def test_small_value(self):
         assert format_time(1.25) == "1:15"
 
