@@ -8,6 +8,7 @@ export default defineConfig({
     environment: 'happy-dom',
     include: ['tests/**/*.test.ts', 'tests/**/*.test.js'],
     globals: true,
+    setupFiles: ['tests/api/setup.ts'],
     coverage: {
       provider: 'v8',
       include: ['components/**', 'pages/**', 'server/**'],
