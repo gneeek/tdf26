@@ -270,5 +270,85 @@
     "lng": 2.3110,
     "description": "2nd-3rd century granite funerary eagle sculpture at Place Voltaire. Marks the Stage 9 finish line.",
     "link": null
+  },
+  {
+    "name": "Huilerie Marty",
+    "category": "food",
+    "lat": 45.1560,
+    "lng": 1.5280,
+    "description": "Traditional walnut oil mill in Brive producing cold-pressed huile de noix, a Correze staple.",
+    "link": null
+  },
+  {
+    "name": "Monument des Martyrs de Tulle",
+    "category": "memorial",
+    "lat": 45.2674,
+    "lng": 1.7700,
+    "description": "Memorial at the Souilhac factory where 99 men were hanged by the SS Das Reich division on June 9, 1944.",
+    "link": null
+  },
+  {
+    "name": "Manufacture d'Armes de Tulle",
+    "category": "industrial",
+    "lat": 45.2700,
+    "lng": 1.7680,
+    "description": "State arms factory established 1690 under Louis XIV. Produced the MAT-49 submachine gun. Now partly a cultural space.",
+    "link": null
+  },
+  {
+    "name": "Maugein Accordeons",
+    "category": "industrial",
+    "lat": 45.2660,
+    "lng": 1.7740,
+    "description": "The last remaining accordion manufacturer in France, founded 1919. Still produces handmade accordions. Visitable workshop.",
+    "link": null
+  },
+  {
+    "name": "Atelier-Musee des Vieux Metiers",
+    "category": "craft",
+    "lat": 45.0610,
+    "lng": 1.6560,
+    "description": "Workshop-museum in Collonges-la-Rouge demonstrating traditional Correze trades: woodworking, basketry, and stone carving.",
+    "link": null
+  },
+  {
+    "name": "Confiserie Lamy",
+    "category": "food",
+    "lat": 45.1260,
+    "lng": 1.7270,
+    "description": "Beynat producer of pate de fruits and chestnut confections (creme de marrons), a Correze specialty.",
+    "link": null
+  },
+  {
+    "name": "Maquis de Chaumeil Memorial",
+    "category": "memorial",
+    "lat": 45.4340,
+    "lng": 1.8550,
+    "description": "Memorial to the Maquis fighters of the Chaumeil area. The remote Monedieres hills sheltered active Resistance cells from 1943-44.",
+    "link": null
+  },
+  {
+    "name": "Stele des Maquisards",
+    "category": "memorial",
+    "lat": 45.6000,
+    "lng": 1.9230,
+    "description": "Monument in Bugeat commemorating the Maquis du Mont Gargan and Plateau de Millevaches partisans.",
+    "link": null
+  },
+  {
+    "name": "Pont de la Tourmente",
+    "category": "bridge",
+    "lat": 45.5340,
+    "lng": 1.7950,
+    "description": "Medieval fortified bridge in Treignac over the Vezere. Site of Hundred Years' War skirmishes when English forces raided the Bas-Limousin.",
+    "link": null
+  },
+  {
+    "name": "La Table de Jean",
+    "category": "food",
+    "lat": 45.5350,
+    "lng": 2.1480,
+    "description": "Restaurant in Meymac featuring regional cuisine: pounti (herb and meat terrine), millassou (corn cake), and Millevaches chestnuts.",
+    "link": null
   }
 ]

@@ -255,8 +255,9 @@ async function initMap(el) {
   // Attractions layer
   const attractionsGroup = L.layerGroup()
   const categoryEmoji = {
-    food: '🍷', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
+    food: '🍷', cheese: '🧀', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
     museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
+    memorial: '🕯️', industrial: '🏭', craft: '🔨',
   }
 
   // Filter attractions by proximity to current segment
