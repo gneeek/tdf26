@@ -29,6 +29,8 @@
 
     <ImageGallery :images="page.images" />
 
+    <HistoricalContext :segment="page.segment" />
+
     <WeatherWidget :weather="page.weather" />
 
     <RiderDashboard :snapshot="riderSnapshot" />
