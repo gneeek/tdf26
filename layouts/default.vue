@@ -31,11 +31,11 @@
                   v-for="entry in entries"
                   :key="entry.path"
                   :to="entry.path"
-                  class="block px-4 py-2 text-sm text-stone-700 hover:bg-correze-red-50 hover:text-correze-red transition-colors"
+                  class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-accent/10 hover:text-stone-900 transition-colors"
                   @click="parcoursOpen = false"
                 >
-                  <span class="font-medium">{{ entry.segment }}.</span>
-                  {{ entry.title }}
+                  <span>{{ entry.title }}</span>
+                  <span class="text-xs text-stone-400 whitespace-nowrap">{{ formatDate(entry.publishDate) }}</span>
                 </NuxtLink>
               </div>
               <p v-else class="px-4 py-2 text-sm text-stone-400 italic">
@@ -91,6 +91,14 @@ const { data: entries } = await useAsyncData('parcours-entries', () =>
 
 function toggleParcours() {
   parcoursOpen.value = !parcoursOpen.value
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+  })
 }
 
 // Close dropdown on click outside
