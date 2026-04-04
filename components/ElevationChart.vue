@@ -9,16 +9,16 @@
       <div class="flex items-center gap-2">
         <button
           v-if="isZoomed"
-          @click="resetZoom"
           class="text-xs text-blue-600 hover:underline cursor-pointer"
+          @click="resetZoom"
         >
           Reset zoom
         </button>
         <button
-          @click="toggleFullscreen"
           class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
           :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200'"
           :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
+          @click="toggleFullscreen"
         >
           {{ isFullscreen ? '✕' : '⛶' }}
         </button>
@@ -140,17 +140,9 @@ if (typeof window !== 'undefined') {
   onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 }
 
-function gradientColor(grade) {
-  const g = Math.abs(grade)
-  if (g < 3) return 'rgba(34, 197, 94, 0.6)'
-  if (g < 6) return 'rgba(234, 179, 8, 0.6)'
-  if (g < 9) return 'rgba(249, 115, 22, 0.6)'
-  return 'rgba(239, 68, 68, 0.6)'
-}
-
 const chartData = computed(() => {
   if (!props.elevationData) return null
-  const { distance, elevation, gradient } = props.elevationData
+  const { distance, elevation } = props.elevationData
 
   return {
     labels: distance.map(d => d.toFixed(1)),

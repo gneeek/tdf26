@@ -1,7 +1,7 @@
 """Tests for suggest_images.py — Wikimedia Commons image suggestions."""
 
 import json
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -10,7 +10,6 @@ from processing.suggest_images import (
     get_image_info,
     process_segment,
 )
-
 
 # --- geosearch ---
 

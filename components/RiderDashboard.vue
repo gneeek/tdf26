@@ -8,10 +8,10 @@
     <div class="flex items-center justify-between mb-4">
       <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-gray-700">Rider Standings</h3>
       <button
-        @click="toggleFullscreen"
         class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
         :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200'"
         :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
+        @click="toggleFullscreen"
       >
         {{ isFullscreen ? '✕' : '⛶' }}
       </button>
@@ -32,7 +32,8 @@
               minWidth: rider.stats.totalDistanceCapped > 0 ? '8px' : '0'
             }"
           />
-          <span class="absolute inset-0 flex items-center justify-center text-xs font-mono"
+          <span
+class="absolute inset-0 flex items-center justify-center text-xs font-mono"
                 :class="rider.stats.totalDistanceCapped > totalDistance * 0.4 ? 'text-white' : 'text-gray-600'">
             {{ rider.stats.totalDistanceCapped }} km
           </span>
@@ -139,7 +140,7 @@
         </div>
       </div>
       <div class="flex items-center gap-3 mt-1">
-        <span class="w-16"></span>
+        <span class="w-16"/>
         <div class="flex-1 flex justify-between text-[9px] text-gray-400">
           <span v-for="label in sparklineDateLabels" :key="label">{{ label }}</span>
         </div>
@@ -150,6 +151,10 @@
 
 <script setup>
 import { computed, ref, onUnmounted } from 'vue'
+
+import riderConfigJson from '~/data/riders/rider-config.json'
+import statsJson from '~/data/riders/stats.json'
+import dailyLogJson from '~/data/riders/daily-log.json'
 
 const isFullscreen = ref(false)
 
@@ -178,10 +183,6 @@ function displayColor(hex) {
   }
   return hex
 }
-
-import riderConfigJson from '~/data/riders/rider-config.json'
-import statsJson from '~/data/riders/stats.json'
-import dailyLogJson from '~/data/riders/daily-log.json'
 
 const stats = statsJson
 const riderConfig = riderConfigJson

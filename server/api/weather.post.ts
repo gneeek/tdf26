@@ -1,6 +1,5 @@
-import { readFileSync, writeFileSync } from 'fs'
-import { resolve, join } from 'path'
-import { execSync } from 'child_process'
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)

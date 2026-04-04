@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 
+import ElevationChart from '~/components/ElevationChart.vue'
+
 // Mock Chart.js and vue-chartjs to avoid canvas rendering
 vi.mock('vue-chartjs', () => ({
   Line: { template: '<canvas data-testid="chart" />', props: ['data', 'options', 'plugins'] },
@@ -17,8 +19,6 @@ vi.mock('chart.js', () => ({
 }))
 
 vi.mock('chartjs-plugin-zoom', () => ({ default: {} }))
-
-import ElevationChart from '~/components/ElevationChart.vue'
 
 const elevationData = {
   distance: [0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],

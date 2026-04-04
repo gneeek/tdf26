@@ -1,6 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mockEvent } from './helpers'
 
+import getHandler from '~/server/api/weather.get'
+import injectHandler from '~/server/api/weather-inject.post'
+
 const { mockedReadFile, mockedWriteFile, mockedReaddir } = vi.hoisted(() => ({
   mockedReadFile: vi.fn(),
   mockedWriteFile: vi.fn(),
@@ -13,9 +16,6 @@ vi.mock('fs', () => ({
   readdirSync: mockedReaddir,
   default: { readFileSync: mockedReadFile, writeFileSync: mockedWriteFile, readdirSync: mockedReaddir },
 }))
-
-import getHandler from '~/server/api/weather.get'
-import injectHandler from '~/server/api/weather-inject.post'
 
 describe('GET /api/weather', () => {
   beforeEach(() => vi.clearAllMocks())

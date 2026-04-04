@@ -2,19 +2,17 @@
 
 import json
 import os
-import tempfile
 
 import pytest
 
 from processing.split_gpx import (
+    KNOWN_CLIMBS,
+    KNOWN_TOWNS,
     haversine,
     parse_gpx,
     split_into_segments,
     write_segment_gpx,
-    KNOWN_TOWNS,
-    KNOWN_CLIMBS,
 )
-
 
 # Minimal GPX content: a short track with 5 points spanning ~1km
 MINIMAL_GPX = """\

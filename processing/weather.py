@@ -5,9 +5,8 @@ import argparse
 import json
 import os
 import re
-import urllib.request
 import urllib.parse
-
+import urllib.request
 
 OPENWEATHERMAP_API = "https://api.openweathermap.org/data/2.5/weather"
 

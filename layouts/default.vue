@@ -31,5 +31,5 @@
 </template>
 
 <script setup>
-const isDev = process.dev
+const isDev = import.meta.dev
 </script>

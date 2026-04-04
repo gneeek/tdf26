@@ -2,10 +2,9 @@
 """Geocode towns and climbs to get accurate coordinates using OpenStreetMap Nominatim."""
 
 import json
-import os
 import time
-import urllib.request
 import urllib.parse
+import urllib.request
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 USER_AGENT = "CorrezeTravelogue/1.0 (cycling travelogue project)"

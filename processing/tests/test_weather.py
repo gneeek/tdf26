@@ -1,20 +1,14 @@
 """Tests for weather.py — weather fetching and frontmatter injection."""
 
 import json
-import os
-import re
-import tempfile
-from unittest.mock import patch, MagicMock
-
-import pytest
+from unittest.mock import MagicMock, patch
 
 from processing.weather import (
     degree_to_compass,
+    find_current_entry,
     get_weather,
     inject_weather_into_entry,
-    find_current_entry,
 )
-
 
 # --- degree_to_compass ---
 

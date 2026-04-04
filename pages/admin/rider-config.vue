@@ -11,11 +11,11 @@
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-600 mb-1">Daily Cap (km)</label>
-          <input v-model.number="dailyCap" type="number" step="0.1" class="border border-gray-300 rounded px-3 py-2 text-sm w-full" />
+          <input v-model.number="dailyCap" type="number" step="0.1" class="border border-gray-300 rounded px-3 py-2 text-sm w-full" >
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-600 mb-1">Start Date</label>
-          <input v-model="startDate" type="date" class="border border-gray-300 rounded px-3 py-2 text-sm w-full" />
+          <input v-model="startDate" type="date" class="border border-gray-300 rounded px-3 py-2 text-sm w-full" >
         </div>
       </div>
     </div>
@@ -26,38 +26,38 @@
         <div v-for="(rider, idx) in riders" :key="idx" class="flex items-center gap-4 p-3 bg-gray-50 rounded">
           <div class="flex-1">
             <label class="block text-xs text-gray-500 mb-1">Name</label>
-            <input v-model="rider.name" type="text" class="border border-gray-300 rounded px-3 py-2 text-sm w-full" />
+            <input v-model="rider.name" type="text" class="border border-gray-300 rounded px-3 py-2 text-sm w-full" >
           </div>
           <div class="w-32">
             <label class="block text-xs text-gray-500 mb-1">ID</label>
-            <input v-model="rider.id" type="text" class="border border-gray-300 rounded px-3 py-2 text-sm w-full font-mono" />
+            <input v-model="rider.id" type="text" class="border border-gray-300 rounded px-3 py-2 text-sm w-full font-mono" >
           </div>
           <div class="w-24">
             <label class="block text-xs text-gray-500 mb-1">Colour</label>
             <div class="flex items-center gap-2">
-              <input v-model="rider.color" type="color" class="w-8 h-8 rounded cursor-pointer border-0" />
+              <input v-model="rider.color" type="color" class="w-8 h-8 rounded cursor-pointer border-0" >
               <span class="text-xs font-mono text-gray-500">{{ rider.color }}</span>
             </div>
           </div>
           <button
-            @click="removeRider(idx)"
             class="text-red-500 hover:text-red-700 text-sm mt-4"
             :disabled="riders.length <= 1"
+            @click="removeRider(idx)"
           >
             Remove
           </button>
         </div>
       </div>
-      <button @click="addRider" class="mt-4 text-sm text-blue-600 hover:underline">
+      <button class="mt-4 text-sm text-blue-600 hover:underline" @click="addRider">
         + Add rider
       </button>
     </div>
 
     <div class="flex items-center gap-4">
       <button
-        @click="saveConfig"
         :disabled="saving"
         class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+        @click="saveConfig"
       >
         {{ saving ? 'Saving...' : 'Save Configuration' }}
       </button>

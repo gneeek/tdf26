@@ -69,7 +69,7 @@ import segmentsJson from '~/data/segments.json'
 import townCoordsJson from '~/data/town-coords.json'
 import riderConfigJson from '~/data/riders/rider-config.json'
 
-const isDev = process.dev
+const isDev = import.meta.dev
 const today = new Date().toISOString().split('T')[0]
 
 const segments = segmentsJson

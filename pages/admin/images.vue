@@ -9,15 +9,15 @@
           <option v-for="n in 26" :key="n" :value="n">{{ n }} - {{ segmentTitle(n) }}</option>
         </select>
         <button
-          @click="loadImages"
           class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700"
+          @click="loadImages"
         >
           Load
         </button>
         <button
-          @click="fetchSuggestions"
           :disabled="fetching"
           class="text-sm text-blue-600 hover:underline disabled:opacity-50"
+          @click="fetchSuggestions"
         >
           {{ fetching ? 'Fetching...' : 'Fetch from Wikimedia' }}
         </button>
@@ -29,19 +29,19 @@
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-lg font-semibold text-gray-700">Selected ({{ selected.length }})</h2>
         <button
-          @click="saveSelection"
           :disabled="saving"
           class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+          @click="saveSelection"
         >
           {{ saving ? 'Saving...' : 'Save to Entry' }}
         </button>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         <div v-for="(img, idx) in selected" :key="idx" class="relative group">
-          <img :src="img.src" :alt="img.alt" class="w-full h-32 object-cover rounded border-2 border-green-500" />
+          <img :src="img.src" :alt="img.alt" class="w-full h-32 object-cover rounded border-2 border-green-500" >
           <button
-            @click="removeSelected(idx)"
             class="absolute top-1 right-1 bg-red-600 text-white w-5 h-5 rounded-full text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            @click="removeSelected(idx)"
           >
             x
           </button>
@@ -74,7 +74,7 @@
               :alt="img.description || img.title"
               class="w-full h-36 object-cover"
               loading="lazy"
-            />
+            >
             <!-- Green checkmark for selected -->
             <div v-if="isSelected(img)" class="absolute top-1 left-1 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold shadow">
               &#10003;
@@ -139,7 +139,7 @@ async function fetchSuggestions() {
       body: { segment: selectedSegment.value }
     })
     await loadImages()
-  } catch (err) {
+  } catch {
     saveMessage.value = 'Error fetching suggestions'
     saveError.value = true
   } finally {

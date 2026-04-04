@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 
+import SegmentMap from '~/components/SegmentMap.vue'
+
 // Mock Leaflet — it requires DOM APIs not available in happy-dom
 vi.mock('leaflet', () => ({
   default: {
@@ -23,8 +25,6 @@ vi.mock('leaflet', () => ({
 }))
 
 vi.mock('leaflet/dist/leaflet.css', () => ({}))
-
-import SegmentMap from '~/components/SegmentMap.vue'
 
 describe('SegmentMap', () => {
   // SegmentMap uses ClientOnly which won't render in test env

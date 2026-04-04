@@ -9,7 +9,7 @@
             :alt="img.alt"
             class="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
             loading="lazy"
-          />
+          >
         </a>
         <figcaption class="p-3">
           <p class="text-sm text-gray-700">{{ img.alt }}</p>

@@ -1,6 +1,5 @@
 """Tests for rider_stats.py — rider statistics calculations."""
 
-import pytest
 
 from processing.rider_stats import calculate_stats
 
