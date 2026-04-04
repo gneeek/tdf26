@@ -35,7 +35,7 @@
             Full 185km route. Use layer controls for topo, cycling, and satellite views.
           </p>
           <ClientOnly>
-            <ElevationChart :elevation-data="overviewElevation" :segments="segments" :current-segment="0" class="mt-6" />
+            <ElevationChart :elevation-data="overviewElevation" :segments="segments" :current-segment="0" :rider-stats="riderStats" :rider-config="riderConfig" class="mt-6" />
           </ClientOnly>
         </section>
 

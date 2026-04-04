@@ -101,7 +101,9 @@ onMounted(async () => {
 const props = defineProps({
   elevationData: { type: Object, default: null },
   segments: { type: Array, default: () => [] },
-  currentSegment: { type: Number, default: 0 }
+  currentSegment: { type: Number, default: 0 },
+  riderStats: { type: Object, default: null },
+  riderConfig: { type: Object, default: null },
 })
 
 const chartRef = ref(null)
@@ -243,6 +245,52 @@ function buildLabelItems() {
   return items
 }
 
+function buildRiderAnnotations() {
+  if (!props.riderStats?.riders || !props.riderConfig?.riders || !props.elevationData) return {}
+
+  const distances = props.elevationData.distance
+  const kmOffset = props.currentSegment > 0
+    ? (props.segments.find(s => s.segment === props.currentSegment)?.km_start || 0)
+    : 0
+
+  const annotations = {}
+  for (const rider of props.riderConfig.riders) {
+    const stats = props.riderStats.riders[rider.id]
+    if (!stats || stats.totalDistanceCapped == null) continue
+
+    const riderKm = stats.totalDistanceCapped - kmOffset
+    if (riderKm < 0 || riderKm > distances[distances.length - 1]) continue
+
+    // Find closest data point
+    let bestIdx = 0
+    let bestDist = Infinity
+    for (let i = 0; i < distances.length; i++) {
+      const d = Math.abs(distances[i] - riderKm)
+      if (d < bestDist) { bestDist = d; bestIdx = i }
+    }
+
+    annotations[`rider-${rider.id}`] = {
+      type: 'line',
+      xMin: bestIdx,
+      xMax: bestIdx,
+      borderColor: rider.color,
+      borderWidth: 2,
+      borderDash: [4, 2],
+      label: {
+        display: true,
+        content: rider.name,
+        position: 'start',
+        backgroundColor: rider.color,
+        color: 'white',
+        font: { size: 10, weight: 'bold' },
+        padding: { top: 2, bottom: 2, left: 4, right: 4 },
+        borderRadius: 3,
+      }
+    }
+  }
+  return annotations
+}
+
 const chartOptions = computed(() => ({
   responsive: true,
   maintainAspectRatio: false,
@@ -283,6 +331,9 @@ const chartOptions = computed(() => ({
         onZoom: () => { isZoomed.value = true },
         onZoomComplete: () => { isZoomed.value = true }
       }
+    },
+    annotation: {
+      annotations: buildRiderAnnotations()
     },
     elevationLabels: {
       items: buildLabelItems()
