@@ -44,7 +44,8 @@ import {
   Filler,
   Tooltip
 } from 'chart.js'
-ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Filler, Tooltip)
+import annotationPlugin from 'chartjs-plugin-annotation'
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Filler, Tooltip, annotationPlugin)
 
 const zoomReady = ref(false)
 
