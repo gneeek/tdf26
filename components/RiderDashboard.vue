@@ -20,13 +20,13 @@
     <!-- Progress bars -->
     <div class="space-y-3 mb-6">
       <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
-        <span class="w-20 text-sm font-medium truncate flex items-center gap-1" :style="{ color: rider.textColor }">
-          {{ rider.name }}
-          <svg v-if="jerseys.yellow === rider.id" class="w-4 h-4 inline-block" viewBox="0 0 24 24" title="Yellow Jersey - Race Leader"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#FFD100" stroke="#B8960A" stroke-width="1"/></svg>
-          <svg v-if="jerseys.green === rider.id" class="w-4 h-4 inline-block" viewBox="0 0 24 24" title="Green Jersey - Sprint Leader"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
-          <svg v-if="jerseys.polkaDot === rider.id" class="w-4 h-4 inline-block" viewBox="0 0 24 24" title="Polka Dot Jersey - Climbing Leader"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/><circle cx="7" cy="16" r="1.5" fill="#DC2626"/><circle cx="17" cy="16" r="1.5" fill="#DC2626"/></svg>
-          <svg v-if="jerseys.red === rider.id" class="w-4 h-4 inline-block" viewBox="0 0 24 24" title="Lanterne Rouge - Last Place"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#DC2626" stroke="#991B1B" stroke-width="1"/></svg>
-        </span>
+        <div class="w-24 flex items-center gap-1 shrink-0">
+          <span class="text-sm font-medium truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
+          <svg v-if="jerseys.yellow === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Yellow Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#FFD100" stroke="#B8960A" stroke-width="1"/></svg>
+          <svg v-if="jerseys.green === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Green Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
+          <svg v-if="jerseys.polkaDot === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Polka Dot Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/><circle cx="7" cy="16" r="1.5" fill="#DC2626"/><circle cx="17" cy="16" r="1.5" fill="#DC2626"/></svg>
+          <svg v-if="jerseys.red === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Lanterne Rouge"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#DC2626" stroke="#991B1B" stroke-width="1"/></svg>
+        </div>
         <div class="flex-1 bg-stone-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
           <div
             class="h-full rounded-full transition-all duration-500"
