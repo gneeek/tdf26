@@ -1,0 +1,236 @@
+[
+  {
+    "name": "Malemort",
+    "km": 0,
+    "population": 7995,
+    "elevation": 214,
+    "description": "Site of the 1177 Battle of Malemort against Richard the Lionheart's mercenaries. Commune nouvelle created 2016.",
+    "lat": 45.13834,
+    "lng": 1.54947
+  },
+  {
+    "name": "Brive-la-Gaillarde",
+    "km": 4.5,
+    "population": 47845,
+    "elevation": 142,
+    "description": "Largest city in Correze. Home to the Michelet WWII Resistance museum and major covered market.",
+    "lat": 45.1585,
+    "lng": 1.5340
+  },
+  {
+    "name": "Noailles",
+    "km": 10,
+    "population": 900,
+    "elevation": 190,
+    "description": "Small town south of Brive on the descent toward the Tourmente valley.",
+    "lat": 45.1030,
+    "lng": 1.5260
+  },
+  {
+    "name": "Turenne",
+    "km": 17,
+    "population": 801,
+    "elevation": 240,
+    "description": "Seat of one of France's most powerful viscounties until sold to Louis XV in 1738. Plus Beaux Villages de France.",
+    "lat": 45.0535,
+    "lng": 1.5814
+  },
+  {
+    "name": "Collonges-la-Rouge",
+    "km": 23.5,
+    "population": 478,
+    "elevation": 230,
+    "description": "Birthplace of the Plus Beaux Villages association (1982). Built from distinctive red iron-oxide sandstone.",
+    "lat": 45.0605,
+    "lng": 1.6551
+  },
+  {
+    "name": "Meyssac",
+    "km": 26,
+    "population": 1278,
+    "elevation": 220,
+    "description": "Market town at the geological fault line separating red sandstone from limestone. Medieval halle.",
+    "lat": 45.0560,
+    "lng": 1.6740
+  },
+  {
+    "name": "Noailhac",
+    "km": 28,
+    "population": 351,
+    "elevation": 280,
+    "description": "Small village with a fortified Romanesque church in the Midi Correzien.",
+    "lat": 45.0700,
+    "lng": 1.6900
+  },
+  {
+    "name": "Beynat",
+    "km": 37.5,
+    "population": 1281,
+    "elevation": 350,
+    "description": "Medieval market town. Home to the Lac de Miel leisure area and annual chestnut festival.",
+    "lat": 45.1247,
+    "lng": 1.7218
+  },
+  {
+    "name": "Lagleygeolle",
+    "km": 42,
+    "population": 224,
+    "elevation": 420,
+    "description": "Hamlet that gives its name to the 5.2km Cote de Lagleygeolle climb (3.9% gradient).",
+    "lat": 45.0783,
+    "lng": 1.6966
+  },
+  {
+    "name": "Aubazine",
+    "km": 46,
+    "population": 860,
+    "elevation": 380,
+    "description": "Cistercian abbey village where the young Coco Chanel spent her childhood at the orphanage.",
+    "lat": 45.1750,
+    "lng": 1.6690
+  },
+  {
+    "name": "Cornil",
+    "km": 55,
+    "population": 1283,
+    "elevation": 200,
+    "description": "Village in the Correze valley on the approach to Tulle. Notable 12th-century church.",
+    "lat": 45.2120,
+    "lng": 1.6960
+  },
+  {
+    "name": "Tulle",
+    "km": 65.5,
+    "population": 13992,
+    "elevation": 210,
+    "description": "Departmental capital. Historic lace-making and accordion centre. Francois Hollande was mayor before becoming president.",
+    "lat": 45.2678,
+    "lng": 1.7707
+  },
+  {
+    "name": "Naves",
+    "km": 73.5,
+    "population": 2318,
+    "elevation": 320,
+    "description": "Site of the Tintignac Gallo-Roman sanctuary where Celtic carnyx war trumpets were discovered in 2004.",
+    "lat": 45.3123,
+    "lng": 1.7666
+  },
+  {
+    "name": "Saint-Augustin",
+    "km": 82,
+    "population": 417,
+    "elevation": 480,
+    "description": "Scattered commune on the climb through forested hills toward the Monedieres.",
+    "lat": 45.3600,
+    "lng": 1.8000
+  },
+  {
+    "name": "Sarran",
+    "km": 84,
+    "population": 274,
+    "elevation": 520,
+    "description": "Home to the Musee du President Jacques Chirac, housing 5,000 diplomatic gifts from his presidency.",
+    "lat": 45.3700,
+    "lng": 1.8200
+  },
+  {
+    "name": "Chaumeil",
+    "km": 90,
+    "population": 166,
+    "elevation": 530,
+    "description": "Tiny village in the heart of the Monedieres massif. Gateway to the Suc au May climb.",
+    "lat": 45.4556,
+    "lng": 1.8809
+  },
+  {
+    "name": "Affieux",
+    "km": 108,
+    "population": 376,
+    "elevation": 500,
+    "description": "Rural commune on the descent from the Suc au May toward the Vezere valley.",
+    "lat": 45.4900,
+    "lng": 1.8300
+  },
+  {
+    "name": "Treignac",
+    "km": 116.5,
+    "population": 1297,
+    "elevation": 380,
+    "description": "Medieval town on the Vezere river. Famous 13th-century bridge and granite architecture.",
+    "lat": 45.5366,
+    "lng": 1.7935
+  },
+  {
+    "name": "Le Lonzac",
+    "km": 122,
+    "population": 819,
+    "elevation": 450,
+    "description": "Village at the junction of roads to Treignac and Eymoutiers. Gateway to the upper Vezere.",
+    "lat": 45.5200,
+    "lng": 1.8500
+  },
+  {
+    "name": "Bugeat",
+    "km": 130,
+    "population": 741,
+    "elevation": 680,
+    "description": "Gateway to the Plateau de Millevaches. Home to the National Forestry School.",
+    "lat": 45.5976,
+    "lng": 1.9282
+  },
+  {
+    "name": "Saint-Merd-les-Oussines",
+    "km": 140,
+    "population": 109,
+    "elevation": 800,
+    "description": "Remote hamlet on the Millevaches plateau. Contains the Gallo-Roman ruins of Les Cars.",
+    "lat": 45.6303,
+    "lng": 1.8850
+  },
+  {
+    "name": "Chavanac",
+    "km": 145,
+    "population": 49,
+    "elevation": 870,
+    "description": "Tiny commune at 870m near Mont Bessou. Exemplifies the extreme depopulation of the Millevaches.",
+    "lat": 45.5800,
+    "lng": 2.0500
+  },
+  {
+    "name": "Meymac",
+    "km": 157.5,
+    "population": 2326,
+    "elevation": 700,
+    "description": "Home to the Benedictine Abbaye Saint-Andre (founded 1085), now housing a Centre d'Art Contemporain.",
+    "lat": 45.5367,
+    "lng": 2.1465
+  },
+  {
+    "name": "Combressol",
+    "km": 162,
+    "population": 385,
+    "elevation": 650,
+    "description": "Small commune south of Meymac on the road toward Egletons.",
+    "lat": 45.5100,
+    "lng": 2.1100
+  },
+  {
+    "name": "Moustier-Ventadour",
+    "km": 168,
+    "population": 440,
+    "elevation": 550,
+    "description": "Named for the ruins of Chateau de Ventadour, seat of the medieval Viscounty of Ventadour.",
+    "lat": 45.3900,
+    "lng": 2.1050
+  },
+  {
+    "name": "Ussel",
+    "km": 182.5,
+    "population": 9174,
+    "elevation": 631,
+    "description": "Historic gateway between Limousin and Auvergne. Jacques Chirac began his political career here. First Tour de France stage finish.",
+    "lat": 45.5457,
+    "lng": 2.3119
+  }
+]
