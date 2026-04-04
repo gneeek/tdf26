@@ -97,7 +97,7 @@
   },
   {
     "name": "Fromagerie Duroux",
-    "category": "food",
+    "category": "cheese",
     "lat": 45.1900,
     "lng": 1.7700,
     "description": "Artisan fromagerie near Tulle aging cheese in a reconverted railway tunnel. Produces Pave Correzien.",
@@ -129,7 +129,7 @@
   },
   {
     "name": "Les Delices de Mel",
-    "category": "food",
+    "category": "cheese",
     "lat": 45.2680,
     "lng": 1.7700,
     "description": "Fromagerie in central Tulle. Regional cheeses including Feuille du Limousin, caillade, and cabecou.",

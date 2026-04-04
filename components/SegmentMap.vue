@@ -255,7 +255,7 @@ async function initMap(el) {
   // Attractions layer
   const attractionsGroup = L.layerGroup()
   const categoryEmoji = {
-    food: '🍷', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
+    food: '🍷', cheese: '🧀', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
     museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
   }
 
@@ -280,7 +280,20 @@ async function initMap(el) {
       iconAnchor: [11, 11]
     })
 
+    // Find nearest segment for entry link
+    let nearestSeg = null
+    let nearestDist = Infinity
+    for (const seg of props.segments) {
+      const midLat = (seg.start_lat + seg.end_lat) / 2
+      const midLng = (seg.start_lng + seg.end_lng) / 2
+      const d = Math.sqrt((poi.lat - midLat) ** 2 + (poi.lng - midLng) ** 2)
+      if (d < nearestDist) { nearestDist = d; nearestSeg = seg }
+    }
+
     let popupHtml = `<b>${poi.name}</b><br><span style="font-size:12px;color:#666">${poi.description}</span>`
+    if (nearestSeg) {
+      popupHtml += `<br><span style="font-size:11px;color:#8B2500">Segment ${nearestSeg.segment} (km ${nearestSeg.km_start}-${nearestSeg.km_end})</span>`
+    }
     if (poi.link) {
       popupHtml += `<br><a href="${poi.link}" target="_blank" rel="noopener" style="font-size:12px">More info</a>`
     }
