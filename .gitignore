@@ -29,5 +29,10 @@ Thumbs.db
 data/riders/daily-log.json
 data/riders/stats.json
 
+# Test coverage
+coverage/
+.coverage
+.pytest_cache/
+
 # Build artifacts
 *.log
