@@ -24,14 +24,14 @@
             </button>
             <div
               v-if="parcoursOpen"
-              class="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-lg border border-stone-200 py-2 max-h-96 overflow-y-auto"
+              class="absolute top-full left-0 mt-2 w-72 bg-stone-50 rounded-lg shadow-lg border border-stone-200 py-2 max-h-96 overflow-y-auto"
             >
               <div v-if="entries && entries.length">
                 <NuxtLink
                   v-for="entry in entries"
                   :key="entry.path"
                   :to="entry.path"
-                  class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-amber-50 hover:text-stone-900 transition-colors"
+                  class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-amber-100 hover:text-correze-red transition-colors"
                   @click="parcoursOpen = false"
                 >
                   <span>{{ entry.title }}</span>
