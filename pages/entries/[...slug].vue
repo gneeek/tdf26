@@ -31,7 +31,7 @@
 
     <WeatherWidget :weather="page.weather" />
 
-    <RiderDashboard />
+    <RiderDashboard :snapshot="riderSnapshot" />
 
     <nav class="mt-12 pt-8 border-t border-stone-200 flex justify-between">
       <NuxtLink
@@ -110,13 +110,21 @@ try {
 }
 
 const elevationData = ref(null)
+const riderSnapshot = ref(null)
 if (page.value?.segment != null) {
+  const segNum = String(page.value.segment).padStart(2, '0')
   try {
-    const segNum = String(page.value.segment).padStart(2, '0')
     const data = await import(`~/data/elevation/segment-${segNum}.json`)
     elevationData.value = data.default || data
   } catch {
     elevationData.value = null
+  }
+  try {
+    const data = await import(`~/data/riders/snapshots/snapshot-${segNum}.json`)
+    riderSnapshot.value = data.default || data
+  } catch {
+    // No snapshot for this segment - dashboard will use live data
+    riderSnapshot.value = null
   }
 }
 
