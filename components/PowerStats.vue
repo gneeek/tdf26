@@ -27,7 +27,7 @@
     </div>
 
     <div class="mt-4 border-t pt-4">
-      <h4 class="text-sm font-semibold text-stone-600 mb-2">Estimated Time</h4>
+      <h4 class="text-sm font-semibold text-stone-600 mb-2 bg-amber-100 -mx-6 px-6 py-1.5">Estimated Time</h4>
       <div class="flex gap-4 text-sm">
         <div class="flex-1 text-center">
           <div class="font-mono font-bold text-stone-600">{{ summary.estimated_time_30kmh }}</div>

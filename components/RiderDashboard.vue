@@ -46,8 +46,8 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
     <div class="overflow-x-auto">
       <table class="w-full" :class="isFullscreen ? 'text-xl' : 'text-sm'">
         <thead>
-          <tr class="border-b border-stone-200">
-            <th class="text-left py-2 pr-2 text-stone-500 font-medium">Stat</th>
+          <tr class="bg-amber-100 border-b border-stone-200">
+            <th class="text-left py-2 pr-2 text-stone-600 font-medium">Stat</th>
             <th
               v-for="rider in rankedRiders"
               :key="rider.id"
@@ -55,11 +55,17 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
               :class="isFullscreen ? 'py-2 px-3' : 'py-1 px-1 text-xs'"
               :style="{ color: rider.textColor }"
             >
+              <span
+                v-if="isFullscreen"
+                class="inline-flex items-center justify-center w-8 h-8 rounded-full text-base mb-1"
+                :style="{ backgroundColor: rider.color }"
+              >🚴</span>
+              <br v-if="isFullscreen">
               {{ rider.name }}
             </th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-stone-100">
+        <tbody class="divide-y divide-stone-100 [&>tr:nth-child(even)]:bg-stone-50">
           <tr>
             <td class="py-1.5 pr-2 text-stone-500">Total (capped)</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">

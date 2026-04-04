@@ -93,8 +93,8 @@ function formatDate(dateStr) {
 }
 
 function entryClass(entry) {
-  if (entry.published) return 'bg-red-50'
-  if (entry.isNext) return 'bg-yellow-50'
+  if (entry.published) return 'bg-correze-red-50'
+  if (entry.isNext) return 'bg-amber-100'
   return ''
 }
 </script>

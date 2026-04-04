@@ -3,7 +3,7 @@
     <h3 class="text-lg font-semibold text-stone-700 mb-4">Stage Details</h3>
 
     <div class="mb-5">
-      <h4 class="text-sm font-semibold text-stone-500 mb-2">Towns</h4>
+      <h4 class="text-sm font-semibold text-stone-600 mb-2 bg-amber-100 -mx-6 px-6 py-1.5">Towns</h4>
       <div class="space-y-1">
         <div v-for="town in towns" :key="town.name" class="flex justify-between text-sm">
           <span class="text-stone-700">{{ town.name }}</span>
@@ -13,7 +13,7 @@
     </div>
 
     <div>
-      <h4 class="text-sm font-semibold text-stone-500 mb-2">Climbs</h4>
+      <h4 class="text-sm font-semibold text-stone-600 mb-2 bg-amber-100 -mx-6 px-6 py-1.5">Climbs</h4>
       <div class="space-y-1">
         <div v-for="climb in climbs" :key="climb.name" class="flex justify-between text-sm">
           <span class="text-stone-700">{{ climb.name }}</span>
