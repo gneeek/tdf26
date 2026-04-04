@@ -87,20 +87,39 @@
           >
         </div>
         <div class="flex-1 overflow-auto p-4">
-          <div v-if="availableImages.length" class="grid grid-cols-3 gap-3">
-            <button
-              v-for="img in filteredImages"
-              :key="img"
-              class="relative group cursor-pointer rounded overflow-hidden border-2 border-transparent hover:border-correze-red transition-colors"
-              @click="insertImage(img)"
-            >
-              <img :src="img" :alt="img.split('/').pop()" class="w-full h-24 object-cover">
-              <div class="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs p-1 truncate">
-                {{ img.split('/').pop() }}
-              </div>
-            </button>
+          <div v-if="frontmatterImages.length" class="mb-4">
+            <h4 class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-2">Entry Images</h4>
+            <div class="grid grid-cols-3 gap-3">
+              <button
+                v-for="(img, idx) in frontmatterImages"
+                :key="'fm-' + idx"
+                class="relative group cursor-pointer rounded overflow-hidden border-2 border-transparent hover:border-correze-red transition-colors"
+                @click="insertImage(img.src, img.alt)"
+              >
+                <img :src="img.src" :alt="img.alt" class="w-full h-24 object-cover">
+                <div class="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs p-1 truncate">
+                  {{ img.alt || 'Image' }}
+                </div>
+              </button>
+            </div>
           </div>
-          <p v-else class="text-stone-400 text-sm italic">No images found in public/images/</p>
+          <div v-if="availableImages.length">
+            <h4 class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-2">Local Files</h4>
+            <div class="grid grid-cols-3 gap-3">
+              <button
+                v-for="img in filteredImages"
+                :key="img"
+                class="relative group cursor-pointer rounded overflow-hidden border-2 border-transparent hover:border-correze-red transition-colors"
+                @click="insertImage(img)"
+              >
+                <img :src="img" :alt="img.split('/').pop()" class="w-full h-24 object-cover">
+                <div class="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs p-1 truncate">
+                  {{ img.split('/').pop() }}
+                </div>
+              </button>
+            </div>
+          </div>
+          <p v-if="!frontmatterImages.length && !availableImages.length" class="text-stone-400 text-sm italic">No images available</p>
         </div>
         <div class="p-4 border-t">
           <p class="text-xs text-stone-400">Or enter a URL manually:</p>
@@ -238,6 +257,16 @@ const imageSearch = ref('')
 const manualImageUrl = ref('')
 const availableImages = ref([])
 
+const frontmatterImages = computed(() => {
+  const match = frontmatter.value.match(/^images:\s*(\[[\s\S]*?\])\s*$/m)
+  if (!match) return []
+  try {
+    return JSON.parse(match[1])
+  } catch {
+    return []
+  }
+})
+
 const filteredImages = computed(() => {
   if (!imageSearch.value) return availableImages.value
   const q = imageSearch.value.toLowerCase()
@@ -253,11 +282,11 @@ async function loadImages() {
   }
 }
 
-function insertImage(src) {
+function insertImage(src, alt) {
   if (!src) return
   const el = editorRef.value
-  const imgName = src.split('/').pop()?.replace(/\.[^.]+$/, '') || 'image'
-  const md = `\n![${imgName}](${src})\n`
+  const caption = alt || src.split('/').pop()?.replace(/\.[^.]+$/, '') || 'image'
+  const md = `\n![${caption}](${src})\n`
   if (el) {
     const pos = el.selectionStart
     body.value = body.value.slice(0, pos) + md + body.value.slice(pos)
