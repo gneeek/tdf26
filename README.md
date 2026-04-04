@@ -17,11 +17,14 @@ Malemort-sur-Correze to Ussel, 185km northeast through the Massif Central. Throu
 
 ## Tech Stack
 
-- **Site:** Nuxt 3, Nuxt Content, Tailwind CSS
+- **Site:** Nuxt 4, Nuxt Content, Tailwind CSS
 - **Maps:** Leaflet.js with OpenStreetMap tiles
 - **Charts:** Chart.js for elevation profiles
 - **Data processing:** Python 3.11+ (gpxpy, numpy)
-- **Hosting:** Static site (nuxt generate)
+- **Testing:** Vitest, pytest, ESLint, Ruff
+- **Hosting:** Static site on OVH VM (nuxt generate + Caddy)
+
+See the [Roadmap](https://github.com/gneeek/tdf26/wiki/Roadmap) for planned work.
 
 ## Getting Started
 

@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white rounded-lg shadow-sm p-6">
-    <h3 class="text-lg font-semibold text-gray-700 mb-4">Publish Schedule</h3>
+    <h3 class="text-lg font-semibold text-stone-700 mb-4">Publish Schedule</h3>
     <div class="space-y-1">
       <div
         v-for="entry in schedule"
@@ -8,15 +8,15 @@
         class="flex items-center gap-3 py-1.5 px-2 rounded text-sm"
         :class="entryClass(entry)"
       >
-        <span class="w-6 text-right font-mono text-gray-400">{{ entry.segment }}</span>
-        <span class="w-24 font-mono text-xs" :class="entry.published ? 'text-correze-red' : 'text-gray-400'">
+        <span class="w-6 text-right font-mono text-stone-400">{{ entry.segment }}</span>
+        <span class="w-24 font-mono text-xs" :class="entry.published ? 'text-correze-red' : 'text-stone-400'">
           {{ formatDate(entry.date) }}
         </span>
         <component
           :is="entry.published ? 'NuxtLink' : 'span'"
           :to="entry.published ? `/entries/${entry.slug}` : undefined"
           class="flex-1 truncate"
-          :class="entry.published ? 'text-correze-red hover:underline font-medium' : 'text-gray-400'"
+          :class="entry.published ? 'text-correze-red hover:underline font-medium' : 'text-stone-400'"
         >
           {{ entry.title }}
         </component>
@@ -93,8 +93,8 @@ function formatDate(dateStr) {
 }
 
 function entryClass(entry) {
-  if (entry.published) return 'bg-red-50'
-  if (entry.isNext) return 'bg-yellow-50'
+  if (entry.published) return 'bg-correze-red-50'
+  if (entry.isNext) return 'bg-amber-100'
   return ''
 }
 </script>

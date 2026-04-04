@@ -6,10 +6,10 @@
     :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
   >
     <div class="flex items-center justify-between mb-4">
-      <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-gray-700">Rider Standings</h3>
+      <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-stone-700">Rider Standings</h3>
       <button
         class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
-        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200'"
+        :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-stone-100 text-stone-500 border-stone-300 hover:bg-stone-200'"
         :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'"
         @click="toggleFullscreen"
       >
@@ -20,10 +20,14 @@
     <!-- Progress bars -->
     <div class="space-y-3 mb-6">
       <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
-        <span class="w-16 text-sm font-medium truncate" :style="{ color: rider.textColor }">
-          {{ rider.name }}
-        </span>
-        <div class="flex-1 bg-gray-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
+        <div class="w-24 flex items-center gap-1 shrink-0">
+          <span class="text-sm font-medium truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
+          <svg v-if="jerseys.yellow === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Yellow Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#FFD100" stroke="#B8960A" stroke-width="1"/></svg>
+          <svg v-if="jerseys.green === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Green Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
+          <svg v-if="jerseys.polkaDot === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Polka Dot Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/><circle cx="7" cy="16" r="1.5" fill="#DC2626"/><circle cx="17" cy="16" r="1.5" fill="#DC2626"/></svg>
+          <svg v-if="jerseys.red === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Lanterne Rouge"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#DC2626" stroke="#991B1B" stroke-width="1"/></svg>
+        </div>
+        <div class="flex-1 bg-stone-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
           <div
             class="h-full rounded-full transition-all duration-500"
             :style="{
@@ -34,11 +38,11 @@
           />
           <span
 class="absolute inset-0 flex items-center justify-center text-xs font-mono"
-                :class="rider.stats.totalDistanceCapped > totalDistance * 0.4 ? 'text-white' : 'text-gray-600'">
+                :class="rider.stats.totalDistanceCapped > totalDistance * 0.4 ? 'text-white' : 'text-stone-600'">
             {{ rider.stats.totalDistanceCapped }} km
           </span>
         </div>
-        <span class="w-8 text-xs text-gray-400 text-right">#{{ rider.stats.place }}</span>
+        <span class="w-8 text-xs text-stone-400 text-right">#{{ rider.stats.place }}</span>
       </div>
     </div>
 
@@ -46,73 +50,91 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
     <div class="overflow-x-auto">
       <table class="w-full" :class="isFullscreen ? 'text-xl' : 'text-sm'">
         <thead>
-          <tr class="border-b border-gray-200">
-            <th class="text-left py-2 pr-2 text-gray-500 font-medium">Stat</th>
+          <tr class="bg-amber-100 border-b border-stone-200">
+            <th class="text-left py-2 pr-2 text-stone-600 font-medium">Stat</th>
             <th
               v-for="rider in rankedRiders"
               :key="rider.id"
-              class="text-center font-medium border-l border-gray-200"
+              class="text-center font-medium border-l border-stone-200"
               :class="isFullscreen ? 'py-2 px-3' : 'py-1 px-1 text-xs'"
               :style="{ color: rider.textColor }"
             >
+              <span
+                v-if="isFullscreen"
+                class="inline-flex items-center justify-center w-8 h-8 rounded-full text-base mb-1"
+                :style="{ backgroundColor: rider.color }"
+              >🚴</span>
+              <br v-if="isFullscreen">
               {{ rider.name }}
             </th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100">
+        <tbody class="divide-y divide-stone-100 [&>tr:nth-child(even)]:bg-stone-50">
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Total (capped)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.totalDistanceCapped }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Total (capped)</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.totalDistanceCapped }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Daily avg (actual)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.dailyAverageActual }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Daily avg (actual)</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.dailyAverageActual }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Daily avg (capped)</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.dailyAverageCapped }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Daily avg (capped)</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.dailyAverageCapped }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Longest day</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.longestDay }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Longest day</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.longestDay }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Best 3-day</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.bestThreeDayCombo }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Best 3-day</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.bestThreeDayCombo }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Recent 5-day avg</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.recentFiveDayAverage }}<br><span class="text-gray-400">km</span>
+            <td class="py-1.5 pr-2 text-stone-500">Recent 5-day avg</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.recentFiveDayAverage }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Days &lt;3km</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+            <td class="py-1.5 pr-2 text-stone-500">Days &lt;3km</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.daysBelowThreeKm }}
             </td>
           </tr>
-          <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Remaining</td>
-            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-gray-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
-              {{ r.stats.distanceRemaining }}<br><span class="text-gray-400">km</span>
+          <tr v-if="hasPoints">
+            <td class="py-1.5 pr-2 text-stone-500">Sprint pts</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              <span :class="jerseys.green === r.id ? 'text-green-600 font-bold' : ''">{{ riderPoints(r.id).sprintPoints }}</span>
+            </td>
+          </tr>
+          <tr v-if="hasPoints">
+            <td class="py-1.5 pr-2 text-stone-500">Climb pts</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              <span :class="jerseys.polkaDot === r.id ? 'text-red-600 font-bold' : ''">{{ riderPoints(r.id).climbPoints }}</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-gray-500">Est. finish</td>
+            <td class="py-1.5 pr-2 text-stone-500">Remaining</td>
+            <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
+              {{ r.stats.distanceRemaining }}<br><span class="text-stone-400">km</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="py-1.5 pr-2 text-stone-500">Est. finish</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono text-xs">
               <template v-if="r.stats.estimatedFinishDate">
-                <span class="text-gray-400 block" :class="isFullscreen ? 'text-base' : 'text-[0.65rem]'" style="line-height:1">{{ formatFinishMonth(r.stats.estimatedFinishDate) }}</span>
+                <span class="text-stone-400 block" :class="isFullscreen ? 'text-base' : 'text-[0.65rem]'" style="line-height:1">{{ formatFinishMonth(r.stats.estimatedFinishDate) }}</span>
                 <span class="block" :class="isFullscreen ? 'text-2xl' : ''">{{ formatFinishDay(r.stats.estimatedFinishDate) }}</span>
               </template>
               <template v-else>-</template>
@@ -124,7 +146,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
 
     <!-- Sparklines -->
     <div v-if="dailyLog.entries.length > 1" class="mt-6 border-t pt-4">
-      <h4 class="text-sm font-semibold text-gray-600 mb-3">Daily Distance</h4>
+      <h4 class="text-sm font-semibold text-stone-600 mb-3">Daily Distance</h4>
       <div class="space-y-2">
         <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
           <span class="w-16 text-xs truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
@@ -141,7 +163,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
       </div>
       <div class="flex items-center gap-3 mt-1">
         <span class="w-16"/>
-        <div class="flex-1 flex justify-between text-[9px] text-gray-400">
+        <div class="flex-1 flex justify-between text-[9px] text-stone-400">
           <span v-for="label in sparklineDateLabels" :key="label">{{ label }}</span>
         </div>
       </div>
@@ -155,6 +177,10 @@ import { computed, ref, onUnmounted } from 'vue'
 import riderConfigJson from '~/data/riders/rider-config.json'
 import statsJson from '~/data/riders/stats.json'
 import dailyLogJson from '~/data/riders/daily-log.json'
+
+const props = defineProps({
+  snapshot: { type: Object, default: null },
+})
 
 const isFullscreen = ref(false)
 
@@ -184,10 +210,66 @@ function displayColor(hex) {
   return hex
 }
 
-const stats = statsJson
 const riderConfig = riderConfigJson
-const dailyLog = dailyLogJson
+const stats = props.snapshot?.stats || statsJson
+const dailyLog = props.snapshot?.log || dailyLogJson
 const totalDistance = riderConfig.totalDistance
+
+let pointsData = props.snapshot?.points || { riders: {} }
+if (!props.snapshot) {
+  try {
+    pointsData = await import('~/data/riders/points.json').then(m => m.default || m)
+  } catch {
+    // points.json may not exist yet
+  }
+}
+
+const hasPoints = computed(() =>
+  Object.values(pointsData.riders).some(r => r.totalPoints > 0)
+)
+
+function riderPoints(riderId) {
+  return pointsData.riders[riderId] || { sprintPoints: 0, climbPoints: 0, totalPoints: 0 }
+}
+
+const jerseys = computed(() => {
+  const riders = rankedRiders.value
+  if (!riders.length) return {}
+
+  // Yellow: place 1 (already ranked by capped distance, tiebreak: actual distance)
+  const yellow = riders[0]?.id || null
+
+  // Red: last place
+  const red = riders.length > 1 ? riders[riders.length - 1]?.id : null
+
+  // Green: highest sprint points (only if any points exist)
+  let green = null
+  if (hasPoints.value) {
+    let maxSprint = 0
+    for (const r of riders) {
+      const pts = riderPoints(r.id).sprintPoints
+      if (pts > maxSprint) {
+        maxSprint = pts
+        green = r.id
+      }
+    }
+  }
+
+  // Polka dot: highest climb points (only if any points exist)
+  let polkaDot = null
+  if (hasPoints.value) {
+    let maxClimb = 0
+    for (const r of riders) {
+      const pts = riderPoints(r.id).climbPoints
+      if (pts > maxClimb) {
+        maxClimb = pts
+        polkaDot = r.id
+      }
+    }
+  }
+
+  return { yellow, green, polkaDot, red }
+})
 
 const rankedRiders = computed(() => {
   return riderConfig.riders

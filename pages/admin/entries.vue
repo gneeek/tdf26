@@ -1,31 +1,31 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Entry Publish Controls</h1>
+    <h1 class="text-2xl font-bold text-stone-800 mb-6">Entry Publish Controls</h1>
 
     <div class="bg-white rounded-lg shadow-sm p-6">
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-gray-200">
-              <th class="text-left py-2 pr-2 text-gray-500 font-medium w-10">#</th>
-              <th class="text-left py-2 pr-2 text-gray-500 font-medium">Title</th>
-              <th class="text-center py-2 px-2 text-gray-500 font-medium w-32">Publish Date</th>
-              <th class="text-center py-2 px-2 text-gray-500 font-medium w-24">Status</th>
-              <th class="text-center py-2 px-2 text-gray-500 font-medium w-20">Actions</th>
+            <tr class="border-b border-stone-200">
+              <th class="text-left py-2 pr-2 text-stone-500 font-medium w-10">#</th>
+              <th class="text-left py-2 pr-2 text-stone-500 font-medium">Title</th>
+              <th class="text-center py-2 px-2 text-stone-500 font-medium w-32">Publish Date</th>
+              <th class="text-center py-2 px-2 text-stone-500 font-medium w-24">Status</th>
+              <th class="text-center py-2 px-2 text-stone-500 font-medium w-20">Actions</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-100">
+          <tbody class="divide-y divide-stone-100">
             <tr v-for="entry in entries" :key="entry.filename" :class="entry.draft ? 'opacity-60' : ''">
-              <td class="py-2 pr-2 font-mono text-gray-400">{{ entry.segment }}</td>
+              <td class="py-2 pr-2 font-mono text-stone-400">{{ entry.segment }}</td>
               <td class="py-2 pr-2">
-                <span class="text-gray-800">{{ entry.title }}</span>
-                <span class="text-xs text-gray-400 ml-2">{{ entry.filename }}</span>
+                <span class="text-stone-800">{{ entry.title }}</span>
+                <span class="text-xs text-stone-400 ml-2">{{ entry.filename }}</span>
               </td>
               <td class="text-center py-2 px-2">
                 <input
                   :value="entry.publishDate"
                   type="date"
-                  class="border border-gray-300 rounded px-2 py-1 text-xs w-full"
+                  class="border border-stone-300 rounded px-2 py-1 text-xs w-full"
                   @change="updateDate(entry, $event)"
                 >
               </td>

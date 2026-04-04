@@ -53,6 +53,7 @@ jobs:
         run: |
           [ -f data/riders/daily-log.json ] || cp data/riders/daily-log.example.json data/riders/daily-log.json
           [ -f data/riders/stats.json ] || cp data/riders/stats.example.json data/riders/stats.json
+          [ -f data/riders/points.json ] || cp data/riders/points.example.json data/riders/points.json
 
       - name: Build static site
         run: npx nuxt generate

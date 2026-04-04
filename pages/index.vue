@@ -1,14 +1,19 @@
 <template>
   <div>
     <section class="mb-12">
-      <h1 class="text-4xl font-serif font-bold text-correze-red mb-4">
+      <img
+        src="/images/introduction/marian_segment0.png"
+        alt="Malemort to Ussel - Tour de France 2026 Virtual Challenge - 185km"
+        class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-6"
+      >
+      <h1 class="text-4xl font-serif font-semibold text-correze-red mb-4 tracking-wide">
         Malemort to Ussel
       </h1>
-      <p class="text-xl text-gray-600 font-serif leading-relaxed">
+      <p class="text-xl text-stone-600 font-serif leading-relaxed">
         A cycling travelogue following the 185km route of Stage 9 of the 2026 Tour de France,
         through the hills, valleys, and villages of Correze.
       </p>
-      <p class="mt-2 text-gray-500">
+      <p class="mt-2 text-stone-500">
         26 entries published twice weekly, Sunday and Wednesday mornings.
         The peloton rides this road on Sunday, July 12.
       </p>
@@ -17,7 +22,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
       <div class="lg:col-span-2">
         <section class="mb-8">
-          <h2 class="text-2xl font-serif font-bold text-gray-800 mb-4">The Route</h2>
+          <h2 class="text-2xl font-serif font-bold text-stone-800 mb-4">The Route</h2>
           <SegmentMap
             :segment="0"
             :segments="segments"
@@ -26,7 +31,7 @@
             :rider-stats="riderStats"
             :rider-config="riderConfig"
           />
-          <p class="text-xs text-gray-400 mt-2">
+          <p class="text-xs text-stone-400 mt-2">
             Full 185km route. Use layer controls for topo, cycling, and satellite views.
           </p>
           <ClientOnly>
@@ -35,7 +40,7 @@
         </section>
 
         <section>
-          <h2 class="text-2xl font-serif font-bold text-gray-800 mb-6">Latest Entries</h2>
+          <h2 class="text-2xl font-serif font-bold text-stone-800 mb-6">Latest Entries</h2>
           <div v-if="entries && entries.length" class="space-y-6">
             <article v-for="entry in entries" :key="entry.path || entry._path" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
               <NuxtLink :to="entry.path || entry._path" class="block">
@@ -43,13 +48,13 @@
                   Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
                 </span>
                 <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
-                <h3 class="text-xl font-serif font-bold text-gray-900 mt-1">{{ entry.title }}</h3>
-                <p v-if="entry.subtitle" class="text-gray-600 mt-1">{{ entry.subtitle }}</p>
-                <time class="text-sm text-gray-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
+                <h3 class="text-xl font-serif font-bold text-stone-900 mt-1">{{ entry.title }}</h3>
+                <p v-if="entry.subtitle" class="text-stone-600 mt-1">{{ entry.subtitle }}</p>
+                <time class="text-sm text-stone-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
               </NuxtLink>
             </article>
           </div>
-          <p v-else class="text-gray-500 italic">No entries published yet.</p>
+          <p v-else class="text-stone-500 italic">No entries published yet.</p>
         </section>
       </div>
 

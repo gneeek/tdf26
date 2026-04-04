@@ -4,9 +4,9 @@
       <span class="text-sm text-correze-red font-semibold">
         Segment {{ page.segment }} - Km {{ page.kmStart }}-{{ page.kmEnd }}
       </span>
-      <h1 class="text-4xl font-serif font-bold text-gray-900 mt-2">{{ page.title }}</h1>
-      <p v-if="page.subtitle" class="text-xl text-gray-500 mt-2 font-serif">{{ page.subtitle }}</p>
-      <time class="text-sm text-gray-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
+      <h1 class="text-4xl font-serif font-semibold text-stone-900 mt-2 tracking-wide">{{ page.title }}</h1>
+      <p v-if="page.subtitle" class="text-xl text-stone-500 mt-2 font-serif tracking-wide">{{ page.subtitle }}</p>
+      <time class="text-sm text-stone-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
     </header>
 
     <SegmentMap
@@ -23,7 +23,7 @@
 
     <PowerStats :elevation-data="elevationData" class="mb-8" />
 
-    <div class="prose prose-lg max-w-none font-serif">
+    <div class="prose md:prose-lg max-w-none font-serif">
       <ContentRenderer :value="page" />
     </div>
 
@@ -31,9 +31,9 @@
 
     <WeatherWidget :weather="page.weather" />
 
-    <RiderDashboard />
+    <RiderDashboard :snapshot="riderSnapshot" />
 
-    <nav class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
+    <nav class="mt-12 pt-8 border-t border-stone-200 flex justify-between">
       <NuxtLink
         v-if="prev"
         :to="prev.path || prev._path"
@@ -110,13 +110,21 @@ try {
 }
 
 const elevationData = ref(null)
+const riderSnapshot = ref(null)
 if (page.value?.segment != null) {
+  const segNum = String(page.value.segment).padStart(2, '0')
   try {
-    const segNum = String(page.value.segment).padStart(2, '0')
     const data = await import(`~/data/elevation/segment-${segNum}.json`)
     elevationData.value = data.default || data
   } catch {
     elevationData.value = null
+  }
+  try {
+    const data = await import(`~/data/riders/snapshots/snapshot-${segNum}.json`)
+    riderSnapshot.value = data.default || data
+  } catch {
+    // No snapshot for this segment - dashboard will use live data
+    riderSnapshot.value = null
   }
 }
 
