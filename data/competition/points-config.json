@@ -1,0 +1,103 @@
+{
+  "description": "Sprint and climbing point locations for the rider competition",
+  "sprints": [
+    {
+      "name": "Sprint - Turenne",
+      "segment": 3,
+      "km": 17,
+      "points": [20, 17, 15, 13]
+    },
+    {
+      "name": "Sprint - Before Tulle",
+      "segment": 9,
+      "km": 60,
+      "points": [20, 17, 15, 13]
+    },
+    {
+      "name": "Sprint - Bugeat",
+      "segment": 19,
+      "km": 130,
+      "points": [20, 17, 15, 13]
+    },
+    {
+      "name": "Sprint - Ussel Finish",
+      "segment": 26,
+      "km": 183,
+      "points": [20, 17, 15, 13]
+    }
+  ],
+  "climbs": [
+    {
+      "name": "Puy Boubou",
+      "segment": 5,
+      "km": 32.8,
+      "category": 3,
+      "gradient": 4.1,
+      "points": [4, 3, 2, 1]
+    },
+    {
+      "name": "Cote de Lagleygeolle",
+      "segment": 7,
+      "km": 43.2,
+      "category": 4,
+      "gradient": 3.9,
+      "points": [2, 1, 0, 0]
+    },
+    {
+      "name": "Cote de Miel",
+      "segment": 8,
+      "km": 56.6,
+      "category": 4,
+      "gradient": 3.9,
+      "points": [2, 1, 0, 0]
+    },
+    {
+      "name": "Cote des Naves",
+      "segment": 11,
+      "km": 74.8,
+      "category": 2,
+      "gradient": 6.7,
+      "points": [6, 4, 2, 1]
+    },
+    {
+      "name": "Puy de Lachaud",
+      "segment": 13,
+      "km": 85.6,
+      "category": 2,
+      "gradient": 5.3,
+      "points": [6, 4, 2, 1]
+    },
+    {
+      "name": "Suc au May",
+      "segment": 15,
+      "km": 104.8,
+      "category": "HC",
+      "gradient": 7.7,
+      "points": [10, 8, 6, 4]
+    },
+    {
+      "name": "Cote de la Croix de Pey",
+      "segment": 18,
+      "km": 127,
+      "category": 3,
+      "gradient": 4.9,
+      "points": [4, 3, 2, 1]
+    },
+    {
+      "name": "Mont Bessou",
+      "segment": 22,
+      "km": 153,
+      "category": 4,
+      "gradient": 3.5,
+      "points": [2, 1, 0, 0]
+    },
+    {
+      "name": "Cote des Gardes",
+      "segment": 24,
+      "km": 167.2,
+      "category": 3,
+      "gradient": 4.8,
+      "points": [4, 3, 2, 1]
+    }
+  ]
+}
