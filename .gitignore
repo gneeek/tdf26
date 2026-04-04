@@ -28,6 +28,8 @@ Thumbs.db
 # Rider data (managed locally, synced to VM via admin)
 data/riders/daily-log.json
 data/riders/stats.json
+data/riders/points.json
+data/riders/snapshots/
 
 # Test coverage
 coverage/

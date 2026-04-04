@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Image Selector</h1>
+    <h1 class="text-2xl font-bold text-stone-800 mb-6">Image Selector</h1>
 
     <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
       <div class="flex items-center gap-4">
-        <label class="text-sm font-medium text-gray-600">Segment</label>
-        <select v-model.number="selectedSegment" class="border border-gray-300 rounded px-3 py-2 text-sm">
+        <label class="text-sm font-medium text-stone-600">Segment</label>
+        <select v-model.number="selectedSegment" class="border border-stone-300 rounded px-3 py-2 text-sm">
           <option v-for="n in 26" :key="n" :value="n">{{ n }} - {{ segmentTitle(n) }}</option>
         </select>
         <button
-          class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700"
+          class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700"
           @click="loadImages"
         >
           Load
@@ -27,10 +27,10 @@
     <!-- Selected images -->
     <div v-if="selected.length" class="bg-white rounded-lg shadow-sm p-6 mb-6">
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-lg font-semibold text-gray-700">Selected ({{ selected.length }})</h2>
+        <h2 class="text-lg font-semibold text-stone-700">Selected ({{ selected.length }})</h2>
         <button
           :disabled="saving"
-          class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+          class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700 disabled:opacity-50"
           @click="saveSelection"
         >
           {{ saving ? 'Saving...' : 'Save to Entry' }}
@@ -45,7 +45,7 @@
           >
             x
           </button>
-          <p class="text-xs text-gray-500 mt-1 truncate">{{ img.alt }}</p>
+          <p class="text-xs text-stone-500 mt-1 truncate">{{ img.alt }}</p>
         </div>
       </div>
       <span v-if="saveMessage" class="block mt-3 text-sm" :class="saveError ? 'text-red-600' : 'text-green-600'">
@@ -55,7 +55,7 @@
 
     <!-- Suggestions grid -->
     <div v-if="suggestions.length" class="bg-white rounded-lg shadow-sm p-6">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">
         Suggestions ({{ suggestions.length }})
       </h2>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -67,7 +67,7 @@
         >
           <div
             class="relative overflow-hidden rounded border-2 transition-all"
-            :class="isSelected(img) ? 'border-green-500 opacity-70' : 'border-gray-200 hover:border-blue-400'"
+            :class="isSelected(img) ? 'border-green-500 opacity-70' : 'border-stone-200 hover:border-blue-400'"
           >
             <img
               :src="img.url"
@@ -86,13 +86,13 @@
               </span>
             </div>
           </div>
-          <p class="text-xs text-gray-600 mt-1 truncate">{{ img.title }}</p>
-          <p class="text-xs text-gray-400 truncate">{{ img.license }} - {{ img.width }}x{{ img.height }}</p>
+          <p class="text-xs text-stone-600 mt-1 truncate">{{ img.title }}</p>
+          <p class="text-xs text-stone-400 truncate">{{ img.license }} - {{ img.width }}x{{ img.height }}</p>
         </div>
       </div>
     </div>
 
-    <p v-else-if="loaded && !fetching" class="text-gray-400 italic text-sm">
+    <p v-else-if="loaded && !fetching" class="text-stone-400 italic text-sm">
       No suggestions found. Click "Fetch from Wikimedia" to search.
     </p>
   </div>

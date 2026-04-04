@@ -2,8 +2,8 @@
   <div>
     <div class="flex items-center justify-between mb-6">
       <div>
-        <NuxtLink to="/admin/entries" class="text-sm text-gray-500 hover:underline">&larr; Back to entries</NuxtLink>
-        <h1 class="text-2xl font-bold text-gray-800 mt-1">{{ entryTitle || 'Edit Entry' }}</h1>
+        <NuxtLink to="/admin/entries" class="text-sm text-stone-500 hover:underline">&larr; Back to entries</NuxtLink>
+        <h1 class="text-2xl font-bold text-stone-800 mt-1">{{ entryTitle || 'Edit Entry' }}</h1>
       </div>
       <div class="flex items-center gap-3">
         <span v-if="saveMessage" class="text-sm" :class="saveError ? 'text-red-600' : 'text-green-600'">
@@ -11,7 +11,7 @@
         </span>
         <button
           :disabled="saving"
-          class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-700 disabled:opacity-50"
+          class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700 disabled:opacity-50"
           @click="saveEntry"
         >
           {{ saving ? 'Saving...' : 'Save' }}
@@ -23,32 +23,32 @@
       <!-- Editor pane -->
       <div class="flex flex-col overflow-hidden" :style="{ width: editorWidth + '%' }">
         <div class="bg-white rounded-lg shadow-sm p-4 mb-4 flex-shrink-0">
-          <h2 class="text-sm font-semibold text-gray-600 mb-2">Frontmatter</h2>
+          <h2 class="text-sm font-semibold text-stone-600 mb-2">Frontmatter</h2>
           <textarea
             v-model="frontmatter"
-            class="w-full font-mono text-xs border border-gray-300 rounded p-3 bg-gray-50"
+            class="w-full font-mono text-xs border border-stone-300 rounded p-3 bg-stone-50"
             rows="6"
             spellcheck="false"
           />
         </div>
         <div class="bg-white rounded-lg shadow-sm p-4 flex-1 flex flex-col overflow-hidden">
-          <h2 class="text-sm font-semibold text-gray-600 mb-2">Content (Markdown)</h2>
+          <h2 class="text-sm font-semibold text-stone-600 mb-2">Content (Markdown)</h2>
           <!-- Toolbar -->
           <div class="flex gap-1 mb-2 flex-shrink-0">
             <button class="toolbar-btn font-bold" title="Heading 1" @click="insertLinePrefix('# ')">H1</button>
             <button class="toolbar-btn font-bold" title="Heading 2" @click="insertLinePrefix('## ')">H2</button>
             <button class="toolbar-btn font-bold" title="Heading 3" @click="insertLinePrefix('### ')">H3</button>
-            <span class="w-px bg-gray-300 mx-1"/>
+            <span class="w-px bg-stone-300 mx-1"/>
             <button class="toolbar-btn font-bold" title="Bold" @click="wrapMd('**', '**')">B</button>
             <button class="toolbar-btn italic" title="Italic" @click="wrapMd('*', '*')">I</button>
-            <span class="w-px bg-gray-300 mx-1"/>
+            <span class="w-px bg-stone-300 mx-1"/>
             <button class="toolbar-btn" title="Quote" @click="insertLinePrefix('> ')">&ldquo;</button>
             <button class="toolbar-btn" title="Link" @click="wrapMd('[', '](url)')">Link</button>
           </div>
           <textarea
             ref="editorRef"
             v-model="body"
-            class="w-full font-mono text-sm border border-gray-300 rounded p-3 flex-1 resize-none"
+            class="w-full font-mono text-sm border border-stone-300 rounded p-3 flex-1 resize-none"
             spellcheck="true"
           />
         </div>
@@ -56,16 +56,16 @@
 
       <!-- Resize handle -->
       <div
-        class="w-2 cursor-col-resize flex-shrink-0 flex items-center justify-center hover:bg-gray-300 rounded"
+        class="w-2 cursor-col-resize flex-shrink-0 flex items-center justify-center hover:bg-stone-300 rounded"
         @mousedown="startResize"
       >
-        <div class="w-0.5 h-8 bg-gray-400 rounded"/>
+        <div class="w-0.5 h-8 bg-stone-400 rounded"/>
       </div>
 
       <!-- Preview pane -->
       <div class="flex-1 overflow-auto">
         <div class="bg-white rounded-lg shadow-sm p-6 h-full overflow-auto">
-          <h2 class="text-sm font-semibold text-gray-600 mb-4">Preview</h2>
+          <h2 class="text-sm font-semibold text-stone-600 mb-4">Preview</h2>
           <div class="prose prose-lg max-w-none font-serif" v-html="renderedPreview" />
         </div>
       </div>
@@ -221,6 +221,6 @@ onMounted(() => loadEntry())
 
 <style scoped>
 .toolbar-btn {
-  @apply px-2 py-1 text-xs border border-gray-300 rounded hover:bg-gray-100 text-gray-700 cursor-pointer;
+  @apply px-2 py-1 text-xs border border-stone-300 rounded hover:bg-stone-100 text-stone-700 cursor-pointer;
 }
 </style>

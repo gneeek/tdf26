@@ -1,44 +1,44 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Weather Data</h1>
+    <h1 class="text-2xl font-bold text-stone-800 mb-6">Weather Data</h1>
 
     <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">API Key</h2>
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">API Key</h2>
       <div class="flex gap-3 items-center">
         <input
           v-model="apiKey"
           :type="showKey ? 'text' : 'password'"
           placeholder="OpenWeatherMap API key"
-          class="border border-gray-300 rounded px-3 py-2 text-sm flex-1 font-mono"
+          class="border border-stone-300 rounded px-3 py-2 text-sm flex-1 font-mono"
         >
-        <button class="text-sm text-gray-500 hover:underline" @click="showKey = !showKey">
+        <button class="text-sm text-stone-500 hover:underline" @click="showKey = !showKey">
           {{ showKey ? 'Hide' : 'Show' }}
         </button>
       </div>
     </div>
 
     <div class="bg-white rounded-lg shadow-sm p-6">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">Entries</h2>
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">Entries</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-gray-200">
-              <th class="text-left py-2 pr-2 text-gray-500 font-medium w-10">#</th>
-              <th class="text-left py-2 pr-2 text-gray-500 font-medium">Title</th>
-              <th class="text-left py-2 px-2 text-gray-500 font-medium">Current Weather</th>
-              <th class="text-left py-2 px-2 text-gray-500 font-medium">Fetch</th>
+            <tr class="border-b border-stone-200">
+              <th class="text-left py-2 pr-2 text-stone-500 font-medium w-10">#</th>
+              <th class="text-left py-2 pr-2 text-stone-500 font-medium">Title</th>
+              <th class="text-left py-2 px-2 text-stone-500 font-medium">Current Weather</th>
+              <th class="text-left py-2 px-2 text-stone-500 font-medium">Fetch</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-100">
+          <tbody class="divide-y divide-stone-100">
             <tr v-for="entry in entries" :key="entry.filename">
-              <td class="py-2 pr-2 font-mono text-gray-400">{{ entry.segment }}</td>
-              <td class="py-2 pr-2 text-gray-800">{{ entry.title }}</td>
+              <td class="py-2 pr-2 font-mono text-stone-400">{{ entry.segment }}</td>
+              <td class="py-2 pr-2 text-stone-800">{{ entry.title }}</td>
               <td class="py-2 px-2">
-                <span v-if="entry.weather" class="text-sm text-gray-600">
+                <span v-if="entry.weather" class="text-sm text-stone-600">
                   {{ entry.weather.current.temp }}&deg;C, {{ entry.weather.current.conditions }}, {{ entry.weather.current.wind }}
                   <button class="text-xs text-red-500 hover:underline ml-2" @click="deleteWeather(entry)">delete</button>
                 </span>
-                <span v-else class="text-gray-400 italic">None</span>
+                <span v-else class="text-stone-400 italic">None</span>
               </td>
               <td class="py-2 px-2">
                 <div v-if="preview && preview.filename === entry.filename" class="flex items-center gap-2">
@@ -52,9 +52,9 @@
                   >
                     {{ injecting === entry.filename ? 'Saving...' : 'Save' }}
                   </button>
-                  <button class="text-xs text-gray-400 hover:underline" @click="preview = null">Cancel</button>
+                  <button class="text-xs text-stone-400 hover:underline" @click="preview = null">Cancel</button>
                 </div>
-                <span v-else-if="fetching === entry.filename" class="text-xs text-gray-400">Fetching...</span>
+                <span v-else-if="fetching === entry.filename" class="text-xs text-stone-400">Fetching...</span>
                 <button
                   v-else
                   class="text-xs text-blue-600 hover:underline"
