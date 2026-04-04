@@ -67,6 +67,7 @@
         When a rider's cumulative progress passes a sprint location, they "contest" the sprint.
         The first rider to reach each sprint gets the most points, with decreasing points for 2nd, 3rd, and 4th.
       </p>
+      <div class="overflow-x-auto">
       <table>
         <thead>
           <tr>
@@ -89,6 +90,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2>Climbing Points</h2>
       <p>
@@ -96,6 +98,7 @@
         fearsome Suc au May at 7.7%. Higher-category climbs award more points. The first rider over
         each summit claims the biggest prize.
       </p>
+      <div class="overflow-x-auto">
       <table>
         <thead>
           <tr>
@@ -120,6 +123,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <h2>Tiebreaking</h2>
       <p>

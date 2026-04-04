@@ -4,8 +4,8 @@
       <span class="text-sm text-correze-red font-semibold">
         Segment {{ page.segment }} - Km {{ page.kmStart }}-{{ page.kmEnd }}
       </span>
-      <h1 class="text-4xl font-serif font-semibold text-stone-900 mt-2 tracking-wide">{{ page.title }}</h1>
-      <p v-if="page.subtitle" class="text-xl text-stone-500 mt-2 font-serif tracking-wide">{{ page.subtitle }}</p>
+      <h1 class="text-3xl sm:text-4xl font-serif font-semibold text-stone-900 mt-2 tracking-wide">{{ page.title }}</h1>
+      <p v-if="page.subtitle" class="text-lg sm:text-xl text-stone-500 mt-2 font-serif tracking-wide">{{ page.subtitle }}</p>
       <time class="text-sm text-stone-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
     </header>
 
