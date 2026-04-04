@@ -1,0 +1,118 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run JavaScript tests with coverage
+        run: npm run test:coverage
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          python -m venv processing/.venv
+          processing/.venv/bin/pip install -r processing/requirements.txt
+
+      - name: Run Python tests with coverage
+        run: |
+          processing/.venv/bin/python -m pytest processing/tests/ \
+            --cov=processing --cov-report=json:coverage/python-coverage.json
+
+      - name: Generate coverage summary
+        run: |
+          echo "## Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # JS coverage from vitest json-summary
+          if [ -f coverage/coverage-summary.json ]; then
+            JS_PCT=$(node -e "const c=require('./coverage/coverage-summary.json'); console.log(c.total.lines.pct)")
+            echo "### JavaScript Coverage" >> $GITHUB_STEP_SUMMARY
+            echo "| Metric | Coverage |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|----------|" >> $GITHUB_STEP_SUMMARY
+            node -e "
+              const c = require('./coverage/coverage-summary.json').total;
+              for (const [k,v] of Object.entries(c)) {
+                console.log('| ' + k + ' | ' + v.pct + '% |');
+              }" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          else
+            JS_PCT="0"
+            echo "### JavaScript Coverage" >> $GITHUB_STEP_SUMMARY
+            echo "No coverage data (no source files covered yet)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Python coverage
+          if [ -f coverage/python-coverage.json ]; then
+            PY_PCT=$(python3 -c "import json; d=json.load(open('coverage/python-coverage.json')); print(round(d['totals']['percent_covered'],1))")
+            echo "### Python Coverage" >> $GITHUB_STEP_SUMMARY
+            echo "| Metric | Coverage |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|----------|" >> $GITHUB_STEP_SUMMARY
+            echo "| lines | ${PY_PCT}% |" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          else
+            PY_PCT="0"
+          fi
+
+          # Write badge JSON for shields.io
+          mkdir -p badges
+          node -e "
+            const js = '${JS_PCT}', py = '${PY_PCT}';
+            function color(pct) {
+              const n = parseFloat(pct);
+              if (n >= 80) return 'brightgreen';
+              if (n >= 60) return 'green';
+              if (n >= 40) return 'yellowgreen';
+              if (n >= 20) return 'yellow';
+              return 'red';
+            }
+            const badges = {
+              js: { schemaVersion: 1, label: 'JS coverage', message: js + '%', color: color(js) },
+              py: { schemaVersion: 1, label: 'Python coverage', message: py + '%', color: color(py) }
+            };
+            require('fs').writeFileSync('badges/coverage.json', JSON.stringify(badges, null, 2));
+          "
+
+      - name: Update coverage badges
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
+        env:
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          GIST_ID: ${{ vars.COVERAGE_GIST_ID }}
+        run: |
+          if [ -z "$GIST_TOKEN" ] || [ -z "$GIST_ID" ]; then
+            echo "GIST_TOKEN secret or COVERAGE_GIST_ID variable not set, skipping badge update"
+            exit 0
+          fi
+          # Update gist with coverage badge JSON
+          CONTENT=$(cat badges/coverage.json | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))")
+          curl -s -X PATCH \
+            -H "Authorization: token $GIST_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/gists/$GIST_ID" \
+            -d "{\"files\":{\"coverage.json\":{\"content\":$CONTENT}}}" > /dev/null
+          echo "Coverage badge gist updated"
