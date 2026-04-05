@@ -200,12 +200,26 @@ const chartData = computed(() => {
   }
 })
 
-// Known town km positions along the route
+// Known positions along the route
 const townKmPositions = {
   'Malemort': 0, 'Brive-la-Gaillarde': 4.5, 'Turenne': 17,
   'Collonges-la-Rouge': 23.5, 'Beynat': 37.5, 'Tulle': 65.5,
   'Naves': 73.5, 'Chaumeil': 90, 'Treignac': 116.5,
   'Bugeat': 130, 'Meymac': 157.5, 'Ussel': 182.5,
+}
+
+// Known climb summit positions (km_end from KNOWN_CLIMBS)
+const climbSummitKm = {
+  'Cote de Malemort': 5,
+  'Puy Boubou': 30.6,
+  'Cote de Lagleygeolle': 43.2, 'Côte de Lagleygeolle': 43.2,
+  'Cote de Miel': 51.1, 'Côte de Miel': 51.1,
+  'Cote des Naves': 74.8, 'Côte des Naves': 74.8,
+  'Puy de Lachaud': 85.6,
+  'Suc au May': 104.8,
+  'Cote de la Croix de Pey': 127, 'Côte de la Croix de Pey': 127,
+  'Mont Bessou': 153,
+  'Cote des Gardes': 167.2, 'Côte des Gardes': 167.2,
 }
 
 function buildLabelItems() {
@@ -252,24 +266,26 @@ function buildLabelItems() {
       for (const climb of seg.climbs) {
         if (placed.has(climb)) continue
         placed.add(climb)
-        // Find the highest elevation point within this segment's range
-        const elevations = props.elevationData.elevation
+        // Use known summit km if available, otherwise find peak in segment range
+        const summitKm = climbSummitKm[climb]
         let peakIdx = 0
-        let peakElev = -Infinity
-        for (let i = 0; i < distances.length; i++) {
-          if (distances[i] >= seg.km_start && distances[i] <= seg.km_end) {
-            if (elevations[i] > peakElev) {
-              peakElev = elevations[i]
-              peakIdx = i
-            }
-          }
-        }
-        // Fallback if nothing found in range
-        if (peakElev === -Infinity) {
+        if (summitKm != null) {
+          const targetKm = summitKm - kmOffset
           let bestDist = Infinity
           for (let i = 0; i < distances.length; i++) {
-            const d = Math.abs(distances[i] - seg.km_end)
+            const d = Math.abs(distances[i] - targetKm)
             if (d < bestDist) { bestDist = d; peakIdx = i }
+          }
+        } else {
+          const elevations = props.elevationData.elevation
+          let peakElev = -Infinity
+          for (let i = 0; i < distances.length; i++) {
+            if (distances[i] >= seg.km_start - kmOffset && distances[i] <= seg.km_end - kmOffset) {
+              if (elevations[i] > peakElev) {
+                peakElev = elevations[i]
+                peakIdx = i
+              }
+            }
           }
         }
         items.push({
