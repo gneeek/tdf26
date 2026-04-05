@@ -52,7 +52,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
       <div class="bg-green-50 rounded-lg p-3 border border-green-200">
         <div class="flex items-center gap-2 mb-2">
           <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
-          <span class="text-sm font-semibold text-green-800">Sprint Points</span>
+          <span class="text-sm font-semibold text-green-800">Points</span>
         </div>
         <div class="space-y-1">
           <div v-for="r in sprintRanking" :key="r.id" class="flex items-center justify-between text-sm">
@@ -64,7 +64,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
       <div class="bg-red-50 rounded-lg p-3 border border-red-200">
         <div class="flex items-center gap-2 mb-2">
           <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/></svg>
-          <span class="text-sm font-semibold text-red-800">Climbing Points</span>
+          <span class="text-sm font-semibold text-red-800">KOM</span>
         </div>
         <div class="space-y-1">
           <div v-for="r in climbRanking" :key="r.id" class="flex items-center justify-between text-sm">
