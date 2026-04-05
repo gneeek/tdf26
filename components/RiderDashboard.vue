@@ -294,23 +294,8 @@ const jerseys = computed(() => {
   const yellow = riders[0]?.id || null
   if (yellow) taken.add(yellow)
 
-  // Polka dot: highest climb points (second most prestigious)
+  // Green: highest sprint points (second most prestigious)
   // If the leader already wears yellow, next rider gets it
-  let polkaDot = null
-  if (hasPoints.value) {
-    const climbSorted = [...riders].sort((a, b) =>
-      riderPoints(b.id).climbPoints - riderPoints(a.id).climbPoints
-    )
-    for (const r of climbSorted) {
-      if (riderPoints(r.id).climbPoints > 0 && !taken.has(r.id)) {
-        polkaDot = r.id
-        taken.add(r.id)
-        break
-      }
-    }
-  }
-
-  // Green: highest sprint points (third most prestigious)
   let green = null
   if (hasPoints.value) {
     const sprintSorted = [...riders].sort((a, b) =>
@@ -319,6 +304,21 @@ const jerseys = computed(() => {
     for (const r of sprintSorted) {
       if (riderPoints(r.id).sprintPoints > 0 && !taken.has(r.id)) {
         green = r.id
+        taken.add(r.id)
+        break
+      }
+    }
+  }
+
+  // Polka dot: highest climb points (third most prestigious)
+  let polkaDot = null
+  if (hasPoints.value) {
+    const climbSorted = [...riders].sort((a, b) =>
+      riderPoints(b.id).climbPoints - riderPoints(a.id).climbPoints
+    )
+    for (const r of climbSorted) {
+      if (riderPoints(r.id).climbPoints > 0 && !taken.has(r.id)) {
+        polkaDot = r.id
         taken.add(r.id)
         break
       }
