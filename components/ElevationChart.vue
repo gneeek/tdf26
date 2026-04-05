@@ -211,9 +211,9 @@ const townKmPositions = {
 // Known climb summit positions (km_end from KNOWN_CLIMBS)
 const climbSummitKm = {
   'Cote de Malemort': 5,
-  'Puy Boubou': 32.8,
+  'Puy Boubou': 30.6,
   'Cote de Lagleygeolle': 43.2, 'Côte de Lagleygeolle': 43.2,
-  'Cote de Miel': 56.6, 'Côte de Miel': 56.6,
+  'Cote de Miel': 51.1, 'Côte de Miel': 51.1,
   'Cote des Naves': 74.8, 'Côte des Naves': 74.8,
   'Puy de Lachaud': 85.6,
   'Suc au May': 104.8,
