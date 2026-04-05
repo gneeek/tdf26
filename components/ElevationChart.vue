@@ -48,6 +48,7 @@
 
 <script setup>
 import { computed, ref, nextTick, onMounted, onUnmounted } from 'vue'
+import { useJerseys, jerseyEmoji } from '~/composables/useJerseys'
 import { Line } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -121,6 +122,25 @@ const props = defineProps({
   riderConfig: { type: Object, default: null },
   riderPoints: { type: Object, default: null },
 })
+
+// Jersey assignments via shared composable
+const elevRankedRiders = computed(() => {
+  if (!props.riderStats?.riders || !props.riderConfig?.riders) return []
+  return [...props.riderConfig.riders]
+    .map(r => ({ ...r, stats: props.riderStats.riders[r.id] || {} }))
+    .sort((a, b) => (a.stats.place || 99) - (b.stats.place || 99))
+})
+
+function elevGetPoints(riderId) {
+  const pts = props.riderPoints?.riders || {}
+  return pts[riderId] || { sprintPoints: 0, climbPoints: 0, totalPoints: 0 }
+}
+
+const elevHasPoints = computed(() =>
+  Object.values(props.riderPoints?.riders || {}).some(r => r.totalPoints > 0)
+)
+
+const jerseys = useJerseys(elevRankedRiders, elevGetPoints, elevHasPoints)
 
 const chartRef = ref(null)
 const isFullscreen = ref(false)
@@ -304,46 +324,7 @@ function buildLabelItems() {
 }
 
 function getJerseyEmoji(riderId) {
-  if (!props.riderStats?.riders || !props.riderConfig?.riders) return ''
-  const riders = props.riderConfig.riders
-  const pts = props.riderPoints?.riders || {}
-
-  // Compute jerseys with precedence: yellow > green > polka dot > red
-  const taken = new Set()
-  const sorted = [...riders]
-    .map(r => ({ ...r, stats: props.riderStats.riders[r.id] || {} }))
-    .sort((a, b) => (a.stats.place || 99) - (b.stats.place || 99))
-
-  const yellow = sorted[0]?.id
-  if (yellow) taken.add(yellow)
-  if (riderId === yellow) return '🟡'
-
-  let green = null
-  const sprintSorted = [...riders].sort((a, b) =>
-    (pts[b.id]?.sprintPoints || 0) - (pts[a.id]?.sprintPoints || 0)
-  )
-  for (const r of sprintSorted) {
-    if ((pts[r.id]?.sprintPoints || 0) > 0 && !taken.has(r.id)) {
-      green = r.id; taken.add(r.id); break
-    }
-  }
-  if (riderId === green) return '🟢'
-
-  let polkaDot = null
-  const climbSorted = [...riders].sort((a, b) =>
-    (pts[b.id]?.climbPoints || 0) - (pts[a.id]?.climbPoints || 0)
-  )
-  for (const r of climbSorted) {
-    if ((pts[r.id]?.climbPoints || 0) > 0 && !taken.has(r.id)) {
-      polkaDot = r.id; taken.add(r.id); break
-    }
-  }
-  if (riderId === polkaDot) return '🔴'
-
-  const red = sorted.length > 1 ? sorted[sorted.length - 1]?.id : null
-  if (riderId === red && !taken.has(red)) return '🔻'
-
-  return ''
+  return jerseyEmoji(jerseys.value, riderId)
 }
 
 function buildRiderAnnotations() {
