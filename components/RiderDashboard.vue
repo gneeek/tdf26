@@ -22,8 +22,8 @@
     </div>
 
     <!-- Progress bars -->
-    <div class="space-y-3 mb-6">
-      <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
+    <div class="space-y-1.5 mb-6">
+      <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-2">
         <div class="w-24 flex items-center gap-1 shrink-0">
           <span class="text-sm font-medium truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
           <JerseyIcon v-if="jerseys.yellow === rider.id" type="yellow" size="xs" title="Yellow Jersey" class="shrink-0" />
@@ -31,7 +31,7 @@
           <JerseyIcon v-if="jerseys.polkaDot === rider.id" type="polkaDot" size="xs" title="Polka Dot Jersey" class="shrink-0" />
           <JerseyIcon v-if="jerseys.red === rider.id" type="red" size="xs" title="Lanterne Rouge" class="shrink-0" />
         </div>
-        <div class="flex-1 bg-stone-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
+        <div class="flex-1 bg-stone-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-6' : 'h-3.5'">
           <div
             class="h-full rounded-full transition-all duration-500"
             :style="{
@@ -40,13 +40,9 @@
               minWidth: rider.stats.totalDistanceCapped > 0 ? '8px' : '0'
             }"
           />
-          <span
-class="absolute inset-0 flex items-center justify-center text-xs font-mono"
-                :class="rider.stats.totalDistanceCapped > totalDistance * 0.4 ? 'text-white' : 'text-stone-600'">
-            {{ rider.stats.totalDistanceCapped }} km
-          </span>
         </div>
-        <span class="w-8 text-xs text-stone-400 text-right">#{{ rider.stats.place }}</span>
+        <span class="w-16 text-xs text-stone-500 text-right font-mono">{{ rider.stats.totalDistanceCapped }} km</span>
+        <span class="w-6 text-xs text-stone-400 text-right">#{{ rider.stats.place }}</span>
       </div>
     </div>
 
