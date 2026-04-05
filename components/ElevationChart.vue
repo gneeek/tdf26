@@ -356,6 +356,7 @@ function buildRiderAnnotations() {
         font: { size: 10, weight: 'bold' },
         padding: { top: 2, bottom: 2, left: 4, right: 4 },
         borderRadius: 3,
+        xAdjust: 8,
       }
     }
   })
