@@ -33,6 +33,8 @@
 
     <HistoricalContext :segment="page.segment" />
 
+    <UpcomingPoints :segment="page.segment" />
+
     <WeatherWidget :weather="page.weather" />
 
     <RiderDashboard :snapshot="riderSnapshot" />
