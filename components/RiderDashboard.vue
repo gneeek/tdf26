@@ -202,6 +202,7 @@
 <script setup>
 import { computed, ref, onUnmounted } from 'vue'
 
+import { useJerseys } from '~/composables/useJerseys'
 import riderConfigJson from '~/data/riders/rider-config.json'
 import statsJson from '~/data/riders/stats.json'
 import dailyLogJson from '~/data/riders/daily-log.json'
@@ -291,59 +292,7 @@ const climbRanking = computed(() => {
     .map((r, i) => ({ ...r, rank: i + 1 }))
 })
 
-const jerseys = computed(() => {
-  const riders = rankedRiders.value
-  if (!riders.length) return {}
-
-  // Track which riders already have a more prestigious jersey
-  const taken = new Set()
-
-  // Yellow: place 1 (most prestigious - assigned first)
-  const yellow = riders[0]?.id || null
-  if (yellow) taken.add(yellow)
-
-  // Green: highest sprint points (second most prestigious)
-  // If the leader already wears yellow, next rider gets it
-  let green = null
-  if (hasPoints.value) {
-    const sprintSorted = [...riders].sort((a, b) =>
-      riderPoints(b.id).sprintPoints - riderPoints(a.id).sprintPoints
-    )
-    for (const r of sprintSorted) {
-      if (riderPoints(r.id).sprintPoints > 0 && !taken.has(r.id)) {
-        green = r.id
-        taken.add(r.id)
-        break
-      }
-    }
-  }
-
-  // Polka dot: highest climb points (third most prestigious)
-  let polkaDot = null
-  if (hasPoints.value) {
-    const climbSorted = [...riders].sort((a, b) =>
-      riderPoints(b.id).climbPoints - riderPoints(a.id).climbPoints
-    )
-    for (const r of climbSorted) {
-      if (riderPoints(r.id).climbPoints > 0 && !taken.has(r.id)) {
-        polkaDot = r.id
-        taken.add(r.id)
-        break
-      }
-    }
-  }
-
-  // Red: last place (least prestigious - only if not already wearing another jersey)
-  let red = null
-  if (riders.length > 1) {
-    const lastRider = riders[riders.length - 1]?.id
-    if (lastRider && !taken.has(lastRider)) {
-      red = lastRider
-    }
-  }
-
-  return { yellow, green, polkaDot, red }
-})
+const jerseys = useJerseys(rankedRiders, riderPoints, hasPoints)
 
 const rankedRiders = computed(() => {
   return riderConfig.riders
