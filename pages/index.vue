@@ -81,7 +81,7 @@
         <RiderDashboard />
         <div class="mt-6">
           <PublishSchedule v-if="isDev" />
-          <StageDetails v-else />
+          <StageDetails v-else :current-km="latestKmEnd" />
         </div>
       </aside>
     </div>
@@ -140,6 +140,11 @@ const { data: entries } = await useAsyncData('entries', () =>
     .limit(5)
     .all()
 )
+
+const latestKmEnd = computed(() => {
+  const latest = entries.value?.[0]
+  return latest?.kmEnd || 0
+})
 
 function formatDate(dateStr) {
   if (!dateStr) return ''
