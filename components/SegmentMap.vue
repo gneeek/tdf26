@@ -320,6 +320,8 @@ async function initMap(el) {
     'Attractions': attractionsGroup,
     'Rider Progress': riderGroup
   }
+  poiGroup.addTo(map)
+  riderGroup.addTo(map)
   L.control.layers(baseLayers, overlays, { position: 'topleft' }).addTo(map)
 
   // Full route
