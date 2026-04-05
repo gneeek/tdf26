@@ -292,8 +292,6 @@ const climbRanking = computed(() => {
     .map((r, i) => ({ ...r, rank: i + 1 }))
 })
 
-const jerseys = useJerseys(rankedRiders, riderPoints, hasPoints)
-
 const rankedRiders = computed(() => {
   return riderConfig.riders
     .map(r => ({
@@ -303,6 +301,8 @@ const rankedRiders = computed(() => {
     }))
     .sort((a, b) => (a.stats.place || 99) - (b.stats.place || 99))
 })
+
+const jerseys = useJerseys(rankedRiders, riderPoints, hasPoints)
 
 function formatFinishMonth(dateStr) {
   const d = new Date(dateStr + 'T00:00:00')
