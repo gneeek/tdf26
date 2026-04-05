@@ -24,8 +24,12 @@
           each logs daily kilometres from their own rides, and we track their progress along the
           185km Stage 9 parcours. Each day, up to 2km counts toward their position on the route -
           but unused cap rolls over, rewarding rest days followed by big efforts. Four jerseys are
-          contested: yellow for the race leader, green for sprint points, polka dot for climbing
-          points, and the lanterne rouge for last place.
+          contested:
+          <svg class="w-4 h-4 inline-block mx-0.5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#FFD100" stroke="#B8960A" stroke-width="1"/></svg> yellow for the race leader,
+          <svg class="w-4 h-4 inline-block mx-0.5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg> green for sprint points,
+          <svg class="w-4 h-4 inline-block mx-0.5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/></svg> polka dot for climbing points,
+          and the
+          <svg class="w-4 h-4 inline-block mx-0.5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#DC2626" stroke="#991B1B" stroke-width="1"/></svg> lanterne rouge for last place.
         </p>
         <NuxtLink to="/rules" class="inline-block mt-2 text-correze-red hover:underline font-medium">
           Full competition rules
