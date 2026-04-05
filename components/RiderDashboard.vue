@@ -47,6 +47,34 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
       </div>
     </div>
 
+    <!-- Classification standings -->
+    <div v-if="hasPoints" class="grid grid-cols-2 gap-3 mb-6">
+      <div class="bg-green-50 rounded-lg p-3 border border-green-200">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
+          <span class="text-sm font-semibold text-green-800">Points</span>
+        </div>
+        <div class="space-y-1">
+          <div v-for="r in sprintRanking" :key="r.id" class="flex items-center justify-between text-sm">
+            <span :class="r.rank === 1 ? 'font-bold text-green-700' : 'text-stone-600'">{{ r.name }}</span>
+            <span class="font-mono" :class="r.rank === 1 ? 'font-bold text-green-700' : 'text-stone-500'">{{ r.points }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-red-50 rounded-lg p-3 border border-red-200">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/></svg>
+          <span class="text-sm font-semibold text-red-800">KOM</span>
+        </div>
+        <div class="space-y-1">
+          <div v-for="r in climbRanking" :key="r.id" class="flex items-center justify-between text-sm">
+            <span :class="r.rank === 1 ? 'font-bold text-red-700' : 'text-stone-600'">{{ r.name }}</span>
+            <span class="font-mono" :class="r.rank === 1 ? 'font-bold text-red-700' : 'text-stone-500'">{{ r.points }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Stats table -->
     <div class="overflow-x-auto">
       <table class="w-full" :class="isFullscreen ? 'text-xl' : 'text-sm'">
@@ -232,6 +260,28 @@ const hasPoints = computed(() =>
 function riderPoints(riderId) {
   return pointsData.riders[riderId] || { sprintPoints: 0, climbPoints: 0, totalPoints: 0 }
 }
+
+const sprintRanking = computed(() => {
+  return rankedRiders.value
+    .map((r, _i) => ({
+      id: r.id,
+      name: r.name,
+      points: riderPoints(r.id).sprintPoints,
+    }))
+    .sort((a, b) => b.points - a.points)
+    .map((r, i) => ({ ...r, rank: i + 1 }))
+})
+
+const climbRanking = computed(() => {
+  return rankedRiders.value
+    .map((r, _i) => ({
+      id: r.id,
+      name: r.name,
+      points: riderPoints(r.id).climbPoints,
+    }))
+    .sort((a, b) => b.points - a.points)
+    .map((r, i) => ({ ...r, rank: i + 1 }))
+})
 
 const jerseys = computed(() => {
   const riders = rankedRiders.value
