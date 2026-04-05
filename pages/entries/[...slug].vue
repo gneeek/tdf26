@@ -19,7 +19,7 @@
       class="mb-8"
     />
 
-    <ElevationChart :elevation-data="elevationData" :segments="segments" :current-segment="page.segment" :rider-stats="riderSnapshot?.stats || riderStats" :rider-config="riderConfig" class="mb-8" />
+    <ElevationChart :elevation-data="elevationData" :segments="segments" :current-segment="page.segment" :rider-stats="riderSnapshot?.stats || riderStats" :rider-config="riderConfig" :rider-points="riderSnapshot?.points || null" class="mb-8" />
 
     <PowerStats :elevation-data="elevationData" class="mb-8" />
 
