@@ -20,7 +20,7 @@ On Sunday, July 12, 2026, the Tour de France peloton will roll out of Malemort-s
 
 This year sees us completing Stage 9 from Malemort to Ussel. It looks like a deceptively hard day. Officially classed as hilly, it runs 185 km through Correze and packs in about 3,300 metres of climbing. It feels like classic breakaway terrain, with climb after climb gradually wearing riders down rather than one single decisive summit. The race organisation has singled out Suc au May and Mont Bessou as the points most likely to create real separation before the final rolling run into Ussel. It is also a nice piece of Tour history, since both Malemort and Ussel are first-time stage towns on the 2026 route.
 
-Between now and then, we're going to ride it ourselves. Not all at once, and not at 45 kilometers an hour. Instead, we'll cover the route in 26 segments, each roughly 7 kilometers long, published twice a week.
+Between now and then, we're going to ride it ourselves. Not all at once, and not at 45 kilometers an hour. Instead, we'll cover the route segment by segment, published twice a week.
 
 ## The Location
 

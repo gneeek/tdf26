@@ -1,10 +1,10 @@
 ---
 segment: 17
 title: "Treignac - Granite and Water"
-subtitle: "Km 113.7-120.9"
+subtitle: "Km 112-118"
 publishDate: 2026-05-31
-kmStart: 113.7
-kmEnd: 120.9
+kmStart: 112
+kmEnd: 118
 gpxFile: /gpx/segment-17.gpx
 elevationData: /data/elevation/segment-17.json
 images: []

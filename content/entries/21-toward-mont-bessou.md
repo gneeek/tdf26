@@ -1,10 +1,10 @@
 ---
 segment: 21
 title: "Toward Mont Bessou"
-subtitle: "Km 142.2-149.3"
+subtitle: "Km 140-146"
 publishDate: 2026-06-14
-kmStart: 142.2
-kmEnd: 149.3
+kmStart: 140
+kmEnd: 146
 gpxFile: /gpx/segment-21.gpx
 elevationData: /data/elevation/segment-21.json
 images: []

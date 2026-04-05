@@ -1,10 +1,10 @@
 ---
 segment: 10
 title: "Tulle - Lace, Accordions, and Memory"
-subtitle: "Km 64-71.1"
+subtitle: "Km 62-70"
 publishDate: 2026-05-06
-kmStart: 64
-kmEnd: 71.1
+kmStart: 62
+kmEnd: 70
 gpxFile: /gpx/segment-10.gpx
 elevationData: /data/elevation/segment-10.json
 images: []

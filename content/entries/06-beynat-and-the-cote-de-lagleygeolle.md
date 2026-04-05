@@ -1,10 +1,10 @@
 ---
 segment: 6
 title: "Beynat and the Cote de Lagleygeolle"
-subtitle: "Km 35.5-42.7"
+subtitle: "Km 34-42"
 publishDate: 2026-04-22
-kmStart: 35.5
-kmEnd: 42.7
+kmStart: 34
+kmEnd: 42
 gpxFile: /gpx/segment-06.gpx
 elevationData: /data/elevation/segment-06.json
 images: []
