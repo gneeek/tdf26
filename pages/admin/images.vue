@@ -6,7 +6,7 @@
       <div class="flex items-center gap-4">
         <label class="text-sm font-medium text-stone-600">Segment</label>
         <select v-model.number="selectedSegment" class="border border-stone-300 rounded px-3 py-2 text-sm">
-          <option v-for="n in 26" :key="n" :value="n">{{ n }} - {{ segmentTitle(n) }}</option>
+          <option v-for="n in 27" :key="n" :value="n">{{ n }} - {{ segmentTitle(n) }}</option>
         </select>
         <button
           class="bg-stone-900 text-white px-4 py-2 rounded text-sm hover:bg-stone-700"

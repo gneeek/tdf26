@@ -165,7 +165,7 @@ def main():
     parser = argparse.ArgumentParser(description="Generate elevation profiles and power estimates")
     parser.add_argument("--segments-dir", default="data/segments", help="Directory with segment GPX files")
     parser.add_argument("--output-dir", default="data/elevation", help="Output directory for elevation JSON files")
-    parser.add_argument("--num-segments", type=int, default=26)
+    parser.add_argument("--num-segments", type=int, default=27)
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)

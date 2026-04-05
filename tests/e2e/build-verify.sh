@@ -112,10 +112,10 @@ check_contains "entries/01-malemort-departure/index.html" "Elevation" "elevation
 # --- Draft entries should NOT be pre-rendered ---
 echo ""
 echo "Draft filtering:"
-# Entries 02-26 are drafts — their directories should not exist
+# Entries 02-27 are drafts - their directories should not exist
 # (or if they do, they should be 404 pages)
 DRAFT_RENDERED=0
-for i in $(seq 2 26); do
+for i in $(seq 2 27); do
   NUM=$(printf "%02d" "$i")
   DRAFT_DIR=$(find "$OUTPUT_DIR/entries" -maxdepth 1 -type d -name "${NUM}-*" 2>/dev/null | head -1)
   if [ -n "$DRAFT_DIR" ] && [ -f "$DRAFT_DIR/index.html" ]; then
