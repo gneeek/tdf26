@@ -39,7 +39,7 @@ function generateSchedule() {
   const dates = []
   const current = new Date(start)
 
-  for (let i = 0; i < 26; i++) {
+  for (let i = 0; i < 27; i++) {
     dates.push(current.toISOString().split('T')[0])
     // Alternate: Sun -> Wed (3 days), Wed -> Sun (4 days)
     const day = current.getDay()
