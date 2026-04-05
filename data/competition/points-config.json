@@ -27,7 +27,7 @@
     },
     {
       "name": "Sprint - Ussel Finish",
-      "segment": 26,
+      "segment": 27,
       "km": 183,
       "points": [20, 17, 15, 13]
     }
@@ -59,7 +59,7 @@
     },
     {
       "name": "Cote de Miel",
-      "segment": 8,
+      "segment": 9,
       "km": 56.6,
       "category": 4,
       "gradient": 3.9,
@@ -83,7 +83,7 @@
     },
     {
       "name": "Suc au May",
-      "segment": 15,
+      "segment": 16,
       "km": 104.8,
       "category": "HC",
       "gradient": 7.7,
@@ -91,7 +91,7 @@
     },
     {
       "name": "Cote de la Croix de Pey",
-      "segment": 18,
+      "segment": 19,
       "km": 127,
       "category": 3,
       "gradient": 4.9,
