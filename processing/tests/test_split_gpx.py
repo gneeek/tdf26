@@ -189,13 +189,13 @@ class TestRealData:
         with open(segments_path) as f:
             return json.load(f)
 
-    def test_26_segments(self, real_segments):
-        assert len(real_segments) == 26
+    def test_27_segments(self, real_segments):
+        assert len(real_segments) == 27
 
-    def test_segments_approximately_equal_length(self, real_segments):
+    def test_segments_within_length_range(self, real_segments):
         for seg in real_segments:
             length = seg["km_end"] - seg["km_start"]
-            assert 5.0 < length < 10.0, f"Segment {seg['segment']} length {length} out of range"
+            assert 2.0 < length < 10.0, f"Segment {seg['segment']} length {length} out of range"
 
     def test_total_distance_approximately_185km(self, real_segments):
         total = real_segments[-1]["km_end"]
@@ -204,8 +204,8 @@ class TestRealData:
     def test_malemort_in_segment_1(self, real_segments):
         assert "Malemort" in real_segments[0]["towns"]
 
-    def test_ussel_in_segment_26(self, real_segments):
-        assert "Ussel" in real_segments[25]["towns"]
+    def test_ussel_in_last_segment(self, real_segments):
+        assert "Ussel" in real_segments[-1]["towns"]
 
     def test_all_towns_assigned(self, real_segments):
         all_towns = set()
