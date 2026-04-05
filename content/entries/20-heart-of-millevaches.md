@@ -1,9 +1,9 @@
 ---
 segment: 20
 title: "Heart of Millevaches"
-subtitle: "Km 132-140"
+subtitle: "Km 134-140"
 publishDate: 2026-06-10
-kmStart: 132
+kmStart: 134
 kmEnd: 140
 gpxFile: /gpx/segment-20.gpx
 elevationData: /data/elevation/segment-20.json

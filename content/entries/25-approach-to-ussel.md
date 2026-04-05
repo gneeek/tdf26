@@ -1,10 +1,10 @@
 ---
 segment: 25
 title: "Approach to Ussel"
-subtitle: "Km 168-174"
+subtitle: "Km 168-176"
 publishDate: 2026-06-28
 kmStart: 168
-kmEnd: 174
+kmEnd: 176
 gpxFile: /gpx/segment-25.gpx
 elevationData: /data/elevation/segment-25.json
 images: []

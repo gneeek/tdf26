@@ -4,7 +4,7 @@ title: "Malemort — Where Pain Meets Death"
 subtitle: "Km 0–7.1: Departure from the Corrèze lowlands"
 publishDate: 2026-04-03
 kmStart: 0
-kmEnd: 6
+kmEnd: 8
 gpxFile: /gpx/segment-01.gpx
 elevationData: /data/elevation/segment-01.json
 images: []

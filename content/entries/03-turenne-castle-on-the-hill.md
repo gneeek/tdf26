@@ -1,10 +1,10 @@
 ---
 segment: 3
 title: "Turenne - Castle on the Hill"
-subtitle: "Km 14-20"
+subtitle: "Km 14-22"
 publishDate: 2026-04-12
 kmStart: 14
-kmEnd: 20
+kmEnd: 22
 gpxFile: /gpx/segment-03.gpx
 elevationData: /data/elevation/segment-03.json
 images: []
