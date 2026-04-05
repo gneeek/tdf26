@@ -1,8 +1,8 @@
 <template>
   <div v-if="weather" class="bg-white rounded-lg shadow-sm p-4 mt-8">
     <h3 class="text-lg font-semibold text-stone-700 mb-3">
-      Weather at this location
-      <span v-if="weather.fetchedAt" class="text-sm font-normal text-stone-400 ml-2">{{ formatDate(weather.fetchedAt) }}</span>
+      Weather
+      <span v-if="weather.fetchedAt" class="text-sm font-normal text-stone-400 ml-2">on {{ formatDate(weather.fetchedAt) }}</span>
     </h3>
     <div class="flex items-center gap-6">
       <div class="text-3xl font-bold text-stone-800">
