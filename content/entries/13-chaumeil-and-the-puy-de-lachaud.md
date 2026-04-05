@@ -1,10 +1,10 @@
 ---
 segment: 13
 title: "Chaumeil and the Puy de Lachaud"
-subtitle: "Km 84-90"
+subtitle: "Km 84-92"
 publishDate: 2026-05-17
 kmStart: 84
-kmEnd: 90
+kmEnd: 92
 gpxFile: /gpx/segment-13.gpx
 elevationData: /data/elevation/segment-13.json
 images: []

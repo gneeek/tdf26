@@ -1,10 +1,10 @@
 ---
 segment: 9
 title: "Descent to the Correze Valley"
-subtitle: "Km 56-62"
+subtitle: "Km 56-64"
 publishDate: 2026-05-03
 kmStart: 56
-kmEnd: 62
+kmEnd: 64
 gpxFile: /gpx/segment-09.gpx
 elevationData: /data/elevation/segment-09.json
 images: []

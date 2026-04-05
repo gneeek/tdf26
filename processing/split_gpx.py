@@ -71,7 +71,7 @@ def parse_gpx(gpx_path):
     return points
 
 
-def split_into_segments(points, num_segments=27, odd_length=6.0, even_length=8.0):
+def split_into_segments(points, num_segments=27, odd_length=8.0, even_length=6.0):
     """Split points into segments with alternating lengths.
 
     Odd segments (1,3,5,...) are odd_length km.
@@ -188,8 +188,8 @@ def main():
     parser.add_argument("--output-dir", default="data/segments", help="Output directory for segment GPX files")
     parser.add_argument("--json-output", default="data/segments.json", help="Output path for segments metadata JSON")
     parser.add_argument("--num-segments", type=int, default=27, help="Number of segments")
-    parser.add_argument("--odd-length", type=float, default=6.0, help="Length of odd segments (km)")
-    parser.add_argument("--even-length", type=float, default=8.0, help="Length of even segments (km)")
+    parser.add_argument("--odd-length", type=float, default=8.0, help="Length of odd segments (km)")
+    parser.add_argument("--even-length", type=float, default=6.0, help="Length of even segments (km)")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)

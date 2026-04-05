@@ -1,9 +1,9 @@
 ---
 segment: 2
 title: "South of Brive"
-subtitle: "Km 6-14"
+subtitle: "Km 8-14"
 publishDate: 2026-04-08
-kmStart: 6
+kmStart: 8
 kmEnd: 14
 gpxFile: /gpx/segment-02.gpx
 elevationData: /data/elevation/segment-02.json

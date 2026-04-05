@@ -1,9 +1,9 @@
 ---
 segment: 16
 title: "Descent from the Monedieres"
-subtitle: "Km 104-112"
+subtitle: "Km 106-112"
 publishDate: 2026-05-27
-kmStart: 104
+kmStart: 106
 kmEnd: 112
 gpxFile: /gpx/segment-16.gpx
 elevationData: /data/elevation/segment-16.json

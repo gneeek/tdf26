@@ -23,7 +23,7 @@
     ]
   },
   {
-    "segments": [10, 11],
+    "segments": [9, 10],
     "events": [
       {
         "year": null,
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "segments": [15, 16, 17],
+    "segments": [14, 15, 16],
     "events": [
       {
         "year": 2024,
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "segments": [26, 27],
+    "segments": [25, 26, 27],
     "events": [
       {
         "year": null,
