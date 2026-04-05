@@ -287,35 +287,50 @@ const jerseys = computed(() => {
   const riders = rankedRiders.value
   if (!riders.length) return {}
 
-  // Yellow: place 1 (already ranked by capped distance, tiebreak: actual distance)
+  // Track which riders already have a more prestigious jersey
+  const taken = new Set()
+
+  // Yellow: place 1 (most prestigious - assigned first)
   const yellow = riders[0]?.id || null
+  if (yellow) taken.add(yellow)
 
-  // Red: last place
-  const red = riders.length > 1 ? riders[riders.length - 1]?.id : null
-
-  // Green: highest sprint points (only if any points exist)
-  let green = null
+  // Polka dot: highest climb points (second most prestigious)
+  // If the leader already wears yellow, next rider gets it
+  let polkaDot = null
   if (hasPoints.value) {
-    let maxSprint = 0
-    for (const r of riders) {
-      const pts = riderPoints(r.id).sprintPoints
-      if (pts > maxSprint) {
-        maxSprint = pts
-        green = r.id
+    const climbSorted = [...riders].sort((a, b) =>
+      riderPoints(b.id).climbPoints - riderPoints(a.id).climbPoints
+    )
+    for (const r of climbSorted) {
+      if (riderPoints(r.id).climbPoints > 0 && !taken.has(r.id)) {
+        polkaDot = r.id
+        taken.add(r.id)
+        break
       }
     }
   }
 
-  // Polka dot: highest climb points (only if any points exist)
-  let polkaDot = null
+  // Green: highest sprint points (third most prestigious)
+  let green = null
   if (hasPoints.value) {
-    let maxClimb = 0
-    for (const r of riders) {
-      const pts = riderPoints(r.id).climbPoints
-      if (pts > maxClimb) {
-        maxClimb = pts
-        polkaDot = r.id
+    const sprintSorted = [...riders].sort((a, b) =>
+      riderPoints(b.id).sprintPoints - riderPoints(a.id).sprintPoints
+    )
+    for (const r of sprintSorted) {
+      if (riderPoints(r.id).sprintPoints > 0 && !taken.has(r.id)) {
+        green = r.id
+        taken.add(r.id)
+        break
       }
+    }
+  }
+
+  // Red: last place (least prestigious - only if not already wearing another jersey)
+  let red = null
+  if (riders.length > 1) {
+    const lastRider = riders[riders.length - 1]?.id
+    if (lastRider && !taken.has(lastRider)) {
+      red = lastRider
     }
   }
 
