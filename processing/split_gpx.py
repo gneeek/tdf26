@@ -12,7 +12,6 @@ import gpxpy.gpx
 # Known waypoints with approximate km positions along the route
 KNOWN_TOWNS = {
     "Malemort": 0,
-    "Brive-la-Gaillarde": 4.5,
     "Turenne": 17,
     "Collonges-la-Rouge": 23.5,
     "Beynat": 37.5,
@@ -72,18 +71,36 @@ def parse_gpx(gpx_path):
     return points
 
 
-def split_into_segments(points, num_segments=26):
-    """Split points into N segments of roughly equal distance."""
+def split_into_segments(points, num_segments=27, odd_length=6.0, even_length=8.0):
+    """Split points into segments with alternating lengths.
+
+    Odd segments (1,3,5,...) are odd_length km.
+    Even segments (2,4,6,...) are even_length km.
+    The final segment gets the remainder.
+    """
     total_km = points[-1]["cum_km"]
-    segment_length = total_km / num_segments
-    print(f"Total distance: {total_km:.1f} km, segment length: {segment_length:.1f} km")
+
+    # Build km boundaries
+    boundaries = [0.0]
+    km = 0.0
+    for seg_num in range(1, num_segments + 1):
+        if seg_num == num_segments:
+            km = total_km
+        else:
+            km += odd_length if seg_num % 2 == 1 else even_length
+            if km >= total_km:
+                km = total_km
+        boundaries.append(km)
+
+    actual_segments = len(boundaries) - 1
+    print(f"Total distance: {total_km:.1f} km, {actual_segments} segments (odd={odd_length}km, even={even_length}km, final={total_km - boundaries[-2]:.1f}km)")
 
     segments = []
     seg_start_idx = 0
 
-    for seg_num in range(1, num_segments + 1):
-        km_start = (seg_num - 1) * segment_length
-        km_end = seg_num * segment_length if seg_num < num_segments else total_km
+    for seg_num in range(1, actual_segments + 1):
+        km_start = boundaries[seg_num - 1]
+        km_end = boundaries[seg_num]
 
         # Find points in this segment
         seg_points = []
@@ -166,11 +183,13 @@ def write_segment_gpx(segment, output_dir):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Split GPX into 26 segments")
+    parser = argparse.ArgumentParser(description="Split GPX into segments")
     parser.add_argument("--gpx", default="data/main.gpx", help="Path to main GPX file")
     parser.add_argument("--output-dir", default="data/segments", help="Output directory for segment GPX files")
     parser.add_argument("--json-output", default="data/segments.json", help="Output path for segments metadata JSON")
-    parser.add_argument("--num-segments", type=int, default=26, help="Number of segments")
+    parser.add_argument("--num-segments", type=int, default=27, help="Number of segments")
+    parser.add_argument("--odd-length", type=float, default=6.0, help="Length of odd segments (km)")
+    parser.add_argument("--even-length", type=float, default=8.0, help="Length of even segments (km)")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -179,7 +198,7 @@ def main():
     points = parse_gpx(args.gpx)
     print(f"Parsed {len(points)} trackpoints")
 
-    segments = split_into_segments(points, args.num_segments)
+    segments = split_into_segments(points, args.num_segments, args.odd_length, args.even_length)
     print(f"Created {len(segments)} segments")
 
     # Write individual segment GPX files
