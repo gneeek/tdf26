@@ -7,7 +7,10 @@
   >
     <DayCounter v-if="isFullscreen" class="mb-4" />
     <div class="flex items-center justify-between mb-4">
-      <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-stone-700">Rider Standings</h3>
+      <div>
+        <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-stone-700">Rider Standings</h3>
+        <p v-if="statsDate" class="text-xs text-stone-400">as of {{ formatStatsDate(statsDate) }}</p>
+      </div>
       <button
         class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
         :class="isFullscreen ? 'bg-red-600 text-white border-red-600 hover:bg-red-700' : 'bg-stone-100 text-stone-500 border-stone-300 hover:bg-stone-200'"
@@ -212,6 +215,15 @@ const props = defineProps({
 })
 
 const isFullscreen = ref(false)
+
+const statsDate = computed(() => stats.asOf || null)
+
+function formatStatsDate(dateStr) {
+  if (!dateStr) return ''
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'long', day: 'numeric', year: 'numeric'
+  })
+}
 
 function toggleFullscreen() {
   isFullscreen.value = !isFullscreen.value
