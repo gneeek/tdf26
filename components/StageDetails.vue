@@ -5,7 +5,7 @@
     <div class="mb-5">
       <h4 class="text-sm font-semibold text-stone-600 mb-2 bg-amber-100 -mx-6 px-6 py-1.5">Towns</h4>
       <div class="space-y-1">
-        <div v-for="town in towns" :key="town.name" class="flex justify-between text-sm" :class="isPassed(town.km) ? 'opacity-40' : ''">
+        <div v-for="town in towns" :key="town.name" class="flex justify-between text-sm">
           <span :class="isPassed(town.km) ? 'text-stone-400' : 'text-stone-700'">{{ town.name }}</span>
           <span class="font-mono" :class="isPassed(town.km) ? 'text-stone-300' : 'text-stone-400'">km {{ town.km }} &middot; {{ town.elevation }}m</span>
         </div>
@@ -15,7 +15,7 @@
     <div>
       <h4 class="text-sm font-semibold text-stone-600 mb-2 bg-amber-100 -mx-6 px-6 py-1.5">Climbs</h4>
       <div class="space-y-1">
-        <div v-for="climb in climbs" :key="climb.name" class="flex justify-between text-sm" :class="isPassed(climb.km) ? 'opacity-40' : ''">
+        <div v-for="climb in climbs" :key="climb.name" class="flex justify-between text-sm">
           <span :class="isPassed(climb.km) ? 'text-stone-400' : 'text-stone-700'">{{ climb.name }}</span>
           <span class="font-mono" :class="isPassed(climb.km) ? 'text-stone-300' : 'text-stone-400'">km {{ climb.km }} &middot; {{ climb.gradient }}%</span>
         </div>
