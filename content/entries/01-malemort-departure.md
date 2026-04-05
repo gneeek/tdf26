@@ -1,7 +1,7 @@
 ---
 segment: 1
 title: "Malemort — Where Pain Meets Death"
-subtitle: "Km 0–7.1: Departure from the Corrèze lowlands"
+subtitle: "Km 0-6: Departure from the Correze lowlands"
 publishDate: 2026-04-03
 kmStart: 0
 kmEnd: 7.1
