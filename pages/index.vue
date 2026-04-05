@@ -35,6 +35,7 @@
           Full competition rules
         </NuxtLink>
       </div>
+      <DayCounter class="mt-4" />
     </section>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
