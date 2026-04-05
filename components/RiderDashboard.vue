@@ -5,6 +5,7 @@
     :class="isFullscreen ? 'z-[9999] overflow-auto p-12 text-lg' : 'p-6 text-sm'"
     :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
   >
+    <DayCounter v-if="isFullscreen" class="mb-4" />
     <div class="flex items-center justify-between mb-4">
       <h3 :class="isFullscreen ? 'text-2xl' : 'text-lg'" class="font-semibold text-stone-700">Rider Standings</h3>
       <button
