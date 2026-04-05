@@ -2,7 +2,7 @@ import { computed, type Ref, type ComputedRef } from 'vue'
 
 interface RiderEntry {
   id: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 interface PointsData {
