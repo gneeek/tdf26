@@ -54,7 +54,7 @@
             Full 185km route. Use layer controls for topo, cycling, and satellite views.
           </p>
           <ClientOnly>
-            <ElevationChart :elevation-data="overviewElevation" :segments="segments" :current-segment="0" :rider-stats="riderStats" :rider-config="riderConfig" class="mt-6" />
+            <ElevationChart :elevation-data="overviewElevation" :segments="segments" :current-segment="0" :rider-stats="riderStats" :rider-config="riderConfig" :rider-points="riderPointsData" class="mt-6" />
           </ClientOnly>
         </section>
 
@@ -101,11 +101,18 @@ const townCoords = townCoordsJson
 const riderConfig = riderConfigJson
 
 const riderStats = ref(null)
+const riderPointsData = ref(null)
 try {
   const data = await import('~/data/riders/stats.json')
   riderStats.value = data.default || data
 } catch {
   riderStats.value = null
+}
+try {
+  const data = await import('~/data/riders/points.json')
+  riderPointsData.value = data.default || data
+} catch {
+  // points.json may not exist yet
 }
 
 const overviewElevation = ref(null)

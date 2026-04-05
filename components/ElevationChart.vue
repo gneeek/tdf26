@@ -105,6 +105,7 @@ const props = defineProps({
   currentSegment: { type: Number, default: 0 },
   riderStats: { type: Object, default: null },
   riderConfig: { type: Object, default: null },
+  riderPoints: { type: Object, default: null },
 })
 
 const chartRef = ref(null)
@@ -259,6 +260,49 @@ function buildLabelItems() {
   return items
 }
 
+function getJerseyEmoji(riderId) {
+  if (!props.riderStats?.riders || !props.riderConfig?.riders) return ''
+  const riders = props.riderConfig.riders
+  const pts = props.riderPoints?.riders || {}
+
+  // Compute jerseys with precedence: yellow > green > polka dot > red
+  const taken = new Set()
+  const sorted = [...riders]
+    .map(r => ({ ...r, stats: props.riderStats.riders[r.id] || {} }))
+    .sort((a, b) => (a.stats.place || 99) - (b.stats.place || 99))
+
+  const yellow = sorted[0]?.id
+  if (yellow) taken.add(yellow)
+  if (riderId === yellow) return '🟡'
+
+  let green = null
+  const sprintSorted = [...riders].sort((a, b) =>
+    (pts[b.id]?.sprintPoints || 0) - (pts[a.id]?.sprintPoints || 0)
+  )
+  for (const r of sprintSorted) {
+    if ((pts[r.id]?.sprintPoints || 0) > 0 && !taken.has(r.id)) {
+      green = r.id; taken.add(r.id); break
+    }
+  }
+  if (riderId === green) return '🟢'
+
+  let polkaDot = null
+  const climbSorted = [...riders].sort((a, b) =>
+    (pts[b.id]?.climbPoints || 0) - (pts[a.id]?.climbPoints || 0)
+  )
+  for (const r of climbSorted) {
+    if ((pts[r.id]?.climbPoints || 0) > 0 && !taken.has(r.id)) {
+      polkaDot = r.id; taken.add(r.id); break
+    }
+  }
+  if (riderId === polkaDot) return '🔴'
+
+  const red = sorted.length > 1 ? sorted[sorted.length - 1]?.id : null
+  if (riderId === red && !taken.has(red)) return '🔻'
+
+  return ''
+}
+
 function buildRiderAnnotations() {
   if (!props.riderStats?.riders || !props.riderConfig?.riders || !props.elevationData) return {}
 
@@ -283,6 +327,9 @@ function buildRiderAnnotations() {
       if (d < bestDist) { bestDist = d; bestIdx = i }
     }
 
+    const jersey = getJerseyEmoji(rider.id)
+    const labelText = jersey ? `${jersey} ${rider.name}` : rider.name
+
     annotations[`rider-${rider.id}`] = {
       type: 'line',
       xMin: bestIdx,
@@ -292,7 +339,7 @@ function buildRiderAnnotations() {
       borderDash: [4, 2],
       label: {
         display: true,
-        content: rider.name,
+        content: labelText,
         position: 'start',
         backgroundColor: rider.color,
         color: 'white',
