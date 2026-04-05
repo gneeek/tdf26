@@ -20,10 +20,12 @@
       <div class="mt-4 p-4 bg-amber-100 rounded-lg text-sm text-stone-700">
         <p class="font-semibold text-stone-800 mb-2">The Race</p>
         <p>
-          Four riders are cycling the route from home, logging daily kilometres from April through July.
-          Each day, up to 2km counts toward their progress along the 185km course - but unused cap rolls over,
-          rewarding rest days followed by big efforts. Four jerseys are contested: yellow for the race leader,
-          green for sprint points, polka dot for climbing points, and the lanterne rouge for last place.
+          Four riders are virtually cycling from the comfort of their homes. Starting in April,
+          each logs daily kilometres from their own rides, and we track their progress along the
+          185km Stage 9 parcours. Each day, up to 2km counts toward their position on the route -
+          but unused cap rolls over, rewarding rest days followed by big efforts. Four jerseys are
+          contested: yellow for the race leader, green for sprint points, polka dot for climbing
+          points, and the lanterne rouge for last place.
         </p>
         <NuxtLink to="/rules" class="inline-block mt-2 text-correze-red hover:underline font-medium">
           Full competition rules
