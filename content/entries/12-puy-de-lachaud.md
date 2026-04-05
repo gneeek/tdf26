@@ -1,10 +1,10 @@
 ---
 segment: 12
 title: "Puy de Lachaud"
-subtitle: "Km 78.2-85.3"
+subtitle: "Km 76-84"
 publishDate: 2026-05-13
-kmStart: 78.2
-kmEnd: 85.3
+kmStart: 76
+kmEnd: 84
 gpxFile: /gpx/segment-12.gpx
 elevationData: /data/elevation/segment-12.json
 images: []

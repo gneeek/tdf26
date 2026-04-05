@@ -1,10 +1,10 @@
 ---
 segment: 15
 title: "Suc au May - The Fierce One"
-subtitle: "Km 99.5-106.6"
+subtitle: "Km 98-104"
 publishDate: 2026-05-24
-kmStart: 99.5
-kmEnd: 106.6
+kmStart: 98
+kmEnd: 104
 gpxFile: /gpx/segment-15.gpx
 elevationData: /data/elevation/segment-15.json
 images: []

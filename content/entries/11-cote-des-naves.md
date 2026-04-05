@@ -1,10 +1,10 @@
 ---
 segment: 11
 title: "Cote des Naves"
-subtitle: "Km 71.1-78.2"
+subtitle: "Km 70-76"
 publishDate: 2026-05-10
-kmStart: 71.1
-kmEnd: 78.2
+kmStart: 70
+kmEnd: 76
 gpxFile: /gpx/segment-11.gpx
 elevationData: /data/elevation/segment-11.json
 images: []

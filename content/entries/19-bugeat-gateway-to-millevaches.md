@@ -1,10 +1,10 @@
 ---
 segment: 19
 title: "Bugeat - Gateway to Millevaches"
-subtitle: "Km 128-135.1"
+subtitle: "Km 126-132"
 publishDate: 2026-06-07
-kmStart: 128
-kmEnd: 135.1
+kmStart: 126
+kmEnd: 132
 gpxFile: /gpx/segment-19.gpx
 elevationData: /data/elevation/segment-19.json
 images: []

@@ -1,10 +1,10 @@
 ---
 segment: 22
 title: "Mont Bessou - Roof of Correze"
-subtitle: "Km 149.3-156.4"
+subtitle: "Km 146-154"
 publishDate: 2026-06-17
-kmStart: 149.3
-kmEnd: 156.4
+kmStart: 146
+kmEnd: 154
 gpxFile: /gpx/segment-22.gpx
 elevationData: /data/elevation/segment-22.json
 images: []

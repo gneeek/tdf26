@@ -1,10 +1,10 @@
 ---
 segment: 4
 title: "Collonges-la-Rouge - The Red Village"
-subtitle: "Km 21.3-28.4"
+subtitle: "Km 20-28"
 publishDate: 2026-04-15
-kmStart: 21.3
-kmEnd: 28.4
+kmStart: 20
+kmEnd: 28
 gpxFile: /gpx/segment-04.gpx
 elevationData: /data/elevation/segment-04.json
 images: []

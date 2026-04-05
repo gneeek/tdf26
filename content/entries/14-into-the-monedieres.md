@@ -1,10 +1,10 @@
 ---
 segment: 14
 title: "Into the Monedieres"
-subtitle: "Km 92.4-99.5"
+subtitle: "Km 90-98"
 publishDate: 2026-05-20
-kmStart: 92.4
-kmEnd: 99.5
+kmStart: 90
+kmEnd: 98
 gpxFile: /gpx/segment-14.gpx
 elevationData: /data/elevation/segment-14.json
 images: []

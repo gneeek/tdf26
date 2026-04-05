@@ -1,10 +1,10 @@
 ---
 segment: 24
 title: "Meymac and the Cote des Gardes"
-subtitle: "Km 163.5-170.6"
+subtitle: "Km 160-168"
 publishDate: 2026-06-24
-kmStart: 163.5
-kmEnd: 170.6
+kmStart: 160
+kmEnd: 168
 gpxFile: /gpx/segment-24.gpx
 elevationData: /data/elevation/segment-24.json
 images: []
