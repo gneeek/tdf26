@@ -33,7 +33,10 @@ def get_weather(lat, lng, api_key):
         wind_deg = data["wind"].get("deg", 0)
         wind_dir = degree_to_compass(wind_deg)
 
+        from datetime import datetime
+
         return {
+            "fetchedAt": datetime.now().strftime("%Y-%m-%d"),
             "current": {
                 "temp": temp,
                 "conditions": conditions,

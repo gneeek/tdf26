@@ -8,7 +8,7 @@ kmEnd: 8
 gpxFile: /gpx/segment-01.gpx
 elevationData: /data/elevation/segment-01.json
 images: []
-weather: {"current": {"temp": 6, "conditions": "Broken clouds", "wind": "1 km/h E"}, "forecast": null}
+weather: {"fetchedAt": "2026-04-05", "current": {"temp": 19, "conditions": "Clear sky", "wind": "6 km/h SW"}, "forecast": null}
 draft: false
 ---
 
