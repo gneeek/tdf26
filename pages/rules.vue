@@ -33,28 +33,28 @@
       <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
         <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-yellow-400">
           <div class="flex items-center gap-2 mb-2">
-            <svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#FFD100" stroke="#B8960A" stroke-width="1" /></svg>
+            <JerseyIcon type="yellow" size="md" />
             <span class="font-bold text-stone-800">Yellow Jersey</span>
           </div>
           <p class="text-sm text-stone-600">Race leader. Highest total capped distance. Tiebreaker: highest actual distance ridden.</p>
         </div>
         <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
           <div class="flex items-center gap-2 mb-2">
-            <svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1" /></svg>
+            <JerseyIcon type="green" size="md" />
             <span class="font-bold text-stone-800">Green Jersey</span>
           </div>
           <p class="text-sm text-stone-600">Sprint leader. Most sprint points accumulated at intermediate sprint locations along the route.</p>
         </div>
         <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
           <div class="flex items-center gap-2 mb-2">
-            <svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1" /><circle cx="9" cy="10" r="1.5" fill="#DC2626" /><circle cx="15" cy="10" r="1.5" fill="#DC2626" /><circle cx="12" cy="14" r="1.5" fill="#DC2626" /><circle cx="7" cy="16" r="1.5" fill="#DC2626" /><circle cx="17" cy="16" r="1.5" fill="#DC2626" /></svg>
+            <JerseyIcon type="polkaDot" size="md" />
             <span class="font-bold text-stone-800">Polka Dot Jersey</span>
           </div>
           <p class="text-sm text-stone-600">Climbing leader. Most climbing points earned at the summits of the route's categorized climbs.</p>
         </div>
         <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-800">
           <div class="flex items-center gap-2 mb-2">
-            <svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#DC2626" stroke="#991B1B" stroke-width="1" /></svg>
+            <JerseyIcon type="red" size="md" />
             <span class="font-bold text-stone-800">Lanterne Rouge</span>
           </div>
           <p class="text-sm text-stone-600">Last place by capped distance. In Tour tradition, a badge of honour - the rider who refuses to abandon.</p>
