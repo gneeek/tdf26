@@ -8,11 +8,25 @@
       <h3 class="text-lg font-semibold text-stone-700">Elevation Profile</h3>
       <div class="flex items-center gap-2">
         <button
+          class="w-7 h-7 flex items-center justify-center rounded border text-sm font-bold cursor-pointer bg-stone-100 text-stone-500 border-stone-300 hover:bg-stone-200"
+          title="Zoom in"
+          @click="zoomIn"
+        >
+          +
+        </button>
+        <button
+          class="w-7 h-7 flex items-center justify-center rounded border text-sm font-bold cursor-pointer bg-stone-100 text-stone-500 border-stone-300 hover:bg-stone-200"
+          title="Zoom out"
+          @click="zoomOut"
+        >
+          -
+        </button>
+        <button
           v-if="isZoomed"
           class="text-xs text-blue-600 hover:underline cursor-pointer"
           @click="resetZoom"
         >
-          Reset zoom
+          Reset
         </button>
         <button
           class="w-8 h-8 flex items-center justify-center rounded border text-lg font-bold cursor-pointer transition-colors"
@@ -119,6 +133,19 @@ function toggleFullscreen() {
       if (chartRef.value?.chart) chartRef.value.chart.resize()
     }, 100)
   })
+}
+
+function zoomIn() {
+  if (chartRef.value?.chart) {
+    chartRef.value.chart.zoom(1.5)
+    isZoomed.value = true
+  }
+}
+
+function zoomOut() {
+  if (chartRef.value?.chart) {
+    chartRef.value.chart.zoom(0.67)
+  }
 }
 
 function resetZoom() {
