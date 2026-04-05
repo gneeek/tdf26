@@ -311,7 +311,8 @@ function buildRiderAnnotations() {
     ? (props.segments.find(s => s.segment === props.currentSegment)?.km_start || 0)
     : 0
 
-  const annotations = {}
+  // Collect rider positions first to detect overlaps
+  const riderPositions = []
   for (const rider of props.riderConfig.riders) {
     const stats = props.riderStats.riders[rider.id]
     if (!stats || stats.totalDistanceCapped == null) continue
@@ -319,7 +320,6 @@ function buildRiderAnnotations() {
     const riderKm = stats.totalDistanceCapped - kmOffset
     if (riderKm < 0 || riderKm > distances[distances.length - 1]) continue
 
-    // Find closest data point
     let bestIdx = 0
     let bestDist = Infinity
     for (let i = 0; i < distances.length; i++) {
@@ -327,28 +327,38 @@ function buildRiderAnnotations() {
       if (d < bestDist) { bestDist = d; bestIdx = i }
     }
 
-    const jersey = getJerseyEmoji(rider.id)
-    const labelText = jersey ? `${jersey} ${rider.name}` : rider.name
+    riderPositions.push({ rider, bestIdx, riderKm })
+  }
 
-    annotations[`rider-${rider.id}`] = {
+  // Sort by position for consistent staggering
+  riderPositions.sort((a, b) => a.riderKm - b.riderKm)
+
+  // Stagger labels vertically using position percentage
+  const labelPositions = ['5%', '20%', '35%', '50%']
+  const annotations = {}
+  riderPositions.forEach((rp, i) => {
+    const jersey = getJerseyEmoji(rp.rider.id)
+    const labelText = jersey ? `${jersey} ${rp.rider.name}` : rp.rider.name
+
+    annotations[`rider-${rp.rider.id}`] = {
       type: 'line',
-      xMin: bestIdx,
-      xMax: bestIdx,
-      borderColor: rider.color,
+      xMin: rp.bestIdx,
+      xMax: rp.bestIdx,
+      borderColor: rp.rider.color,
       borderWidth: 2,
       borderDash: [4, 2],
       label: {
         display: true,
         content: labelText,
-        position: 'start',
-        backgroundColor: rider.color,
+        position: labelPositions[i % labelPositions.length],
+        backgroundColor: rp.rider.color,
         color: 'white',
         font: { size: 10, weight: 'bold' },
         padding: { top: 2, bottom: 2, left: 4, right: 4 },
         borderRadius: 3,
       }
     }
-  }
+  })
   return annotations
 }
 
