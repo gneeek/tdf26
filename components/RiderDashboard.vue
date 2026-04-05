@@ -23,10 +23,10 @@
       <div v-for="rider in rankedRiders" :key="rider.id" class="flex items-center gap-3">
         <div class="w-24 flex items-center gap-1 shrink-0">
           <span class="text-sm font-medium truncate" :style="{ color: rider.textColor }">{{ rider.name }}</span>
-          <svg v-if="jerseys.yellow === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Yellow Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#FFD100" stroke="#B8960A" stroke-width="1"/></svg>
-          <svg v-if="jerseys.green === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Green Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
-          <svg v-if="jerseys.polkaDot === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Polka Dot Jersey"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/><circle cx="7" cy="16" r="1.5" fill="#DC2626"/><circle cx="17" cy="16" r="1.5" fill="#DC2626"/></svg>
-          <svg v-if="jerseys.red === rider.id" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" title="Lanterne Rouge"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#DC2626" stroke="#991B1B" stroke-width="1"/></svg>
+          <JerseyIcon v-if="jerseys.yellow === rider.id" type="yellow" size="xs" title="Yellow Jersey" class="shrink-0" />
+          <JerseyIcon v-if="jerseys.green === rider.id" type="green" size="xs" title="Green Jersey" class="shrink-0" />
+          <JerseyIcon v-if="jerseys.polkaDot === rider.id" type="polkaDot" size="xs" title="Polka Dot Jersey" class="shrink-0" />
+          <JerseyIcon v-if="jerseys.red === rider.id" type="red" size="xs" title="Lanterne Rouge" class="shrink-0" />
         </div>
         <div class="flex-1 bg-stone-100 rounded-full relative overflow-hidden" :class="isFullscreen ? 'h-8' : 'h-5'">
           <div
@@ -51,7 +51,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
     <div v-if="hasPoints" class="grid grid-cols-2 gap-3 mb-6">
       <div class="bg-green-50 rounded-lg p-3 border border-green-200">
         <div class="flex items-center gap-2 mb-2">
-          <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="#22C55E" stroke="#16A34A" stroke-width="1"/></svg>
+          <JerseyIcon type="green" size="sm" />
           <span class="text-sm font-semibold text-green-800">Points</span>
         </div>
         <div class="space-y-1">
@@ -63,7 +63,7 @@ class="absolute inset-0 flex items-center justify-center text-xs font-mono"
       </div>
       <div class="bg-red-50 rounded-lg p-3 border border-red-200">
         <div class="flex items-center gap-2 mb-2">
-          <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 2L8 5H4v4l-2 2v9h20v-9l-2-2V5h-4l-4-3z" fill="white" stroke="#DC2626" stroke-width="1"/><circle cx="9" cy="10" r="1.5" fill="#DC2626"/><circle cx="15" cy="10" r="1.5" fill="#DC2626"/><circle cx="12" cy="14" r="1.5" fill="#DC2626"/></svg>
+          <JerseyIcon type="polkaDot" size="sm" />
           <span class="text-sm font-semibold text-red-800">KOM</span>
         </div>
         <div class="space-y-1">
