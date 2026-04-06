@@ -61,13 +61,13 @@
         <section>
           <h2 class="text-2xl font-serif font-bold text-stone-800 mb-6">Latest Entries</h2>
           <div v-if="entries && entries.length" class="space-y-6">
-            <article v-for="entry in entries" :key="entry.path || entry._path" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+            <article v-for="entry in entries" :key="entry.path || entry._path" class="group bg-white rounded-lg shadow-sm p-6 hover:shadow-md hover:bg-stone-50 hover:border-l-4 hover:border-correze-red cursor-pointer transition-all border-l-4 border-transparent">
               <NuxtLink :to="entry.path || entry._path" class="block">
                 <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
                   Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
                 </span>
                 <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
-                <h3 class="text-xl font-serif font-bold text-stone-900 mt-1">{{ entry.title }}</h3>
+                <h3 class="text-xl font-serif font-bold text-stone-900 group-hover:text-correze-red transition-colors mt-1">{{ entry.title }}</h3>
                 <p v-if="entry.subtitle" class="text-stone-600 mt-1">{{ entry.subtitle }}</p>
                 <time class="text-sm text-stone-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
               </NuxtLink>
