@@ -1,8 +1,8 @@
 <template>
   <div
     class="bg-white rounded-lg shadow-sm relative"
-    :class="isFullscreen ? 'z-[9999] overflow-hidden p-12' : 'p-4'"
-    :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
+    :class="isFullscreen ? 'z-[1200] overflow-hidden p-12' : 'p-4'"
+    :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh;margin:0' : ''"
   >
     <div class="flex items-center justify-between mb-3">
       <h3 class="text-lg font-semibold text-stone-700">Elevation Profile</h3>
