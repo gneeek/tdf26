@@ -81,7 +81,7 @@
         <RiderDashboard />
         <div class="mt-6">
           <PublishSchedule v-if="isDev" />
-          <StageDetails v-else :current-km="latestKmEnd" />
+          <StageDetails :current-km="latestKmEnd" />
         </div>
       </aside>
     </div>
