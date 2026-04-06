@@ -2,7 +2,7 @@
   <ClientOnly>
     <div
       class="relative rounded-lg overflow-hidden shadow-sm"
-      :class="isFullscreen ? 'z-50 rounded-none' : ''"
+      :class="isFullscreen ? 'z-[1200] rounded-none' : ''"
       :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh' : ''"
     >
       <div

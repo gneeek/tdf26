@@ -2,7 +2,7 @@
   <div
     v-if="stats && Object.keys(stats.riders).length"
     class="bg-white rounded-lg shadow-sm relative"
-    :class="isFullscreen ? 'z-[9999] overflow-auto p-12 text-lg' : 'mt-8 p-6 text-sm'"
+    :class="isFullscreen ? 'z-[1200] overflow-auto p-12 text-lg' : 'mt-8 p-6 text-sm'"
     :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh;margin:0' : ''"
   >
     <DayCounter v-if="isFullscreen" class="mb-4" />

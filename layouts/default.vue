@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-stone-50">
-    <header class="bg-correze-red text-white relative z-50">
+    <header class="bg-correze-red text-white sticky top-0 z-[1100] shadow-md">
       <nav class="max-w-5xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
         <div class="flex items-center gap-3 sm:gap-6">
           <NuxtLink to="/" class="flex items-center gap-2 text-lg sm:text-xl font-serif font-bold hover:text-accent transition-colors">
