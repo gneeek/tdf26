@@ -151,22 +151,28 @@ echo "--- Step 5: Generating race narrative for segment $SEGMENT ---"
     --segment "$SEGMENT"
 echo ""
 
-# Step 6: Generate static site
-echo "--- Step 6: Building static site ---"
+# Step 6: Validate entry images
+echo "--- Step 6: Validating entry images ---"
+"$VENV_PYTHON" "$PROJECT_DIR/processing/validate_entries.py" \
+    --entries-dir "$PROJECT_DIR/content/entries"
+echo ""
+
+# Step 7: Generate static site
+echo "--- Step 7: Building static site ---"
 cd "$PROJECT_DIR"
 npx nuxt generate
 echo ""
 
-# Step 7: Deploy
+# Step 8: Deploy
 if [ "$SKIP_DEPLOY" = true ]; then
-    echo "--- Step 7: Deploy skipped ---"
+    echo "--- Step 8: Deploy skipped ---"
 elif [ -n "$DEPLOY_TARGET" ]; then
-    echo "--- Step 7: Deploying to $DEPLOY_TARGET ---"
+    echo "--- Step 8: Deploying to $DEPLOY_TARGET ---"
     echo "Uploading to $DEPLOY_TARGET..."
     tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}"
     echo "Deploy complete."
 else
-    echo "--- Step 7: No DEPLOY_TARGET set, skipping deploy ---"
+    echo "--- Step 8: No DEPLOY_TARGET set, skipping deploy ---"
     echo "Set DEPLOY_TARGET in .env (e.g., correze:/var/www/correze-travelogue/)"
 fi
 
