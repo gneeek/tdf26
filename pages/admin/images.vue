@@ -96,6 +96,22 @@
       No suggestions found. Click "Fetch from Wikimedia" to search.
     </p>
 
+    <!-- Attraction search suggestions -->
+    <div v-if="nearbyAttractions.length" class="bg-white rounded-lg shadow-sm p-6 mt-6">
+      <h2 class="text-lg font-semibold text-stone-700 mb-3">Search by Nearby Attraction</h2>
+      <p class="text-sm text-stone-500 mb-3">Click to search Wikipedia for images of attractions near this segment:</p>
+      <div class="flex flex-wrap gap-2">
+        <button
+          v-for="poi in nearbyAttractions"
+          :key="poi.name"
+          class="text-sm px-3 py-1.5 rounded-full border border-stone-300 hover:border-correze-red hover:text-correze-red transition-colors cursor-pointer"
+          @click="searchAttractionWikipedia(poi.name)"
+        >
+          {{ categoryEmoji[poi.category] || '📍' }} {{ poi.name }}
+        </button>
+      </div>
+    </div>
+
     <!-- Wikipedia image search -->
     <div class="bg-white rounded-lg shadow-sm p-6 mt-6">
       <h2 class="text-lg font-semibold text-stone-700 mb-4">Wikipedia Article Images</h2>
@@ -153,6 +169,7 @@
 
 <script setup>
 import segmentsJson from '~/data/segments.json'
+import attractionsData from '~/data/attractions.json'
 
 definePageMeta({ layout: 'admin' })
 
@@ -242,6 +259,32 @@ async function saveSelection() {
   } finally {
     saving.value = false
   }
+}
+
+// --- Nearby attractions for search suggestions ---
+const categoryEmoji = {
+  food: '🍷', cheese: '🧀', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
+  museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
+  memorial: '🕯️', industrial: '🏭', craft: '🔨',
+}
+
+const nearbyAttractions = computed(() => {
+  const seg = segmentsJson.find(s => s.segment === selectedSegment.value)
+  if (!seg) return []
+  const midLat = (seg.start_lat + seg.end_lat) / 2
+  const midLng = (seg.start_lng + seg.end_lng) / 2
+  return attractionsData
+    .filter(poi => Math.sqrt((poi.lat - midLat) ** 2 + (poi.lng - midLng) ** 2) <= 0.15)
+    .sort((a, b) => {
+      const dA = Math.sqrt((a.lat - midLat) ** 2 + (a.lng - midLng) ** 2)
+      const dB = Math.sqrt((b.lat - midLat) ** 2 + (b.lng - midLng) ** 2)
+      return dA - dB
+    })
+})
+
+function searchAttractionWikipedia(name) {
+  wikiQuery.value = name
+  searchWikipedia()
 }
 
 // --- Wikipedia search ---
