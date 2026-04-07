@@ -5,7 +5,7 @@
     "lat": 45.138,
     "lng": 1.549,
     "description": "Prehistoric shelters along the Correze river, evidence of habitation at the start of the route.",
-    "link": null
+    "links": []
   },
   {
     "name": "Distillerie Denoix",
@@ -13,7 +13,7 @@
     "lat": 45.1589,
     "lng": 1.5335,
     "description": "Historic liqueur distillery (est. 1839) producing walnut liqueur and violet mustard. Free tastings.",
-    "link": "https://www.denoix.com/"
+    "links": [{"url": "https://www.denoix.com/", "label": "Official site"}]
   },
   {
     "name": "Marche de Brive",
@@ -21,7 +21,7 @@
     "lat": 45.1590,
     "lng": 1.5340,
     "description": "Major covered market (Tue/Thu/Sat). Famous Foires Grasses truffle and foie gras markets Nov-Feb.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Halle_Georges-Brassens_(Brive-la-Gaillarde)", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Musee Edmond Michelet",
@@ -29,7 +29,7 @@
     "lat": 45.1570,
     "lng": 1.5320,
     "description": "WWII Resistance museum in the house where Michelet distributed anti-Nazi tracts on June 17, 1940.",
-    "link": "https://en.wikipedia.org/wiki/Edmond_Michelet"
+    "links": [{"url": "https://en.wikipedia.org/wiki/Edmond_Michelet", "label": "Wikipedia"}]
   },
   {
     "name": "Domaine de la Gardelle",
@@ -37,7 +37,7 @@
     "lat": 45.1200,
     "lng": 1.5100,
     "description": "Organic vineyard producing Correze PDO wines including traditional vin paille (straw wine).",
-    "link": null
+    "links": []
   },
   {
     "name": "Grottes de Lamouroux",
@@ -45,7 +45,7 @@
     "lat": 45.1598,
     "lng": 1.5347,
     "description": "Troglodytic cliff dwellings carved into limestone, inhabited from prehistoric through medieval times.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Grottes_de_Lamouroux", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Aubazine Abbey",
@@ -53,7 +53,7 @@
     "lat": 45.1750,
     "lng": 1.6690,
     "description": "12th-century Cistercian abbey where Coco Chanel spent six years as an orphan. Geometric patterns may have inspired the Chanel logo.",
-    "link": "https://en.wikipedia.org/wiki/Aubazine_Abbey"
+    "links": [{"url": "https://en.wikipedia.org/wiki/Aubazine_Abbey", "label": "Wikipedia"}]
   },
   {
     "name": "Chateau de Turenne",
@@ -61,7 +61,7 @@
     "lat": 45.0537,
     "lng": 1.5830,
     "description": "Ruined hilltop keep of the Viscounty of Turenne. Controlled much of Correze until sold to Louis XV in 1738.",
-    "link": "https://en.wikipedia.org/wiki/Turenne"
+    "links": [{"url": "https://en.wikipedia.org/wiki/Turenne", "label": "Wikipedia"}]
   },
   {
     "name": "Eglise Saint-Pierre",
@@ -69,7 +69,7 @@
     "lat": 45.0607,
     "lng": 1.6555,
     "description": "11th-century fortified church in Collonges-la-Rouge with carved Romanesque tympanum depicting the Ascension.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Pierre_de_Collonges-la-Rouge", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Castel de Vassinhac",
@@ -77,7 +77,7 @@
     "lat": 45.0610,
     "lng": 1.6560,
     "description": "Late 16th-century fortified manor in Collonges-la-Rouge with distinctive turrets and loopholes.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Castel_de_Vassinhac", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Maison de la Sirene",
@@ -85,7 +85,7 @@
     "lat": 45.0608,
     "lng": 1.6550,
     "description": "16th-century house with sculpted mermaid in Collonges. Once belonged to Henry de Jouvenel, husband of Colette.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Maison_de_la_Sir%C3%A8ne", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Beynat Chestnut Festival",
@@ -93,7 +93,7 @@
     "lat": 45.1250,
     "lng": 1.7280,
     "description": "Annual October Fete de la Chataigne. Chestnut producers, tastings, and summer Tuesday evening markets.",
-    "link": null
+    "links": []
   },
   {
     "name": "Fromagerie Duroux",
@@ -101,7 +101,7 @@
     "lat": 45.1900,
     "lng": 1.7700,
     "description": "Artisan fromagerie near Tulle aging cheese in a reconverted railway tunnel. Produces Pave Correzien.",
-    "link": null
+    "links": []
   },
   {
     "name": "Cascades de Gimel",
@@ -109,7 +109,7 @@
     "lat": 45.2970,
     "lng": 1.8530,
     "description": "Three waterfalls on the Montane river with a total drop of 143m. Natura 2000 site north of Tulle.",
-    "link": "https://www.cascadesdegimel.com/"
+    "links": [{"url": "https://www.cascadesdegimel.com/", "label": "Official site"}]
   },
   {
     "name": "Cathedrale Notre-Dame de Tulle",
@@ -117,7 +117,10 @@
     "lat": 45.2680,
     "lng": 1.7680,
     "description": "12th-century cathedral with a 75m bell tower, the tallest in the Limousin. Notable carved cloister.",
-    "link": null
+    "links": [
+      {"url": "https://en.wikipedia.org/wiki/Tulle_Cathedral", "label": "Wikipedia"},
+      {"url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Tulle", "label": "Wikipedia (fr)"}
+    ]
   },
   {
     "name": "Cite de l'Accordeon",
@@ -125,7 +128,7 @@
     "lat": 45.2685,
     "lng": 1.7695,
     "description": "Opened 2024 in the former Banque de France. Exhibits on accordion-making, Tulle lace, and arms manufacturing.",
-    "link": "https://www.citedelaccordeon.com/"
+    "links": [{"url": "https://www.citedelaccordeon.com/", "label": "Official site"}]
   },
   {
     "name": "Les Delices de Mel",
@@ -133,7 +136,7 @@
     "lat": 45.2680,
     "lng": 1.7700,
     "description": "Fromagerie in central Tulle. Regional cheeses including Feuille du Limousin, caillade, and cabecou.",
-    "link": null
+    "links": []
   },
   {
     "name": "Marche de Tulle",
@@ -141,7 +144,7 @@
     "lat": 45.2680,
     "lng": 1.7690,
     "description": "Wednesday and Saturday morning market at Place Gambetta and Quai Baluze along the Correze river.",
-    "link": null
+    "links": []
   },
   {
     "name": "Tintignac Gallo-Roman Sanctuary",
@@ -149,7 +152,7 @@
     "lat": 45.3056,
     "lng": 1.7667,
     "description": "Celtic bronze carnyx war trumpets discovered 2004. One of the most important Celtic finds in France. Fanum temple and theatre.",
-    "link": "https://en.wikipedia.org/wiki/Tintignac"
+    "links": [{"url": "https://en.wikipedia.org/wiki/Tintignac", "label": "Wikipedia"}]
   },
   {
     "name": "Chateau de Bach",
@@ -157,7 +160,7 @@
     "lat": 45.3100,
     "lng": 1.7600,
     "description": "Castle near Naves with an 18th-century portal and vestiges of a 14th-century Gothic cloister.",
-    "link": null
+    "links": []
   },
   {
     "name": "Chateau de Ventadour",
@@ -165,7 +168,7 @@
     "lat": 45.3900,
     "lng": 2.1050,
     "description": "11th-century ruins on a rocky spur. Cradle of troubadour Bernard de Ventadour and Occitan courtly love tradition.",
-    "link": "https://chateau-ventadour.fr/"
+    "links": [{"url": "https://chateau-ventadour.fr/", "label": "Official site"}]
   },
   {
     "name": "Gorges de la Vezere",
@@ -173,7 +176,7 @@
     "lat": 45.5350,
     "lng": 1.7930,
     "description": "Wild granite gorges of the Vezere river near Treignac. The Saut du Loup rapids are a renowned kayaking spot.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/V%C3%A9z%C3%A8re", "label": "Wikipedia (fr) - Vezere river"}]
   },
   {
     "name": "Pont Medieval de Treignac",
@@ -181,7 +184,7 @@
     "lat": 45.5365,
     "lng": 1.7945,
     "description": "13th/14th-century stone bridge with three arches spanning the Vezere. Iconic view of the medieval town.",
-    "link": null
+    "links": []
   },
   {
     "name": "Eglise Notre-Dame-des-Bans",
@@ -189,7 +192,7 @@
     "lat": 45.5370,
     "lng": 1.7950,
     "description": "13th-century church in Treignac built by the Comborn family, remodeled in the 15th century with ribbed vaulting.",
-    "link": null
+    "links": []
   },
   {
     "name": "Lac des Bariousses",
@@ -197,7 +200,7 @@
     "lat": 45.5500,
     "lng": 1.8100,
     "description": "99-hectare Blue Flag lake on the Vezere. Swimming, kayak and paddleboard rental in the Monedieres hills.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Lac_des_Bariousses", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Les Cars Gallo-Roman Site",
@@ -205,7 +208,7 @@
     "lat": 45.6303,
     "lng": 1.8850,
     "description": "Ruins of two 1st-3rd century Gallo-Roman funerary temples with carved granite on the Plateau de Millevaches.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Tours_de_Bonneval", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Tourbiere de Longeyroux",
@@ -213,7 +216,7 @@
     "lat": 45.5600,
     "lng": 2.0500,
     "description": "Largest peat bog in the Limousin (250 hectares, 8,000 years old). Boardwalk trail through heather moors.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Tourbi%C3%A8re_de_Longeyroux", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Lac de Sechemailles",
@@ -221,7 +224,7 @@
     "lat": 45.5200,
     "lng": 2.1200,
     "description": "40-hectare Blue Flag lake near Meymac. Swimming, fishing, and hiking trails to Mont Bessou summit.",
-    "link": null
+    "links": []
   },
   {
     "name": "Abbaye Saint-Andre",
@@ -229,7 +232,7 @@
     "lat": 45.5340,
     "lng": 2.1470,
     "description": "Benedictine abbey founded 1085 in Meymac. Now houses the Centre d'Art Contemporain.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Abbaye_Saint-Andr%C3%A9_de_Meymac", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Centre d'Art Contemporain",
@@ -237,7 +240,7 @@
     "lat": 45.5340,
     "lng": 2.1470,
     "description": "Contemporary art center in the Abbaye Saint-Andre. 900m2 across five levels, 3-5 exhibitions per year.",
-    "link": "https://www.cacmeymac.fr/"
+    "links": [{"url": "https://www.cacmeymac.fr/", "label": "Official site"}]
   },
   {
     "name": "Chapelle des Penitents",
@@ -245,7 +248,7 @@
     "lat": 45.5480,
     "lng": 2.3100,
     "description": "15th-century funeral chapel in Ussel with a classified Baroque altarpiece. Houses sacred art collection.",
-    "link": null
+    "links": []
   },
   {
     "name": "Musee du Pays d'Ussel",
@@ -253,7 +256,7 @@
     "lat": 45.5480,
     "lng": 2.3105,
     "description": "Classified Musee de France with collections of art, popular traditions, tapestries, and printing materials.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_du_Pays_d%27Ussel", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Marche d'Ussel",
@@ -261,7 +264,7 @@
     "lat": 45.5480,
     "lng": 2.3110,
     "description": "Saturday morning market in the town center and covered market hall behind the church.",
-    "link": null
+    "links": []
   },
   {
     "name": "Aigle Romaine",
@@ -269,7 +272,7 @@
     "lat": 45.5485,
     "lng": 2.3110,
     "description": "2nd-3rd century granite funerary eagle sculpture at Place Voltaire. Marks the Stage 9 finish line.",
-    "link": null
+    "links": [{"url": "https://fr.wikipedia.org/wiki/Aigle_romaine_d%27Ussel", "label": "Wikipedia (fr)"}]
   },
   {
     "name": "Huilerie Marty",
@@ -277,7 +280,7 @@
     "lat": 45.1560,
     "lng": 1.5280,
     "description": "Traditional walnut oil mill in Brive producing cold-pressed huile de noix, a Correze staple.",
-    "link": null
+    "links": []
   },
   {
     "name": "Monument des Martyrs de Tulle",
@@ -285,7 +288,10 @@
     "lat": 45.2674,
     "lng": 1.7700,
     "description": "Memorial at the Souilhac factory where 99 men were hanged by the SS Das Reich division on June 9, 1944.",
-    "link": null
+    "links": [
+      {"url": "https://en.wikipedia.org/wiki/Tulle_massacre", "label": "Wikipedia"},
+      {"url": "https://fr.wikipedia.org/wiki/Pendaisons_de_Tulle", "label": "Wikipedia (fr)"}
+    ]
   },
   {
     "name": "Manufacture d'Armes de Tulle",
@@ -293,7 +299,10 @@
     "lat": 45.2700,
     "lng": 1.7680,
     "description": "State arms factory established 1690 under Louis XIV. Produced the MAT-49 submachine gun. Now partly a cultural space.",
-    "link": null
+    "links": [
+      {"url": "https://en.wikipedia.org/wiki/Manufacture_d%27armes_de_Tulle", "label": "Wikipedia"},
+      {"url": "https://fr.wikipedia.org/wiki/Manufacture_d%27armes_de_Tulle", "label": "Wikipedia (fr)"}
+    ]
   },
   {
     "name": "Maugein Accordeons",
@@ -301,7 +310,10 @@
     "lat": 45.2660,
     "lng": 1.7740,
     "description": "The last remaining accordion manufacturer in France, founded 1919. Still produces handmade accordions. Visitable workshop.",
-    "link": null
+    "links": [
+      {"url": "https://www.maugein.com", "label": "Official site"},
+      {"url": "https://fr.wikipedia.org/wiki/Maugein", "label": "Wikipedia (fr)"}
+    ]
   },
   {
     "name": "Atelier-Musee des Vieux Metiers",
@@ -309,7 +321,7 @@
     "lat": 45.0610,
     "lng": 1.6560,
     "description": "Workshop-museum in Collonges-la-Rouge demonstrating traditional Correze trades: woodworking, basketry, and stone carving.",
-    "link": null
+    "links": []
   },
   {
     "name": "Confiserie Lamy",
@@ -317,7 +329,7 @@
     "lat": 45.1260,
     "lng": 1.7270,
     "description": "Beynat producer of pate de fruits and chestnut confections (creme de marrons), a Correze specialty.",
-    "link": null
+    "links": []
   },
   {
     "name": "Maquis de Chaumeil Memorial",
@@ -325,7 +337,7 @@
     "lat": 45.4340,
     "lng": 1.8550,
     "description": "Memorial to the Maquis fighters of the Chaumeil area. The remote Monedieres hills sheltered active Resistance cells from 1943-44.",
-    "link": null
+    "links": []
   },
   {
     "name": "Stele des Maquisards",
@@ -333,7 +345,7 @@
     "lat": 45.6000,
     "lng": 1.9230,
     "description": "Monument in Bugeat commemorating the Maquis du Mont Gargan and Plateau de Millevaches partisans.",
-    "link": null
+    "links": []
   },
   {
     "name": "Pont de la Tourmente",
@@ -341,7 +353,7 @@
     "lat": 45.5340,
     "lng": 1.7950,
     "description": "Medieval fortified bridge in Treignac over the Vezere. Site of Hundred Years' War skirmishes when English forces raided the Bas-Limousin.",
-    "link": null
+    "links": []
   },
   {
     "name": "La Table de Jean",
@@ -349,6 +361,6 @@
     "lat": 45.5350,
     "lng": 2.1480,
     "description": "Restaurant in Meymac featuring regional cuisine: pounti (herb and meat terrine), millassou (corn cake), and Millevaches chestnuts.",
-    "link": null
+    "links": []
   }
 ]

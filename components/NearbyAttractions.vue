@@ -7,15 +7,18 @@
         <div>
           <span class="font-medium text-stone-800">{{ poi.name }}</span>
           <p class="text-sm text-stone-500 mt-0.5">{{ poi.description }}</p>
-          <a
-            v-if="poi.link"
-            :href="poi.link"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-xs text-correze-red hover:underline"
-          >
-            More info
-          </a>
+          <div v-if="poi.links && poi.links.length" class="flex gap-3 mt-1">
+            <a
+              v-for="link in poi.links"
+              :key="link.url"
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs text-correze-red hover:underline"
+            >
+              {{ link.label }}
+            </a>
+          </div>
         </div>
       </div>
     </div>

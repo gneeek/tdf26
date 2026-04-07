@@ -303,8 +303,9 @@ async function initMap(el) {
     if (nearestSeg) {
       popupHtml += `<br><span style="font-size:11px;color:#8B2500">Segment ${nearestSeg.segment} (km ${nearestSeg.km_start}-${nearestSeg.km_end})</span>`
     }
-    if (poi.link) {
-      popupHtml += `<br><a href="${poi.link}" target="_blank" rel="noopener" style="font-size:12px">More info</a>`
+    if (poi.links && poi.links.length) {
+      const linkHtml = poi.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" style="font-size:12px">${l.label}</a>`).join(' &middot; ')
+      popupHtml += `<br>${linkHtml}`
     }
 
     L.marker([poi.lat, poi.lng], { icon: poiIcon })
