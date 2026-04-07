@@ -1,5 +1,11 @@
 import { createConfigForNuxt } from '@nuxt/eslint-config'
 
+if (Number(process.versions.node.split('.')[0]) < 22) {
+  throw new Error(
+    `Node ${process.versions.node} detected - this project requires Node 22+. Run: nvm use`
+  )
+}
+
 export default createConfigForNuxt()
   .append({
     ignores: ['dist/', '.output/', '.nuxt/', 'node_modules/', 'coverage/', 'processing/'],
