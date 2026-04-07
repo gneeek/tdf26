@@ -2,9 +2,9 @@
 
 import os
 import tempfile
-import pytest
-from unittest.mock import patch
 from datetime import date
+
+import pytest
 
 
 def write_entry(dir_path, filename, frontmatter_lines):

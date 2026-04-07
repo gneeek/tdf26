@@ -4,11 +4,11 @@ Checks that entries being published today have at least one image,
 or have imagesOptional: true set in frontmatter.
 """
 
+import argparse
 import os
 import re
 import sys
-import argparse
-from datetime import date, datetime
+from datetime import date
 
 
 def parse_frontmatter(filepath):
