@@ -112,18 +112,20 @@ check_contains "entries/01-malemort-departure/index.html" "Elevation" "elevation
 # --- Draft entries should NOT be pre-rendered ---
 echo ""
 echo "Draft filtering:"
-# Entries 02-27 are drafts - their directories should not exist
-# (or if they do, they should be 404 pages)
+# Check that entries marked as draft are not rendered as full pages
 DRAFT_RENDERED=0
-for i in $(seq 2 27); do
-  NUM=$(printf "%02d" "$i")
-  DRAFT_DIR=$(find "$OUTPUT_DIR/entries" -maxdepth 1 -type d -name "${NUM}-*" 2>/dev/null | head -1)
-  if [ -n "$DRAFT_DIR" ] && [ -f "$DRAFT_DIR/index.html" ]; then
-    # Check if it's a real page or a 404
-    if grep -q "Page not found" "$DRAFT_DIR/index.html" 2>/dev/null; then
-      continue  # 404 page, not actually rendered
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
+for entry_file in "$PROJECT_DIR"/content/entries/*.md; do
+  if grep -q "^draft: true" "$entry_file"; then
+    BASENAME=$(basename "$entry_file" .md)
+    DRAFT_DIR=$(find "$OUTPUT_DIR/entries" -maxdepth 1 -type d -name "$BASENAME" 2>/dev/null | head -1)
+    if [ -n "$DRAFT_DIR" ] && [ -f "$DRAFT_DIR/index.html" ]; then
+      if grep -q "Page not found" "$DRAFT_DIR/index.html" 2>/dev/null; then
+        continue  # 404 page, not actually rendered
+      fi
+      DRAFT_RENDERED=$((DRAFT_RENDERED + 1))
     fi
-    DRAFT_RENDERED=$((DRAFT_RENDERED + 1))
   fi
 done
 if [ "$DRAFT_RENDERED" -eq 0 ]; then

@@ -206,5 +206,5 @@ class TestRealElevationData:
 
     def test_gradient_in_reasonable_range(self, real_elevation):
         s = real_elevation["summary"]
-        assert 0 <= s["avg_gradient"] < 15
+        assert -15 < s["avg_gradient"] < 15
         assert s["max_gradient"] < 25

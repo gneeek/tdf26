@@ -1,14 +1,15 @@
 ---
 segment: 1
 title: "Malemort — Where Pain Meets Death"
-subtitle: "Km 0–7.1: Departure from the Corrèze lowlands"
-publishDate: 2026-04-03
+subtitle: "Km 0-8: Departure from the Correze lowlands"
+publishDate: 2026-04-05
+dataCutoff: 2026-04-04
 kmStart: 0
 kmEnd: 8
 gpxFile: /gpx/segment-01.gpx
 elevationData: /data/elevation/segment-01.json
 images: []
-weather: {"fetchedAt": "2026-04-05", "current": {"temp": 19, "conditions": "Clear sky", "wind": "6 km/h SW"}, "forecast": null}
+weather: {"fetchedAt": "2026-04-08", "current": {"temp": 13, "conditions": "Clear sky", "wind": "3 km/h ESE"}, "forecast": null}
 draft: false
 ---
 

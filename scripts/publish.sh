@@ -145,12 +145,17 @@ if [ -z "$DATA_CUTOFF" ]; then
     fi
     # Write dataCutoff to frontmatter
     "$VENV_PYTHON" -c "
-import re
 path = '$ENTRY_FILE'
 content = open(path).read()
-content = re.sub(r'(\n---)', '\ndataCutoff: $DATA_CUTOFF\1', content, count=1)
-open(path, 'w').write(content)
-print('Set dataCutoff: $DATA_CUTOFF in ' + path)
+# Insert dataCutoff before the closing --- of frontmatter
+parts = content.split('---', 2)
+if len(parts) >= 3:
+    parts[1] = parts[1].rstrip() + '\ndataCutoff: $DATA_CUTOFF\n'
+    content = '---'.join(parts)
+    open(path, 'w').write(content)
+    print('Set dataCutoff: $DATA_CUTOFF in ' + path)
+else:
+    print('ERROR: Could not find frontmatter delimiters in ' + path)
 "
 fi
 echo "Data cutoff for segment $SEGMENT: $DATA_CUTOFF"
