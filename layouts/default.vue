@@ -74,6 +74,11 @@
           <div>
             <p>Correze Travelogue - Malemort to Ussel, 185km</p>
             <p class="mt-1">Stage 9, Tour de France 2026 - Sunday, July 12</p>
+            <p class="mt-1 text-stone-500 text-xs">
+              &copy; 2026 Justin Simpson &middot;
+              Code: <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer" class="hover:text-white">Apache 2.0</a> &middot;
+              Content: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" class="hover:text-white">CC BY-SA 4.0</a>
+            </p>
           </div>
           <span class="text-stone-600 sm:border-l sm:border-stone-700 sm:pl-6">Designed in Maxwelltown, Dumfries</span>
         </div>
