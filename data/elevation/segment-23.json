@@ -225,7 +225,7 @@
     0
   ],
   "summary": {
-    "avg_gradient": 3.5,
+    "avg_gradient": 0.7,
     "max_gradient": 12.2,
     "elevation_gain": 170,
     "elevation_loss": 111,

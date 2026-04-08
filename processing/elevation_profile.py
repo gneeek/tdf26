@@ -122,7 +122,7 @@ def process_segment(gpx_path, segment_num):
     total_km = total_dist / 1000
 
     summary = {
-        "avg_gradient": round(float(np.mean(np.abs(all_gradients[1:]))), 1),
+        "avg_gradient": round(float(np.mean(all_gradients[1:])), 1),
         "max_gradient": round(float(np.max(all_gradients)), 1),
         "elevation_gain": round(ele_gain),
         "elevation_loss": round(ele_loss),
