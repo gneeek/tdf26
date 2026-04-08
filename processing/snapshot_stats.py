@@ -5,13 +5,15 @@ import argparse
 import json
 import os
 
+from rider_stats import calculate_stats
+
 
 def load_json(path):
     with open(path, "r") as f:
         return json.load(f)
 
 
-def create_snapshot(stats_path, points_path, log_path, segment, output_dir):
+def create_snapshot(stats_path, points_path, log_path, segment, output_dir, data_cutoff=None, rider_config_path=None):
     """Create a snapshot of current rider data for a segment."""
     stats = load_json(stats_path)
     log = load_json(log_path)
@@ -19,6 +21,19 @@ def create_snapshot(stats_path, points_path, log_path, segment, output_dir):
     points = {"riders": {}, "locations": []}
     if os.path.exists(points_path):
         points = load_json(points_path)
+
+    # Filter log entries to those on or before the data cutoff
+    if data_cutoff and log.get("entries"):
+        log["entries"] = [e for e in log["entries"] if e["date"] <= data_cutoff]
+
+    # Recalculate stats from filtered log so numbers match the displayed data
+    if data_cutoff and rider_config_path and os.path.exists(rider_config_path):
+        rider_config = load_json(rider_config_path)
+        stats = calculate_stats(log, rider_config)
+
+    # Override asOf to match the last log entry date
+    if log.get("entries"):
+        stats["asOf"] = log["entries"][-1]["date"]
 
     snapshot = {
         "segment": segment,
@@ -45,9 +60,11 @@ def main():
     parser.add_argument("--daily-log", default="data/riders/daily-log.json")
     parser.add_argument("--segment", type=int, required=True)
     parser.add_argument("--output-dir", default="data/riders/snapshots")
+    parser.add_argument("--rider-config", default="data/riders/rider-config.json")
+    parser.add_argument("--data-cutoff", default=None, help="Filter log to entries on or before this date (YYYY-MM-DD). From entry frontmatter dataCutoff.")
     args = parser.parse_args()
 
-    create_snapshot(args.stats, args.points, args.daily_log, args.segment, args.output_dir)
+    create_snapshot(args.stats, args.points, args.daily_log, args.segment, args.output_dir, args.data_cutoff, args.rider_config)
 
 
 if __name__ == "__main__":

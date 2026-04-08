@@ -42,7 +42,8 @@ class TestCreateSnapshot:
             snapshot = json.load(f)
 
         assert snapshot["segment"] == 3
-        assert snapshot["stats"] == stats_data
+        expected_stats = {**stats_data, "asOf": "2026-04-02"}  # overridden to last log entry
+        assert snapshot["stats"] == expected_stats
         assert snapshot["points"] == points_data
         assert snapshot["log"] == log_data
 
@@ -90,6 +91,78 @@ class TestCreateSnapshot:
 
         path = create_snapshot(str(stats), str(points), str(log), 1, str(output_dir))
         assert os.path.exists(path)
+
+    def test_asof_date_matches_last_log_entry(self, tmp_path):
+        stats = tmp_path / "stats.json"
+        points = tmp_path / "points.json"
+        log = tmp_path / "log.json"
+        output_dir = tmp_path / "snapshots"
+
+        stats.write_text(json.dumps({"asOf": "2026-04-07", "riders": {}}))
+        points.write_text(json.dumps({"riders": {}, "locations": []}))
+        log.write_text(json.dumps({"entries": [
+            {"date": "2026-04-01", "distances": {}},
+            {"date": "2026-04-04", "distances": {}},
+        ]}))
+
+        path = create_snapshot(str(stats), str(points), str(log), 1, str(output_dir))
+
+        with open(path) as f:
+            snapshot = json.load(f)
+
+        assert snapshot["stats"]["asOf"] == "2026-04-04"
+
+    def test_data_cutoff_filters_log_and_recalculates_stats(self, tmp_path):
+        stats = tmp_path / "stats.json"
+        points = tmp_path / "points.json"
+        log = tmp_path / "log.json"
+        config = tmp_path / "config.json"
+        output_dir = tmp_path / "snapshots"
+
+        stats.write_text(json.dumps({"asOf": "2026-04-07", "riders": {}}))
+        points.write_text(json.dumps({"riders": {}, "locations": []}))
+        log.write_text(json.dumps({"entries": [
+            {"date": "2026-04-01", "distances": {"alice": 3.0}},
+            {"date": "2026-04-02", "distances": {"alice": 2.0}},
+            {"date": "2026-04-03", "distances": {"alice": 1.5}},
+            {"date": "2026-04-05", "distances": {"alice": 4.0}},
+            {"date": "2026-04-07", "distances": {"alice": 5.0}},
+        ]}))
+        config.write_text(json.dumps({
+            "riders": [{"id": "alice", "name": "Alice", "color": "#FF0000"}],
+            "totalDistance": 185,
+            "dailyCap": 2,
+            "startDate": "2026-04-01",
+        }))
+
+        path = create_snapshot(str(stats), str(points), str(log), 1, str(output_dir),
+                               data_cutoff="2026-04-03", rider_config_path=str(config))
+
+        with open(path) as f:
+            snapshot = json.load(f)
+
+        assert len(snapshot["log"]["entries"]) == 3
+        assert snapshot["log"]["entries"][-1]["date"] == "2026-04-03"
+        assert snapshot["stats"]["asOf"] == "2026-04-03"
+        # Stats recalculated from filtered log: min(3,2)+min(2,2)+min(1.5,2) = 5.5
+        assert snapshot["stats"]["riders"]["alice"]["totalDistanceCapped"] == 5.5
+
+    def test_asof_unchanged_when_no_log_entries(self, tmp_path):
+        stats = tmp_path / "stats.json"
+        points = tmp_path / "points.json"
+        log = tmp_path / "log.json"
+        output_dir = tmp_path / "snapshots"
+
+        stats.write_text(json.dumps({"asOf": "2026-04-07", "riders": {}}))
+        points.write_text(json.dumps({"riders": {}, "locations": []}))
+        log.write_text(json.dumps({"entries": []}))
+
+        path = create_snapshot(str(stats), str(points), str(log), 1, str(output_dir))
+
+        with open(path) as f:
+            snapshot = json.load(f)
+
+        assert snapshot["stats"]["asOf"] == "2026-04-07"
 
     def test_overwrites_existing_snapshot(self, tmp_path):
         stats = tmp_path / "stats.json"
