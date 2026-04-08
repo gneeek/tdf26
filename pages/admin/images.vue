@@ -229,7 +229,11 @@ function toggleImage(img) {
     selected.value.push({
       src: img.url,
       alt: (img.description || img.title || '').replace(/<[^>]*>/g, '').trim(),
-      attribution: `${artist}, ${img.license}, Wikimedia Commons`
+      author: artist,
+      authorUrl: img.description_url || null,
+      license: img.license || 'Unknown',
+      licenseUrl: img.license === 'Public domain' ? null : 'https://creativecommons.org/licenses/by-sa/4.0/',
+      sourceUrl: img.description_url || null,
     })
   }
 }
@@ -322,7 +326,11 @@ function selectWikiImage(img) {
     selected.value.push({
       src: img.url,
       alt: img.title,
-      attribution: `Wikipedia, ${img.articleUrl}`
+      author: 'Wikipedia',
+      authorUrl: img.articleUrl,
+      license: img.license || 'See Wikipedia article for license',
+      licenseUrl: null,
+      sourceUrl: img.articleUrl,
     })
   }
 }
