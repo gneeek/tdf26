@@ -20,6 +20,10 @@ def create_snapshot(stats_path, points_path, log_path, segment, output_dir):
     if os.path.exists(points_path):
         points = load_json(points_path)
 
+    # Override asOf to match the last log entry date, not the recalculation date
+    if log.get("entries") and "asOf" in stats:
+        stats["asOf"] = log["entries"][-1]["date"]
+
     snapshot = {
         "segment": segment,
         "stats": stats,
