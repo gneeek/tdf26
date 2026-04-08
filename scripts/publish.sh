@@ -158,6 +158,7 @@ echo "Data cutoff for segment $SEGMENT: $DATA_CUTOFF"
     --stats "$PROJECT_DIR/data/riders/stats.json" \
     --points "$PROJECT_DIR/data/riders/points.json" \
     --daily-log "$PROJECT_DIR/data/riders/daily-log.json" \
+    --rider-config "$PROJECT_DIR/data/riders/rider-config.json" \
     --segment "$SEGMENT" \
     --output-dir "$PROJECT_DIR/data/riders/snapshots" \
     --data-cutoff "$DATA_CUTOFF"
