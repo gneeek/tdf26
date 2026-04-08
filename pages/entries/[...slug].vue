@@ -14,7 +14,7 @@
       :segments="segments"
       :route-coords="routeCoords"
       :town-coords="townCoords"
-      :rider-stats="riderStats"
+      :rider-stats="riderSnapshot?.stats || riderStats"
       :rider-config="riderConfig"
       class="mb-8"
     />
