@@ -112,6 +112,31 @@ class TestCreateSnapshot:
 
         assert snapshot["stats"]["asOf"] == "2026-04-04"
 
+    def test_data_cutoff_filters_log_entries(self, tmp_path):
+        stats = tmp_path / "stats.json"
+        points = tmp_path / "points.json"
+        log = tmp_path / "log.json"
+        output_dir = tmp_path / "snapshots"
+
+        stats.write_text(json.dumps({"asOf": "2026-04-07", "riders": {}}))
+        points.write_text(json.dumps({"riders": {}, "locations": []}))
+        log.write_text(json.dumps({"entries": [
+            {"date": "2026-04-01", "distances": {}},
+            {"date": "2026-04-02", "distances": {}},
+            {"date": "2026-04-03", "distances": {}},
+            {"date": "2026-04-05", "distances": {}},
+            {"date": "2026-04-07", "distances": {}},
+        ]}))
+
+        path = create_snapshot(str(stats), str(points), str(log), 1, str(output_dir), data_cutoff="2026-04-03")
+
+        with open(path) as f:
+            snapshot = json.load(f)
+
+        assert len(snapshot["log"]["entries"]) == 3
+        assert snapshot["log"]["entries"][-1]["date"] == "2026-04-03"
+        assert snapshot["stats"]["asOf"] == "2026-04-03"
+
     def test_asof_unchanged_when_no_log_entries(self, tmp_path):
         stats = tmp_path / "stats.json"
         points = tmp_path / "points.json"

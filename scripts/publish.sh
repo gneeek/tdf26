@@ -120,12 +120,47 @@ echo ""
 
 # Step 3: Snapshot stats for current segment
 echo "--- Step 3: Creating stats snapshot for segment $SEGMENT ---"
+ENTRY_FILE=$("$VENV_PYTHON" -c "
+import os, re
+entries_dir = '$PROJECT_DIR/content/entries'
+for f in sorted(os.listdir(entries_dir)):
+    if not f.endswith('.md'): continue
+    content = open(os.path.join(entries_dir, f)).read()
+    seg = re.search(r'^segment:\s*(\d+)', content, re.M)
+    if seg and int(seg.group(1)) == $SEGMENT:
+        print(os.path.join(entries_dir, f))
+        break
+")
+DATA_CUTOFF=$("$VENV_PYTHON" -c "
+import re
+content = open('$ENTRY_FILE').read()
+m = re.search(r'^dataCutoff:\s*(\S+)', content, re.M)
+print(m.group(1) if m else '')
+")
+if [ -z "$DATA_CUTOFF" ]; then
+    echo "No dataCutoff set for segment $SEGMENT."
+    read -rp "Enter data cutoff date (YYYY-MM-DD), or press Enter for today: " DATA_CUTOFF
+    if [ -z "$DATA_CUTOFF" ]; then
+        DATA_CUTOFF=$(date +%Y-%m-%d)
+    fi
+    # Write dataCutoff to frontmatter
+    "$VENV_PYTHON" -c "
+import re
+path = '$ENTRY_FILE'
+content = open(path).read()
+content = re.sub(r'(\n---)', '\ndataCutoff: $DATA_CUTOFF\1', content, count=1)
+open(path, 'w').write(content)
+print('Set dataCutoff: $DATA_CUTOFF in ' + path)
+"
+fi
+echo "Data cutoff for segment $SEGMENT: $DATA_CUTOFF"
 "$VENV_PYTHON" "$PROJECT_DIR/processing/snapshot_stats.py" \
     --stats "$PROJECT_DIR/data/riders/stats.json" \
     --points "$PROJECT_DIR/data/riders/points.json" \
     --daily-log "$PROJECT_DIR/data/riders/daily-log.json" \
     --segment "$SEGMENT" \
-    --output-dir "$PROJECT_DIR/data/riders/snapshots"
+    --output-dir "$PROJECT_DIR/data/riders/snapshots" \
+    --data-cutoff "$DATA_CUTOFF"
 echo ""
 
 # Step 4: Fetch weather for current entry

@@ -11,7 +11,7 @@ def load_json(path):
         return json.load(f)
 
 
-def create_snapshot(stats_path, points_path, log_path, segment, output_dir):
+def create_snapshot(stats_path, points_path, log_path, segment, output_dir, data_cutoff=None):
     """Create a snapshot of current rider data for a segment."""
     stats = load_json(stats_path)
     log = load_json(log_path)
@@ -19,6 +19,10 @@ def create_snapshot(stats_path, points_path, log_path, segment, output_dir):
     points = {"riders": {}, "locations": []}
     if os.path.exists(points_path):
         points = load_json(points_path)
+
+    # Filter log entries to those on or before the publish date
+    if data_cutoff and log.get("entries"):
+        log["entries"] = [e for e in log["entries"] if e["date"] <= data_cutoff]
 
     # Override asOf to match the last log entry date, not the recalculation date
     if log.get("entries") and "asOf" in stats:
@@ -49,9 +53,10 @@ def main():
     parser.add_argument("--daily-log", default="data/riders/daily-log.json")
     parser.add_argument("--segment", type=int, required=True)
     parser.add_argument("--output-dir", default="data/riders/snapshots")
+    parser.add_argument("--data-cutoff", default=None, help="Filter log to entries on or before this date (YYYY-MM-DD). From entry frontmatter dataCutoff.")
     args = parser.parse_args()
 
-    create_snapshot(args.stats, args.points, args.daily_log, args.segment, args.output_dir)
+    create_snapshot(args.stats, args.points, args.daily_log, args.segment, args.output_dir, args.data_cutoff)
 
 
 if __name__ == "__main__":
