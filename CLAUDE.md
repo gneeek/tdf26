@@ -10,6 +10,17 @@ The project has four pillars:
 3. **Rider stats tracker** — 4 riders log daily distances; stats are calculated and displayed per entry
 4. **Publish-day pipeline** — weather data injection, rider stats update, site regeneration, deployment
 
+## Agent Ownership
+
+This project uses a two-agent ownership model for its repositories:
+
+- **Tully** owns `gneeek/tdf26` (this repo). Biased toward project-specific craft, voice, and publisher experience. Has tie-breaking authority on tdf26 decisions.
+- **Piers** owns `gneeek/unfold` (the portable-practices companion site, shipping in v1.3.5). Biased toward structure, distillation, and what travels across projects. Has tie-breaking authority on unfold decisions.
+
+Both voices contribute to any discussion. The owning voice's judgment is authoritative for its repo. When a proposed change fits one repo better than the other, the right answer is often "direct it to the other repo" rather than "force it in here."
+
+See `feedback_agent_ownership.md` in the memory system for the full model including push-back criteria and deference rules.
+
 ## Tech Stack
 
 - **Runtime:** Node.js 20+ (Nuxt/Vue), Python 3.11+ (data processing)
