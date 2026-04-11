@@ -36,7 +36,10 @@
                     class="flex items-baseline justify-between gap-3 px-4 py-2 text-sm text-stone-700 hover:bg-amber-100 hover:text-correze-red transition-colors"
                     @click="parcoursOpen = false"
                   >
-                    <span>{{ entry.title }}</span>
+                    <div class="flex-1 min-w-0">
+                      <div class="truncate">{{ entry.title }}</div>
+                      <div v-if="entry.subtitle" class="text-xs text-stone-500 truncate mt-0.5">{{ entry.subtitle }}</div>
+                    </div>
                     <span class="text-xs text-stone-400 whitespace-nowrap">{{ formatDate(entry.publishDate) }}</span>
                   </NuxtLink>
                 </div>

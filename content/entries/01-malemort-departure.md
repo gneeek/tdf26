@@ -1,6 +1,6 @@
 ---
 segment: 1
-title: "Malemort — Where Pain Meets Death"
+title: "Malemort - Where Pain Meets Death"
 subtitle: "Km 0-8: Departure from the Correze lowlands"
 publishDate: 2026-04-05
 dataCutoff: 2026-04-04
@@ -13,7 +13,7 @@ weather: {"fetchedAt": "2026-04-08", "current": {"temp": 13, "conditions": "Clea
 draft: false
 ---
 
-# Malemort — Where Pain Meets Death
+# Malemort - Where Pain Meets Death
 
 The name alone should give our four riders pause. *Malemort* — from the Occitan *mala mort*, the bad death. It is a name that predates the Tour de France by centuries, a name born from plague or battle or some long-forgotten catastrophe that scarred this bend of the Corrèze river so deeply that the wound became the place itself.
 

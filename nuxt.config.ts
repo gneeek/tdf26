@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Corrèze Travelogue — Tour de France 2026 Stage 9',
+      title: 'Corrèze Travelogue - Tour de France 2026 Stage 9',
       meta: [
         { name: 'description', content: 'A cycling travelogue following the 185km route of Stage 9 of the 2026 Tour de France, from Malemort to Ussel through Corrèze.' }
       ],
