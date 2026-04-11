@@ -2,7 +2,7 @@
   <div
     v-if="stats && Object.keys(stats.riders).length"
     class="bg-white rounded-lg shadow-sm relative"
-    :class="isFullscreen ? 'z-[1200] overflow-auto p-12 text-lg' : 'mt-8 p-6 text-sm'"
+    :class="isFullscreen ? 'z-[1200] overflow-auto p-4 sm:p-12 text-lg' : 'mt-8 p-6 text-sm'"
     :style="isFullscreen ? 'position:fixed;top:0;left:0;width:100vw;height:100vh;margin:0' : ''"
   >
     <DayCounter v-if="isFullscreen" class="mb-4" />
@@ -76,10 +76,10 @@
 
     <!-- Stats table -->
     <div class="overflow-x-auto">
-      <table class="w-full" :class="isFullscreen ? 'text-xl' : 'text-sm'">
+      <table class="w-full" :class="isFullscreen ? 'text-sm sm:text-xl' : 'text-sm'">
         <thead>
           <tr class="bg-amber-100 border-b border-stone-200">
-            <th class="text-left py-2 pr-2 text-stone-600 font-medium">Stat</th>
+            <th class="text-left py-2 pr-2 text-stone-600 font-medium sticky left-0 bg-amber-100 z-10">Stat</th>
             <th
               v-for="rider in rankedRiders"
               :key="rider.id"
@@ -97,69 +97,69 @@
             </th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-stone-100 [&>tr:nth-child(even)]:bg-stone-50">
+        <tbody class="divide-y divide-stone-100 [&>tr]:bg-white [&>tr:nth-child(even)]:bg-stone-50">
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Total (capped)</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Total (capped)</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.totalDistanceCapped }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Daily avg (actual)</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Daily avg (actual)</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.dailyAverageActual }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Daily avg (capped)</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Daily avg (capped)</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.dailyAverageCapped }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Longest day</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Longest day</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.longestDay }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Best 3-day</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Best 3-day</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.bestThreeDayCombo }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Recent 5-day avg</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Recent 5-day avg</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.recentFiveDayAverage }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Days &lt;3km</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Days &lt;3km</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.daysBelowThreeKm }}
             </td>
           </tr>
           <tr v-if="hasPoints">
-            <td class="py-1.5 pr-2 text-stone-500">Sprint pts</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Sprint pts</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               <span :class="jerseys.green === r.id ? 'text-green-600 font-bold' : ''">{{ riderPoints(r.id).sprintPoints }}</span>
             </td>
           </tr>
           <tr v-if="hasPoints">
-            <td class="py-1.5 pr-2 text-stone-500">Climb pts</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Climb pts</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               <span :class="jerseys.polkaDot === r.id ? 'text-red-600 font-bold' : ''">{{ riderPoints(r.id).climbPoints }}</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Remaining</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Remaining</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center font-mono border-l border-stone-200" :class="isFullscreen ? 'py-1.5 px-3' : 'py-1 px-1 text-xs'">
               {{ r.stats.distanceRemaining }}<br><span class="text-stone-400">km</span>
             </td>
           </tr>
           <tr>
-            <td class="py-1.5 pr-2 text-stone-500">Est. finish</td>
+            <td class="py-1.5 pr-2 text-stone-500 sticky left-0 bg-inherit">Est. finish</td>
             <td v-for="r in rankedRiders" :key="r.id" class="text-center py-1.5 px-2 font-mono text-xs">
               <template v-if="r.stats.estimatedFinishDate">
                 <span class="text-stone-400 block" :class="isFullscreen ? 'text-base' : 'text-[0.65rem]'" style="line-height:1">{{ formatFinishMonth(r.stats.estimatedFinishDate) }}</span>
