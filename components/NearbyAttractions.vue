@@ -41,22 +41,34 @@ const categoryEmoji = {
   memorial: '🕯️', industrial: '🏭', craft: '🔨',
 }
 
+// Segment boundary tolerance: attractions within 0.5 km of a segment's km_start
+// or km_end also appear in the adjacent segment. This prevents boundary cases
+// like Collonges-la-Rouge (first route arrival at km 21.75, just inside segment 3)
+// from disappearing from segment 4's entry page where the Collonges content lives.
+const TOLERANCE_KM = 0.5
+
+// Attractions more than this far from the actual route aren't "nearby" to any
+// segment and are excluded from every entry page.
+const MAX_DISTANCE_M = 5000
+
 const nearby = computed(() => {
   const seg = segmentsJson.find(s => s.segment === props.segment)
   if (!seg) return []
 
-  const midLat = (seg.start_lat + seg.end_lat) / 2
-  const midLng = (seg.start_lng + seg.end_lng) / 2
-
   return attractionsData
     .filter(poi => {
-      const dist = Math.sqrt((poi.lat - midLat) ** 2 + (poi.lng - midLng) ** 2)
-      return dist <= 0.15
+      // Route-proximity fields are precomputed by
+      // processing/calculate_attraction_positions.py. Skip POIs that haven't
+      // been processed yet (defensive; in practice all POIs should have them).
+      if (typeof poi.nearest_km !== 'number' || typeof poi.nearest_distance_m !== 'number') {
+        return false
+      }
+      if (poi.nearest_distance_m > MAX_DISTANCE_M) {
+        return false
+      }
+      return poi.nearest_km >= (seg.km_start - TOLERANCE_KM)
+          && poi.nearest_km <= (seg.km_end + TOLERANCE_KM)
     })
-    .sort((a, b) => {
-      const dA = Math.sqrt((a.lat - midLat) ** 2 + (a.lng - midLng) ** 2)
-      const dB = Math.sqrt((b.lat - midLat) ** 2 + (b.lng - midLng) ** 2)
-      return dA - dB
-    })
+    .sort((a, b) => a.nearest_distance_m - b.nearest_distance_m)
 })
 </script>

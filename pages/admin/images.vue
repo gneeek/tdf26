@@ -272,18 +272,26 @@ const categoryEmoji = {
   memorial: '🕯️', industrial: '🏭', craft: '🔨',
 }
 
+// Nearby-attraction suggestions for the Wikipedia search helper. Uses the same
+// route-proximity algorithm as components/NearbyAttractions.vue (issue #344)
+// so the admin and the published entry pages stay consistent.
 const nearbyAttractions = computed(() => {
   const seg = segmentsJson.find(s => s.segment === selectedSegment.value)
   if (!seg) return []
-  const midLat = (seg.start_lat + seg.end_lat) / 2
-  const midLng = (seg.start_lng + seg.end_lng) / 2
+  const TOLERANCE_KM = 0.5
+  const MAX_DISTANCE_M = 5000
   return attractionsData
-    .filter(poi => Math.sqrt((poi.lat - midLat) ** 2 + (poi.lng - midLng) ** 2) <= 0.15)
-    .sort((a, b) => {
-      const dA = Math.sqrt((a.lat - midLat) ** 2 + (a.lng - midLng) ** 2)
-      const dB = Math.sqrt((b.lat - midLat) ** 2 + (b.lng - midLng) ** 2)
-      return dA - dB
+    .filter(poi => {
+      if (typeof poi.nearest_km !== 'number' || typeof poi.nearest_distance_m !== 'number') {
+        return false
+      }
+      if (poi.nearest_distance_m > MAX_DISTANCE_M) {
+        return false
+      }
+      return poi.nearest_km >= (seg.km_start - TOLERANCE_KM)
+          && poi.nearest_km <= (seg.km_end + TOLERANCE_KM)
     })
+    .sort((a, b) => a.nearest_distance_m - b.nearest_distance_m)
 })
 
 function searchAttractionWikipedia(name) {
