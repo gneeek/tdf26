@@ -30,6 +30,7 @@
 
 <script setup>
 import segmentsJson from '~/data/segments.json'
+import { townKmPositions } from '~/data/town-positions'
 
 const props = defineProps({
   currentKm: { type: Number, default: 0 },
@@ -58,9 +59,10 @@ for (const seg of segmentsJson) {
   if (seg.towns?.length) {
     for (const town of seg.towns) {
       if (!townSet.has(town)) {
+        const km = townKmPositions[town] ?? seg.km_start
         townSet.set(town, {
           name: town,
-          km: seg.km_start.toFixed(0),
+          km: km.toFixed(0),
           elevation: seg.min_elevation
         })
       }

@@ -60,6 +60,7 @@ import {
   Tooltip
 } from 'chart.js'
 import annotationPlugin from 'chartjs-plugin-annotation'
+import { townKmPositions } from '~/data/town-positions'
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Filler, Tooltip, annotationPlugin)
 
 const zoomReady = ref(false)
@@ -220,13 +221,7 @@ const chartData = computed(() => {
   }
 })
 
-// Known positions along the route
-const townKmPositions = {
-  'Malemort': 0, 'Brive-la-Gaillarde': 4.5, 'Turenne': 17,
-  'Collonges-la-Rouge': 23.5, 'Beynat': 37.5, 'Tulle': 65.5,
-  'Naves': 73.5, 'Chaumeil': 90, 'Treignac': 116.5,
-  'Bugeat': 130, 'Meymac': 157.5, 'Ussel': 182.5,
-}
+// townKmPositions is imported from ~/data/town-positions (shared with StageDetails.vue)
 
 // Known climb summit positions (km_end from KNOWN_CLIMBS)
 const climbSummitKm = {

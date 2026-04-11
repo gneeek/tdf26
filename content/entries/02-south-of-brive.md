@@ -1,7 +1,7 @@
 ---
 segment: 2
 title: "South of Brive"
-subtitle: "Km 8-14"
+subtitle: "Km 8-14: Walnut country and the walls of Turenne"
 publishDate: 2026-04-08
 kmStart: 8
 kmEnd: 14
