@@ -30,7 +30,9 @@
     "min_elevation": 176,
     "max_elevation": 337,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Turenne"
+    ],
     "climbs": []
   },
   {
@@ -47,7 +49,8 @@
     "max_elevation": 287,
     "notable_points": [],
     "towns": [
-      "Turenne"
+      "Ligneyrac",
+      "Collonges-la-Rouge"
     ],
     "climbs": []
   },
@@ -65,7 +68,8 @@
     "max_elevation": 381,
     "notable_points": [],
     "towns": [
-      "Collonges-la-Rouge"
+      "Collonges-la-Rouge",
+      "Meyssac"
     ],
     "climbs": []
   },
@@ -104,7 +108,7 @@
       "Beynat"
     ],
     "climbs": [
-      "Côte de Lagleygeolle"
+      "C\u00f4te de Lagleygeolle"
     ]
   },
   {
@@ -122,7 +126,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "Côte de Lagleygeolle"
+      "C\u00f4te de Lagleygeolle"
     ]
   },
   {
@@ -140,7 +144,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "Côte de Miel"
+      "C\u00f4te de Miel"
     ]
   },
   {
@@ -158,7 +162,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "Côte de Miel"
+      "C\u00f4te de Miel"
     ]
   },
   {
@@ -196,7 +200,7 @@
       "Naves"
     ],
     "climbs": [
-      "Côte des Naves"
+      "C\u00f4te des Naves"
     ]
   },
   {
@@ -320,7 +324,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "Côte de la Croix de Pey"
+      "C\u00f4te de la Croix de Pey"
     ]
   },
   {
@@ -340,7 +344,7 @@
       "Bugeat"
     ],
     "climbs": [
-      "Côte de la Croix de Pey"
+      "C\u00f4te de la Croix de Pey"
     ]
   },
   {
@@ -426,7 +430,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "Côte des Gardes"
+      "C\u00f4te des Gardes"
     ]
   },
   {
