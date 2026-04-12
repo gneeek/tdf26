@@ -1,7 +1,7 @@
 ---
 segment: 3
 title: "The Causse Between"
-subtitle: "Km 14-22: Across the causse corrézien toward Collonges"
+subtitle: "Km 14-22: Across the causse corrézien to Collonges-la-Rouge"
 publishDate: 2026-04-12
 dataCutoff: 2026-04-11
 kmStart: 14
@@ -54,7 +54,9 @@ To the south the ground falls away toward Queyssac les Vignes and Branceilles, a
 
 There is also the vin de noix, which belongs to the other larder. The rule is the rule of forties: four litres of wine, one of eau-de-vie, forty green walnuts quartered, forty cubes of sugar, forty days. The walnuts must be cut at midsummer, while the shell is still soft enough that a kitchen knife goes through the whole nut like an apple. The fingers that quarter them will be black for a week, because the husk of a green walnut was once the cheap iodine of the Corrèze and the staining is what the iodine did. A jar of the stuff macerating on a kitchen windowsill on the Saint-Jean is less a recipe than an almanac; it tells the household, and whoever is passing, where it stands in the year.
 
-The cyclist, now crossing the ridge at its most modest, can see no vines and no walnuts. What the cyclist sees, a kilometre ahead and still only as a promise, is a cluster of roofs the wrong colour for limestone.
+The cyclist, now crossing the ridge at its most modest, can see no vines and no walnuts. What the cyclist sees, a kilometre ahead, is a cluster of roofs the wrong colour for limestone.
+
+Those roofs are Collonges-la-Rouge. The route clips the edge of the village at the very end of this segment, just long enough to register the red sandstone — iron oxide in the local grès, the same stuff that colours the soil after rain — before the road bends east and carries on. In July the peloton will pass through here at fifty kilometres an hour, which is time enough to notice the colour and nothing else. The carved tympanum, the Maison de la Sirène, the story of how a village mayor invented the Plus Beaux Villages de France — all of it will be behind them before the television cameras have finished panning. Some places are seen; Collonges, from a bicycle at speed, is only glimpsed.
 
 [^denoix]: Maison Denoix, https://www.denoix.com/en/violet-mustard
 [^must]: A Gardener's Table on making purple mustard from grape must, https://agardenerstable.com/purple-mustard-from-homemade-must/
