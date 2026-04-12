@@ -5,12 +5,20 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
       <div class="text-center p-3 bg-stone-50 rounded">
-        <div class="text-xl font-bold text-stone-700">{{ summary.avg_gradient }}%</div>
-        <div class="text-xs text-stone-500">Avg Gradient</div>
+        <div class="text-xl font-bold text-red-700">{{ summary.avg_climb_gradient }}%</div>
+        <div class="text-xs text-stone-500">Avg Climb</div>
       </div>
       <div class="text-center p-3 bg-stone-50 rounded">
-        <div class="text-xl font-bold text-red-700">{{ summary.max_gradient }}%</div>
-        <div class="text-xs text-stone-500">Max Gradient</div>
+        <div class="text-xl font-bold text-red-700">{{ summary.max_climb_gradient }}%</div>
+        <div class="text-xs text-stone-500">Max Climb</div>
+      </div>
+      <div class="text-center p-3 bg-stone-50 rounded">
+        <div class="text-xl font-bold text-blue-600">{{ summary.avg_descent_gradient }}%</div>
+        <div class="text-xs text-stone-500">Avg Descent</div>
+      </div>
+      <div class="text-center p-3 bg-stone-50 rounded">
+        <div class="text-xl font-bold text-blue-600">{{ summary.max_descent_gradient }}%</div>
+        <div class="text-xs text-stone-500">Max Descent</div>
       </div>
       <div class="text-center p-3 bg-stone-50 rounded">
         <div class="text-xl font-bold text-correze-green">+{{ summary.elevation_gain }}m</div>
