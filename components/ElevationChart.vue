@@ -85,6 +85,14 @@ const labelPlugin = {
       if (elevation === undefined) continue
       const elevPixel = yScale.getPixelForValue(elevation)
 
+      // Determine text alignment based on proximity to chart edges
+      const chartLeft = chart.chartArea.left
+      const chartRight = chart.chartArea.right
+      const edgeMargin = 40
+      let textAlign = 'center'
+      if (xPixel - chartLeft < edgeMargin) textAlign = 'left'
+      else if (chartRight - xPixel < edgeMargin) textAlign = 'right'
+
       // Draw emoji centered on the elevation point
       const emojiY = label.type === 'climb'
         ? elevPixel - 8
@@ -99,6 +107,7 @@ const labelPlugin = {
         ? emojiY - 14
         : emojiY + 14 + (label.extraOffset || 0)
       ctx.font = '10px sans-serif'
+      ctx.textAlign = textAlign
       ctx.textBaseline = 'middle'
       ctx.fillStyle = label.color
       ctx.fillText(label.name, xPixel, nameY)

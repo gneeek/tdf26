@@ -62,7 +62,7 @@ for (const seg of segmentsJson) {
         const km = townKmPositions[town] ?? seg.km_start
         townSet.set(town, {
           name: town,
-          km: km.toFixed(0),
+          km: km.toFixed(1),
           elevation: seg.min_elevation
         })
       }
