@@ -346,7 +346,8 @@ function buildRiderAnnotations() {
     if (!stats || stats.totalDistanceCapped == null) continue
 
     const riderKm = stats.totalDistanceCapped - kmOffset
-    if (riderKm < 0 || riderKm > distances[distances.length - 1]) continue
+    const upperBound = distances[distances.length - 1] + 0.5
+    if (riderKm < 0 || riderKm > upperBound) continue
 
     let bestIdx = 0
     let bestDist = Infinity
@@ -368,6 +369,8 @@ function buildRiderAnnotations() {
     const jersey = getJerseyEmoji(rp.rider.id)
     const labelText = jersey ? `${jersey} ${rp.rider.name}` : rp.rider.name
 
+    // Flip label direction when rider is near the right edge of the chart
+    const nearRightEdge = rp.bestIdx >= distances.length - 3
     annotations[`rider-${rp.rider.id}`] = {
       type: 'line',
       xMin: rp.bestIdx,
@@ -384,7 +387,7 @@ function buildRiderAnnotations() {
         font: { size: 10, weight: 'bold' },
         padding: { top: 2, bottom: 2, left: 4, right: 4 },
         borderRadius: 3,
-        xAdjust: 8,
+        xAdjust: nearRightEdge ? -8 : 8,
       }
     }
   })
