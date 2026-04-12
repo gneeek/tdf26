@@ -19,7 +19,7 @@
       class="mb-8"
     />
 
-    <ElevationChart :elevation-data="elevationData" :segments="segments" :current-segment="page.segment" :rider-stats="riderSnapshot?.stats || riderStats" :rider-config="riderConfig" :rider-points="riderSnapshot?.points || null" class="mb-8" />
+    <ElevationChart :elevation-data="elevationData" :segments="segments" :current-segment="page.segment" :rider-stats="riderSnapshot?.stats || riderStats" :rider-config="riderConfig" :rider-points="riderSnapshot?.points || riderPoints" class="mb-8" />
 
     <PowerStats :elevation-data="elevationData" class="mb-8" />
 
@@ -103,6 +103,14 @@ try {
   riderStats.value = data.default || data
 } catch {
   riderStats.value = null
+}
+
+const riderPoints = ref(null)
+try {
+  const data = await import('~/data/riders/points.json')
+  riderPoints.value = data.default || data
+} catch {
+  riderPoints.value = null
 }
 
 // Load route coordinates
