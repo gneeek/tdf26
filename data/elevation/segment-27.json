@@ -227,6 +227,10 @@
   "summary": {
     "avg_gradient": -0.2,
     "max_gradient": 11.2,
+    "avg_climb_gradient": 3.1,
+    "avg_descent_gradient": -5.2,
+    "max_climb_gradient": 11.2,
+    "max_descent_gradient": -13.3,
     "elevation_gain": 53,
     "elevation_loss": 59,
     "avg_power_30kmh": 228,

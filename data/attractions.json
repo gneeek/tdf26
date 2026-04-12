@@ -579,5 +579,40 @@
     "links": [],
     "nearest_km": 168.49,
     "nearest_distance_m": 48
+  },
+  {
+    "name": "Eglise Saint-Vincent de Meyssac",
+    "category": "heritage",
+    "lat": 45.0569,
+    "lng": 1.6726,
+    "description": "12th-16th century church with Romanesque Limousin-style portal, fortified during the Hundred Years War. Red sandstone bell tower with white limestone tympanum \u2014 both sides of the Meyssac fault in one building.",
+    "links": [],
+    "nearest_km": 23.7,
+    "nearest_distance_m": 277
+  },
+  {
+    "name": "Halle aux Grains de Meyssac",
+    "category": "heritage",
+    "lat": 45.0567,
+    "lng": 1.673,
+    "description": "18th-century grain hall with red sandstone columns supporting a Travassac slate roof on a chestnut timber frame. The geological fault made architectural.",
+    "links": [],
+    "nearest_km": 23.7,
+    "nearest_distance_m": 280
+  },
+  {
+    "name": "Espace de Decouverte de la Faille de Meyssac",
+    "category": "geology",
+    "lat": 45.0729,
+    "lng": 1.6498,
+    "description": "Discovery centre at Noailhac interpreting the Meyssac geological fault. Nine illustrated panels, fossils, rock samples, and a scale model. Free admission.",
+    "links": [
+      {
+        "label": "Noailhac Patrimoine",
+        "url": "https://noailhacpatrimoine.fr/notre-patrimoine/geologie-l-espace-de-decouverte-de-la-faille-de-meyssac-et-de-la-pierre"
+      }
+    ],
+    "nearest_km": 24.5,
+    "nearest_distance_m": 3200
   }
 ]

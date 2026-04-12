@@ -68,10 +68,11 @@
     "max_elevation": 381,
     "notable_points": [],
     "towns": [
-      "Collonges-la-Rouge",
       "Meyssac"
     ],
-    "climbs": []
+    "climbs": [
+      "Puy Boubou"
+    ]
   },
   {
     "segment": 5,
@@ -87,9 +88,7 @@
     "max_elevation": 404,
     "notable_points": [],
     "towns": [],
-    "climbs": [
-      "Puy Boubou"
-    ]
+    "climbs": []
   },
   {
     "segment": 6,

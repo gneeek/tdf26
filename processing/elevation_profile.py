@@ -121,9 +121,16 @@ def process_segment(gpx_path, segment_num):
 
     total_km = total_dist / 1000
 
+    climb_gradients = all_gradients[all_gradients > 0]
+    descent_gradients = all_gradients[all_gradients < 0]
+
     summary = {
         "avg_gradient": round(float(np.mean(all_gradients[1:])), 1),
         "max_gradient": round(float(np.max(all_gradients)), 1),
+        "avg_climb_gradient": round(float(np.mean(climb_gradients)), 1) if len(climb_gradients) > 0 else 0.0,
+        "avg_descent_gradient": round(float(np.mean(descent_gradients)), 1) if len(descent_gradients) > 0 else 0.0,
+        "max_climb_gradient": round(float(np.max(climb_gradients)), 1) if len(climb_gradients) > 0 else 0.0,
+        "max_descent_gradient": round(float(np.min(descent_gradients)), 1) if len(descent_gradients) > 0 else 0.0,
         "elevation_gain": round(ele_gain),
         "elevation_loss": round(ele_loss),
         "avg_power_30kmh": round(float(np.mean(power_30))),
