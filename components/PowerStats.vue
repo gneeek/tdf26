@@ -3,7 +3,7 @@
     <h3 class="text-lg font-semibold text-stone-700 mb-4">Power Stats</h3>
     <p class="text-xs text-stone-400 mb-4">Reference: 70kg rider + 8kg bike, CdA 0.35, Crr 0.005</p>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-3 gap-4">
       <div class="text-center p-3 bg-stone-50 rounded">
         <div class="text-xl font-bold text-red-700">{{ summary.avg_climb_gradient }}%</div>
         <div class="text-xs text-stone-500">Avg Climb</div>
@@ -13,22 +13,22 @@
         <div class="text-xs text-stone-500">Max Climb</div>
       </div>
       <div class="text-center p-3 bg-stone-50 rounded">
-        <div class="text-xl font-bold text-blue-600">{{ summary.avg_descent_gradient }}%</div>
-        <div class="text-xs text-stone-500">Avg Descent</div>
-      </div>
-      <div class="text-center p-3 bg-stone-50 rounded">
-        <div class="text-xl font-bold text-blue-600">{{ summary.max_descent_gradient }}%</div>
-        <div class="text-xs text-stone-500">Max Descent</div>
-      </div>
-      <div class="text-center p-3 bg-stone-50 rounded">
         <div class="text-xl font-bold text-correze-green">+{{ summary.elevation_gain }}m</div>
         <div class="text-xs text-stone-500">Elevation Gain</div>
       </div>
       <div class="text-center p-3 bg-stone-50 rounded">
-        <div class="text-xl font-bold text-blue-600">-{{ summary.elevation_loss }}m</div>
+        <div class="text-xl font-bold text-red-700">{{ summary.avg_descent_gradient }}%</div>
+        <div class="text-xs text-stone-500">Avg Descent</div>
+      </div>
+      <div class="text-center p-3 bg-stone-50 rounded">
+        <div class="text-xl font-bold text-red-700">{{ summary.max_descent_gradient }}%</div>
+        <div class="text-xs text-stone-500">Max Descent</div>
+      </div>
+      <div class="text-center p-3 bg-stone-50 rounded">
+        <div class="text-xl font-bold text-red-700">-{{ summary.elevation_loss }}m</div>
         <div class="text-xs text-stone-500">Elevation Loss</div>
       </div>
-      <div class="text-center p-3 bg-correze-red/5 rounded col-span-2 md:col-span-1">
+      <div class="text-center p-3 bg-correze-red/5 rounded col-span-3">
         <div class="text-xl font-bold text-correze-red">{{ summary.avg_power_35kmh }}W</div>
         <div class="text-xs text-stone-500">Avg Power @35km/h</div>
       </div>
