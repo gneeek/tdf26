@@ -17,11 +17,11 @@
         <div class="text-xs text-stone-500">Elevation Gain</div>
       </div>
       <div class="text-center p-3 bg-stone-50 rounded">
-        <div class="text-xl font-bold text-red-700">{{ summary.avg_descent_gradient }}%</div>
+        <div class="text-xl font-bold text-blue-600">{{ summary.avg_descent_gradient }}%</div>
         <div class="text-xs text-stone-500">Avg Descent</div>
       </div>
       <div class="text-center p-3 bg-stone-50 rounded">
-        <div class="text-xl font-bold text-red-700">{{ summary.max_descent_gradient }}%</div>
+        <div class="text-xl font-bold text-blue-600">{{ summary.max_descent_gradient }}%</div>
         <div class="text-xs text-stone-500">Max Descent</div>
       </div>
       <div class="text-center p-3 bg-stone-50 rounded">
