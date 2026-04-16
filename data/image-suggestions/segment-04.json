@@ -1,9 +1,11 @@
 {
   "segment": 4,
   "towns": [
-    "Collonges-la-Rouge"
+    "Meyssac"
   ],
-  "climbs": [],
+  "climbs": [
+    "Puy Boubou"
+  ],
   "image_count": 50,
   "images": [
     {
@@ -128,17 +130,6 @@
       "description": "<p>Collonges-la-Rouge (Corrèze).\n</p><p>La maison de Maussac.\n</p><p>En 1415, Aymar de Chaunac aurait rendu hommage au vicomte pour son hôtel de Maussac à Collonges. En fait, il semble qu'\"il s'agisse"
     },
     {
-      "title": "File:Collonges-la-Rouge (Corrèze). (28433420170).jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828433420170%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828433420170%29.jpg",
-      "full_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828433420170%29.jpg",
-      "description_url": "https://commons.wikimedia.org/wiki/File:Collonges-la-Rouge_(Corr%C3%A8ze)._(28433420170).jpg",
-      "width": 4928,
-      "height": 3264,
-      "license": "CC BY 2.0",
-      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/26082117@N07\">Daniel Jolivet</a>",
-      "description": "<p>Collonges-la-Rouge (Corrèze).\n</p><p>L'église Saint-Pierre.\n</p><p>Collonges aurait d'abord été un petit prieuré de l'abbaye de Charroux (\"Curia Coloniense\" citée dans le cartulaire de Charroux au "
-    },
-    {
       "title": "File:Collonges-la-Rouge (Corrèze). (29068808503).jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829068808503%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829068808503%29.jpg",
       "full_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829068808503%29.jpg",
@@ -148,6 +139,17 @@
       "license": "CC BY 2.0",
       "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/26082117@N07\">Daniel Jolivet</a>",
       "description": "<p>Collonges-la-Rouge (Corrèze).\n</p><p>La maison de Maussac.\n</p><p>En 1415, Aymar de Chaunac aurait rendu hommage au vicomte pour son hôtel de Maussac à Collonges. En fait, il semble qu'\"il s'agisse"
+    },
+    {
+      "title": "File:Collonges-la-Rouge (Corrèze). (28433420170).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828433420170%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828433420170%29.jpg",
+      "full_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828433420170%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Collonges-la-Rouge_(Corr%C3%A8ze)._(28433420170).jpg",
+      "width": 4928,
+      "height": 3264,
+      "license": "CC BY 2.0",
+      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/26082117@N07\">Daniel Jolivet</a>",
+      "description": "<p>Collonges-la-Rouge (Corrèze).\n</p><p>L'église Saint-Pierre.\n</p><p>Collonges aurait d'abord été un petit prieuré de l'abbaye de Charroux (\"Curia Coloniense\" citée dans le cartulaire de Charroux au "
     },
     {
       "title": "File:Collonges-la-Rouge (Corrèze). (29657961246).jpg",
@@ -183,15 +185,37 @@
       "description": "<p>Collonges-la-Rouge (Corrèze)\n</p><p>Ruelles. \n</p><p>Le grés rouge, caractéristique de Collonges, provient de la faille de Meyssac (que suit la départementale 38). Les carrières s'étendaient de Mey"
     },
     {
-      "title": "File:Collonges-la-Rouge (Corrèze). (28840808441).jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828840808441%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828840808441%29.jpg",
-      "full_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828840808441%29.jpg",
-      "description_url": "https://commons.wikimedia.org/wiki/File:Collonges-la-Rouge_(Corr%C3%A8ze)._(28840808441).jpg",
+      "title": "File:Collonges-la-Rouge (Corrèze). (29096384102).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829096384102%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829096384102%29.jpg",
+      "full_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829096384102%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Collonges-la-Rouge_(Corr%C3%A8ze)._(29096384102).jpg",
       "width": 4928,
       "height": 3264,
       "license": "CC BY 2.0",
       "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/26082117@N07\">Daniel Jolivet</a>",
-      "description": "<p>Collonges-la-Rouge (Corrèze)\n</p><p>Ruelles. \n</p><p>Le grés rouge, caractéristique de Collonges, provient de la faille de Meyssac (que suit la départementale 38). Les carrières s'étendaient de Mey"
+      "description": "<p>Collonges-la-Rouge (Corrèze)\n</p><p>Château de Vassignac ou Vassinhac.\n</p><p>Le Castel de Vassinhac fut construit en 1583 par la plus puissante famille de Collonges, les Vassinhac. C'est un grand "
+    },
+    {
+      "title": "File:Collonges-la-Rouge (Corrèze). (29125330871).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829125330871%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829125330871%29.jpg",
+      "full_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829125330871%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Collonges-la-Rouge_(Corr%C3%A8ze)._(29125330871).jpg",
+      "width": 4928,
+      "height": 3264,
+      "license": "CC BY 2.0",
+      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/26082117@N07\">Daniel Jolivet</a>",
+      "description": "<p>Collonges-la-Rouge (Corrèze)\n</p><p>Château de Vassignac ou Vassinhac.\n</p><p>Le Castel de Vassinhac fut construit en 1583 par la plus puissante famille de Collonges, les Vassinhac. C'est un grand "
+    },
+    {
+      "title": "File:Collonges-la-Rouge (Corrèze). (29169593886).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829169593886%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829169593886%29.jpg",
+      "full_url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2829169593886%29.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Collonges-la-Rouge_(Corr%C3%A8ze)._(29169593886).jpg",
+      "width": 4928,
+      "height": 3264,
+      "license": "CC BY 2.0",
+      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/26082117@N07\">Daniel Jolivet</a>",
+      "description": "<p>Collonges-la-Rouge (Corrèze)\n</p><p>Château de Vassignac ou Vassinhac.\n</p><p>Le Castel de Vassinhac fut construit en 1583 par la plus puissante famille de Collonges, les Vassinhac. C'est un grand "
     },
     {
       "title": "File:Collonges-la-Rouge Château de Vassinhac.jpg",
@@ -403,17 +427,6 @@
       "description": "Cascade entourée de mousses, fougères et de rameaux de lierre pendants, s'écoulant sur un lit de pierres de gré rouge"
     },
     {
-      "title": "File:Église de la Nativité-de-Notre-Dame de Lagleygeolle.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%C3%89glise_de_la_Nativit%C3%A9-de-Notre-Dame_de_Lagleygeolle.jpg/960px-%C3%89glise_de_la_Nativit%C3%A9-de-Notre-Dame_de_Lagleygeolle.jpg",
-      "full_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/%C3%89glise_de_la_Nativit%C3%A9-de-Notre-Dame_de_Lagleygeolle.jpg",
-      "description_url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_de_la_Nativit%C3%A9-de-Notre-Dame_de_Lagleygeolle.jpg",
-      "width": 1976,
-      "height": 4608,
-      "license": "CC BY-SA 4.0",
-      "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Conlinp\" title=\"User:Conlinp\">Conlinp</a>",
-      "description": "Église de la Nativité-de-Notre-Dame de Lagleygeolle"
-    },
-    {
       "title": "File:Meyssac - Place de la Halle - boîte à livres.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Meyssac_-_Place_de_la_Halle_-_bo%C3%AEte_%C3%A0_livres.jpg/960px-Meyssac_-_Place_de_la_Halle_-_bo%C3%AEte_%C3%A0_livres.jpg",
       "full_url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Meyssac_-_Place_de_la_Halle_-_bo%C3%AEte_%C3%A0_livres.jpg",
@@ -422,6 +435,17 @@
       "height": 2500,
       "license": "CC BY-SA 4.0",
       "artist": "NATHALIE FOURNIER",
+      "description": "Boîte à livres à Meyssac"
+    },
+    {
+      "title": "File:Meyssac - pump track - boîte à livres.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg/960px-Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg",
+      "full_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg",
+      "description_url": "https://commons.wikimedia.org/wiki/File:Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg",
+      "width": 1875,
+      "height": 2500,
+      "license": "CC BY-SA 4.0",
+      "artist": "Sabichouquette",
       "description": "Boîte à livres à Meyssac"
     },
     {
@@ -434,17 +458,6 @@
       "license": "CC BY-SA 4.0",
       "artist": "Sabichouquette",
       "description": "Boîte à livres à Collonges-la-Rouge"
-    },
-    {
-      "title": "File:Meyssac - pump track - boîte à livres.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg/960px-Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg",
-      "full_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg",
-      "description_url": "https://commons.wikimedia.org/wiki/File:Meyssac_-_pump_track_-_bo%C3%AEte_%C3%A0_livres.jpg",
-      "width": 1875,
-      "height": 2500,
-      "license": "CC BY-SA 4.0",
-      "artist": "Sabichouquette",
-      "description": "Boîte à livres à Meyssac"
     },
     {
       "title": "File:Correze Collonges-La-Rouge Castel De Maussac 28052012 - panoramio.jpg",
@@ -478,17 +491,6 @@
       "license": "CC BY-SA 3.0",
       "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20161103124300/http://www.panoramio.com/user/7081175?with_photo_id=132113636\">rene boulay</a>",
       "description": "Correze Collonges-La-Rouge Castel De Maussac Vue Sur La Ville 28052012"
-    },
-    {
-      "title": "File:Correze Collonges-La-Rouge Rue Noire 28052012 - panoramio.jpg",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Correze_Collonges-La-Rouge_Rue_Noire_28052012_-_panoramio.jpg/960px-Correze_Collonges-La-Rouge_Rue_Noire_28052012_-_panoramio.jpg",
-      "full_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Correze_Collonges-La-Rouge_Rue_Noire_28052012_-_panoramio.jpg",
-      "description_url": "https://commons.wikimedia.org/wiki/File:Correze_Collonges-La-Rouge_Rue_Noire_28052012_-_panoramio.jpg",
-      "width": 1600,
-      "height": 1200,
-      "license": "CC BY-SA 3.0",
-      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20161103124325/http://www.panoramio.com/user/7081175?with_photo_id=132113638\">rene boulay</a>",
-      "description": "Correze Collonges-La-Rouge Rue Noire 28052012"
     },
     {
       "title": "File:Strange Fly 1 (3837330243).jpg",
