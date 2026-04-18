@@ -15,7 +15,9 @@
     "towns": [
       "Malemort"
     ],
-    "climbs": []
+    "climbs": [
+      "Côte de Malemort"
+    ]
   },
   {
     "segment": 2,
@@ -70,9 +72,7 @@
     "towns": [
       "Meyssac"
     ],
-    "climbs": [
-      "Puy Boubou"
-    ]
+    "climbs": []
   },
   {
     "segment": 5,
@@ -88,7 +88,9 @@
     "max_elevation": 404,
     "notable_points": [],
     "towns": [],
-    "climbs": []
+    "climbs": [
+      "Puy Boubou"
+    ]
   },
   {
     "segment": 6,
@@ -107,7 +109,7 @@
       "Beynat"
     ],
     "climbs": [
-      "C\u00f4te de Lagleygeolle"
+      "Côte de Lagleygeolle"
     ]
   },
   {
@@ -125,7 +127,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "C\u00f4te de Lagleygeolle"
+      "Côte de Lagleygeolle"
     ]
   },
   {
@@ -143,7 +145,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "C\u00f4te de Miel"
+      "Côte de Miel"
     ]
   },
   {
@@ -161,7 +163,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "C\u00f4te de Miel"
+      "Côte de Miel"
     ]
   },
   {
@@ -199,7 +201,7 @@
       "Naves"
     ],
     "climbs": [
-      "C\u00f4te des Naves"
+      "Côte des Naves"
     ]
   },
   {
@@ -323,7 +325,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "C\u00f4te de la Croix de Pey"
+      "Côte de la Croix de Pey"
     ]
   },
   {
@@ -343,7 +345,7 @@
       "Bugeat"
     ],
     "climbs": [
-      "C\u00f4te de la Croix de Pey"
+      "Côte de la Croix de Pey"
     ]
   },
   {
@@ -429,7 +431,7 @@
     "notable_points": [],
     "towns": [],
     "climbs": [
-      "C\u00f4te des Gardes"
+      "Côte des Gardes"
     ]
   },
   {

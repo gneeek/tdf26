@@ -49,6 +49,9 @@ jobs:
           processing/.venv/bin/python -m pytest processing/tests/ \
             --cov=processing --cov-report=json:coverage/python-coverage.json
 
+      - name: Validate points-config vs segments.json
+        run: processing/.venv/bin/python processing/validate_points.py
+
       - name: Seed rider data if missing
         run: |
           [ -f data/riders/daily-log.json ] || cp data/riders/daily-log.example.json data/riders/daily-log.json
