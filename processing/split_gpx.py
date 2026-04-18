@@ -24,17 +24,38 @@ KNOWN_TOWNS = {
     "Ussel": 182.5,
 }
 
-KNOWN_CLIMBS = {
-    "Puy Boubou": {"km_start": 30, "km_end": 32.8, "gradient": 4.1},
-    "Côte de Lagleygeolle": {"km_start": 38, "km_end": 43.2, "gradient": 3.9},
-    "Côte de Miel": {"km_start": 50, "km_end": 56.6, "gradient": 3.9},
-    "Côte des Naves": {"km_start": 72, "km_end": 74.8, "gradient": 6.7},
-    "Puy de Lachaud": {"km_start": 82, "km_end": 85.6, "gradient": 5.3},
-    "Suc au May": {"km_start": 101, "km_end": 104.8, "gradient": 7.7},
-    "Côte de la Croix de Pey": {"km_start": 120, "km_end": 127, "gradient": 4.9},
-    "Mont Bessou": {"km_start": 148, "km_end": 153, "gradient": 3.5},
-    "Côte des Gardes": {"km_start": 165, "km_end": 167.2, "gradient": 4.8},
-}
+POINTS_CONFIG_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "data", "competition", "points-config.json"
+)
+
+
+def load_known_climbs(path=POINTS_CONFIG_PATH):
+    """Load climbs from points-config.json as {name: {km_start, km_end, gradient}}.
+
+    The summit km is `km` in points-config. length_km may be null, in which case
+    the climb is treated as a point-mark (km_start == km_end == summit).
+    """
+    with open(path) as f:
+        config = json.load(f)
+    climbs = {}
+    for c in config["climbs"]:
+        summit = c["km"]
+        length = c.get("length_km")
+        if length is None:
+            km_start = summit
+            km_end = summit
+        else:
+            km_start = summit - length
+            km_end = summit
+        climbs[c["name"]] = {
+            "km_start": km_start,
+            "km_end": km_end,
+            "gradient": c.get("gradient"),
+        }
+    return climbs
+
+
+KNOWN_CLIMBS = load_known_climbs()
 
 
 def haversine(lat1, lon1, lat2, lon2):
@@ -71,7 +92,21 @@ def parse_gpx(gpx_path):
     return points
 
 
-def split_into_segments(points, num_segments=27, odd_length=8.0, even_length=6.0):
+def load_existing_towns(path):
+    """Return {segment_number: [towns]} from an existing segments.json if present.
+
+    Used to preserve hand-verified town assignments (#342) that the km-bbox logic
+    below would otherwise regress. The structural fix for town assignment is
+    tracked in #341.
+    """
+    if not os.path.exists(path):
+        return {}
+    with open(path) as f:
+        data = json.load(f)
+    return {s["segment"]: s.get("towns", []) for s in data}
+
+
+def split_into_segments(points, num_segments=27, odd_length=8.0, even_length=6.0, existing_towns=None):
     """Split points into segments with alternating lengths.
 
     Odd segments (1,3,5,...) are odd_length km.
@@ -125,11 +160,16 @@ def split_into_segments(points, num_segments=27, odd_length=8.0, even_length=6.0
             for i in range(1, len(seg_points))
         )
 
-        # Find towns in this segment
-        towns = [
-            name for name, km in KNOWN_TOWNS.items()
-            if km_start <= km <= km_end
-        ]
+        # Find towns in this segment. Prefer hand-verified assignments from an
+        # existing segments.json (see #342) over the km-bbox heuristic, since
+        # the heuristic is known-wrong and its structural fix is tracked in #341.
+        if existing_towns and seg_num in existing_towns:
+            towns = existing_towns[seg_num]
+        else:
+            towns = [
+                name for name, km in KNOWN_TOWNS.items()
+                if km_start <= km <= km_end
+            ]
 
         # Find climbs in this segment
         climbs = [
@@ -198,7 +238,11 @@ def main():
     points = parse_gpx(args.gpx)
     print(f"Parsed {len(points)} trackpoints")
 
-    segments = split_into_segments(points, args.num_segments, args.odd_length, args.even_length)
+    existing_towns = load_existing_towns(args.json_output)
+    segments = split_into_segments(
+        points, args.num_segments, args.odd_length, args.even_length,
+        existing_towns=existing_towns,
+    )
     print(f"Created {len(segments)} segments")
 
     # Write individual segment GPX files

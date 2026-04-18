@@ -1,5 +1,5 @@
 {
-  "description": "Sprint and climbing point locations for the rider competition",
+  "description": "Sprint and climbing point locations for the rider competition. Single source of truth for climb identity, summit segment, and span — split_gpx.py imports from here and segments.json is generated accordingly. Validated by processing/validate_points.py.",
   "sprints": [
     {
       "name": "Sprint - Brive-la-Gaillarde",
@@ -34,9 +34,10 @@
   ],
   "climbs": [
     {
-      "name": "Cote de Malemort",
+      "name": "Côte de Malemort",
       "segment": 1,
       "km": 5,
+      "length_km": null,
       "category": 4,
       "gradient": 3.2,
       "points": [2, 1, 0, 0]
@@ -45,30 +46,34 @@
       "name": "Puy Boubou",
       "segment": 5,
       "km": 32.8,
+      "length_km": 2.8,
       "category": 3,
       "gradient": 4.1,
       "points": [4, 3, 2, 1]
     },
     {
-      "name": "Cote de Lagleygeolle",
+      "name": "Côte de Lagleygeolle",
       "segment": 7,
       "km": 43.2,
+      "length_km": 5.2,
       "category": 4,
       "gradient": 3.9,
       "points": [2, 1, 0, 0]
     },
     {
-      "name": "Cote de Miel",
+      "name": "Côte de Miel",
       "segment": 9,
       "km": 56.6,
+      "length_km": 6.6,
       "category": 4,
       "gradient": 3.9,
       "points": [2, 1, 0, 0]
     },
     {
-      "name": "Cote des Naves",
+      "name": "Côte des Naves",
       "segment": 11,
       "km": 74.8,
+      "length_km": 2.8,
       "category": 2,
       "gradient": 6.7,
       "points": [6, 4, 2, 1]
@@ -77,6 +82,7 @@
       "name": "Puy de Lachaud",
       "segment": 13,
       "km": 85.6,
+      "length_km": 3.6,
       "category": 2,
       "gradient": 5.3,
       "points": [6, 4, 2, 1]
@@ -85,14 +91,16 @@
       "name": "Suc au May",
       "segment": 15,
       "km": 104.8,
+      "length_km": 3.8,
       "category": "HC",
       "gradient": 7.7,
       "points": [10, 8, 6, 4]
     },
     {
-      "name": "Cote de la Croix de Pey",
+      "name": "Côte de la Croix de Pey",
       "segment": 19,
       "km": 127,
+      "length_km": 7,
       "category": 3,
       "gradient": 4.9,
       "points": [4, 3, 2, 1]
@@ -101,14 +109,16 @@
       "name": "Mont Bessou",
       "segment": 22,
       "km": 153,
+      "length_km": 5,
       "category": 4,
       "gradient": 3.5,
       "points": [2, 1, 0, 0]
     },
     {
-      "name": "Cote des Gardes",
+      "name": "Côte des Gardes",
       "segment": 24,
       "km": 167.2,
+      "length_km": 2.2,
       "category": 3,
       "gradient": 4.8,
       "points": [4, 3, 2, 1]
