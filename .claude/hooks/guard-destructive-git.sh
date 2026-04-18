@@ -33,9 +33,11 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   exit 0
 fi
 
-# Only modified/added/deleted tracked files count — untracked (??) does not, since
+# Only modified/added/deleted tracked files count — untracked does not, since
 # reset --hard, checkout ., restore ., branch -D do not discard untracked files.
-dirty=$(git status --porcelain 2>/dev/null | grep -vE '^\?\?' || true)
+# --porcelain=v1 is pinned (vs bare --porcelain) for stable output format;
+# --untracked-files=no filters at the source instead of grepping '??' afterward.
+dirty=$(git status --porcelain=v1 --untracked-files=no 2>/dev/null || true)
 
 branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)
 local_commits=""
