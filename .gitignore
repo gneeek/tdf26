@@ -38,3 +38,24 @@ coverage/
 
 # Build artifacts
 *.log
+
+# Nuxt Content dev database
+.data/
+
+# Personal convenience symlink (e.g. dist -> .output/public)
+/dist
+
+# Loose images at the repo root — research artifacts, screenshots. Legitimate
+# site images live under public/images/ or data/.
+/*.png
+/*.jpg
+/*.jpeg
+
+# Personal research reading material (PDFs, clippings, notes)
+/reading/
+
+# Per-user agent memory (Claude Code agent internal state, not team-shared)
+.claude/agent-memory/
+
+# Output of processing/suggest_images.py — regenerable, noisy in diffs
+data/image-suggestions/
