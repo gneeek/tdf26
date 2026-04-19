@@ -9,6 +9,9 @@ kmEnd: 36
 gpxFile: /gpx/segment-05.gpx
 elevationData: /data/elevation/segment-05.json
 images: []
+streetView:
+  embedUrl: "https://www.google.com/maps/embed?pb=!4v1776601427962!6m8!1m7!1s6u5Skg6XBK2JtK0367TOqQ!2m2!1d45.10663522951817!2d1.706948614352781!3f42.52766762728022!4f1.7385706322044712!5f0.7820865974627469"
+  caption: "Main intersection at Le Planchat, the hamlet the road passes closest to in segment 5."
 weather: null
 draft: false
 ---
