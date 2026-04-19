@@ -9,9 +9,6 @@ kmEnd: 36
 gpxFile: /gpx/segment-05.gpx
 elevationData: /data/elevation/segment-05.json
 images: []
-streetView:
-  embedUrl: "https://www.google.com/maps/embed?pb=!4v1776601427962!6m8!1m7!1s6u5Skg6XBK2JtK0367TOqQ!2m2!1d45.10663522951817!2d1.706948614352781!3f42.52766762728022!4f1.7385706322044712!5f0.7820865974627469"
-  caption: "Main intersection at Le Planchat, the hamlet the road passes closest to in segment 5."
 weather: null
 draft: false
 ---
@@ -24,7 +21,13 @@ For seven kilometres from here the road descends. Not steeply. A sustained grade
 
 Lagleygeolle is an Occitan name that means "the small church", from *la gleisòla*; the commune is named for the priory that became the church that became the centre of the village. The name passed into French in a Frenchified spelling that no longer looks Occitan, and into the language of cyclists who will see the commune on the road-book and, if they look left at the right kilometre, the *gleisòla* itself across the field. The present church, Notre Dame de la Nativité, carries vestiges of the twelfth, fifteenth, and sixteenth centuries; the bell tower is from 1889. The Tour will cross the commune that contains all of this in a few minutes at racing speed. Lagleygeolle and Meyssac were one commune until 1870, when a long administrative argument finally found its line; the road today crosses that line without noticing.
 
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%C3%89glise_de_la_Nativit%C3%A9-de-Notre-Dame_de_Lagleygeolle.jpg/960px-%C3%89glise_de_la_Nativit%C3%A9-de-Notre-Dame_de_Lagleygeolle.jpg" alt="Église Notre-Dame-de-la-Nativité de Lagleygeolle" caption="The village church the commune is named for: Notre-Dame-de-la-Nativité." author="Conlinp" authorUrl="https://commons.wikimedia.org/wiki/User:Conlinp" license="CC BY-SA 4.0" licenseUrl="https://creativecommons.org/licenses/by-sa/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:%C3%89glise_de_la_Nativit%C3%A9-de-Notre-Dame_de_Lagleygeolle.jpg"}
+::
+
 What the road does meet is a string of hamlets too small for any map a stage-watcher is likely to consult. The names come in order along the descent: Antignac past Lagleygeolle village, Fouilloux halfway down, and then a cluster of them, Cornilloux and Le Planchat and Le Suc and Le Faure, where the road eases toward the Beynat commune line. These are lieux-dits more than villages. A few houses, a farm, a cluster of outbuildings set back from the verge. The Tour will pass dozens of such places on its way to Ussel. Most stages, once they leave the cities, are mostly made of them. A rider on a training day, or a local on a shopping trip from Beynat, registers them the way any country road registers anything: as a change in the hedge, a new roof line, a dog that looks up and then does not bother.
+
+::street-view-embed{embedUrl="https://www.google.com/maps/embed?pb=!4v1776601427962!6m8!1m7!1s6u5Skg6XBK2JtK0367TOqQ!2m2!1d45.10663522951817!2d1.706948614352781!3f42.52766762728022!4f1.7385706322044712!5f0.7820865974627469" caption="Main intersection at Le Planchat, the hamlet the road passes closest to in segment 5."}
+::
 
 Around kilometre thirty-four, on a stretch that is neither memorable nor forgettable, the road leaves Lagleygeolle for Beynat. The change is invisible. There is no sign, no shift in road surface, no new cast of hedgerow. Beynat village is still more than a kilometre ahead and will not appear in this segment; the chestnut festival there, mentioned in the previous entry, waits another week of writing to arrive.
 
