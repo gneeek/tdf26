@@ -173,6 +173,10 @@ import attractionsData from '~/data/attractions.json'
 
 definePageMeta({ layout: 'admin' })
 
+const { data: entries } = await useAsyncData('admin-picker-entry-titles', () =>
+  queryCollection('entries').all()
+)
+
 const selectedSegment = ref(1)
 const suggestions = ref([])
 const selected = ref([])
@@ -184,10 +188,11 @@ const saveMessage = ref('')
 const saveError = ref(false)
 
 function segmentTitle(n) {
+  const entry = entries.value?.find(e => e.segment === n)
+  if (entry?.title) return entry.title
   const seg = segmentsJson.find(s => s.segment === n)
-  if (!seg) return ''
-  if (seg.towns?.length) return seg.towns[0]
-  if (seg.climbs?.length) return seg.climbs[0]
+  if (seg?.towns?.length) return seg.towns[0]
+  if (seg?.climbs?.length) return seg.climbs[0]
   return `Segment ${n}`
 }
 
