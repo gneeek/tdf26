@@ -27,6 +27,12 @@
       <ContentRenderer :value="page" />
     </div>
 
+    <StreetViewEmbed
+      v-if="page.streetView?.embedUrl"
+      :embed-url="page.streetView.embedUrl"
+      :caption="page.streetView.caption"
+    />
+
     <ImageGallery :images="page.images" />
 
     <NearbyAttractions :segment="page.segment" />
