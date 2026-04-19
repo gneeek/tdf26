@@ -585,10 +585,10 @@
     "category": "heritage",
     "lat": 45.0569,
     "lng": 1.6726,
-    "description": "12th-16th century church with Romanesque Limousin-style portal, fortified during the Hundred Years War. Red sandstone bell tower with white limestone tympanum \u2014 both sides of the Meyssac fault in one building.",
+    "description": "12th-16th century church with Romanesque Limousin-style portal, fortified during the Hundred Years War. Red sandstone bell tower with white limestone tympanum — both sides of the Meyssac fault in one building.",
     "links": [],
-    "nearest_km": 23.7,
-    "nearest_distance_m": 277
+    "nearest_km": 23.23,
+    "nearest_distance_m": 100
   },
   {
     "name": "Halle aux Grains de Meyssac",
@@ -597,8 +597,8 @@
     "lng": 1.673,
     "description": "18th-century grain hall with red sandstone columns supporting a Travassac slate roof on a chestnut timber frame. The geological fault made architectural.",
     "links": [],
-    "nearest_km": 23.7,
-    "nearest_distance_m": 280
+    "nearest_km": 23.52,
+    "nearest_distance_m": 91
   },
   {
     "name": "Espace de Decouverte de la Faille de Meyssac",
@@ -612,7 +612,47 @@
         "url": "https://noailhacpatrimoine.fr/notre-patrimoine/geologie-l-espace-de-decouverte-de-la-faille-de-meyssac-et-de-la-pierre"
       }
     ],
-    "nearest_km": 24.5,
-    "nearest_distance_m": 3200
+    "nearest_km": 20.46,
+    "nearest_distance_m": 485
+  },
+  {
+    "name": "Église Notre-Dame-de-la-Nativité, Lagleygeolle",
+    "category": "church",
+    "lat": 45.0782143,
+    "lng": 1.6965683,
+    "description": "Village church of Lagleygeolle, carrying vestiges from the 12th, 15th, and 16th centuries; the bell tower is from 1889. The commune's Occitan name (la gleisòla, \"the small church\") derives from the priory that became this church.",
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Lagleygeolle",
+        "label": "Wikipedia (fr)"
+      }
+    ],
+    "nearest_km": 29.15,
+    "nearest_distance_m": 198
+  },
+  {
+    "name": "Cabane de la Fée (dolmen)",
+    "category": "archaeology",
+    "lat": 45.1465605,
+    "lng": 1.7119226,
+    "description": "Neolithic dolmen in Beynat commune, listed as a Historic Monument since 1910. Off the route, reached via Route du Dolmen.",
+    "links": [],
+    "nearest_km": 44.16,
+    "nearest_distance_m": 2203
+  },
+  {
+    "name": "Commanderie de Puy de Noix",
+    "category": "heritage",
+    "lat": 45.1389,
+    "lng": 1.8364,
+    "description": "Twelfth-century Templar commandery in Albussac commune, about 4km east of the route at its closest point. Acquired by the Knights Templar in the late 12th century; passed to the Hospitallers of Saint John after the order's suppression in 1312.",
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Albussac",
+        "label": "Wikipedia (fr)"
+      }
+    ],
+    "nearest_km": 50.51,
+    "nearest_distance_m": 4265
   }
 ]
