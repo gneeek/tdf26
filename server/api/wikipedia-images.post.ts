@@ -6,6 +6,11 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, message: 'Missing query' })
   }
 
+  const wikiHeaders = {
+    'User-Agent': 'tdf26-travelogue/1.0 (https://tour26.iamsosmrt.com; gneeek@proton.me)',
+    'Accept': 'application/json',
+  }
+
   try {
     // Search for articles
     const searchParams = new URLSearchParams({
@@ -18,7 +23,7 @@ export default defineEventHandler(async (event) => {
       origin: '*',
     })
     const searchUrl = `https://en.wikipedia.org/w/api.php?${searchParams}`
-    const searchResp = await fetch(searchUrl)
+    const searchResp = await fetch(searchUrl, { headers: wikiHeaders })
     const searchData = await searchResp.json()
     const articles = searchData.query?.search || []
 
@@ -38,7 +43,7 @@ export default defineEventHandler(async (event) => {
       origin: '*',
     })
     const imageUrl = `https://en.wikipedia.org/w/api.php?${imageParams}`
-    const imageResp = await fetch(imageUrl)
+    const imageResp = await fetch(imageUrl, { headers: wikiHeaders })
     const imageData = await imageResp.json()
     const pages = imageData.query?.pages || {}
 
