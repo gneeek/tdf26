@@ -8,8 +8,8 @@ kmStart: 28
 kmEnd: 36
 gpxFile: /gpx/segment-05.gpx
 elevationData: /data/elevation/segment-05.json
-images: []
-weather: null
+images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Vache-de-race-limousine-en-correze-2.jpg/960px-Vache-de-race-limousine-en-correze-2.jpg","alt":"Vache de race limousine","author":"Koakoo","authorUrl":"https://commons.wikimedia.org/wiki/File:Vache-de-race-limousine-en-correze-2.jpg","license":"CC BY-SA 2.5","licenseUrl":"https://creativecommons.org/licenses/by-sa/2.5","sourceUrl":"https://commons.wikimedia.org/wiki/File:Vache-de-race-limousine-en-correze-2.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anem_%C3%B2c_%21_Per_la_lenga_occitana_%21-2.jpg/960px-Anem_%C3%B2c_%21_Per_la_lenga_occitana_%21-2.jpg","alt":"'Anem òc ! Per la lenga occitana !' demonstration for the Occitan language, Toulouse, 2012","author":"Pierre-Selim","authorUrl":"https://commons.wikimedia.org/wiki/User:PierreSelim","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Anem_%C3%B2c_!_Per_la_lenga_occitana_!-2.jpg"}]
+weather: {"fetchedAt": "2026-04-19", "current": {"temp": 22, "conditions": "Clear sky", "wind": "10 km/h WSW"}, "forecast": null}
 draft: false
 ---
 
