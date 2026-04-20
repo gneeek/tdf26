@@ -23,7 +23,7 @@
     </div>
 
     <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-400">
-      185 km &middot; 9 climbs &middot; +3,390m elevation
+      {{ Math.round(totals.totalDistance) }} km &middot; {{ totals.uniqueCategorizedClimbs.length }} climbs &middot; +{{ totals.totalElevationGain.toLocaleString('en-US') }}m elevation
     </div>
   </div>
 </template>
@@ -31,6 +31,9 @@
 <script setup>
 import segmentsJson from '~/data/segments.json'
 import { townKmPositions } from '~/data/town-positions'
+import { deriveTotals } from '~/utils/stage-totals'
+
+const totals = deriveTotals(segmentsJson)
 
 const props = defineProps({
   currentKm: { type: Number, default: 0 },
