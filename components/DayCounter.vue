@@ -1,17 +1,19 @@
 <template>
-  <div class="flex flex-wrap items-center gap-3 text-sm">
-    <span class="bg-correze-red text-white font-bold px-3 py-1.5 rounded-lg text-lg">
+  <div class="flex items-center gap-3 text-sm">
+    <span class="bg-correze-red text-white font-bold px-3 py-1.5 rounded-lg text-lg flex-shrink-0">
       Day {{ raceDay }}
     </span>
-    <span v-if="daysUntilTour > 0" class="text-stone-500">
-      Tour starts in <span class="font-semibold text-stone-700">{{ daysUntilTour }}</span> days
-    </span>
-    <span v-if="daysUntilStage > 0" class="text-stone-500">
-      Stage 9 in <span class="font-semibold text-stone-700">{{ daysUntilStage }}</span> days
-    </span>
-    <span v-if="daysUntilStage <= 0" class="text-correze-red font-semibold">
-      Stage 9 is today!
-    </span>
+    <div class="flex flex-col gap-0.5">
+      <span v-if="daysUntilTour > 0" class="text-stone-500">
+        Tour starts in <span class="font-semibold text-stone-700">{{ daysUntilTour }}</span> days
+      </span>
+      <span v-if="daysUntilStage > 0" class="text-stone-500">
+        Stage 9 in <span class="font-semibold text-stone-700">{{ daysUntilStage }}</span> days
+      </span>
+      <span v-if="daysUntilStage <= 0" class="text-correze-red font-semibold">
+        Stage 9 is today!
+      </span>
+    </div>
   </div>
 </template>
 
