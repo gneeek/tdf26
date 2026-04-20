@@ -1,7 +1,9 @@
 #!/bin/bash
-# Publish-day script: update stats, calculate points, snapshot, fetch weather, build site, deploy
+# Publish-day script: update stats, calculate points, snapshot, fetch weather,
+# build site, deploy, and commit the frontmatter changes this script produced
+# so main is reconciled with the deployed artifact before the script exits.
 #
-# Usage: ./scripts/publish.sh [--segment N] [--skip-deploy] [--skip-weather]
+# Usage: ./scripts/publish.sh [--segment N] [--skip-deploy] [--skip-weather] [--skip-commit]
 #
 # Environment variables (loaded from .env if present):
 #   OPENWEATHERMAP_API_KEY  - API key for weather data (optional)
@@ -22,6 +24,7 @@ fi
 
 SKIP_DEPLOY=false
 SKIP_WEATHER=false
+SKIP_COMMIT=false
 SEGMENT=""
 
 # Parse arguments
@@ -30,12 +33,16 @@ for arg in "$@"; do
         -h|--help)
             echo "Usage: ./scripts/publish.sh [OPTIONS]"
             echo ""
-            echo "Publish-day script: update stats, calculate points, snapshot, fetch weather, build, deploy."
+            echo "Publish-day script: update stats, calculate points, snapshot, fetch weather,"
+            echo "build, deploy, and commit frontmatter changes to main."
             echo ""
             echo "Options:"
             echo "  --segment N     Segment number to publish (auto-detects if omitted)"
-            echo "  --skip-deploy   Skip the deployment step"
+            echo "  --skip-deploy   Skip the deployment step (also skips the commit step)"
             echo "  --skip-weather  Skip weather fetch"
+            echo "  --skip-commit   Deploy but do not commit frontmatter to main"
+            echo "                  (advanced: for deploys run from a branch or in a"
+            echo "                  workflow where the commit is handled separately)"
             echo "  -h, --help      Show this help message"
             echo ""
             echo "Environment variables:"
@@ -48,6 +55,9 @@ for arg in "$@"; do
             ;;
         --skip-weather)
             SKIP_WEATHER=true
+            ;;
+        --skip-commit)
+            SKIP_COMMIT=true
             ;;
         --segment)
             shift_next=true
@@ -215,6 +225,48 @@ elif [ -n "$DEPLOY_TARGET" ]; then
 else
     echo "--- Step 8: No DEPLOY_TARGET set, skipping deploy ---"
     echo "Set DEPLOY_TARGET in .env (e.g., correze:/var/www/correze-travelogue/)"
+fi
+echo ""
+
+# Step 9: Commit frontmatter changes to main
+# Closes the reconciliation gap between the deployed artifact and main. The
+# publish script mutates the entry frontmatter in place (dataCutoff, weather,
+# sometimes images) and those mutations need to land on main before the script
+# exits, or the next fresh clone builds the stub instead of the published entry.
+# See issue #383 and the v1.4.5 retrospective.
+if [ "$SKIP_DEPLOY" = true ]; then
+    echo "--- Step 9: Commit skipped (deploy was skipped) ---"
+elif [ "$SKIP_COMMIT" = true ]; then
+    echo "--- Step 9: Commit skipped (--skip-commit flag) ---"
+elif [ -z "$DEPLOY_TARGET" ]; then
+    echo "--- Step 9: Commit skipped (no DEPLOY_TARGET, no deploy happened) ---"
+else
+    echo "--- Step 9: Committing frontmatter changes to main ---"
+    CURRENT_BRANCH=$(git -C "$PROJECT_DIR" rev-parse --abbrev-ref HEAD)
+    if [ "$CURRENT_BRANCH" != "main" ]; then
+        echo "ERROR: publish.sh is not running on main (currently on $CURRENT_BRANCH)."
+        echo "Refusing to commit frontmatter changes from a non-main branch."
+        echo "The deploy happened but main is not reconciled. Resolve manually:"
+        echo "  git checkout main && git add $ENTRY_FILE && git commit && git push"
+        exit 1
+    fi
+    if [ -z "$ENTRY_FILE" ] || [ ! -f "$ENTRY_FILE" ]; then
+        echo "ERROR: ENTRY_FILE not set or not found; cannot commit."
+        echo "The deploy happened but main is not reconciled. Resolve manually."
+        exit 1
+    fi
+    if git -C "$PROJECT_DIR" diff --quiet -- "$ENTRY_FILE" \
+        && git -C "$PROJECT_DIR" diff --staged --quiet -- "$ENTRY_FILE"; then
+        echo "No frontmatter changes to commit on $ENTRY_FILE."
+    else
+        git -C "$PROJECT_DIR" add "$ENTRY_FILE" \
+            || { echo "ERROR: git add failed."; exit 1; }
+        git -C "$PROJECT_DIR" commit -m "Segment $SEGMENT publish: record frontmatter from publish.sh" \
+            || { echo "ERROR: git commit failed. Resolve manually; the deploy already happened."; exit 1; }
+        git -C "$PROJECT_DIR" push origin main \
+            || { echo "ERROR: git push failed. The deploy happened but main is not reconciled. Resolve manually."; exit 1; }
+        echo "Committed and pushed frontmatter changes for segment $SEGMENT."
+    fi
 fi
 
 echo ""
