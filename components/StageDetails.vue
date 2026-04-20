@@ -31,7 +31,7 @@
 <script setup>
 import segmentsJson from '~/data/segments.json'
 import { townKmPositions } from '~/data/town-positions'
-import { deriveTotals } from '~/utils/stage-totals'
+import { deriveTotals, CATEGORIZED_CLIMBS } from '~/utils/stage-totals'
 
 const totals = deriveTotals(segmentsJson)
 
@@ -79,6 +79,7 @@ const climbSet = new Map()
 for (const seg of segmentsJson) {
   if (seg.climbs?.length) {
     for (const climb of seg.climbs) {
+      if (!CATEGORIZED_CLIMBS.has(climb)) continue
       if (!climbSet.has(climb)) {
         const data = climbData[climb] || {}
         climbSet.set(climb, {
