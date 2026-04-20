@@ -12,9 +12,9 @@
             <NuxtLink to="/admin/entries" class="text-stone-300 hover:text-white">Entries</NuxtLink>
             <NuxtLink to="/admin/images" class="text-stone-300 hover:text-white">Images</NuxtLink>
             <NuxtLink to="/admin/weather" class="text-stone-300 hover:text-white">Weather</NuxtLink>
-            <NuxtLink to="/admin/schedule" class="text-stone-300 hover:text-white">Schedule</NuxtLink>
+            <!-- Schedule nav entry removed in #384 until #73 (publish schedule editor) ships in v1.6.0 -->
             <NuxtLink to="/admin/publish" class="text-stone-300 hover:text-white">Publish</NuxtLink>
-            <NuxtLink to="/admin/settings" class="text-stone-300 hover:text-white">Settings</NuxtLink>
+            <!-- Settings nav entry removed in #384 until #71 (site settings editor) ships in v1.6.0 -->
           </div>
         </div>
         <NuxtLink to="/" class="text-sm text-stone-400 hover:text-white">
