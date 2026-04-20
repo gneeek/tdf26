@@ -347,7 +347,13 @@ npx nuxt generate
 
 # 4. Deploy to VPS
 rsync -avz .output/public/ user@vps:/var/www/correze-travelogue/
+
+# 5. Commit frontmatter changes (dataCutoff, weather) to main so main
+#    matches the deployed artifact immediately after deploy
+git add content/entries/<entry>.md && git commit -m "..." && git push origin main
 ```
+
+The actual script (`scripts/publish.sh`) has additional steps for points calculation, per-segment stats snapshots, race narrative generation, and image validation. Run `./scripts/publish.sh --help` for current flags.
 
 ### 4b. Weather Integration (`weather.py`)
 
