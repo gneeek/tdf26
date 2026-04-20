@@ -18,10 +18,7 @@
         <h2 class="text-lg font-semibold text-stone-800">Weather</h2>
         <p class="text-sm text-stone-500 mt-1">Fetch and inject weather data</p>
       </NuxtLink>
-      <NuxtLink to="/admin/schedule" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-        <h2 class="text-lg font-semibold text-stone-800">Schedule</h2>
-        <p class="text-sm text-stone-500 mt-1">Configure publish dates</p>
-      </NuxtLink>
+      <!-- Schedule dashboard card removed in #384 until #73 (publish schedule editor) ships in v1.6.0 -->
       <NuxtLink to="/admin/publish" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
         <h2 class="text-lg font-semibold text-stone-800">Publish</h2>
         <p class="text-sm text-stone-500 mt-1">Build and deploy the site</p>
