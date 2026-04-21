@@ -14,7 +14,7 @@
       {{ caption }}
     </figcaption>
     <p class="text-xs text-stone-400 mt-2">
-      Interactive view. Imagery &copy; Google Street View.
+      {{ attribution }}
     </p>
   </figure>
 </template>
@@ -23,9 +23,11 @@
 const props = defineProps({
   embedUrl: { type: String, required: true },
   caption: { type: String, default: '' },
+  titlePrefix: { type: String, default: 'Street View' },
+  attribution: { type: String, default: 'Interactive view. Imagery © Google Street View.' },
 })
 
 const iframeTitle = computed(() =>
-  props.caption ? `Street View: ${props.caption}` : 'Google Street View'
+  props.caption ? `${props.titlePrefix}: ${props.caption}` : props.titlePrefix
 )
 </script>
