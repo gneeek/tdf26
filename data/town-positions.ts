@@ -18,7 +18,8 @@ export const townKmPositions: Record<string, number> = {
   'Ligneyrac': 17.11,        // verified 2026-04-11, 628m south of route
   'Collonges-la-Rouge': 21.75, // verified 2026-04-11, first arrival (219m from village)
   'Meyssac': 23.70,          // verified 2026-04-11, 277m from village
-  'Beynat': 37.5,
+  'Lanteuil': 38.35,         // verified 2026-04-21, 115m from village (seg 6)
+  'Beynat': 46.23,           // verified 2026-04-21, 75m from village (seg 7; previously mispinned at 37.5)
   'Tulle': 65.5,
   'Naves': 73.5,
   'Chaumeil': 90,
