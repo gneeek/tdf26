@@ -59,7 +59,7 @@ describe('POST /api/riders', () => {
     expect(result.success).toBe(true)
     const writtenLog = JSON.parse(mockedWriteFile.mock.calls[0][1] as string)
     expect(writtenLog.entries).toHaveLength(2)
-    expect(mockedExec).toHaveBeenCalledOnce()
+    expect(mockedExec).toHaveBeenCalledTimes(2)
   })
 
   it('replaces existing entry for same date', async () => {
@@ -89,5 +89,50 @@ describe('POST /api/riders', () => {
 
   it('throws 400 without distances', async () => {
     await expect((postHandler as Function)(mockEvent({ body: { date: '2026-04-02' } }))).rejects.toThrow('Missing date or distances')
+  })
+
+  it('returns 5xx with stderr text when rider_stats.py fails', async () => {
+    mockedReadFile.mockReturnValueOnce(sampleLog)
+    mockedExec.mockImplementationOnce(() => {
+      const err: any = new Error('Command failed')
+      err.status = 1
+      err.stderr = Buffer.from('Traceback: division by zero in rider_stats')
+      throw err
+    })
+    await expect(
+      (postHandler as Function)(mockEvent({ body: { date: '2026-04-03', distances: { alice: 2.0 } } }))
+    ).rejects.toMatchObject({
+      statusCode: 500,
+      message: expect.stringContaining('Traceback: division by zero in rider_stats'),
+    })
+  })
+
+  it('invokes calculate_points.py after rider_stats.py on success', async () => {
+    mockedReadFile.mockReturnValueOnce(sampleLog).mockReturnValueOnce(sampleStats)
+    mockedExec.mockReturnValue(Buffer.from(''))
+    await (postHandler as Function)(mockEvent({ body: { date: '2026-04-03', distances: { alice: 2.0 } } }))
+    expect(mockedExec).toHaveBeenCalledTimes(2)
+    const firstCallArgs = JSON.stringify(mockedExec.mock.calls[0])
+    const secondCallArgs = JSON.stringify(mockedExec.mock.calls[1])
+    expect(firstCallArgs).toContain('rider_stats.py')
+    expect(secondCallArgs).toContain('calculate_points.py')
+  })
+
+  it('returns 5xx with stderr text when calculate_points.py fails', async () => {
+    mockedReadFile.mockReturnValueOnce(sampleLog)
+    mockedExec
+      .mockReturnValueOnce(Buffer.from(''))
+      .mockImplementationOnce(() => {
+        const err: any = new Error('Command failed')
+        err.status = 1
+        err.stderr = Buffer.from('KeyError: missing rider in points-config')
+        throw err
+      })
+    await expect(
+      (postHandler as Function)(mockEvent({ body: { date: '2026-04-03', distances: { alice: 2.0 } } }))
+    ).rejects.toMatchObject({
+      statusCode: 500,
+      message: expect.stringContaining('KeyError: missing rider in points-config'),
+    })
   })
 })
