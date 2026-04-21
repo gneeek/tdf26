@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+import yaml from 'js-yaml'
 import { mockEvent } from './helpers'
 
 import getHandler from '~/server/api/images.get'
@@ -57,7 +58,65 @@ describe('POST /api/images', () => {
     mockedReadFile.mockReturnValue('---\nsegment: 1\nimages: []\n---\n# Content')
     const images = [{ src: '/img/new.jpg', alt: 'New photo' }]
     await (postHandler as Function)(mockEvent({ body: { filename: '01-test.md', images } }))
-    const written = mockedWriteFile.mock.calls[0][1] as string
+    const written = mockedWriteFile.mock.calls[0]![1] as string
     expect(written).toContain('/img/new.jpg')
+  })
+
+  it('preserves valid YAML when entry has a multi-line images list', async () => {
+    const existing = [
+      '---',
+      'segment: 1',
+      'title: "Example"',
+      'images:',
+      '  - src: /img/a.jpg',
+      '    alt: First',
+      '  - src: /img/b.jpg',
+      '    alt: Second',
+      '---',
+      '# Content',
+    ].join('\n')
+    mockedReadFile.mockReturnValue(existing)
+    const images = [{ src: '/img/c.jpg', alt: 'Third' }]
+    await (postHandler as Function)(mockEvent({ body: { filename: '01-test.md', images } }))
+    const written = mockedWriteFile.mock.calls[0]![1] as string
+    const match = written.match(/^---\n([\s\S]*?)\n---/)
+    expect(match).not.toBeNull()
+    const parsed: any = yaml.load(match![1] as string)
+    expect(parsed.segment).toBe(1)
+    expect(parsed.title).toBe('Example')
+    expect(parsed.images).toEqual(images)
+    // The old src values must be gone — not dangling orphan list items below the replaced line.
+    expect(written).not.toContain('/img/a.jpg')
+    expect(written).not.toContain('/img/b.jpg')
+  })
+
+  it('replaces the full list when adding to an entry that already has multiple inline images', async () => {
+    const existing = '---\nsegment: 1\nimages: [{"src":"/img/a.jpg"},{"src":"/img/b.jpg"}]\n---\n# Content'
+    mockedReadFile.mockReturnValue(existing)
+    const images = [
+      { src: '/img/a.jpg', alt: 'A' },
+      { src: '/img/b.jpg', alt: 'B' },
+      { src: '/img/c.jpg', alt: 'C' },
+    ]
+    await (postHandler as Function)(mockEvent({ body: { filename: '01-test.md', images } }))
+    const written = mockedWriteFile.mock.calls[0]![1] as string
+    const match = written.match(/^---\n([\s\S]*?)\n---/)
+    const parsed: any = yaml.load(match![1] as string)
+    expect(parsed.images).toHaveLength(3)
+    expect(parsed.images[2].src).toBe('/img/c.jpg')
+    expect(written).toContain('# Content')
+  })
+
+  it('adds an images key when the entry has imagesOptional: true and no existing images list', async () => {
+    const existing = '---\nsegment: 1\nimagesOptional: true\n---\n# Content'
+    mockedReadFile.mockReturnValue(existing)
+    const images = [{ src: '/img/new.jpg', alt: 'New' }]
+    await (postHandler as Function)(mockEvent({ body: { filename: '01-test.md', images } }))
+    const written = mockedWriteFile.mock.calls[0]![1] as string
+    const match = written.match(/^---\n([\s\S]*?)\n---/)
+    expect(match).not.toBeNull()
+    const parsed: any = yaml.load(match![1] as string)
+    expect(parsed.imagesOptional).toBe(true)
+    expect(parsed.images).toEqual(images)
   })
 })
