@@ -336,14 +336,15 @@ function selectWikiImage(img) {
   if (isSelected({ url: img.url })) {
     selected.value = selected.value.filter(s => s.src !== img.url)
   } else {
+    const commonsUrl = img.commonsDescriptionUrl || img.articleUrl
     selected.value.push({
       src: img.url,
       alt: img.title,
-      author: 'Wikipedia',
-      authorUrl: img.articleUrl,
-      license: img.license || 'See Wikipedia article for license',
-      licenseUrl: null,
-      sourceUrl: img.articleUrl,
+      author: img.artist || 'Unknown',
+      authorUrl: commonsUrl,
+      license: img.license || 'Unknown',
+      licenseUrl: img.licenseUrl || null,
+      sourceUrl: commonsUrl,
     })
   }
 }
