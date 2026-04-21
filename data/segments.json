@@ -108,7 +108,7 @@
     "max_elevation": 259,
     "notable_points": [],
     "towns": [
-      "Beynat"
+      "Lanteuil"
     ],
     "climbs": [
       "Côte de Lagleygeolle"
@@ -127,7 +127,9 @@
     "min_elevation": 259,
     "max_elevation": 537,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Beynat"
+    ],
     "climbs": [
       "Côte de Lagleygeolle"
     ]
