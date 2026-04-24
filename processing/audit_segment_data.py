@@ -429,6 +429,28 @@ def render_attractions_table(rows):
     return header + "\n".join(body) + "\n"
 
 
+def build_report_dict(as_of, track_len, total_km, town_rows, climb_rows, sprint_rows, attraction_rows, notable_rows):
+    """Structured form of the audit, suitable for JSON output.
+
+    Consumers (see #341 split_gpx.py route-proximity assignment, #369
+    validate_points.py summit-km cross-check) can read this directly instead
+    of re-implementing closest-approach math.
+    """
+    return {
+        "as_of": as_of,
+        "track": {"points": track_len, "total_km": round(total_km, 2)},
+        "tolerances": {
+            "km_match": KM_MATCH_TOLERANCE,
+            "far_from_route_m": FAR_FROM_ROUTE_M,
+        },
+        "towns": town_rows,
+        "climbs": climb_rows,
+        "sprints": sprint_rows,
+        "attractions": attraction_rows,
+        "notable_points": notable_rows,
+    }
+
+
 def build_report(as_of, track_len, total_km, town_rows, climb_rows, sprint_rows, attraction_rows, notable_rows):
     out = []
     out.append(f"# Segment data audit — {as_of}\n")
@@ -484,6 +506,7 @@ def main():
     parser.add_argument("--attractions", default=os.path.join(repo_root, "data", "attractions.json"))
     parser.add_argument("--points-config", default=os.path.join(repo_root, "data", "competition", "points-config.json"))
     parser.add_argument("--output", help="Write report to FILE (default: stdout)")
+    parser.add_argument("--json", action="store_true", help="Emit JSON instead of Markdown (for #341/#369 to consume)")
     parser.add_argument("--town", help="Filter: only include this town (by exact name)")
     parser.add_argument("--segment", type=int, help="Filter: only include entries assigned to this segment")
     args = parser.parse_args()
@@ -522,8 +545,8 @@ def main():
         notable_rows = [r for r in notable_rows if r["segment"] == seg]
 
     as_of = datetime.date.today().isoformat()
-    report = build_report(
-        as_of,
+    common = dict(
+        as_of=as_of,
         track_len=len(track),
         total_km=track[-1][2],
         town_rows=town_rows,
@@ -532,6 +555,11 @@ def main():
         attraction_rows=attraction_rows,
         notable_rows=notable_rows,
     )
+
+    if args.json:
+        report = json.dumps(build_report_dict(**common), ensure_ascii=False, indent=2) + "\n"
+    else:
+        report = build_report(**common)
 
     if args.output:
         with open(args.output, "w") as f:
