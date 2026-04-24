@@ -142,8 +142,9 @@ async function submitEntry() {
     for (const r of riders.value) {
       entryDistances.value[r.id] = 0
     }
-  } catch {
-    saveMessage.value = 'Error saving entry.'
+  } catch (err) {
+    const serverMessage = err?.data?.message || err?.data?.statusMessage || err?.statusMessage || err?.message
+    saveMessage.value = serverMessage ? `Error: ${serverMessage}` : 'Error saving entry.'
     saveError.value = true
   } finally {
     submitting.value = false
