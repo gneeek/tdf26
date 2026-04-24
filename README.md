@@ -28,7 +28,7 @@ See the [Roadmap](https://github.com/gneeek/tdf26/wiki/Roadmap) for planned work
 
 ## Getting Started
 
-Requires Node.js 22+ and Python 3.11+.
+Requires Node.js 22+ and Python 3.11+. The Node version is pinned in `.nvmrc`.
 
 ```bash
 # Use correct Node version (if using nvm)
