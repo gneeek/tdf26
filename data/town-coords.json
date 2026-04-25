@@ -14,15 +14,25 @@
     "lat": 45.053482,
     "lng": 1.5814221
   },
+  "Ligneyrac": {
+    "type": "town",
+    "lat": 45.0528,
+    "lng": 1.6194
+  },
   "Collonges-la-Rouge": {
     "type": "town",
     "lat": 45.0604597,
     "lng": 1.6551231
   },
+  "Meyssac": {
+    "type": "town",
+    "lat": 45.0561,
+    "lng": 1.6767
+  },
   "Beynat": {
     "type": "town",
-    "lat": 45.124713,
-    "lng": 1.7218235
+    "lat": 45.1268,
+    "lng": 1.7362
   },
   "Lanteuil": {
     "type": "town",
@@ -61,8 +71,9 @@
   },
   "Ussel": {
     "type": "town",
-    "lat": 45.5456877,
-    "lng": 2.3118583
+    "lat": 45.52671,
+    "lng": 2.2937,
+    "note": "Route entry point at km ~182.5, not Ussel city centre (which is ~2.5 km north of the route at 45.5457, 2.3119). Stage 9 finishes at Place Voltaire in Ussel proper."
   },
   "Puy Boubou": {
     "type": "climb",
