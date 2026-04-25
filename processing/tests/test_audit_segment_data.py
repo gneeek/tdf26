@@ -1,11 +1,15 @@
 """Tests for audit_segment_data.py — closest-approach km for places along the route."""
 
+import json
 import os
+import subprocess
+import sys
 
 import pytest
 
 from processing.audit_segment_data import (
     build_master_track,
+    build_report_dict,
     nearest_km_and_distance,
     project_onto_segment,
 )
@@ -75,6 +79,51 @@ class TestNearestKmAndDistance:
         km, dist_m = nearest_km_and_distance(track, 45.13834, 1.54947)
         assert km < 1.0
         assert dist_m < 100.0
+
+
+class TestJsonOutput:
+    """The --json flag emits a structured document the next two issues can consume."""
+
+    def test_build_report_dict_shape(self):
+        # Synthetic rows; just check the dict structure round-trips through JSON.
+        town_rows = [{
+            "name": "Test Town", "stored_km": 10.0, "computed_km": 10.05,
+            "distance_m": 50, "computed_segment": 2, "stored_segments": [2],
+            "notes": "ok",
+        }]
+        report = build_report_dict(
+            as_of="2026-04-25",
+            track_len=100,
+            total_km=185.0,
+            town_rows=town_rows,
+            climb_rows=[],
+            sprint_rows=[],
+            attraction_rows=[],
+            notable_rows=[],
+        )
+        assert report["as_of"] == "2026-04-25"
+        assert report["track"]["points"] == 100
+        assert report["track"]["total_km"] == pytest.approx(185.0)
+        assert report["towns"] == town_rows
+        for key in ("climbs", "sprints", "attractions", "notable_points"):
+            assert report[key] == []
+        # Round-trips through JSON.
+        assert json.loads(json.dumps(report)) == report
+
+    def test_json_flag_emits_valid_json(self, segments_dir, tmp_path):
+        repo_root = os.path.join(os.path.dirname(__file__), "..", "..")
+        out = tmp_path / "audit.json"
+        subprocess.run(
+            [
+                sys.executable, os.path.join(repo_root, "processing", "audit_segment_data.py"),
+                "--json", "--output", str(out),
+            ],
+            check=True,
+        )
+        data = json.loads(out.read_text())
+        assert "towns" in data and isinstance(data["towns"], list)
+        assert "climbs" in data and isinstance(data["climbs"], list)
+        assert data["track"]["points"] > 1000
 
 
 @pytest.fixture
