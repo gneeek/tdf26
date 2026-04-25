@@ -201,9 +201,7 @@
     "min_elevation": 217,
     "max_elevation": 424,
     "notable_points": [],
-    "towns": [
-      "Naves"
-    ],
+    "towns": [],
     "climbs": [
       "Côte des Naves"
     ]
@@ -221,7 +219,9 @@
     "min_elevation": 260,
     "max_elevation": 451,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Naves"
+    ],
     "climbs": [
       "Puy de Lachaud"
     ]
@@ -239,9 +239,7 @@
     "min_elevation": 346,
     "max_elevation": 532,
     "notable_points": [],
-    "towns": [
-      "Chaumeil"
-    ],
+    "towns": [],
     "climbs": [
       "Puy de Lachaud"
     ]
@@ -275,7 +273,9 @@
     "min_elevation": 567,
     "max_elevation": 890,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Chaumeil"
+    ],
     "climbs": [
       "Suc au May"
     ]
@@ -309,9 +309,7 @@
     "min_elevation": 522,
     "max_elevation": 605,
     "notable_points": [],
-    "towns": [
-      "Treignac"
-    ],
+    "towns": [],
     "climbs": []
   },
   {
@@ -327,7 +325,9 @@
     "min_elevation": 477,
     "max_elevation": 619,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Treignac"
+    ],
     "climbs": [
       "Côte de la Croix de Pey"
     ]
@@ -345,9 +345,7 @@
     "min_elevation": 619,
     "max_elevation": 851,
     "notable_points": [],
-    "towns": [
-      "Bugeat"
-    ],
+    "towns": [],
     "climbs": [
       "Côte de la Croix de Pey"
     ]
@@ -381,7 +379,9 @@
     "min_elevation": 674,
     "max_elevation": 772,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Bugeat"
+    ],
     "climbs": []
   },
   {
@@ -415,9 +415,7 @@
     "min_elevation": 872,
     "max_elevation": 973,
     "notable_points": [],
-    "towns": [
-      "Meymac"
-    ],
+    "towns": [],
     "climbs": []
   },
   {
@@ -451,7 +449,9 @@
     "min_elevation": 651,
     "max_elevation": 760,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Meymac"
+    ],
     "climbs": []
   },
   {

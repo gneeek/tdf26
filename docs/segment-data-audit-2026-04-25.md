@@ -12,20 +12,20 @@ Sources: `data/town-positions.ts` (stored km), `data/town-coords.json` (coords),
 | Name | Stored km | Computed km | Dist (m) | Computed seg | Stored seg(s) | Notes |
 |------|----------:|------------:|---------:|:------------:|:--------------|:------|
 | Brive-la-Gaillarde | 4.50 | 0.00 | 2573 | 1 | - | km off by -4.50; not listed on any segment |
-| Ligneyrac | 17.11 | - | - | - | 3 | no coords in town-coords.json |
 | Malemort | 0.00 | 0.00 | 0 | 1 | 1 | km matches (+0.00); segment matches (1) |
-| Meyssac | 23.70 | - | - | - | 4 | no coords in town-coords.json |
 | Turenne | 11.91 | 11.85 | 7 | 2 | 2 | km matches (-0.06); segment matches (2) |
+| Ligneyrac | 17.11 | 17.49 | 415 | 3 | 3 | km matches (+0.38); segment matches (3) |
 | Collonges-la-Rouge | 21.75 | 21.79 | 139 | 3 | 3 | km matches (+0.04); segment matches (3) |
+| Meyssac | 23.70 | 23.57 | 189 | 4 | 4 | km matches (-0.13); segment matches (4) |
 | Lanteuil | 38.35 | 37.93 | 518 | 6 | 6 | km matches (-0.42); segment matches (6) |
-| Beynat | 46.23 | 44.72 | 49 | 7 | 7 | km off by -1.51; segment matches (7) |
-| Tulle | 65.50 | 68.72 | 120 | 10 | 10 | km off by +3.22; segment matches (10) |
-| Naves | 73.50 | 78.19 | 373 | 12 | 11 | km off by +4.69; segment mismatch: computed 12, stored [11] |
-| Chaumeil | 90.00 | 100.30 | 35 | 15 | 13 | km off by +10.30; segment mismatch: computed 15, stored [13] |
-| Treignac | 116.50 | 121.95 | 22 | 18 | 17 | km off by +5.45; segment mismatch: computed 18, stored [17] |
-| Bugeat | 130.00 | 143.67 | 23 | 21 | 19 | km off by +13.67; segment mismatch: computed 21, stored [19] |
-| Meymac | 157.50 | 168.15 | 47 | 25 | 23 | km off by +10.65; segment mismatch: computed 25, stored [23] |
-| Ussel | 182.50 | 184.88 | 594 | 27 | 27 | km off by +2.38; segment matches (27) |
+| Beynat | 46.23 | 46.23 | 74 | 7 | 7 | km matches (-0.00); segment matches (7) |
+| Tulle | 68.72 | 68.72 | 120 | 10 | 10 | km matches (-0.00); segment matches (10) |
+| Naves | 78.19 | 78.19 | 373 | 12 | 12 | km matches (+0.00); segment matches (12) |
+| Chaumeil | 100.30 | 100.30 | 35 | 15 | 15 | km matches (-0.00); segment matches (15) |
+| Treignac | 121.95 | 121.95 | 22 | 18 | 18 | km matches (-0.00); segment matches (18) |
+| Bugeat | 143.67 | 143.67 | 23 | 21 | 21 | km matches (+0.00); segment matches (21) |
+| Meymac | 168.15 | 168.15 | 47 | 25 | 25 | km matches (-0.00); segment matches (25) |
+| Ussel | 182.50 | 182.49 | 0 | 27 | 27 | km matches (-0.01); segment matches (27) |
 
 ## Climbs
 
