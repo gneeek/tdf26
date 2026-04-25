@@ -34,6 +34,15 @@
   ],
   "climbs": [
     {
+      "name": "Côte de Malemort",
+      "segment": 1,
+      "km": 5,
+      "length_km": null,
+      "category": 4,
+      "gradient": 3.2,
+      "points": [2, 1, 0, 0]
+    },
+    {
       "name": "Puy Boubou",
       "segment": 5,
       "km": 29.06,

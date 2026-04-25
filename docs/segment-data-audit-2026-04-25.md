@@ -33,6 +33,7 @@ Sources: `data/competition/points-config.json` (stored km + segment), `data/town
 
 | Name | Stored km | Computed km | Dist (m) | Stored seg | Computed seg | Stored on | Length km | Notes |
 |------|----------:|------------:|---------:|:---------:|:------------:|:----------|:---------:|:------|
+| Côte de Malemort | 5.00 | - | - | 1 | - | 1 | - | no coords in town-coords.json |
 | Puy Boubou | 29.06 | 19.86 | 45 | 5 | 3 | 4,5 | 2.8 | km off by -9.20; segment mismatch: computed 3, stored [5] |
 | Côte de Lagleygeolle | 44.99 | 29.15 | 198 | 7 | 5 | 6,7 | 5.2 | km off by -15.84; segment mismatch: computed 5, stored [7] |
 | Côte de Miel | 56.50 | 49.11 | 239 | 9 | 7 | 8,9 | 2.4 | km off by -7.39; segment mismatch: computed 7, stored [9] |
