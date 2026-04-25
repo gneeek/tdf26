@@ -8,7 +8,12 @@ interface Segment {
   climbs?: string[]
 }
 
+// Hand-maintained mirror of climb names in data/competition/points-config.json.
+// Drift between the two surfaces silently filters climbs out of stage-details
+// rendering — exactly the seg-1 Malemort case found during #369. Refactor to
+// derive this Set from points-config.json directly is tracked separately.
 export const CATEGORIZED_CLIMBS = new Set([
+  'Côte de Malemort',
   'Puy Boubou',
   'Côte de Lagleygeolle',
   'Côte de Miel',

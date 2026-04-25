@@ -48,79 +48,79 @@
       "km": 29.06,
       "length_km": 2.8,
       "category": 3,
-      "gradient": 4.1,
+      "gradient": 3.6,
       "points": [4, 3, 2, 1]
     },
     {
       "name": "Côte de Lagleygeolle",
       "segment": 7,
-      "km": 43.2,
+      "km": 44.99,
       "length_km": 5.2,
       "category": 4,
-      "gradient": 3.9,
+      "gradient": 3.2,
       "points": [2, 1, 0, 0]
     },
     {
       "name": "Côte de Miel",
       "segment": 9,
-      "km": 56.6,
-      "length_km": 6.6,
+      "km": 56.5,
+      "length_km": 2.4,
       "category": 4,
-      "gradient": 3.9,
+      "gradient": 1.8,
       "points": [2, 1, 0, 0]
     },
     {
       "name": "Côte des Naves",
       "segment": 11,
-      "km": 74.8,
+      "km": 76.59,
       "length_km": 2.8,
       "category": 2,
-      "gradient": 6.7,
+      "gradient": 5.6,
       "points": [6, 4, 2, 1]
     },
     {
       "name": "Puy de Lachaud",
       "segment": 13,
-      "km": 85.6,
+      "km": 87.54,
       "length_km": 3.6,
       "category": 2,
-      "gradient": 5.3,
+      "gradient": 3.2,
       "points": [6, 4, 2, 1]
     },
     {
       "name": "Suc au May",
       "segment": 15,
-      "km": 104.8,
+      "km": 105.15,
       "length_km": 3.8,
       "category": "HC",
-      "gradient": 7.7,
+      "gradient": 7.1,
       "points": [10, 8, 6, 4]
     },
     {
       "name": "Côte de la Croix de Pey",
       "segment": 19,
-      "km": 127,
+      "km": 128.99,
       "length_km": 7,
       "category": 3,
-      "gradient": 4.9,
+      "gradient": 4.4,
       "points": [4, 3, 2, 1]
     },
     {
       "name": "Mont Bessou",
       "segment": 22,
-      "km": 153,
+      "km": 152.31,
       "length_km": 5,
       "category": 4,
-      "gradient": 3.5,
+      "gradient": 2.7,
       "points": [2, 1, 0, 0]
     },
     {
       "name": "Côte des Gardes",
-      "segment": 24,
-      "km": 167.2,
+      "segment": 25,
+      "km": 170.98,
       "length_km": 2.2,
       "category": 3,
-      "gradient": 4.8,
+      "gradient": 4.3,
       "points": [4, 3, 2, 1]
     }
   ]

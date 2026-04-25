@@ -382,7 +382,9 @@
     "towns": [
       "Bugeat"
     ],
-    "climbs": []
+    "climbs": [
+      "Mont Bessou"
+    ]
   },
   {
     "segment": 22,
@@ -432,9 +434,7 @@
     "max_elevation": 940,
     "notable_points": [],
     "towns": [],
-    "climbs": [
-      "Côte des Gardes"
-    ]
+    "climbs": []
   },
   {
     "segment": 25,
@@ -452,7 +452,9 @@
     "towns": [
       "Meymac"
     ],
-    "climbs": []
+    "climbs": [
+      "Côte des Gardes"
+    ]
   },
   {
     "segment": 26,
