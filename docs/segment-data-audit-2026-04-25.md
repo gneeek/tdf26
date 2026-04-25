@@ -33,16 +33,15 @@ Sources: `data/competition/points-config.json` (stored km + segment), `data/town
 
 | Name | Stored km | Computed km | Dist (m) | Stored seg | Computed seg | Stored on | Length km | Notes |
 |------|----------:|------------:|---------:|:---------:|:------------:|:----------|:---------:|:------|
-| Côte de Malemort | 5.00 | - | - | 1 | - | 1 | - | no coords in town-coords.json |
 | Puy Boubou | 29.06 | 19.86 | 45 | 5 | 3 | 4,5 | 2.8 | km off by -9.20; segment mismatch: computed 3, stored [5] |
-| Côte de Lagleygeolle | 43.20 | 29.15 | 198 | 7 | 5 | 6,7 | 5.2 | km off by -14.05; segment mismatch: computed 5, stored [7] |
-| Côte de Miel | 56.60 | 49.11 | 239 | 9 | 7 | 8,9 | 6.6 | km off by -7.49; segment mismatch: computed 7, stored [9] |
-| Côte des Naves | 74.80 | 78.19 | 373 | 11 | 12 | 11 | 2.8 | km off by +3.39; segment mismatch: computed 12, stored [11] |
-| Puy de Lachaud | 85.60 | 81.51 | 14 | 13 | 12 | 12,13 | 3.6 | km off by -4.09; segment mismatch: computed 12, stored [13] |
-| Suc au May | 104.80 | 105.51 | 445 | 15 | 15 | 15 | 3.8 | km off by +0.71; segment matches (15) |
-| Côte de la Croix de Pey | 127.00 | 131.83 | 265 | 19 | 19 | 18,19 | 7 | km off by +4.83; segment matches (19) |
-| Mont Bessou | 153.00 | 161.22 | 45 | 22 | 23 | 22 | 5 | km off by +8.22; segment mismatch: computed 23, stored [22] |
-| Côte des Gardes | 167.20 | 171.07 | 812 | 24 | 25 | 24 | 2.2 | km off by +3.87; segment mismatch: computed 25, stored [24] |
+| Côte de Lagleygeolle | 44.99 | 29.15 | 198 | 7 | 5 | 6,7 | 5.2 | km off by -15.84; segment mismatch: computed 5, stored [7] |
+| Côte de Miel | 56.50 | 49.11 | 239 | 9 | 7 | 8,9 | 2.4 | km off by -7.39; segment mismatch: computed 7, stored [9] |
+| Côte des Naves | 76.59 | 78.19 | 373 | 11 | 12 | 11 | 2.8 | km off by +1.60; segment mismatch: computed 12, stored [11] |
+| Puy de Lachaud | 87.54 | 81.51 | 14 | 13 | 12 | 12,13 | 3.6 | km off by -6.03; segment mismatch: computed 12, stored [13] |
+| Suc au May | 105.15 | 105.51 | 445 | 15 | 15 | 15 | 3.8 | km matches (+0.36); segment matches (15) |
+| Côte de la Croix de Pey | 128.99 | 131.83 | 265 | 19 | 19 | 18,19 | 7 | km off by +2.84; segment matches (19) |
+| Mont Bessou | 152.31 | 161.22 | 45 | 22 | 23 | 21,22 | 5 | km off by +8.91; segment mismatch: computed 23, stored [22] |
+| Côte des Gardes | 170.98 | 171.07 | 812 | 25 | 25 | 25 | 2.2 | km matches (+0.09); segment matches (25) |
 
 ## Sprints
 

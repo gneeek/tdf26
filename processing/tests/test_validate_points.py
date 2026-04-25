@@ -5,7 +5,12 @@ import os
 
 import pytest
 
-from processing.validate_points import validate
+from processing.validate_points import (
+    elevation_at_km,
+    load_elevation_track,
+    validate,
+    validate_elevation,
+)
 
 
 @pytest.fixture
@@ -83,3 +88,72 @@ class TestRealData:
             segments = json.load(f)
         errors = validate(points, segments)
         assert errors == [], f"real data has divergences: {errors}"
+
+
+class TestElevationAtKm:
+    @pytest.fixture
+    def synthetic_track(self):
+        # Climb from 0 to 5 km gaining 100 m, then descend to 10 km losing 100 m.
+        return [(0.0, 200.0), (2.5, 250.0), (5.0, 300.0), (7.5, 250.0), (10.0, 200.0)]
+
+    def test_interpolates_between_vertices(self, synthetic_track):
+        assert elevation_at_km(synthetic_track, 1.25) == pytest.approx(225.0)
+
+    def test_clamps_below_first(self, synthetic_track):
+        assert elevation_at_km(synthetic_track, -1) == 200.0
+
+    def test_clamps_above_last(self, synthetic_track):
+        assert elevation_at_km(synthetic_track, 100) == 200.0
+
+
+class TestValidateElevation:
+    @pytest.fixture
+    def good_track(self):
+        # Symmetric climb peaking at km 5 (300 m), descending to km 10 (200 m).
+        return [(float(i), 200.0 + (100 - abs(50 - i * 10) * 2)) for i in range(11)]
+
+    def test_summit_on_descending_flank_fails(self, good_track):
+        # Track peaks at km 5; declare summit at km 7 (descending side).
+        climbs = [{"name": "Test Climb", "km": 7.0, "length_km": 1.0, "gradient": 5.0}]
+        errors = validate_elevation(climbs, good_track)
+        assert any("descending flank" in e for e in errors)
+
+    def test_summit_at_actual_peak_passes(self, good_track):
+        # Climb of 1km at 4% (rising 40m); track at peak is 300, at km 4 is 280.
+        climbs = [{"name": "Test Climb", "km": 5.0, "length_km": 1.0, "gradient": 4.0}]
+        errors = validate_elevation(climbs, good_track)
+        # Filter to the rising-into-summit error; gradient consistency is a separate concern.
+        assert not any("descending flank" in e for e in errors)
+
+    def test_gradient_consistency_passes_at_match(self, good_track):
+        # km 5 ele 300, km 4 ele 280 → 20m gain over 1km = 2% gradient.
+        climbs = [{"name": "Match Climb", "km": 5.0, "length_km": 1.0, "gradient": 2.0}]
+        errors = validate_elevation(climbs, good_track)
+        assert not any("expects" in e for e in errors)
+
+    def test_gradient_consistency_fails_when_inflated(self, good_track):
+        # Declare 10% gradient when actual is 2%.
+        climbs = [{"name": "Inflated Climb", "km": 5.0, "length_km": 1.0, "gradient": 10.0}]
+        errors = validate_elevation(climbs, good_track)
+        assert any("Inflated Climb" in e and "expects" in e for e in errors)
+
+    def test_point_summit_skips_gradient_check(self, good_track):
+        # length_km=None: only the rising-into-summit check applies.
+        climbs = [{"name": "Point Summit", "km": 5.0, "length_km": None, "gradient": 5.0}]
+        errors = validate_elevation(climbs, good_track)
+        assert errors == []
+
+    def test_real_data_passes(self):
+        root = os.path.join(os.path.dirname(__file__), "..", "..")
+        points_path = os.path.join(root, "data", "competition", "points-config.json")
+        segments_path = os.path.join(root, "data", "segments.json")
+        elev_dir = os.path.join(root, "data", "elevation")
+        if not (os.path.exists(points_path) and os.path.exists(segments_path) and os.path.isdir(elev_dir)):
+            pytest.skip("real data not found")
+        with open(points_path) as f:
+            points = json.load(f)
+        with open(segments_path) as f:
+            segments = json.load(f)
+        track = load_elevation_track(elev_dir, segments)
+        errors = validate_elevation(points.get("climbs", []), track)
+        assert errors == [], f"real climbs have elevation divergences: {errors}"
