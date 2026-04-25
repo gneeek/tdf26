@@ -7,8 +7,9 @@ import pytest
 
 from processing.split_gpx import (
     KNOWN_CLIMBS,
-    KNOWN_TOWNS,
+    compute_town_proximity,
     haversine,
+    load_town_coords,
     parse_gpx,
     split_into_segments,
     write_segment_gpx,
@@ -144,6 +145,95 @@ class TestSplitIntoSegments:
             assert isinstance(seg["climbs"], list)
 
 
+# --- compute_town_proximity ---
+
+class TestComputeTownProximity:
+    """Closest-approach lookup for each town against the GPX."""
+
+    def test_returns_km_and_distance_per_town(self, gpx_file):
+        points = parse_gpx(gpx_file)
+        # Place a synthetic "town" right on the track at the third trackpoint.
+        coords = {"On Route": {"type": "town", "lat": 45.002, "lng": 1.5}}
+        prox = compute_town_proximity(points, coords)
+        assert "On Route" in prox
+        assert prox["On Route"]["distance_m"] < 5
+        # Track is dense at 0.001 deg lat (~111m) intervals; expect km < 0.5
+        assert prox["On Route"]["km"] < 0.5
+
+    def test_skips_non_town_types(self, gpx_file):
+        points = parse_gpx(gpx_file)
+        coords = {
+            "Town": {"type": "town", "lat": 45.0, "lng": 1.5},
+            "Climb": {"type": "climb", "lat": 45.0, "lng": 1.5},
+        }
+        prox = compute_town_proximity(points, coords)
+        assert "Town" in prox
+        assert "Climb" not in prox
+
+
+# --- route-proximity town assignment ---
+
+class TestRouteProximityAssignment:
+    """split_into_segments uses closest-approach km, not km-range guessing, to bucket towns."""
+
+    def test_town_near_track_assigned_to_correct_segment(self, gpx_file):
+        # Track runs north along lon=1.5 from lat 45.0 to 45.009 (~1km).
+        # Two segments: 0-0.5km and 0.5-1km.
+        points = parse_gpx(gpx_file)
+        town_coords = {
+            # ~111m east of lat 45.001 (km ~0.11) -> seg 1
+            "Early Town": {"type": "town", "lat": 45.001, "lng": 1.501},
+            # ~111m east of lat 45.008 (km ~0.89) -> seg 2
+            "Late Town": {"type": "town", "lat": 45.008, "lng": 1.501},
+        }
+        segments = split_into_segments(
+            points, num_segments=2, odd_length=0.5, even_length=0.5,
+            town_coords=town_coords,
+        )
+        assert "Early Town" in segments[0]["towns"]
+        assert "Late Town" in segments[1]["towns"]
+        assert "Early Town" not in segments[1]["towns"]
+        assert "Late Town" not in segments[0]["towns"]
+
+    def test_far_off_route_town_excluded(self, gpx_file):
+        points = parse_gpx(gpx_file)
+        town_coords = {
+            "Distant": {"type": "town", "lat": 47.0, "lng": 1.5},  # ~220km north
+        }
+        segments = split_into_segments(
+            points, num_segments=2, odd_length=0.5, even_length=0.5,
+            town_coords=town_coords, town_max_distance_m=1000,
+        )
+        for seg in segments:
+            assert "Distant" not in seg["towns"]
+
+    def test_town_positions_field_exposes_closest_approach_km(self, gpx_file):
+        points = parse_gpx(gpx_file)
+        town_coords = {
+            "Early Town": {"type": "town", "lat": 45.001, "lng": 1.501},
+        }
+        segments = split_into_segments(
+            points, num_segments=2, odd_length=0.5, even_length=0.5,
+            town_coords=town_coords,
+        )
+        assert "town_positions" in segments[0]
+        assert "Early Town" in segments[0]["town_positions"]
+        assert isinstance(segments[0]["town_positions"]["Early Town"], (int, float))
+
+
+# --- load_town_coords ---
+
+class TestLoadTownCoords:
+    def test_loads_real_file(self):
+        root = os.path.join(os.path.dirname(__file__), "..", "..")
+        path = os.path.join(root, "data", "town-coords.json")
+        if not os.path.exists(path):
+            pytest.skip("town-coords.json not found")
+        coords = load_town_coords(path)
+        assert "Malemort" in coords
+        assert "type" in coords["Malemort"]
+
+
 # --- write_segment_gpx ---
 
 class TestWriteSegmentGpx:
@@ -208,10 +298,21 @@ class TestRealData:
         assert "Ussel" in real_segments[-1]["towns"]
 
     def test_all_towns_assigned(self, real_segments):
+        # Towns within 1 km of the route should all appear on some segment.
+        # Brive-la-Gaillarde is intentionally off-route (2.5 km north) per
+        # the v1.4.8 audit decision and is excluded from segment assignment.
         all_towns = set()
         for seg in real_segments:
             all_towns.update(seg["towns"])
-        for town in KNOWN_TOWNS:
+        root = os.path.join(os.path.dirname(__file__), "..", "..")
+        coords_path = os.path.join(root, "data", "town-coords.json")
+        with open(coords_path) as f:
+            coords = json.load(f)
+        on_route_towns = [
+            n for n, v in coords.items()
+            if v.get("type") == "town" and n != "Brive-la-Gaillarde"
+        ]
+        for town in on_route_towns:
             assert town in all_towns, f"Town {town} not assigned to any segment"
 
     def test_all_climbs_assigned(self, real_segments):

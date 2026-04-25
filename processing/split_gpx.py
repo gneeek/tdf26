@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
-"""Parse main.gpx, split into 26 segments, output segment GPX files and segments.json."""
+"""Parse main.gpx, split into segments, output per-segment GPX files and segments.json.
+
+Towns are assigned to segments by route-proximity (#341): for each town in
+data/town-coords.json the script finds the closest point on the route, records
+the cumulative km at that point, and assigns the town to whichever segment
+contains that km. Towns more than --town-max-distance from the route are
+excluded entirely (catches off-route landmarks like Brive-la-Gaillarde, which
+the route passes 2.5 km away).
+
+The closest-approach km is also recorded per segment under `town_positions`,
+so downstream consumers (e.g. data/town-positions.ts) can be regenerated
+from segments.json instead of hand-maintained.
+"""
 
 import argparse
 import json
@@ -9,24 +21,10 @@ import os
 import gpxpy
 import gpxpy.gpx
 
-# Known waypoints with approximate km positions along the route
-KNOWN_TOWNS = {
-    "Malemort": 0,
-    "Turenne": 17,
-    "Collonges-la-Rouge": 23.5,
-    "Beynat": 37.5,
-    "Tulle": 65.5,
-    "Naves": 73.5,
-    "Chaumeil": 90,
-    "Treignac": 116.5,
-    "Bugeat": 130,
-    "Meymac": 157.5,
-    "Ussel": 182.5,
-}
-
-POINTS_CONFIG_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "..", "data", "competition", "points-config.json"
-)
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+POINTS_CONFIG_PATH = os.path.join(DATA_DIR, "competition", "points-config.json")
+TOWN_COORDS_PATH = os.path.join(DATA_DIR, "town-coords.json")
+DEFAULT_TOWN_MAX_DISTANCE_M = 1000.0
 
 
 def load_known_climbs(path=POINTS_CONFIG_PATH):
@@ -68,6 +66,88 @@ def haversine(lat1, lon1, lat2, lon2):
     return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
+def _project_onto_polyline_segment(q_lat, q_lng, a_lat, a_lng, a_km, b_lat, b_lng, b_km):
+    """Project Q onto the line segment A->B using a local equirectangular frame.
+
+    Returns (km, distance_m) for the closest point on the segment. Mirrors the
+    helper in audit_segment_data.py so split_gpx and the audit agree on
+    closest-approach math without forcing a cross-import.
+    """
+    lat_scale = 111_000.0
+    lng_scale = 111_000.0 * math.cos(math.radians(q_lat))
+    ax = (a_lng - q_lng) * lng_scale
+    ay = (a_lat - q_lat) * lat_scale
+    bx = (b_lng - q_lng) * lng_scale
+    by = (b_lat - q_lat) * lat_scale
+    dx = bx - ax
+    dy = by - ay
+    seg_len_sq = dx * dx + dy * dy
+    if seg_len_sq < 1e-12:
+        return a_km, math.hypot(ax, ay)
+    t = -(ax * dx + ay * dy) / seg_len_sq
+    t = max(0.0, min(1.0, t))
+    cx = ax + t * dx
+    cy = ay + t * dy
+    return a_km + t * (b_km - a_km), math.hypot(cx, cy)
+
+
+def closest_approach(points, lat, lng):
+    """Find closest-approach point on the GPX polyline to (lat, lng).
+
+    Returns (km, distance_m). Picks the closest vertex by cheap squared
+    distance, then projects onto the two adjacent polyline segments so the
+    reported km is precise between vertices rather than snapped to the grid.
+    """
+    cos_lat = math.cos(math.radians(lat))
+    best_i = 0
+    best_d_sq = float("inf")
+    for i, p in enumerate(points):
+        dlat = p["lat"] - lat
+        dlng = (p["lon"] - lng) * cos_lat
+        d_sq = dlat * dlat + dlng * dlng
+        if d_sq < best_d_sq:
+            best_d_sq = d_sq
+            best_i = i
+    candidates = [(
+        points[best_i]["cum_km"],
+        haversine(points[best_i]["lat"], points[best_i]["lon"], lat, lng),
+    )]
+    if best_i > 0:
+        a, b = points[best_i - 1], points[best_i]
+        candidates.append(_project_onto_polyline_segment(
+            lat, lng, a["lat"], a["lon"], a["cum_km"], b["lat"], b["lon"], b["cum_km"],
+        ))
+    if best_i < len(points) - 1:
+        a, b = points[best_i], points[best_i + 1]
+        candidates.append(_project_onto_polyline_segment(
+            lat, lng, a["lat"], a["lon"], a["cum_km"], b["lat"], b["lon"], b["cum_km"],
+        ))
+    return min(candidates, key=lambda c: c[1])
+
+
+def load_town_coords(path=TOWN_COORDS_PATH):
+    """Load all entries from town-coords.json. Caller filters by `type` field."""
+    with open(path) as f:
+        return json.load(f)
+
+
+def compute_town_proximity(points, town_coords):
+    """Closest-approach lookup for each town.
+
+    For every entry whose `type` is `town`, returns {km, distance_m}. Climbs
+    are skipped (their summit positions are #369's job). The km is the
+    cumulative km from the route start to the closest point on the polyline,
+    not the nearest vertex.
+    """
+    result = {}
+    for name, info in town_coords.items():
+        if info.get("type") != "town":
+            continue
+        km, dist = closest_approach(points, info["lat"], info["lng"])
+        result[name] = {"km": round(km, 2), "distance_m": round(dist)}
+    return result
+
+
 def parse_gpx(gpx_path):
     """Parse GPX file, return list of (lat, lon, ele, cumulative_dist_km) tuples."""
     with open(gpx_path, "r") as f:
@@ -92,28 +172,30 @@ def parse_gpx(gpx_path):
     return points
 
 
-def load_existing_towns(path):
-    """Return {segment_number: [towns]} from an existing segments.json if present.
-
-    Used to preserve hand-verified town assignments (#342) that the km-bbox logic
-    below would otherwise regress. The structural fix for town assignment is
-    tracked in #341.
-    """
-    if not os.path.exists(path):
-        return {}
-    with open(path) as f:
-        data = json.load(f)
-    return {s["segment"]: s.get("towns", []) for s in data}
-
-
-def split_into_segments(points, num_segments=27, odd_length=8.0, even_length=6.0, existing_towns=None):
+def split_into_segments(
+    points,
+    num_segments=27,
+    odd_length=8.0,
+    even_length=6.0,
+    town_coords=None,
+    town_max_distance_m=DEFAULT_TOWN_MAX_DISTANCE_M,
+):
     """Split points into segments with alternating lengths.
 
     Odd segments (1,3,5,...) are odd_length km.
     Even segments (2,4,6,...) are even_length km.
     The final segment gets the remainder.
+
+    Towns are assigned by route-proximity if `town_coords` is provided: each
+    town's closest-approach km is computed once against the full polyline and
+    used to bucket it into the segment whose [km_start, km_end) contains it.
+    Towns farther than `town_max_distance_m` from the route are excluded.
     """
     total_km = points[-1]["cum_km"]
+    if town_coords:
+        town_proximity = compute_town_proximity(points, town_coords)
+    else:
+        town_proximity = {}
 
     # Build km boundaries
     boundaries = [0.0]
@@ -160,18 +242,21 @@ def split_into_segments(points, num_segments=27, odd_length=8.0, even_length=6.0
             for i in range(1, len(seg_points))
         )
 
-        # Find towns in this segment. Prefer hand-verified assignments from an
-        # existing segments.json (see #342) over the km-bbox heuristic, since
-        # the heuristic is known-wrong and its structural fix is tracked in #341.
-        if existing_towns and seg_num in existing_towns:
-            towns = existing_towns[seg_num]
-        else:
-            towns = [
-                name for name, km in KNOWN_TOWNS.items()
-                if km_start <= km <= km_end
-            ]
+        # Find towns in this segment via route-proximity (#341).
+        # Half-open [km_start, km_end) so a town landing exactly on a boundary
+        # only appears once.
+        towns = []
+        town_positions = {}
+        for name, prox in town_proximity.items():
+            if prox["distance_m"] > town_max_distance_m:
+                continue
+            km = prox["km"]
+            if km_start <= km < km_end:
+                towns.append(name)
+                town_positions[name] = km
 
-        # Find climbs in this segment
+        # Find climbs in this segment (km-range from points-config; #369 will
+        # refactor this to summit-from-GPX-elevation-peak).
         climbs = [
             name for name, info in KNOWN_CLIMBS.items()
             if info["km_start"] < km_end and info["km_end"] > km_start
@@ -191,6 +276,7 @@ def split_into_segments(points, num_segments=27, odd_length=8.0, even_length=6.0
             "max_elevation": round(max(elevations)),
             "notable_points": [],
             "towns": towns,
+            "town_positions": town_positions,
             "climbs": climbs,
             "points": seg_points,  # kept for GPX output, removed from JSON
         })
@@ -227,6 +313,9 @@ def main():
     parser.add_argument("--gpx", default="data/main.gpx", help="Path to main GPX file")
     parser.add_argument("--output-dir", default="data/segments", help="Output directory for segment GPX files")
     parser.add_argument("--json-output", default="data/segments.json", help="Output path for segments metadata JSON")
+    parser.add_argument("--town-coords", default=TOWN_COORDS_PATH, help="Path to town-coords.json")
+    parser.add_argument("--town-max-distance-m", type=float, default=DEFAULT_TOWN_MAX_DISTANCE_M,
+                        help="Towns farther than this from the route are excluded from segment assignment")
     parser.add_argument("--num-segments", type=int, default=27, help="Number of segments")
     parser.add_argument("--odd-length", type=float, default=8.0, help="Length of odd segments (km)")
     parser.add_argument("--even-length", type=float, default=6.0, help="Length of even segments (km)")
@@ -238,10 +327,10 @@ def main():
     points = parse_gpx(args.gpx)
     print(f"Parsed {len(points)} trackpoints")
 
-    existing_towns = load_existing_towns(args.json_output)
+    town_coords = load_town_coords(args.town_coords)
     segments = split_into_segments(
         points, args.num_segments, args.odd_length, args.even_length,
-        existing_towns=existing_towns,
+        town_coords=town_coords, town_max_distance_m=args.town_max_distance_m,
     )
     print(f"Created {len(segments)} segments")
 

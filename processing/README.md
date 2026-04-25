@@ -13,22 +13,27 @@ python3 -m venv .venv
 
 ### split_gpx.py
 
-Parses `data/main.gpx` and splits the route into 26 segments.
+Parses `data/main.gpx` and splits the route into 27 segments.
 
 ```bash
 .venv/bin/python split_gpx.py
 ```
 
-**Input:** `data/main.gpx`
+**Input:**
+- `data/main.gpx`
+- `data/town-coords.json` (towns assigned by route-proximity to the closest segment)
+
 **Output:**
-- `data/segments/segment-NN.gpx` (26 files)
-- `data/segments.json` (segment metadata with coordinates, towns, climbs)
+- `data/segments/segment-NN.gpx` (27 files)
+- `data/segments.json` (segment metadata; per-segment `towns` list and `town_positions` map of name→closest-approach km)
 
 **Options:**
 - `--gpx PATH` — GPX file (default: `data/main.gpx`)
 - `--output-dir DIR` — segment GPX output (default: `data/segments`)
 - `--json-output PATH` — metadata JSON (default: `data/segments.json`)
-- `--num-segments N` — number of segments (default: 26)
+- `--town-coords PATH` — town coordinates (default: `data/town-coords.json`)
+- `--town-max-distance-m N` — towns farther than this from the route are excluded from segment assignment (default: 1000)
+- `--num-segments N` — number of segments (default: 27)
 
 ### elevation_profile.py
 
