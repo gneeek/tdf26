@@ -160,7 +160,12 @@
     "lat": 45.125,
     "lng": 1.728,
     "description": "Annual October Fete de la Chataigne. Chestnut producers, tastings, and summer Tuesday evening markets.",
-    "links": [],
+    "links": [
+      {
+        "url": "https://www.festivalenfrance.com/en/festival/beynat-chestnut-and-marron-festival",
+        "label": "Festival info"
+      }
+    ],
     "nearest_km": 45.19,
     "nearest_distance_m": 60
   },
@@ -531,16 +536,6 @@
     "nearest_distance_m": 52
   },
   {
-    "name": "Confiserie Lamy",
-    "category": "food",
-    "lat": 45.126,
-    "lng": 1.727,
-    "description": "Beynat producer of pate de fruits and chestnut confections (creme de marrons), a Correze specialty.",
-    "links": [],
-    "nearest_km": 45.08,
-    "nearest_distance_m": 90
-  },
-  {
     "name": "Maquis de Chaumeil Memorial",
     "category": "memorial",
     "lat": 45.434,
@@ -636,7 +631,12 @@
     "lat": 45.1465605,
     "lng": 1.7119226,
     "description": "Neolithic dolmen in Beynat commune, listed as a Historic Monument since 1910. Off the route, reached via Route du Dolmen.",
-    "links": [],
+    "links": [
+      {
+        "url": "https://www.beynat.fr/decouvrir/6255",
+        "label": "Beynat commune page"
+      }
+    ],
     "nearest_km": 44.16,
     "nearest_distance_m": 2203
   },
@@ -654,5 +654,50 @@
     ],
     "nearest_km": 50.51,
     "nearest_distance_m": 4265
+  },
+  {
+    "name": "Dolmen de Rochesseux",
+    "category": "archaeology",
+    "lat": 45.17794,
+    "lng": 1.67994,
+    "description": "Neolithic dolmen in Aubazine commune; two orthostates and a covering slab restored to position in 1944. Construction estimated to the 3rd millennium BCE.",
+    "links": [
+      {
+        "url": "http://www.t4t35.fr/Megalithes/AfficheSite.aspx?NumSite=11312",
+        "label": "T4T35 megalith record"
+      }
+    ],
+    "nearest_km": 38.92,
+    "nearest_distance_m": 5039
+  },
+  {
+    "name": "Dolmen du Puy de la Ramière",
+    "category": "archaeology",
+    "lat": 45.08739,
+    "lng": 1.62147,
+    "description": "Neolithic collective burial in Noailhac commune; supporting slabs remain, covering disappeared. On the Sentier des Dolmens hiking trail. Excavations from 1865.",
+    "links": [
+      {
+        "url": "https://noailhacpatrimoine.fr/notre-patrimoine/le-dolmen-du-puy-de-la-ramiere",
+        "label": "Noailhac Patrimoine"
+      }
+    ],
+    "nearest_km": 20.31,
+    "nearest_distance_m": 2577
+  },
+  {
+    "name": "Dolmen de la Chassagne",
+    "category": "archaeology",
+    "lat": 45.0815,
+    "lng": 1.4201,
+    "description": "Neolithic dolmen at Saint-Cernin-de-Larche, on a burial mound 18 m in diameter. Caussenarde Neolithic culture. Classified historic monument 1988 (Mérimée PA00099844).",
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Dolmen_de_la_Chassagne",
+        "label": "Wikipédia"
+      }
+    ],
+    "nearest_km": 7.92,
+    "nearest_distance_m": 10990
   }
 ]
