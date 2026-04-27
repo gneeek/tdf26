@@ -1,4 +1,4 @@
-gpxpy>=1.6.0
+gpxpy>=1.6.2
 geopy>=2.4.0
 numpy>=1.26.0
 pytest>=8.0.0
