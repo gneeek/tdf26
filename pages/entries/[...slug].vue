@@ -9,6 +9,8 @@
       <time class="text-sm text-stone-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
     </header>
 
+    <RiderStrip :snapshot="riderSnapshot" />
+
     <SegmentMap
       :segment="page.segment"
       :segments="segments"
@@ -37,7 +39,9 @@
 
     <WeatherWidget :weather="page.weather" />
 
-    <RiderDashboard :snapshot="riderSnapshot" />
+    <div id="rider-dashboard" class="scroll-mt-4">
+      <RiderDashboard :snapshot="riderSnapshot" />
+    </div>
 
     <nav class="mt-12 pt-8 border-t border-stone-200 flex justify-between">
       <NuxtLink
