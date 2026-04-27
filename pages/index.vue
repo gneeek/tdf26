@@ -36,6 +36,9 @@
             </article>
           </div>
           <p v-else class="text-stone-500 italic">No entries published yet.</p>
+          <p v-if="entries && entries.length" class="mt-3 text-right">
+            <NuxtLink to="/entries" class="text-sm text-correze-red font-semibold hover:underline">See all entries &rarr;</NuxtLink>
+          </p>
         </section>
 
         <StageRaceInfo class="lg:hidden" />
