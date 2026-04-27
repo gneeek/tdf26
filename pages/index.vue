@@ -24,14 +24,23 @@
           <h2 class="text-2xl font-serif font-bold text-stone-800 mb-3">Latest Entries</h2>
           <div v-if="entries && entries.length" class="space-y-3">
             <article v-for="entry in entries" :key="entry.path || entry._path" class="group bg-white rounded-lg shadow-sm p-4 hover:shadow-md hover:bg-stone-50 hover:border-l-4 hover:border-correze-red cursor-pointer transition-all border-l-4 border-transparent">
-              <NuxtLink :to="entry.path || entry._path" class="block">
-                <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
-                  Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
-                </span>
-                <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
-                <h3 class="text-xl font-serif font-bold text-stone-900 group-hover:text-correze-red transition-colors mt-1">{{ entry.title }}</h3>
-                <p v-if="entry.subtitle" class="text-stone-600 mt-1">{{ entry.subtitle }}</p>
-                <time class="text-sm text-stone-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
+              <NuxtLink :to="entry.path || entry._path" class="flex gap-4 items-start">
+                <img
+                  v-if="entry.images && entry.images.length"
+                  :src="entry.images[0].src"
+                  :alt="entry.images[0].alt || ''"
+                  loading="lazy"
+                  class="w-20 h-20 sm:w-28 sm:h-28 rounded object-cover flex-shrink-0"
+                >
+                <div class="min-w-0 flex-1">
+                  <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
+                    Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
+                  </span>
+                  <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
+                  <h3 class="text-xl font-serif font-bold text-stone-900 group-hover:text-correze-red transition-colors mt-1">{{ entry.title }}</h3>
+                  <p v-if="entry.subtitle" class="text-stone-600 mt-1">{{ entry.subtitle }}</p>
+                  <time class="text-sm text-stone-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
+                </div>
               </NuxtLink>
             </article>
           </div>
