@@ -2,5 +2,5 @@ gpxpy>=1.6.2
 geopy>=2.4.0
 numpy>=1.26.0
 pytest>=8.0.0
-pytest-cov>=6.0.0
+pytest-cov>=7.1.0
 ruff>=0.15.12
