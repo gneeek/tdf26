@@ -15,8 +15,8 @@
           <p class="text-sm text-stone-700">{{ img.alt }}</p>
           <p v-if="img.author" class="text-xs text-stone-400 mt-1">
             Photo by
-            <a v-if="img.authorUrl" :href="img.authorUrl" target="_blank" rel="noopener noreferrer" class="text-correze-red hover:underline">{{ stripHtml(img.author) }}</a>
-            <span v-else>{{ stripHtml(img.author) }}</span>
+            <a v-if="img.authorUrl" :href="img.authorUrl" target="_blank" rel="noopener noreferrer" class="text-correze-red hover:underline">{{ sanitizeAttributionText(img.author) }}</a>
+            <span v-else>{{ sanitizeAttributionText(img.author) }}</span>
             <template v-if="img.license">
               &middot;
               <a v-if="img.licenseUrl" :href="img.licenseUrl" target="_blank" rel="noopener noreferrer" class="hover:underline">{{ img.license }}</a>
@@ -27,7 +27,7 @@
               <a :href="img.sourceUrl" target="_blank" rel="noopener noreferrer" class="hover:underline">Source</a>
             </template>
           </p>
-          <p v-else-if="img.attribution" class="text-xs text-stone-400 mt-1">{{ stripHtml(img.attribution) }}</p>
+          <p v-else-if="img.attribution" class="text-xs text-stone-400 mt-1">{{ sanitizeAttributionText(img.attribution) }}</p>
         </figcaption>
       </figure>
     </div>
@@ -35,12 +35,9 @@
 </template>
 
 <script setup>
+import { sanitizeAttributionText } from '~/utils/sanitize'
+
 defineProps({
   images: { type: Array, default: () => [] }
 })
-
-function stripHtml(str) {
-  if (!str) return ''
-  return str.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
-}
 </script>
