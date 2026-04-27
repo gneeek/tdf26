@@ -220,7 +220,13 @@ if [ "$SKIP_DEPLOY" = true ]; then
 elif [ -n "$DEPLOY_TARGET" ]; then
     echo "--- Step 8: Deploying to $DEPLOY_TARGET ---"
     echo "Uploading to $DEPLOY_TARGET..."
-    tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}"
+    # Run under `if !` so set -e cannot bail before we print a step-named
+    # failure; subshell-local `set -o pipefail` so a left-side tar failure
+    # is not masked by a trailing ssh exit of 0.
+    if ! ( set -o pipefail; tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}" ); then
+        echo "ERROR: Step 8 deploy failed. Site was NOT uploaded to $DEPLOY_TARGET."
+        exit 1
+    fi
     echo "Deploy complete."
 else
     echo "--- Step 8: No DEPLOY_TARGET set, skipping deploy ---"
