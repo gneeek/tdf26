@@ -1,3 +1,5 @@
+import { sanitizeAttributionText } from '~/utils/sanitize'
+
 type WikiImage = {
   title: string
   url: string
@@ -23,10 +25,6 @@ const WIKI_HEADERS = {
   'Accept': 'application/json',
 }
 
-function stripHtml(value: string): string {
-  return value.replace(/<[^>]*>/g, '').trim()
-}
-
 async function fetchCommonsMetadata(fileNames: string[]): Promise<Record<string, CommonsMeta>> {
   if (!fileNames.length) return {}
   const params = new URLSearchParams({
@@ -49,7 +47,7 @@ async function fetchCommonsMetadata(fileNames: string[]): Promise<Record<string,
     if (!title || !info) continue
     const ext = (info.extmetadata ?? {}) as Record<string, { value?: string } | undefined>
     byTitle[title] = {
-      artist: stripHtml(ext.Artist?.value ?? ''),
+      artist: sanitizeAttributionText(ext.Artist?.value),
       license: ext.LicenseShortName?.value ?? '',
       licenseUrl: ext.LicenseUrl?.value ?? null,
       descriptionurl: (info.descriptionurl as string | undefined) ?? null,

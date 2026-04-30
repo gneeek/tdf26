@@ -13,8 +13,8 @@
       <p v-if="author || license || sourceUrl" class="text-xs text-stone-400 mt-1">
         <template v-if="author">
           Photo by
-          <a v-if="authorUrl" :href="authorUrl" target="_blank" rel="noopener noreferrer" class="text-correze-red hover:underline">{{ stripHtml(author) }}</a>
-          <span v-else>{{ stripHtml(author) }}</span>
+          <a v-if="authorUrl" :href="authorUrl" target="_blank" rel="noopener noreferrer" class="text-correze-red hover:underline">{{ sanitizeAttributionText(author) }}</a>
+          <span v-else>{{ sanitizeAttributionText(author) }}</span>
         </template>
         <template v-if="license">
           <span v-if="author"> &middot; </span>
@@ -31,6 +31,8 @@
 </template>
 
 <script setup>
+import { sanitizeAttributionText } from '~/utils/sanitize'
+
 defineProps({
   src: { type: String, required: true },
   alt: { type: String, default: '' },
@@ -41,9 +43,4 @@ defineProps({
   licenseUrl: { type: String, default: '' },
   sourceUrl: { type: String, default: '' },
 })
-
-function stripHtml(str) {
-  if (!str) return ''
-  return str.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
-}
 </script>
