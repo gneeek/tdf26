@@ -5,7 +5,19 @@ export default defineNuxtConfig({
   ],
 
   content: {
-    documentDriven: false
+    documentDriven: false,
+    build: {
+      markdown: {
+        rehypePlugins: {
+          'rehype-external-links': {
+            options: {
+              target: '_blank',
+              rel: ['noopener', 'noreferrer']
+            }
+          }
+        }
+      }
+    }
   },
 
   nitro: {
