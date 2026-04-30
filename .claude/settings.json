@@ -14,5 +14,16 @@
         ]
       }
     ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(source ~/.nvm/nvm.sh)",
+      "Bash(nvm use --silent)",
+      "Bash(npm test)",
+      "Bash(npx nuxt prepare)",
+      "Bash(ruff check *)",
+      "Bash(curl -s *)",
+      "Bash(curl -sI *)"
+    ]
   }
 }

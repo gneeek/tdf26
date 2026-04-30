@@ -443,6 +443,7 @@ Each entry (~800–1200 words) should weave together:
 - Rider stats are recalculated fresh each time from the full daily-log.json
 - The site must work fully as a static site — no server-side rendering required at runtime
 - Prioritize mobile-responsive design; entries will be shared on social media
+- New repositories in this ecosystem use Apache 2.0 for code repos and CC BY-SA 4.0 for content/text repos. The `gh repo create --license` default is Apache 2.0, which is wrong for content-centric repos such as `unfold`; pass the correct flag explicitly at creation time.
 
 ## References: Cycling History Along the Route
 
