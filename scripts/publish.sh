@@ -267,44 +267,110 @@ else
 fi
 echo ""
 
-# Step 9: Commit frontmatter changes to main
-# Closes the reconciliation gap between the deployed artifact and main. The
-# publish script mutates the entry frontmatter in place (dataCutoff, weather,
-# sometimes images) and those mutations need to land on main before the script
-# exits, or the next fresh clone builds the stub instead of the published entry.
-# See issue #383 and the v1.4.5 retrospective.
+# Step 9: Reconcile frontmatter changes to main via PR
+# Closes the gap between the deployed artifact and main. The publish script
+# mutates the entry frontmatter in place (dataCutoff, weather, sometimes images)
+# and those mutations need to land on main before the script exits, or the next
+# fresh clone builds the stub instead of the published entry. See issue #383
+# and the v1.4.5 retrospective for the original reconciliation rationale; #451
+# for why this now opens a PR rather than pushing direct to main (branch
+# protection on main rejects direct pushes).
 if [ "$SKIP_DEPLOY" = true ]; then
-    echo "--- Step 9: Commit skipped (deploy was skipped) ---"
+    echo "--- Step 9: Reconciliation skipped (deploy was skipped) ---"
 elif [ "$SKIP_COMMIT" = true ]; then
-    echo "--- Step 9: Commit skipped (--skip-commit flag) ---"
+    echo "--- Step 9: Reconciliation skipped (--skip-commit flag) ---"
 elif [ -z "$DEPLOY_TARGET" ]; then
-    echo "--- Step 9: Commit skipped (no DEPLOY_TARGET, no deploy happened) ---"
+    echo "--- Step 9: Reconciliation skipped (no DEPLOY_TARGET, no deploy happened) ---"
 else
-    echo "--- Step 9: Committing frontmatter changes to main ---"
+    echo "--- Step 9: Reconciling frontmatter to main via PR ---"
     CURRENT_BRANCH=$(git -C "$PROJECT_DIR" rev-parse --abbrev-ref HEAD)
     if [ "$CURRENT_BRANCH" != "main" ]; then
         echo "ERROR: publish.sh is not running on main (currently on $CURRENT_BRANCH)."
-        echo "Refusing to commit frontmatter changes from a non-main branch."
-        echo "The deploy happened but main is not reconciled. Resolve manually:"
-        echo "  git checkout main && git add $ENTRY_FILE && git commit && git push"
+        echo "Refusing to reconcile from a non-main branch."
+        echo "The deploy happened but main is not reconciled. Resolve manually."
         exit 1
     fi
     if [ -z "$ENTRY_FILE" ] || [ ! -f "$ENTRY_FILE" ]; then
-        echo "ERROR: ENTRY_FILE not set or not found; cannot commit."
+        echo "ERROR: ENTRY_FILE not set or not found; cannot reconcile."
         echo "The deploy happened but main is not reconciled. Resolve manually."
         exit 1
     fi
     if git -C "$PROJECT_DIR" diff --quiet -- "$ENTRY_FILE" \
         && git -C "$PROJECT_DIR" diff --staged --quiet -- "$ENTRY_FILE"; then
-        echo "No frontmatter changes to commit on $ENTRY_FILE."
+        echo "No frontmatter changes to reconcile on $ENTRY_FILE."
     else
+        TODAY=$(date +%Y%m%d)
+        BRANCH_NAME="publish/segment-${SEGMENT}-frontmatter-${TODAY}"
+        COMMIT_MSG="Segment $SEGMENT publish: record frontmatter from publish.sh"
+
+        # Clean up any branch from a prior attempt today (local + remote); lets re-runs work cleanly.
+        if git -C "$PROJECT_DIR" rev-parse --verify "$BRANCH_NAME" >/dev/null 2>&1; then
+            echo "Local branch $BRANCH_NAME exists from a prior attempt; deleting."
+            git -C "$PROJECT_DIR" branch -D "$BRANCH_NAME"
+        fi
+        if git -C "$PROJECT_DIR" ls-remote --exit-code --heads origin "$BRANCH_NAME" >/dev/null 2>&1; then
+            echo "Remote branch $BRANCH_NAME exists from a prior attempt; deleting."
+            git -C "$PROJECT_DIR" push origin --delete "$BRANCH_NAME" \
+                || { echo "ERROR: failed to delete prior remote branch. Resolve manually."; exit 1; }
+        fi
+
+        git -C "$PROJECT_DIR" checkout -b "$BRANCH_NAME" \
+            || { echo "ERROR: git checkout -b failed. Resolve manually; the deploy already happened."; exit 1; }
         git -C "$PROJECT_DIR" add "$ENTRY_FILE" \
-            || { echo "ERROR: git add failed."; exit 1; }
-        git -C "$PROJECT_DIR" commit -m "Segment $SEGMENT publish: record frontmatter from publish.sh" \
+            || { echo "ERROR: git add failed. Resolve manually; the deploy already happened."; exit 1; }
+        git -C "$PROJECT_DIR" commit -m "$COMMIT_MSG" \
             || { echo "ERROR: git commit failed. Resolve manually; the deploy already happened."; exit 1; }
-        git -C "$PROJECT_DIR" push origin main \
-            || { echo "ERROR: git push failed. The deploy happened but main is not reconciled. Resolve manually."; exit 1; }
-        echo "Committed and pushed frontmatter changes for segment $SEGMENT."
+        git -C "$PROJECT_DIR" push -u origin "$BRANCH_NAME" \
+            || { echo "ERROR: git push failed. Resolve manually; the deploy already happened."; exit 1; }
+
+        # Find or open the reconciliation PR
+        PR_NUM=$(gh pr list --head "$BRANCH_NAME" --state open --json number --jq '.[0].number' 2>/dev/null || true)
+        if [ -z "$PR_NUM" ]; then
+            PR_URL=$(gh pr create \
+                --base main \
+                --head "$BRANCH_NAME" \
+                --title "$COMMIT_MSG" \
+                --body "Auto-generated by publish.sh to reconcile main with the deployed segment $SEGMENT artifact. Frontmatter mutations: \`dataCutoff\`, \`weather\` (sometimes \`images\`). The deploy already happened on $(date +%Y-%m-%d); this PR closes the reconciliation gap so a fresh clone builds the same artifact that is in production.") \
+                || { echo "ERROR: gh pr create failed. Resolve manually; the deploy already happened."; exit 1; }
+            PR_NUM=$(echo "$PR_URL" | grep -oE '[0-9]+$')
+        else
+            echo "Reusing existing PR #$PR_NUM for branch $BRANCH_NAME."
+        fi
+        echo "Reconciliation PR: https://github.com/gneeek/tdf26/pull/$PR_NUM"
+
+        # Wait briefly for GitHub to compute mergeability after the push/create.
+        for _ in 1 2 3 4 5 6 7 8 9 10; do
+            STATE=$(gh pr view "$PR_NUM" --json mergeStateStatus --jq '.mergeStateStatus' 2>/dev/null || echo "UNKNOWN")
+            case "$STATE" in
+                CLEAN|UNSTABLE|HAS_HOOKS)
+                    break
+                    ;;
+                DIRTY|BEHIND|BLOCKED)
+                    echo "ERROR: PR #$PR_NUM is in $STATE state; cannot squash-merge automatically. Resolve manually."
+                    exit 1
+                    ;;
+                *)
+                    sleep 3
+                    ;;
+            esac
+        done
+        if [ "$STATE" != "CLEAN" ] && [ "$STATE" != "UNSTABLE" ] && [ "$STATE" != "HAS_HOOKS" ]; then
+            echo "ERROR: PR #$PR_NUM mergeability did not resolve within 30s (state: $STATE). Resolve manually."
+            exit 1
+        fi
+
+        # Squash-merge into main; --delete-branch removes the remote feature branch.
+        gh pr merge "$PR_NUM" --squash --delete-branch \
+            || { echo "ERROR: gh pr merge --squash failed for PR #$PR_NUM. Resolve manually."; exit 1; }
+
+        # Pull the merged main back onto the local checkout
+        git -C "$PROJECT_DIR" checkout main \
+            || { echo "ERROR: git checkout main failed."; exit 1; }
+        git -C "$PROJECT_DIR" pull --ff-only origin main \
+            || { echo "ERROR: git pull failed; main may have moved. Resolve manually."; exit 1; }
+        git -C "$PROJECT_DIR" branch -d "$BRANCH_NAME" 2>/dev/null || true
+
+        echo "Frontmatter reconciled to main via PR #$PR_NUM."
     fi
 fi
 
