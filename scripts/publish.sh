@@ -3,7 +3,8 @@
 # build site, deploy, and commit the frontmatter changes this script produced
 # so main is reconciled with the deployed artifact before the script exits.
 #
-# Usage: ./scripts/publish.sh [--segment N] [--skip-deploy] [--skip-weather] [--skip-commit]
+# Usage: ./scripts/publish.sh [--segment N] [--release-tag vX.Y.Z]
+#                             [--skip-deploy] [--skip-weather] [--skip-commit] [--skip-release]
 #
 # Environment variables (loaded from .env if present):
 #   OPENWEATHERMAP_API_KEY  - API key for weather data (optional)
@@ -25,7 +26,9 @@ fi
 SKIP_DEPLOY=false
 SKIP_WEATHER=false
 SKIP_COMMIT=false
+SKIP_RELEASE=false
 SEGMENT=""
+RELEASE_TAG=""
 
 # Parse arguments
 for arg in "$@"; do
@@ -34,16 +37,20 @@ for arg in "$@"; do
             echo "Usage: ./scripts/publish.sh [OPTIONS]"
             echo ""
             echo "Publish-day script: update stats, calculate points, snapshot, fetch weather,"
-            echo "build, deploy, and commit frontmatter changes to main."
+            echo "build, deploy, commit frontmatter changes to main, and create a GitHub Release."
             echo ""
             echo "Options:"
-            echo "  --segment N     Segment number to publish (auto-detects if omitted)"
-            echo "  --skip-deploy   Skip the deployment step (also skips the commit step)"
-            echo "  --skip-weather  Skip weather fetch"
-            echo "  --skip-commit   Deploy but do not commit frontmatter to main"
-            echo "                  (advanced: for deploys run from a branch or in a"
-            echo "                  workflow where the commit is handled separately)"
-            echo "  -h, --help      Show this help message"
+            echo "  --segment N            Segment number to publish (auto-detects if omitted)"
+            echo "  --release-tag vX.Y.Z   Tag and GitHub Release to create after a successful"
+            echo "                         deploy (must match v<major>.<minor>.<patch> format and"
+            echo "                         not already exist). Required unless --skip-release."
+            echo "  --skip-deploy          Skip the deployment step (also skips commit and release)"
+            echo "  --skip-weather         Skip weather fetch"
+            echo "  --skip-commit          Deploy but do not commit frontmatter to main"
+            echo "                         (advanced: for deploys run from a branch or in a"
+            echo "                         workflow where the commit is handled separately)"
+            echo "  --skip-release         Deploy but do not create a tag or GitHub Release"
+            echo "  -h, --help             Show this help message"
             echo ""
             echo "Environment variables:"
             echo "  OPENWEATHERMAP_API_KEY  API key for weather data (optional)"
@@ -59,17 +66,43 @@ for arg in "$@"; do
         --skip-commit)
             SKIP_COMMIT=true
             ;;
+        --skip-release)
+            SKIP_RELEASE=true
+            ;;
         --segment)
-            shift_next=true
+            arg_consumer="SEGMENT"
+            ;;
+        --release-tag)
+            arg_consumer="RELEASE_TAG"
             ;;
         *)
-            if [ "$shift_next" = true ]; then
-                SEGMENT="$arg"
-                shift_next=false
+            if [ -n "$arg_consumer" ]; then
+                printf -v "$arg_consumer" "%s" "$arg"
+                arg_consumer=""
             fi
             ;;
     esac
 done
+
+# Validate release tag up front so we don't deploy then discover a malformed tag.
+if [ "$SKIP_RELEASE" = false ] && [ "$SKIP_DEPLOY" = false ]; then
+    if [ -z "$RELEASE_TAG" ]; then
+        echo "ERROR: --release-tag is required (or pass --skip-release to suppress)." >&2
+        exit 1
+    fi
+    if ! [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo "ERROR: --release-tag must match v<major>.<minor>.<patch> (got: $RELEASE_TAG)." >&2
+        exit 1
+    fi
+    if git rev-parse "$RELEASE_TAG" >/dev/null 2>&1; then
+        echo "ERROR: tag $RELEASE_TAG already exists locally." >&2
+        exit 1
+    fi
+    if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+        echo "ERROR: GitHub Release $RELEASE_TAG already exists." >&2
+        exit 1
+    fi
+fi
 
 echo "=== Correze Travelogue - Publish ==="
 echo "Date: $(date +%Y-%m-%d)"
@@ -273,6 +306,23 @@ else
             || { echo "ERROR: git push failed. The deploy happened but main is not reconciled. Resolve manually."; exit 1; }
         echo "Committed and pushed frontmatter changes for segment $SEGMENT."
     fi
+fi
+
+# Step 10: Tag and create GitHub Release
+# Fires after the frontmatter commit so the tag captures main in agreement with
+# the deployed artifact. Skipped if any earlier deploy/commit step was skipped,
+# since those leave main and production out of sync.
+if [ "$SKIP_RELEASE" = true ]; then
+    echo "--- Step 10: Release skipped (--skip-release flag) ---"
+elif [ "$SKIP_DEPLOY" = true ] || [ "$SKIP_COMMIT" = true ]; then
+    echo "--- Step 10: Release skipped (deploy or commit was skipped) ---"
+elif [ -z "$DEPLOY_TARGET" ]; then
+    echo "--- Step 10: Release skipped (no DEPLOY_TARGET, no deploy happened) ---"
+else
+    echo "--- Step 10: Creating release tag $RELEASE_TAG ---"
+    "$SCRIPT_DIR/create-release.sh" "$RELEASE_TAG" \
+        --title "$RELEASE_TAG - Segment $SEGMENT publication" \
+        || { echo "ERROR: create-release.sh failed. Deploy and frontmatter commit succeeded; tag/release require manual creation."; exit 1; }
 fi
 
 echo ""
