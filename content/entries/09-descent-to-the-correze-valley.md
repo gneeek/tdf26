@@ -16,13 +16,6 @@ images:
     license: "CC BY-SA 4.0"
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg"
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg
-    alt: "Église Saint-Martial de Sainte-Fortunade, alternate angle (publisher pick)"
-    author: "Marianne Casamance"
-    authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
-    license: "CC BY-SA 4.0"
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg"
   - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/02-26_Sainte_Fortunade_-_chateau_1.jpg/960px-02-26_Sainte_Fortunade_-_chateau_1.jpg
     alt: "Château de Sainte-Fortunade, fifteenth-century motte-castle and communal property since 1952, now housing the mairie (Claude pick)"
     author: "Marianne Casamance"
@@ -52,6 +45,9 @@ Sainte-Fortunade arrives a little less than halfway through. It is a commune of 
 In the year 894, a man was carrying his sister's ashes north through the Limousin. The sister was Fortunata, a third-century martyr beheaded at Agen, whose remains had been kept since by a community considered no longer safe to keep them. The brother stopped to rest near a spring on what is now the village's eastern edge. In the morning, when he tried to lift the sack, he could not. The local population, reading providence in the matter, took the relics into the parish church and renamed the place. The village had been called Saint-Martial-le-Noir until that morning. It has been called Sainte-Fortunade since.
 
 A reliquary bust, made in the early fifteenth century to hold the bone, still sits in the church. It is small, ornamented, and carries the saint's face in the abstract way that reliquaries of the period do, which is to say not as a portrait but as a kind of receipt. Eleven hundred and thirty-two years separate the morning the brother could not lift the sack from the morning the riders pass through the village; the name has held across all of them, the spring is in the same place, the bone is in the church, and for the last six centuries the bust has been on the bone. Continuity of this duration is rare anywhere; in a country that has changed regimes nine times since the Revolution alone, it is worth pausing on. The riders will not pause. They will descend through the village in something under a minute.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg" alt="Église Saint-Martial de Sainte-Fortunade" caption="Église Saint-Martial de Sainte-Fortunade. The reliquary bust has been on the bone since the early fifteenth century." author="Marianne Casamance" authorUrl="https://commons.wikimedia.org/wiki/User:Marianne_Casamance" license="CC BY-SA 4.0" licenseUrl="https://creativecommons.org/licenses/by-sa/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg"}
+::
 
 The château that now houses the mairie sits on a feudal motte at the village's edge. It was built in the fifteenth century, remodelled in the nineteenth, and bought by the commune in 1952, since when it has done municipal duty. A round tower with machicolations remains. From the road called the rue du Barry Bas, which the route passes, the tower is briefly visible through the trees on the left.
 
