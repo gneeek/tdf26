@@ -16,7 +16,7 @@ images:
     license: "CC BY-SA 4.0"
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg"
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/02-26_Sainte_Fortunade_-_chateau_1.jpg/640px-02-26_Sainte_Fortunade_-_chateau_1.jpg
+  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/02-26_Sainte_Fortunade_-_chateau_1.jpg/960px-02-26_Sainte_Fortunade_-_chateau_1.jpg
     alt: "Château de Sainte-Fortunade, fifteenth-century motte-castle and communal property since 1952, now housing the mairie"
     author: "Marianne Casamance"
     authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
