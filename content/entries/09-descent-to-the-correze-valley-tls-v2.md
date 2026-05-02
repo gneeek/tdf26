@@ -41,7 +41,7 @@ draft: true
 
 By the early afternoon, where the road comes off the plateau and the woods on either side begin to thicken against it, the gradient changed. It did so without ceremony, in the way the gradients of plateau roads do, by failing first to climb any further and then failing to stay level. Two hundred and fifty-two metres of elevation lost over the next eight kilometres, against twenty-one regained: a sustained three per cent, the steady-tilting kind rather than the spectacular. The country here is wooded and farmed in roughly equal parts, neither giving way to the other for long. The descent had its own weather, in the small way that descents do: a coolness drawn off the river before the river was anywhere visible, the kind of coolness that arrives in advance of its source.
 
-The basement under all this is the same one that surfaced in the previous segment: Variscan granitoids and micaschists, shouldered up some three hundred million years ago when what is now western Europe was being pressed against what is now North America. The road no longer runs across that basement; it cuts down into it, by way of valleys the rivers spent the intervening epochs carving. The Corrèze has been at this work patiently. Tulle, ahead in the next segment, occupies one of the narrower stretches of the gorge the river has so far managed.
+The basement under all this is the same one that surfaced in the previous segment: Variscan [granitoids](https://en.wikipedia.org/wiki/Granitoid) and [micaschists](https://en.wikipedia.org/wiki/Mica_schist), shouldered up some three hundred million years ago when what is now western Europe was being pressed against what is now North America. The road no longer runs across that basement; it cuts down into it, by way of valleys the rivers spent the intervening epochs carving. The Corrèze has been at this work patiently. Tulle, ahead in the next segment, occupies one of the narrower stretches of the gorge the river has so far managed.
 
 A little less than halfway through, the road meets Sainte-Fortunade. One thousand seven hundred and ninety-eight people lived there at the last count, five kilometres south of Tulle as the road turns. The village has a square, a mairie housed in a fifteenth-century château, and a parish church older still that holds a bone fragment of its eponymous saint. The story of how the bone arrived is the kind that survives because it is too specific to invent.
 
@@ -53,6 +53,11 @@ A reliquary bust, made in the early fifteenth century to hold the bone, sits in 
 ::
 
 The château that now houses the mairie sits on a feudal motte at the village's edge. Built in the fifteenth century, remodelled in the nineteenth, bought by the commune in 1952 and put to municipal duty since, it retains a round tower with machicolations. From the road called the rue du Barry Bas, which the route passes, the tower is briefly visible through the trees on the left.
+
+Past the church wall, the road comes to a junction. The signposts have it in from Les Quatre-Routes and Beynat, and going on to Tulle.
+
+::street-view-embed{embedUrl="https://www.google.com/maps/embed?pb=!4v1777740477066!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRGFxWWVaYmc.!2m2!1d45.20732620507727!2d1.770926378717151!3f43.29044934146662!4f5.028452216905237!5f1.5975802834955743" caption="The junction by the church in Sainte-Fortunade. The route arrives from Les Quatre-Routes and Beynat to the south and continues toward Tulle."}
+::
 
 Just before the village, at kilometre fifty-seven point nine, the route comes within twenty metres of the Fromagerie Duroux. The fromagerie produces Pavé Corrézien and ages its cheese, characteristically, in a reconverted railway tunnel; the tunnel was built for a rural line that did not survive the road competition of the mid-twentieth century, and was eventually given over to the cheesemakers, for whom its constant temperature and humidity had been a feature all along, merely intended for trains. The Corrèze countryside is thick with such second acts. Tunnels become cellars, viaducts become cycle paths, station buildings become tourist offices and, occasionally, houses. The cheese is, by general consent, very good.
 
@@ -67,7 +72,8 @@ The road, as it happens, has been turning that way for some time.
 
 ## Sources
 
-- Sainte-Fortunade church, reliquary, and 894 translation: [Église Saint-Martial de Sainte-Fortunade (Wikipédia)](https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Martial_de_Sainte-Fortunade); [Histoire et patrimoine, commune de Sainte-Fortunade](https://www.ste-fortunade.fr/notre-commune/histoire-et-patrimoine/); [Sainte Fortunade (Nominis, CEF)](https://nominis.cef.fr/contenus/saint/12988/Sainte-Fortunade.html).
+- Sainte-Fortunade church, reliquary, and 894 translation: [Église Saint-Martial de Sainte-Fortunade (Wikipédia)](https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Martial_de_Sainte-Fortunade); [Sainte Fortunade (Nominis, CEF)](https://nominis.cef.fr/contenus/saint/12988/Sainte-Fortunade.html).
+- Château de Sainte-Fortunade and 1952 commune acquisition: [Château de Sainte-Fortunade (Wikipédia)](https://fr.wikipedia.org/wiki/Ch%C3%A2teau_de_Sainte-Fortunade).
 - Crystalline basement and the Corrèze valley near Tulle: [Géographie de la Corrèze (Wikipédia)](https://fr.wikipedia.org/wiki/G%C3%A9ographie_de_la_Corr%C3%A8ze); [Tulle (Wikipedia)](https://en.wikipedia.org/wiki/Tulle).
 
 ---
