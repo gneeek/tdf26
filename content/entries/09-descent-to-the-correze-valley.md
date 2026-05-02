@@ -3,11 +3,26 @@ segment: 9
 title: "Descent to the Correze Valley"
 subtitle: "Km 56-64: Off the plateau through Sainte-Fortunade, toward the river"
 publishDate: 2026-05-03
+dataCutoff: 2026-05-02
 kmStart: 56
 kmEnd: 64
 gpxFile: /gpx/segment-09.gpx
 elevationData: /data/elevation/segment-09.json
-images: []
+images:
+  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg
+    alt: "Église Saint-Martial de Sainte-Fortunade, the parish church that holds the eponymous relic"
+    author: "Marianne Casamance"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg"
+  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/02-26_Sainte_Fortunade_-_chateau_1.jpg/640px-02-26_Sainte_Fortunade_-_chateau_1.jpg
+    alt: "Château de Sainte-Fortunade, fifteenth-century motte-castle and communal property since 1952, now housing the mairie"
+    author: "Marianne Casamance"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_chateau_1.jpg"
 weather: null
 draft: true
 ---
@@ -24,10 +39,7 @@ In the year 894, a man was carrying his sister's ashes north through the Limousi
 
 A reliquary bust, made in the early fifteenth century to hold the bone, still sits in the church. It is small, ornamented, and carries the saint's face in the abstract way that reliquaries of the period do, which is to say not as a portrait but as a kind of receipt. Eleven hundred and thirty-two years separate the morning the brother could not lift the sack from the morning the riders pass through the village; the name has held across all of them, the spring is in the same place, the bone is in the church, and for the last six centuries the bust has been on the bone. Continuity of this duration is rare anywhere; in a country that has changed regimes nine times since the Revolution alone, it is worth pausing on. The riders will not pause. They will descend through the village in something under a minute.
 
-The château that now houses the mairie sits on a feudal motte at the village's edge. It was built in the fifteenth century, remodelled in the nineteenth, and bought by the commune in 1952, since when it has done municipal duty. A round tower with machicolations remains. From the road called the Allée du Barry-Bas, which the route passes, the tower is briefly visible through the trees on the left.
-
-::street-view-embed{embedUrl="https://www.google.com/maps/embed?pb=!4v1777213984424!6m8!1m7!1sAOmGwrXX!2m2!1d45.205!2d1.770!3f120!4f0!5f2.5683298865800186" caption="The road through Sainte-Fortunade, descending toward the Corrèze valley."}
-::
+The château that now houses the mairie sits on a feudal motte at the village's edge. It was built in the fifteenth century, remodelled in the nineteenth, and bought by the commune in 1952, since when it has done municipal duty. A round tower with machicolations remains. From the road called the rue du Barry Bas, which the route passes, the tower is briefly visible through the trees on the left.
 
 A little before the village, at kilometre fifty-seven point nine, the route passes within twenty metres of the Fromagerie Duroux. The fromagerie produces Pavé Corrézien and ages its cheese, characteristically, in a reconverted railway tunnel. The tunnel was built for a rural line of the kind that did not survive the road competition of the mid-twentieth century, and was eventually given over to the cheesemakers, for whom its constant temperature and humidity had been a feature all along, merely intended for trains. The Corrèze is full of small infrastructural second acts of this kind: tunnels that became cellars, viaducts that became cycle paths, station buildings that became tourist offices and, in a few cases, dwellings. The cheese is, by general consent, very good.
 
