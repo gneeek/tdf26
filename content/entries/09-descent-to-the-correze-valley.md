@@ -43,9 +43,6 @@ The road, having spent the previous segment climbing without much fuss, commits 
 
 Beneath the asphalt, the rock is the same crystalline basement of the Massif Central that surfaced in segment eight: Variscan granitoids and micaschists, shouldered up some three hundred million years ago when what is now western Europe was being squeezed against what is now North America. The road is no longer running across this basement; it is cutting down through it, by way of valleys the rivers carved into the same hard stuff. The Corrèze, into whose valley the road is descending, has been doing this work patiently for a long time. Tulle, ahead in the next segment, occupies one of the narrower stretches of the gorge the river has so far managed.
 
-::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Tulle_-_panoramio.jpg/1280px-Tulle_-_panoramio.jpg" alt="Tulle and the Corrèze gorge from above" caption="Tulle in the Corrèze gorge, seen from above. The river runs through the buildings; the ridges are the same crystalline basement the road has been cutting through." author="Gilles Guillamot" authorUrl="https://commons.wikimedia.org/wiki/File:Tulle_-_panoramio.jpg" license="CC BY-SA 3.0" licenseUrl="https://creativecommons.org/licenses/by-sa/3.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Tulle_-_panoramio.jpg"}
-::
-
 Sainte-Fortunade arrives a little less than halfway through. It is a commune of some eighteen hundred inhabitants, five kilometres south of Tulle by road, with a square, a mairie housed in a fifteenth-century château, and a parish church that is older still and contains, among other things, a bone fragment of its eponymous saint. The story of how the bone arrived is the kind that survives because it is too specific to invent.
 
 In the year 894, a man was carrying his sister's ashes north through the Limousin. The sister was Fortunata, a third-century martyr beheaded at Agen, whose remains had been kept since by a community considered no longer safe to keep them. The brother stopped to rest near a spring on what is now the village's eastern edge. In the morning, when he tried to lift the sack, he could not. The local population, reading providence in the matter, took the relics into the parish church and renamed the place. The village had been called Saint-Martial-le-Noir until that morning. It has been called Sainte-Fortunade since.
@@ -66,6 +63,9 @@ The valley arrives by implication before it arrives by sight. The trees on the r
 The riders will arrive in the city in the next segment. What they have descended through in this one is, in effect, the approach: the geological fact of the basement narrowing into a gorge, the human fact of a small commune that kept a saint and her name for a thousand years, the agricultural fact of cheese in a tunnel that used to carry trains. None of these facts will be on the television feed. The peloton will simply have come down off the plateau and slipped into the river valley, in the way pelotons do, and the commentary will already be turning toward the city.
 
 The road, as it happens, has been turning that way for some time.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Tulle_-_panoramio.jpg/1280px-Tulle_-_panoramio.jpg" alt="Tulle theatre at the river, evening" caption="Tulle in the evening, by the Corrèze. The riders descend into the city in the next segment." author="Gilles Guillamot" authorUrl="https://commons.wikimedia.org/wiki/File:Tulle_-_panoramio.jpg" license="CC BY-SA 3.0" licenseUrl="https://creativecommons.org/licenses/by-sa/3.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Tulle_-_panoramio.jpg"}
+::
 
 ## Sources
 
