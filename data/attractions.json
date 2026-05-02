@@ -175,7 +175,16 @@
     "lat": 45.19,
     "lng": 1.77,
     "description": "Artisan fromagerie near Tulle aging cheese in a reconverted railway tunnel. Produces Pave Correzien.",
-    "links": [],
+    "links": [
+      {
+        "url": "https://www.fromagerie-duroux.fr/",
+        "label": "Official site"
+      },
+      {
+        "url": "https://www.fromagerie-duroux.fr/pave-correzien/",
+        "label": "Pavé Corrézien"
+      }
+    ],
     "nearest_km": 57.91,
     "nearest_distance_m": 20
   },
