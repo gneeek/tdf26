@@ -10,19 +10,33 @@ gpxFile: /gpx/segment-09.gpx
 elevationData: /data/elevation/segment-09.json
 images:
   - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg
-    alt: "Église Saint-Martial de Sainte-Fortunade, the parish church that holds the eponymous relic"
+    alt: "Église Saint-Martial de Sainte-Fortunade, the parish church that holds the eponymous relic (Claude pick)"
     author: "Marianne Casamance"
     authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
     license: "CC BY-SA 4.0"
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg"
+  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg
+    alt: "Église Saint-Martial de Sainte-Fortunade, alternate angle (publisher pick)"
+    author: "Marianne Casamance"
+    authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_3.jpg"
   - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/02-26_Sainte_Fortunade_-_chateau_1.jpg/960px-02-26_Sainte_Fortunade_-_chateau_1.jpg
-    alt: "Château de Sainte-Fortunade, fifteenth-century motte-castle and communal property since 1952, now housing the mairie"
+    alt: "Château de Sainte-Fortunade, fifteenth-century motte-castle and communal property since 1952, now housing the mairie (Claude pick)"
     author: "Marianne Casamance"
     authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
     license: "CC BY-SA 4.0"
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_chateau_1.jpg"
+  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Sainte-Fortunade_book_exchange.jpg/960px-Sainte-Fortunade_book_exchange.jpg
+    alt: "Boîte à livres (book-exchange box) in Sainte-Fortunade (publisher pick)"
+    author: "Elgaard"
+    authorUrl: "https://commons.wikimedia.org/wiki/File:Sainte-Fortunade_book_exchange.jpg"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sainte-Fortunade_book_exchange.jpg"
 weather: null
 draft: true
 ---
