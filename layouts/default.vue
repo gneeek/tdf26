@@ -70,6 +70,10 @@
       <slot />
     </main>
 
+    <ClientOnly>
+      <ImageLightbox />
+    </ClientOnly>
+
     <footer class="bg-stone-900 text-stone-400 mt-16 relative overflow-hidden">
       <img src="/images/logo.svg" alt="" class="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-24 opacity-5">
       <div class="max-w-5xl mx-auto px-4 py-6 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative">

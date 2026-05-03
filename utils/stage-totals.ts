@@ -1,3 +1,5 @@
+import pointsConfig from '~/data/competition/points-config.json'
+
 interface Segment {
   segment: number
   km_start: number
@@ -8,22 +10,13 @@ interface Segment {
   climbs?: string[]
 }
 
-// Hand-maintained mirror of climb names in data/competition/points-config.json.
-// Drift between the two surfaces silently filters climbs out of stage-details
-// rendering — exactly the seg-1 Malemort case found during #369. Refactor to
-// derive this Set from points-config.json directly is tracked separately.
-export const CATEGORIZED_CLIMBS = new Set([
-  'Côte de Malemort',
-  'Puy Boubou',
-  'Côte de Lagleygeolle',
-  'Côte de Miel',
-  'Côte des Naves',
-  'Puy de Lachaud',
-  'Suc au May',
-  'Côte de la Croix de Pey',
-  'Mont Bessou',
-  'Côte des Gardes',
-])
+// Derived from points-config.json's climbs[].name, which self-describes as the
+// single source of truth for climb identity. Adding/removing/renaming a climb
+// in points-config flows through to stage-details rendering with no second
+// edit. tests/utils/stage-totals.test.ts asserts this set stays in sync.
+export const CATEGORIZED_CLIMBS: Set<string> = new Set(
+  pointsConfig.climbs.map(c => c.name),
+)
 
 export interface StageTotals {
   totalDistance: number

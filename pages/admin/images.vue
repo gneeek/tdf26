@@ -170,6 +170,7 @@
 <script setup>
 import segmentsJson from '~/data/segments.json'
 import attractionsData from '~/data/attractions.json'
+import { sanitizeAttributionText } from '~/utils/sanitize'
 
 definePageMeta({ layout: 'admin' })
 
@@ -230,11 +231,10 @@ function toggleImage(img) {
   if (isSelected(img)) {
     selected.value = selected.value.filter(s => s.src !== img.url)
   } else {
-    const artist = (img.artist || '').replace(/<[^>]*>/g, '').trim()
     selected.value.push({
       src: img.url,
-      alt: (img.description || img.title || '').replace(/<[^>]*>/g, '').trim(),
-      author: artist,
+      alt: sanitizeAttributionText(img.description || img.title),
+      author: sanitizeAttributionText(img.artist),
       authorUrl: img.description_url || null,
       license: img.license || 'Unknown',
       licenseUrl: img.license === 'Public domain' ? null : 'https://creativecommons.org/licenses/by-sa/4.0/',

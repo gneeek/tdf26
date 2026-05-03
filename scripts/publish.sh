@@ -3,7 +3,8 @@
 # build site, deploy, and commit the frontmatter changes this script produced
 # so main is reconciled with the deployed artifact before the script exits.
 #
-# Usage: ./scripts/publish.sh [--segment N] [--skip-deploy] [--skip-weather] [--skip-commit]
+# Usage: ./scripts/publish.sh [--segment N] [--release-tag vX.Y.Z]
+#                             [--skip-deploy] [--skip-weather] [--skip-commit] [--skip-release]
 #
 # Environment variables (loaded from .env if present):
 #   OPENWEATHERMAP_API_KEY  - API key for weather data (optional)
@@ -25,7 +26,9 @@ fi
 SKIP_DEPLOY=false
 SKIP_WEATHER=false
 SKIP_COMMIT=false
+SKIP_RELEASE=false
 SEGMENT=""
+RELEASE_TAG=""
 
 # Parse arguments
 for arg in "$@"; do
@@ -34,16 +37,20 @@ for arg in "$@"; do
             echo "Usage: ./scripts/publish.sh [OPTIONS]"
             echo ""
             echo "Publish-day script: update stats, calculate points, snapshot, fetch weather,"
-            echo "build, deploy, and commit frontmatter changes to main."
+            echo "build, deploy, commit frontmatter changes to main, and create a GitHub Release."
             echo ""
             echo "Options:"
-            echo "  --segment N     Segment number to publish (auto-detects if omitted)"
-            echo "  --skip-deploy   Skip the deployment step (also skips the commit step)"
-            echo "  --skip-weather  Skip weather fetch"
-            echo "  --skip-commit   Deploy but do not commit frontmatter to main"
-            echo "                  (advanced: for deploys run from a branch or in a"
-            echo "                  workflow where the commit is handled separately)"
-            echo "  -h, --help      Show this help message"
+            echo "  --segment N            Segment number to publish (auto-detects if omitted)"
+            echo "  --release-tag vX.Y.Z   Tag and GitHub Release to create after a successful"
+            echo "                         deploy (must match v<major>.<minor>.<patch> format and"
+            echo "                         not already exist). Required unless --skip-release."
+            echo "  --skip-deploy          Skip the deployment step (also skips commit and release)"
+            echo "  --skip-weather         Skip weather fetch"
+            echo "  --skip-commit          Deploy but do not commit frontmatter to main"
+            echo "                         (advanced: for deploys run from a branch or in a"
+            echo "                         workflow where the commit is handled separately)"
+            echo "  --skip-release         Deploy but do not create a tag or GitHub Release"
+            echo "  -h, --help             Show this help message"
             echo ""
             echo "Environment variables:"
             echo "  OPENWEATHERMAP_API_KEY  API key for weather data (optional)"
@@ -59,17 +66,43 @@ for arg in "$@"; do
         --skip-commit)
             SKIP_COMMIT=true
             ;;
+        --skip-release)
+            SKIP_RELEASE=true
+            ;;
         --segment)
-            shift_next=true
+            arg_consumer="SEGMENT"
+            ;;
+        --release-tag)
+            arg_consumer="RELEASE_TAG"
             ;;
         *)
-            if [ "$shift_next" = true ]; then
-                SEGMENT="$arg"
-                shift_next=false
+            if [ -n "$arg_consumer" ]; then
+                printf -v "$arg_consumer" "%s" "$arg"
+                arg_consumer=""
             fi
             ;;
     esac
 done
+
+# Validate release tag up front so we don't deploy then discover a malformed tag.
+if [ "$SKIP_RELEASE" = false ] && [ "$SKIP_DEPLOY" = false ]; then
+    if [ -z "$RELEASE_TAG" ]; then
+        echo "ERROR: --release-tag is required (or pass --skip-release to suppress)." >&2
+        exit 1
+    fi
+    if ! [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo "ERROR: --release-tag must match v<major>.<minor>.<patch> (got: $RELEASE_TAG)." >&2
+        exit 1
+    fi
+    if git rev-parse "$RELEASE_TAG" >/dev/null 2>&1; then
+        echo "ERROR: tag $RELEASE_TAG already exists locally." >&2
+        exit 1
+    fi
+    if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+        echo "ERROR: GitHub Release $RELEASE_TAG already exists." >&2
+        exit 1
+    fi
+fi
 
 echo "=== Correze Travelogue - Publish ==="
 echo "Date: $(date +%Y-%m-%d)"
@@ -220,7 +253,13 @@ if [ "$SKIP_DEPLOY" = true ]; then
 elif [ -n "$DEPLOY_TARGET" ]; then
     echo "--- Step 8: Deploying to $DEPLOY_TARGET ---"
     echo "Uploading to $DEPLOY_TARGET..."
-    tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}"
+    # Run under `if !` so set -e cannot bail before we print a step-named
+    # failure; subshell-local `set -o pipefail` so a left-side tar failure
+    # is not masked by a trailing ssh exit of 0.
+    if ! ( set -o pipefail; tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}" ); then
+        echo "ERROR: Step 8 deploy failed. Site was NOT uploaded to $DEPLOY_TARGET."
+        exit 1
+    fi
     echo "Deploy complete."
 else
     echo "--- Step 8: No DEPLOY_TARGET set, skipping deploy ---"
@@ -228,45 +267,128 @@ else
 fi
 echo ""
 
-# Step 9: Commit frontmatter changes to main
-# Closes the reconciliation gap between the deployed artifact and main. The
-# publish script mutates the entry frontmatter in place (dataCutoff, weather,
-# sometimes images) and those mutations need to land on main before the script
-# exits, or the next fresh clone builds the stub instead of the published entry.
-# See issue #383 and the v1.4.5 retrospective.
+# Step 9: Reconcile frontmatter changes to main via PR
+# Closes the gap between the deployed artifact and main. The publish script
+# mutates the entry frontmatter in place (dataCutoff, weather, sometimes images)
+# and those mutations need to land on main before the script exits, or the next
+# fresh clone builds the stub instead of the published entry. See issue #383
+# and the v1.4.5 retrospective for the original reconciliation rationale; #451
+# for why this now opens a PR rather than pushing direct to main (branch
+# protection on main rejects direct pushes).
 if [ "$SKIP_DEPLOY" = true ]; then
-    echo "--- Step 9: Commit skipped (deploy was skipped) ---"
+    echo "--- Step 9: Reconciliation skipped (deploy was skipped) ---"
 elif [ "$SKIP_COMMIT" = true ]; then
-    echo "--- Step 9: Commit skipped (--skip-commit flag) ---"
+    echo "--- Step 9: Reconciliation skipped (--skip-commit flag) ---"
 elif [ -z "$DEPLOY_TARGET" ]; then
-    echo "--- Step 9: Commit skipped (no DEPLOY_TARGET, no deploy happened) ---"
+    echo "--- Step 9: Reconciliation skipped (no DEPLOY_TARGET, no deploy happened) ---"
 else
-    echo "--- Step 9: Committing frontmatter changes to main ---"
+    echo "--- Step 9: Reconciling frontmatter to main via PR ---"
     CURRENT_BRANCH=$(git -C "$PROJECT_DIR" rev-parse --abbrev-ref HEAD)
     if [ "$CURRENT_BRANCH" != "main" ]; then
         echo "ERROR: publish.sh is not running on main (currently on $CURRENT_BRANCH)."
-        echo "Refusing to commit frontmatter changes from a non-main branch."
-        echo "The deploy happened but main is not reconciled. Resolve manually:"
-        echo "  git checkout main && git add $ENTRY_FILE && git commit && git push"
+        echo "Refusing to reconcile from a non-main branch."
+        echo "The deploy happened but main is not reconciled. Resolve manually."
         exit 1
     fi
     if [ -z "$ENTRY_FILE" ] || [ ! -f "$ENTRY_FILE" ]; then
-        echo "ERROR: ENTRY_FILE not set or not found; cannot commit."
+        echo "ERROR: ENTRY_FILE not set or not found; cannot reconcile."
         echo "The deploy happened but main is not reconciled. Resolve manually."
         exit 1
     fi
     if git -C "$PROJECT_DIR" diff --quiet -- "$ENTRY_FILE" \
         && git -C "$PROJECT_DIR" diff --staged --quiet -- "$ENTRY_FILE"; then
-        echo "No frontmatter changes to commit on $ENTRY_FILE."
+        echo "No frontmatter changes to reconcile on $ENTRY_FILE."
     else
+        TODAY=$(date +%Y%m%d)
+        BRANCH_NAME="publish/segment-${SEGMENT}-frontmatter-${TODAY}"
+        COMMIT_MSG="Segment $SEGMENT publish: record frontmatter from publish.sh"
+
+        # Clean up any branch from a prior attempt today (local + remote); lets re-runs work cleanly.
+        if git -C "$PROJECT_DIR" rev-parse --verify "$BRANCH_NAME" >/dev/null 2>&1; then
+            echo "Local branch $BRANCH_NAME exists from a prior attempt; deleting."
+            git -C "$PROJECT_DIR" branch -D "$BRANCH_NAME"
+        fi
+        if git -C "$PROJECT_DIR" ls-remote --exit-code --heads origin "$BRANCH_NAME" >/dev/null 2>&1; then
+            echo "Remote branch $BRANCH_NAME exists from a prior attempt; deleting."
+            git -C "$PROJECT_DIR" push origin --delete "$BRANCH_NAME" \
+                || { echo "ERROR: failed to delete prior remote branch. Resolve manually."; exit 1; }
+        fi
+
+        git -C "$PROJECT_DIR" checkout -b "$BRANCH_NAME" \
+            || { echo "ERROR: git checkout -b failed. Resolve manually; the deploy already happened."; exit 1; }
         git -C "$PROJECT_DIR" add "$ENTRY_FILE" \
-            || { echo "ERROR: git add failed."; exit 1; }
-        git -C "$PROJECT_DIR" commit -m "Segment $SEGMENT publish: record frontmatter from publish.sh" \
+            || { echo "ERROR: git add failed. Resolve manually; the deploy already happened."; exit 1; }
+        git -C "$PROJECT_DIR" commit -m "$COMMIT_MSG" \
             || { echo "ERROR: git commit failed. Resolve manually; the deploy already happened."; exit 1; }
-        git -C "$PROJECT_DIR" push origin main \
-            || { echo "ERROR: git push failed. The deploy happened but main is not reconciled. Resolve manually."; exit 1; }
-        echo "Committed and pushed frontmatter changes for segment $SEGMENT."
+        git -C "$PROJECT_DIR" push -u origin "$BRANCH_NAME" \
+            || { echo "ERROR: git push failed. Resolve manually; the deploy already happened."; exit 1; }
+
+        # Find or open the reconciliation PR
+        PR_NUM=$(gh pr list --head "$BRANCH_NAME" --state open --json number --jq '.[0].number' 2>/dev/null || true)
+        if [ -z "$PR_NUM" ]; then
+            PR_URL=$(gh pr create \
+                --base main \
+                --head "$BRANCH_NAME" \
+                --title "$COMMIT_MSG" \
+                --body "Auto-generated by publish.sh to reconcile main with the deployed segment $SEGMENT artifact. Frontmatter mutations: \`dataCutoff\`, \`weather\` (sometimes \`images\`). The deploy already happened on $(date +%Y-%m-%d); this PR closes the reconciliation gap so a fresh clone builds the same artifact that is in production.") \
+                || { echo "ERROR: gh pr create failed. Resolve manually; the deploy already happened."; exit 1; }
+            PR_NUM=$(echo "$PR_URL" | grep -oE '[0-9]+$')
+        else
+            echo "Reusing existing PR #$PR_NUM for branch $BRANCH_NAME."
+        fi
+        echo "Reconciliation PR: https://github.com/gneeek/tdf26/pull/$PR_NUM"
+
+        # Wait briefly for GitHub to compute mergeability after the push/create.
+        for _ in 1 2 3 4 5 6 7 8 9 10; do
+            STATE=$(gh pr view "$PR_NUM" --json mergeStateStatus --jq '.mergeStateStatus' 2>/dev/null || echo "UNKNOWN")
+            case "$STATE" in
+                CLEAN|UNSTABLE|HAS_HOOKS)
+                    break
+                    ;;
+                DIRTY|BEHIND|BLOCKED)
+                    echo "ERROR: PR #$PR_NUM is in $STATE state; cannot squash-merge automatically. Resolve manually."
+                    exit 1
+                    ;;
+                *)
+                    sleep 3
+                    ;;
+            esac
+        done
+        if [ "$STATE" != "CLEAN" ] && [ "$STATE" != "UNSTABLE" ] && [ "$STATE" != "HAS_HOOKS" ]; then
+            echo "ERROR: PR #$PR_NUM mergeability did not resolve within 30s (state: $STATE). Resolve manually."
+            exit 1
+        fi
+
+        # Squash-merge into main; --delete-branch removes the remote feature branch.
+        gh pr merge "$PR_NUM" --squash --delete-branch \
+            || { echo "ERROR: gh pr merge --squash failed for PR #$PR_NUM. Resolve manually."; exit 1; }
+
+        # Pull the merged main back onto the local checkout
+        git -C "$PROJECT_DIR" checkout main \
+            || { echo "ERROR: git checkout main failed."; exit 1; }
+        git -C "$PROJECT_DIR" pull --ff-only origin main \
+            || { echo "ERROR: git pull failed; main may have moved. Resolve manually."; exit 1; }
+        git -C "$PROJECT_DIR" branch -d "$BRANCH_NAME" 2>/dev/null || true
+
+        echo "Frontmatter reconciled to main via PR #$PR_NUM."
     fi
+fi
+
+# Step 10: Tag and create GitHub Release
+# Fires after the frontmatter commit so the tag captures main in agreement with
+# the deployed artifact. Skipped if any earlier deploy/commit step was skipped,
+# since those leave main and production out of sync.
+if [ "$SKIP_RELEASE" = true ]; then
+    echo "--- Step 10: Release skipped (--skip-release flag) ---"
+elif [ "$SKIP_DEPLOY" = true ] || [ "$SKIP_COMMIT" = true ]; then
+    echo "--- Step 10: Release skipped (deploy or commit was skipped) ---"
+elif [ -z "$DEPLOY_TARGET" ]; then
+    echo "--- Step 10: Release skipped (no DEPLOY_TARGET, no deploy happened) ---"
+else
+    echo "--- Step 10: Creating release tag $RELEASE_TAG ---"
+    "$SCRIPT_DIR/create-release.sh" "$RELEASE_TAG" \
+        --title "$RELEASE_TAG - Segment $SEGMENT publication" \
+        || { echo "ERROR: create-release.sh failed. Deploy and frontmatter commit succeeded; tag/release require manual creation."; exit 1; }
 fi
 
 echo ""

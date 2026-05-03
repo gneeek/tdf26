@@ -39,6 +39,12 @@
     "lat": 45.1295498,
     "lng": 1.6589921
   },
+  "Sainte-Fortunade": {
+    "type": "town",
+    "lat": 45.2072,
+    "lng": 1.7725,
+    "source": "https://fr.wikipedia.org/wiki/Sainte-Fortunade"
+  },
   "Tulle": {
     "type": "town",
     "lat": 45.2678347,
@@ -87,8 +93,9 @@
   },
   "Côte de Miel": {
     "type": "climb",
-    "lat": 45.1363007,
-    "lng": 1.7651832
+    "lat": 45.18057,
+    "lng": 1.76101,
+    "note": "Summit coordinate updated 2026-05-03 to match the v1.4.8 points-config correction (climb is the small bump at km 56.54, not the older km 49 characterization). Verified via processing/audit_segment_data.py."
   },
   "Côte des Naves": {
     "type": "climb",
