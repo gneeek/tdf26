@@ -33,7 +33,7 @@ The arms came next. The [Manufacture d'Armes de Tulle](https://en.wikipedia.org/
 
 The accordions came last, and almost as a postscript. In 1919, returning from a war the arms factory had been busy supplying, a young craftsman named Jean Maugein opened a small workshop with his brothers and began making [*accordéons diatoniques*](https://fr.wikipedia.org/wiki/Accord%C3%A9on_diatonique). The factory grew. By the middle of the twentieth century Maugein was making the instruments the *bal-musette* dance halls of Paris ran on, and the name was, for a particular generation, what one meant by an accordion in France. Three trades, three centuries, one ribbon of the same town between Souilhac and the centre. The riders pass through the lower of the two, on the valley floor, in something under five minutes.
 
-::video-embed{embedUrl="https://fresques.ina.fr/danses-sans-visa-en/export/player/Dasavi00705/wide?isAmalia=1" caption="Histoire des bals musette — FR3 documentary on the Paris bal-musette tradition, the rue de Lappe halls, and the riverside guinguettes (1999, 11 min). Features the accordionists Jo Privat and Marcel Azzola." titlePrefix="Bal-musette video" attribution="Source: INA, fresque Danses sans visa."}
+::video-embed{embedUrl="https://www.youtube.com/embed/mlGT489IUkw" caption="Bal-musette in Paris, 1910–1930 — period film and recordings of the dance halls Maugein's instruments would soon come to fill." titlePrefix="Bal-musette video" attribution="Source: YouTube compilation by Sir Sway."}
 ::
 
 ## The ninety-nine
