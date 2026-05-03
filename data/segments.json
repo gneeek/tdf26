@@ -165,7 +165,9 @@
     "min_elevation": 308,
     "max_elevation": 542,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Sainte-Fortunade"
+    ],
     "climbs": [
       "Côte de Miel"
     ]

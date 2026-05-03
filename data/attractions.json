@@ -172,9 +172,9 @@
   {
     "name": "Fromagerie Duroux",
     "category": "cheese",
-    "lat": 45.19,
-    "lng": 1.77,
-    "description": "Artisan fromagerie near Tulle aging cheese in a reconverted railway tunnel. Produces Pave Correzien.",
+    "lat": 45.16643,
+    "lng": 2.19865,
+    "description": "Artisan fromagerie at 12 Route de Chaussenac, Rilhac-Xaintrie (eastern Corrèze, in the Xaintrie). Ages cheese in a reconverted railway tunnel. Produces Pavé Corrézien. Not on the Stage 9 route — closest approach is ~33 km north of the fromagerie at km 50.5.",
     "links": [
       {
         "url": "https://www.fromagerie-duroux.fr/",
@@ -185,8 +185,45 @@
         "label": "Pavé Corrézien"
       }
     ],
-    "nearest_km": 57.91,
-    "nearest_distance_m": 20
+    "nearest_km": 50.51,
+    "nearest_distance_m": 32834,
+    "source": "https://www.fromagerie-duroux.fr/ (official site address: 12 Route de Chaussenac, 19220 Rilhac-Xaintrie)"
+  },
+  {
+    "name": "Église Saint-Martial de Sainte-Fortunade",
+    "category": "church",
+    "lat": 45.20727,
+    "lng": 1.77188,
+    "description": "Parish church holding the relic of Sainte Fortunade, a third-century martyr of Agen whose remains arrived in 894. The early-fifteenth-century reliquary bust still sits in the church.",
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Martial_de_Sainte-Fortunade",
+        "label": "Wikipédia"
+      },
+      {
+        "url": "https://www.ste-fortunade.fr/notre-commune/histoire-et-patrimoine/",
+        "label": "Histoire et patrimoine de la commune"
+      }
+    ],
+    "nearest_km": 60.01,
+    "nearest_distance_m": 76,
+    "source": "https://www.wikidata.org/wiki/Q38513255"
+  },
+  {
+    "name": "Château de Sainte-Fortunade",
+    "category": "castle",
+    "lat": 45.20744,
+    "lng": 1.77155,
+    "description": "Fifteenth-century motte-castle remodelled in the nineteenth century, bought by the commune in 1952 and now housing the mairie. A round tower with machicolations remains.",
+    "links": [
+      {
+        "url": "https://www.ste-fortunade.fr/notre-commune/histoire-et-patrimoine/",
+        "label": "Commune history page"
+      }
+    ],
+    "nearest_km": 60.03,
+    "nearest_distance_m": 45,
+    "source": "https://www.wikidata.org/wiki/Q22996042"
   },
   {
     "name": "Cascades de Gimel",
@@ -208,7 +245,7 @@
     "category": "church",
     "lat": 45.268,
     "lng": 1.768,
-    "description": "12th-century cathedral with a 75m bell tower, the tallest in the Limousin. Notable carved cloister.",
+    "description": "12th-century cathedral with a 73m bell tower, the tallest in the Limousin. Notable carved cloister.",
     "links": [
       {
         "url": "https://en.wikipedia.org/wiki/Tulle_Cathedral",
@@ -501,7 +538,7 @@
     "category": "industrial",
     "lat": 45.27,
     "lng": 1.768,
-    "description": "State arms factory established 1690 under Louis XIV. Produced the MAT-49 submachine gun. Now partly a cultural space.",
+    "description": "State arms factory founded 1690; raised to royal manufactory status in 1777 under Louis XVI. Produced the MAT-49 submachine gun. Now partly a cultural space.",
     "links": [
       {
         "url": "https://en.wikipedia.org/wiki/Manufacture_d%27armes_de_Tulle",
