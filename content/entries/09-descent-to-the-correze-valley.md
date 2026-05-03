@@ -31,7 +31,7 @@ images:
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Sainte-Fortunade_book_exchange.jpg"
 weather: null
-draft: true
+draft: false
 ---
 
 ::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Tulle_banner.JPG/1280px-Tulle_banner.JPG" alt="Tulle, in the Corrèze valley" author="Pascalou petit / Inkey (banner)" authorUrl="https://commons.wikimedia.org/wiki/User:Pascalou_petit" license="CC BY-SA 3.0" licenseUrl="https://creativecommons.org/licenses/by-sa/3.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Tulle_banner.JPG"}
