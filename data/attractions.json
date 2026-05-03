@@ -172,9 +172,9 @@
   {
     "name": "Fromagerie Duroux",
     "category": "cheese",
-    "lat": 45.19,
-    "lng": 1.77,
-    "description": "Artisan fromagerie near Tulle aging cheese in a reconverted railway tunnel. Produces Pave Correzien.",
+    "lat": 45.16643,
+    "lng": 2.19865,
+    "description": "Artisan fromagerie at 12 Route de Chaussenac, Rilhac-Xaintrie (eastern Corrèze, in the Xaintrie). Ages cheese in a reconverted railway tunnel. Produces Pavé Corrézien. Not on the Stage 9 route — closest approach is ~33 km north of the fromagerie at km 50.5.",
     "links": [
       {
         "url": "https://www.fromagerie-duroux.fr/",
@@ -185,8 +185,9 @@
         "label": "Pavé Corrézien"
       }
     ],
-    "nearest_km": 57.91,
-    "nearest_distance_m": 20
+    "nearest_km": 50.51,
+    "nearest_distance_m": 32834,
+    "source": "https://www.fromagerie-duroux.fr/ (official site address: 12 Route de Chaussenac, 19220 Rilhac-Xaintrie)"
   },
   {
     "name": "Église Saint-Martial de Sainte-Fortunade",
