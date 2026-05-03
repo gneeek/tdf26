@@ -7,7 +7,7 @@
   >
     <div class="p-4 sm:p-5">
       <p class="text-xs uppercase tracking-wider text-correze-red font-semibold mb-2">
-        Press coverage
+        {{ kind }}
       </p>
       <p class="text-sm text-stone-500 mb-1">
         <span class="font-medium text-stone-700">{{ publication }}</span>
@@ -37,5 +37,6 @@ defineProps({
   headline: { type: String, required: true },
   date: { type: String, default: '' },
   summary: { type: String, default: '' },
+  kind: { type: String, default: 'Press coverage' },
 })
 </script>

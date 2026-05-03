@@ -43,6 +43,9 @@ A further one hundred and forty-nine men were deported in the following days. On
 
 The town keeps the day in its place-names. The Rue du 9-Juin-1944 runs through what was the centre of the killing. Outside the city, on a slope above the valley, the Champ des Martyrs at Cueille holds the mass grave and the annual ceremony, which is held without speeches. Wreaths are laid; the names are not read out; the silence does the work the speeches would do badly. The convention is that the ninety-nine are spoken of as the ninety-nine, and not as anyone in particular. A cyclist riding through the centre of Tulle on a July afternoon will not see any of this unless they are looking. The streets carry the date and the title; the rest is in the town's keeping.
 
+::press-card{kind="Memorial site" publication="Comité des Martyrs de Tulle" headline="The high place of Cueuille" summary="The Comité's own page on the Cueille mass grave: the burial in 1944, the exhumation in October of that year, the handover to the city of Tulle in 1950, and the annual ceremony." url="https://www.comite-des-martyrs-de-tulle.com/en/the-high-place-of-cueuille/"}
+::
+
 That the men of the town that built the factory were assembled at the factory by an army using the rifles the factory made, before being hanged in the streets the rifles had been carried out into, is a symmetry the town has had eighty-two years to make sense of. It has not arrived at sense. The annual ceremony continues to register, instead, what cannot be made into sense, which is its discipline.
 
 ::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/MAUGEIN_-_Photo_couleur_Maugein.jpg/1280px-MAUGEIN_-_Photo_couleur_Maugein.jpg" alt="A chromatic accordion from Manufacture Maugein, Tulle" caption="A chromatic accordion from Manufacture Maugein, Tulle." author="Richard Brandao" authorUrl="https://commons.wikimedia.org/wiki/File:MAUGEIN_-_Photo_couleur_Maugein.jpg" license="CC BY 4.0" licenseUrl="https://creativecommons.org/licenses/by/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:MAUGEIN_-_Photo_couleur_Maugein.jpg"}
@@ -68,6 +71,7 @@ The Baluze pattern, lightly drawn, has not gone away. A Tulle mind goes to Paris
 - [Tulle (Wikipedia)](https://en.wikipedia.org/wiki/Tulle) - town geography, industries, demographics
 - [Tulle massacre (Wikipedia)](https://en.wikipedia.org/wiki/Tulle_massacre) - 9 June 1944 events and casualty figures
 - [June 9, 1944: The Events (Comité des Martyrs de Tulle)](https://www.comite-des-martyrs-de-tulle.com/en/june-9-1944-the-events/) - Tulle Martyrs Committee account
+- [The high place of Cueuille (Comité des Martyrs de Tulle)](https://www.comite-des-martyrs-de-tulle.com/en/the-high-place-of-cueuille/) - history of the Cueille mass grave site, exhumation, and handover to the city in 1950
 - [Manufacture Nationale d'Armes de Tulle (Wikipedia)](https://en.wikipedia.org/wiki/Manufacture_Nationale_d%27Armes_de_Tulle) - MAT founding (1690) and history
 - [Musée de la Mémoire et des Industries Tullistes (POP — Plateforme Ouverte du Patrimoine)](https://pop.culture.gouv.fr/notice/museo/M1191) - Tulle museum holding MAT firearms, machine tools, apprenticeship pieces, and Resistance/Deportation collections
 - [Maugein (Wikipédia)](https://fr.wikipedia.org/wiki/Maugein) - Maugein founding (1919) and accordion production
