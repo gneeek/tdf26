@@ -15,13 +15,33 @@
     >
       ✕
     </button>
+    <button
+      v-if="hasSiblings"
+      type="button"
+      class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white text-2xl font-bold hover:bg-white/20 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white/10"
+      aria-label="Previous image"
+      :disabled="!hasPrev"
+      @click.stop="prev"
+    >
+      ‹
+    </button>
+    <button
+      v-if="hasSiblings"
+      type="button"
+      class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white text-2xl font-bold hover:bg-white/20 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white/10"
+      aria-label="Next image"
+      :disabled="!hasNext"
+      @click.stop="next"
+    >
+      ›
+    </button>
     <figure class="max-w-full max-h-full flex flex-col items-center gap-3" @click.self="close">
       <img
         :src="image.src"
         :alt="image.alt || ''"
         class="max-w-full max-h-[80vh] object-contain rounded shadow-lg"
       >
-      <figcaption v-if="hasAttribution" class="text-center text-stone-200 text-sm max-w-2xl px-2">
+      <figcaption v-if="hasAttribution || hasSiblings" class="text-center text-stone-200 text-sm max-w-2xl px-2">
         <p v-if="image.caption || image.alt" class="text-stone-100">{{ image.caption || image.alt }}</p>
         <p v-if="image.author" class="text-xs text-stone-400 mt-1">
           Photo by
@@ -38,6 +58,7 @@
           </template>
         </p>
         <p v-else-if="image.attribution" class="text-xs text-stone-400 mt-1">{{ sanitizeAttributionText(image.attribution) }}</p>
+        <p v-if="hasSiblings" class="text-xs text-stone-500 mt-1">{{ currentIndex + 1 }} / {{ siblings.length }}</p>
       </figcaption>
     </figure>
   </div>
@@ -48,7 +69,7 @@ import { computed, onMounted, onUnmounted, watch } from 'vue'
 import { sanitizeAttributionText } from '~/utils/sanitize'
 import { useImageLightbox } from '~/composables/useImageLightbox'
 
-const { image, isOpen, close } = useImageLightbox()
+const { image, siblings, currentIndex, isOpen, hasSiblings, hasPrev, hasNext, close, next, prev } = useImageLightbox()
 
 const hasAttribution = computed(() => {
   if (!image.value) return false
@@ -56,7 +77,10 @@ const hasAttribution = computed(() => {
 })
 
 function onKeydown(e: KeyboardEvent) {
-  if (e.key === 'Escape' && isOpen.value) close()
+  if (!isOpen.value) return
+  if (e.key === 'Escape') close()
+  else if (e.key === 'ArrowRight' && hasNext.value) next()
+  else if (e.key === 'ArrowLeft' && hasPrev.value) prev()
 }
 
 onMounted(() => window.addEventListener('keydown', onKeydown))

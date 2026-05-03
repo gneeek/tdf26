@@ -7,7 +7,7 @@
           type="button"
           class="block w-full p-0 border-0 bg-transparent cursor-pointer"
           :aria-label="`Open ${img.alt || 'image'} in viewer`"
-          @click="show(img)"
+          @click="show(img, images, idx)"
         >
           <img
             :src="img.src"

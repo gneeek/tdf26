@@ -78,8 +78,13 @@ def process_segment(gpx_path, segment_num):
     raw_eles = np.array([p["ele"] for p in points])
     sampled_eles = np.interp(sample_dists, raw_dists, raw_eles)
 
-    # Smooth elevation with a rolling average (100m window)
-    window = max(1, int(100 / (total_dist / num_samples)))
+    # Smooth elevation with a rolling average (~200m window) to dampen GPS-elevation noise.
+    # 50m sample step × 4 samples = 200m. Earlier int(100/step) truncated 1.99→1, disabling
+    # smoothing entirely and letting raw-GPX spikes (e.g. 12m drop in 50m → 24% gradient) show
+    # up as max_*_gradient values. 200m is gentle enough to preserve real road features while
+    # filtering single-point GPS anomalies.
+    sample_step_m = total_dist / num_samples if num_samples else 50.0
+    window = max(2, round(200 / sample_step_m))
     if window > 1 and len(sampled_eles) > window:
         kernel = np.ones(window) / window
         smoothed = np.convolve(sampled_eles, kernel, mode="same")
