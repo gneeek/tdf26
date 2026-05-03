@@ -1,5 +1,5 @@
 <template>
-  <figure class="bg-white rounded-lg shadow-sm overflow-hidden my-8 not-prose">
+  <figure :class="['bg-white rounded-lg shadow-sm overflow-hidden my-8 not-prose', narrow ? 'max-w-md mx-auto' : '']">
     <button
       type="button"
       class="block w-full p-0 border-0 bg-transparent cursor-pointer"
@@ -48,6 +48,7 @@ const props = defineProps({
   license: { type: String, default: '' },
   licenseUrl: { type: String, default: '' },
   sourceUrl: { type: String, default: '' },
+  narrow: { type: Boolean, default: false },
 })
 
 const { show } = useImageLightbox()
