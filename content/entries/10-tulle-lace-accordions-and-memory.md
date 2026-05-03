@@ -7,10 +7,13 @@ kmStart: 64
 kmEnd: 70
 gpxFile: /gpx/segment-10.gpx
 elevationData: /data/elevation/segment-10.json
-images: []
+images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/La_Corr%C3%A8ze_%C3%A0_Tulle.JPG/1280px-La_Corr%C3%A8ze_%C3%A0_Tulle.JPG","alt":"The Corrèze flowing through Tulle, with the quai G. Péri on the left and the théâtre des Sept Collines on the right","author":"Babsy","authorUrl":"https://commons.wikimedia.org/wiki/User:Babsy","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:La_Corr%C3%A8ze_%C3%A0_Tulle.JPG"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Tulle_18.jpg/1280px-Tulle_18.jpg","alt":"Tulle in the Corrèze valley, looking down the gorge","author":"Sail over","authorUrl":"https://commons.wikimedia.org/wiki/User:Sail_over","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Tulle_18.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Maugein_-_accord%C3%A9ons_Diatonique.jpg/1280px-Maugein_-_accord%C3%A9ons_Diatonique.jpg","alt":"Two diatonic accordions made by Manufacture Maugein in Tulle","author":"Richard Brandao","authorUrl":"https://commons.wikimedia.org/wiki/File:Maugein_-_accord%C3%A9ons_Diatonique.jpg","license":"CC BY 4.0","licenseUrl":"https://creativecommons.org/licenses/by/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Maugein_-_accord%C3%A9ons_Diatonique.jpg"}]
 weather: null
 draft: true
 ---
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tulle_Panorama_10.jpg/1280px-Tulle_Panorama_10.jpg" alt="Panorama of Tulle from above the gorge, the Corrèze threading the valley floor" author="René Hourdry" authorUrl="https://commons.wikimedia.org/wiki/User:Renhour48" license="CC BY-SA 4.0" licenseUrl="https://creativecommons.org/licenses/by-sa/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Tulle_Panorama_10.jpg"}
+::
 
 # Tulle - Lace, Accordions, and Memory
 
@@ -35,6 +38,9 @@ A further one hundred and forty-nine men were deported in the following days. On
 The town keeps the day in its place-names. The Rue du 9-Juin-1944 runs through what was the centre of the killing. Outside the city, on a slope above the valley, the Champ des Martyrs at Cueille holds the mass grave and the annual ceremony, which is held without speeches. Wreaths are laid; the names are not read out; the silence does the work the speeches would do badly. The convention is that the ninety-nine are spoken of as the ninety-nine, and not as anyone in particular. A cyclist riding through the centre of Tulle on a July afternoon will not see any of this unless they are looking. The streets carry the date and the title; the rest is in the town's keeping.
 
 That the men of the town that built the factory were assembled at the factory by an army using the rifles the factory made, before being hanged in the streets the rifles had been carried out into, is a symmetry the town has had eighty-two years to make sense of. It has not arrived at sense. The annual ceremony continues to register, instead, what cannot be made into sense, which is its discipline.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/MAUGEIN_-_Photo_couleur_Maugein.jpg/1280px-MAUGEIN_-_Photo_couleur_Maugein.jpg" alt="A chromatic accordion from Manufacture Maugein, Tulle" caption="A chromatic accordion from Manufacture Maugein, Tulle." author="Richard Brandao" authorUrl="https://commons.wikimedia.org/wiki/File:MAUGEIN_-_Photo_couleur_Maugein.jpg" license="CC BY 4.0" licenseUrl="https://creativecommons.org/licenses/by/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:MAUGEIN_-_Photo_couleur_Maugein.jpg"}
+::
 
 ## The accordion came back
 
