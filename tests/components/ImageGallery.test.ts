@@ -70,6 +70,18 @@ describe('ImageGallery', () => {
     const wrapper = mount(ImageGallery, { props: { images: [img] } })
     await wrapper.find('button').trigger('click')
     expect(showSpy).toHaveBeenCalledTimes(1)
-    expect(showSpy).toHaveBeenCalledWith(img)
+    expect(showSpy).toHaveBeenCalledWith(img, [img], 0)
+  })
+
+  it('passes the full image array and index to the lightbox', async () => {
+    const images = [
+      { src: '/img/a.jpg', alt: 'A' },
+      { src: '/img/b.jpg', alt: 'B' },
+      { src: '/img/c.jpg', alt: 'C' },
+    ]
+    const wrapper = mount(ImageGallery, { props: { images } })
+    const buttons = wrapper.findAll('button')
+    await buttons[1].trigger('click')
+    expect(showSpy).toHaveBeenCalledWith(images[1], images, 1)
   })
 })
