@@ -9,6 +9,13 @@
           <span v-if="event.route" class="text-sm text-stone-400">{{ event.route }}</span>
         </div>
         <p class="text-sm text-stone-600 leading-relaxed">{{ event.description }}</p>
+        <a
+          v-if="event.videoUrl"
+          :href="event.videoUrl"
+          target="_blank"
+          rel="noopener"
+          class="text-sm text-correze-red hover:underline mt-1 inline-block"
+        >▶ {{ event.videoTitle || 'Watch on YouTube' }}</a>
       </div>
     </div>
   </div>

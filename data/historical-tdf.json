@@ -26,6 +26,22 @@
     "segments": [9, 10],
     "events": [
       {
+        "year": 1976,
+        "stage": "Stage 20",
+        "route": "Tulle to Puy-de-Dôme",
+        "description": "220 km Massif Central stage won by Joop Zoetemelk in 6h52'52\". Lucien Van Impe finished 12 seconds back and went on to win the overall Tour, his only Grand Tour victory.",
+        "videoUrl": "https://www.youtube.com/watch?v=m6aqnivWlCI",
+        "videoTitle": "TV broadcast (YouTube)"
+      },
+      {
+        "year": 1996,
+        "stage": "Stage 14",
+        "route": "Besse-en-Chandesse to Tulle",
+        "description": "Bastille Day stage into Tulle won in a sprint by Djamolidine Abdoujaparov, the Tashkent Terror. Bjarne Riis in yellow on his way to overall victory.",
+        "videoUrl": "https://www.youtube.com/watch?v=3WUztWV7_tQ",
+        "videoTitle": "TV broadcast (YouTube)"
+      },
+      {
         "year": null,
         "stage": null,
         "route": null,
