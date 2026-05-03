@@ -8,29 +8,8 @@ kmStart: 56
 kmEnd: 64
 gpxFile: /gpx/segment-09.gpx
 elevationData: /data/elevation/segment-09.json
-images:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg
-    alt: "Église Saint-Martial de Sainte-Fortunade, the parish church that holds the eponymous relic"
-    author: "Marianne Casamance"
-    authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
-    license: "CC BY-SA 4.0"
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg"
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/02-26_Sainte_Fortunade_-_chateau_1.jpg/960px-02-26_Sainte_Fortunade_-_chateau_1.jpg
-    alt: "Château de Sainte-Fortunade, fifteenth-century château bought by the commune in 1952, now housing the mairie"
-    author: "Marianne Casamance"
-    authorUrl: "https://commons.wikimedia.org/wiki/User:Marianne_Casamance"
-    license: "CC BY-SA 4.0"
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_chateau_1.jpg"
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Sainte-Fortunade_book_exchange.jpg/960px-Sainte-Fortunade_book_exchange.jpg
-    alt: "Boîte à livres (book-exchange box) in Sainte-Fortunade"
-    author: "Elgaard"
-    authorUrl: "https://commons.wikimedia.org/wiki/File:Sainte-Fortunade_book_exchange.jpg"
-    license: "CC BY-SA 4.0"
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sainte-Fortunade_book_exchange.jpg"
-weather: null
+images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg","alt":"Église Saint-Martial de Sainte-Fortunade, the parish church that holds the eponymous relic","author":"Marianne Casamance","authorUrl":"https://commons.wikimedia.org/wiki/User:Marianne_Casamance","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/02-26_Sainte_Fortunade_-_chateau_1.jpg/960px-02-26_Sainte_Fortunade_-_chateau_1.jpg","alt":"Château de Sainte-Fortunade, fifteenth-century château bought by the commune in 1952, now housing the mairie","author":"Marianne Casamance","authorUrl":"https://commons.wikimedia.org/wiki/User:Marianne_Casamance","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:02-26_Sainte_Fortunade_-_chateau_1.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Sainte-Fortunade_book_exchange.jpg/960px-Sainte-Fortunade_book_exchange.jpg","alt":"Boîte à livres (book-exchange box) in Sainte-Fortunade","author":"Elgaard","authorUrl":"https://commons.wikimedia.org/wiki/File:Sainte-Fortunade_book_exchange.jpg","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Sainte-Fortunade_book_exchange.jpg"}]
+weather: {"fetchedAt": "2026-05-03", "current": {"temp": 17, "conditions": "Overcast clouds", "wind": "9 km/h SSE"}, "forecast": null}
 draft: false
 ---
 
@@ -64,6 +43,8 @@ Past the church wall, the road comes to a junction. The signposts have it in fro
 This department, the Corrèze, is full of small infrastructural second acts of this kind. East of here in the Xaintrie, a fromagerie ages its Pavé Corrézien in a former railway tunnel — built for one of the rural lines that did not survive the mid-twentieth century's road competition (most of the Corrèze's regional rail closed between the 1930s and 1970), eventually given over to the cheesemakers, for whom its constant temperature and humidity had been a feature all along. Tunnels become cellars, viaducts become cycle paths, station buildings become tourist offices. The route does not pass it; the pattern does.
 
 After Sainte-Fortunade the road continues to drop, the woods thicken, the gradient steadies, and somewhere ahead and out of sight the river gathers itself. The valley arrives by implication before it arrives by sight. The trees on the right begin to give way; the air, even in late spring, takes on the slight coolness of damp ground; the road, which has been running on a slope, finds itself running at the foot of one. By the segment's end the elevation is three hundred and eight metres, more than two hundred lower than at the start, and the surrounding hills are no longer hills the road is on but hills the road is between. Tulle is not yet in view. What is in view is the shape of the country into which Tulle has had to fit.
+
+Meanwhile, on the project's slower clock: the four amateur riders simulating the stage one cycling day at a time are bunched at the daily cap. Justin, Marian, and Wally are at sixty-four kilometres of the route's hundred and eighty-five — exactly two a day, the cap, every day. Nan sits at sixty-three point two, behind the others by less than a rest day. The April that produced these numbers was not the same April for any of them: Marian's longest day was nine point one kilometres, Wally's was four point four, and the totals came out within a kilometre of each other anyway. All four project a finish by the fourth of July, before stage 9 happens in the Tour.
 
 The peloton will arrive in the city in the next segment. What it has descended through in this one is, in effect, the approach: the geological fact of the basement narrowing into a gorge, the human fact of a small commune that has kept a saint and her name for a thousand years, the agricultural fact of cheese in a tunnel that used to carry trains. None of these will reach the television feed. The riders will simply have come down off the plateau and into the river valley, in the way pelotons do, and the commentary will already be turning toward the city.
 
