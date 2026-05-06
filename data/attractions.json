@@ -749,5 +749,29 @@
     ],
     "nearest_km": 7.92,
     "nearest_distance_m": 10990
+  },
+  {
+    "name": "Stade Alexandre-Cueille",
+    "category": "sport",
+    "lat": 45.27801,
+    "lng": 1.78261,
+    "description": "Tulle's main stadium on Boulevard Auzelou, inaugurated 18 August 1929. Home of the Sporting club tulliste rugby team; also has an athletics track. Stage 9 of the 2026 Tour de France passes the stadium at km 70.9 as the route leaves Tulle northbound. Annually the departure point of L'Agglomérée cyclosportive (organised by Tulle Cyclisme Compétition), which in 2026 covered 40 km of the actual Stage 9 route including Suc au May.",
+    "links": [
+      {
+        "url": "https://lagglomeree.agglo-tulle.fr/",
+        "label": "L'Agglomérée cyclosportive"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Stade_Alexandre-Cueille",
+        "label": "Wikipédia"
+      },
+      {
+        "url": "https://tullecyclisme.fr/",
+        "label": "Tulle Cyclisme Compétition"
+      }
+    ],
+    "nearest_km": 70.91,
+    "nearest_distance_m": 65,
+    "source": "https://fr.wikipedia.org/wiki/Stade_Alexandre-Cueille (verified 2026-05-06; lat/lng from OSM cross-check at boulevard Auzelou, Tulle)"
   }
 ]
