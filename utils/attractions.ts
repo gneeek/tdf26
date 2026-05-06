@@ -21,6 +21,7 @@ export const CATEGORY_EMOJI: Record<string, string> = {
   memorial: '🕯️',
   museum: '🏛️',
   nature: '🌿',
+  sport: '🏟️',
 }
 
 export const FALLBACK_EMOJI = '📍'
