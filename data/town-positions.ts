@@ -20,6 +20,7 @@ export const townKmPositions: Record<string, number> = {
   'Meyssac': 23.70,              // 277m from village
   'Lanteuil': 38.35,             // 115m from village (seg 6)
   'Beynat': 46.23,               // 75m from village (seg 7)
+  'Sainte-Fortunade': 60.02,     // 124m from village; seg 9 (added 2026-05-06 alongside drift assertion)
   'Tulle': 68.72,                // updated 2026-04-25, 120m from cathedral
   'Naves': 78.19,                // updated 2026-04-25, 373m from village; seg 12
   'Chaumeil': 100.30,            // updated 2026-04-25, 35m from village; seg 15
