@@ -3,12 +3,13 @@ segment: 10
 title: "Tulle - Lace, Accordions, and Memory"
 subtitle: "Km 64-70: South to north along the Corrèze"
 publishDate: 2026-05-06
+dataCutoff: 2026-05-05
 kmStart: 64
 kmEnd: 70
 gpxFile: /gpx/segment-10.gpx
 elevationData: /data/elevation/segment-10.json
 images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/La_Corr%C3%A8ze_%C3%A0_Tulle.JPG/1280px-La_Corr%C3%A8ze_%C3%A0_Tulle.JPG","alt":"The Corrèze flowing through Tulle, with the quai G. Péri on the left and the théâtre des Sept Collines on the right","author":"Babsy","authorUrl":"https://commons.wikimedia.org/wiki/User:Babsy","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:La_Corr%C3%A8ze_%C3%A0_Tulle.JPG"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tulle_Panorama_10.jpg/1280px-Tulle_Panorama_10.jpg","alt":"Rooftops of Tulle from above the gorge — the valley floor at centre, the river hidden among the buildings","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/User:Renhour48","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Tulle_Panorama_10.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Maugein_-_accord%C3%A9ons_Diatonique.jpg/1280px-Maugein_-_accord%C3%A9ons_Diatonique.jpg","alt":"Two diatonic accordions made by Manufacture Maugein in Tulle","author":"Richard Brandao","authorUrl":"https://commons.wikimedia.org/wiki/File:Maugein_-_accord%C3%A9ons_Diatonique.jpg","license":"CC BY 4.0","licenseUrl":"https://creativecommons.org/licenses/by/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Maugein_-_accord%C3%A9ons_Diatonique.jpg"}]
-weather: null
+weather: {"fetchedAt": "2026-05-06", "current": {"temp": 10, "conditions": "Broken clouds", "wind": "4 km/h E"}, "forecast": null}
 draft: false
 ---
 
