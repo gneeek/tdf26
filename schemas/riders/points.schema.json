@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/riders/points.schema.json",
+  "title": "Rider point totals plus per-location award history",
+  "type": "object",
+  "required": ["riders", "locations"],
+  "properties": {
+    "riders": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["sprintPoints", "climbPoints", "totalPoints"],
+        "properties": {
+          "sprintPoints": { "type": "number", "minimum": 0 },
+          "climbPoints": { "type": "number", "minimum": 0 },
+          "totalPoints": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": true
+      }
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "segment", "km", "category", "awards", "reached"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "type": { "type": "string", "enum": ["sprint", "climb"] },
+          "segment": { "type": "integer", "minimum": 1 },
+          "km": { "type": "number", "minimum": 0 },
+          "category": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "integer", "minimum": 1, "maximum": 4 },
+              { "type": "string", "enum": ["HC"] }
+            ]
+          },
+          "awards": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["place", "rider", "date", "points"],
+              "properties": {
+                "place": { "type": "integer", "minimum": 1 },
+                "rider": { "type": "string", "minLength": 1 },
+                "date": { "type": "string", "format": "date" },
+                "points": { "type": "number", "minimum": 0 }
+              },
+              "additionalProperties": true
+            }
+          },
+          "reached": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

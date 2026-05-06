@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/riders/stats.schema.json",
+  "title": "Calculated rider stats (output of processing/rider_stats.py)",
+  "type": "object",
+  "required": ["asOf", "entryNumber", "riders"],
+  "properties": {
+    "asOf": { "type": "string", "format": "date" },
+    "entryNumber": { "type": "integer", "minimum": 0 },
+    "riders": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "totalDistanceCapped",
+          "dailyAverageActual",
+          "dailyAverageCapped",
+          "longestDay",
+          "shortestDay",
+          "daysBelowThreeKm",
+          "consistencyStdev",
+          "bestThreeDayCombo",
+          "recentFiveDayAverage",
+          "distanceRemaining",
+          "estimatedDaysToFinish",
+          "estimatedFinishDate",
+          "place"
+        ],
+        "properties": {
+          "totalDistanceCapped": { "type": "number", "minimum": 0 },
+          "dailyAverageActual": { "type": "number", "minimum": 0 },
+          "dailyAverageCapped": { "type": "number", "minimum": 0 },
+          "longestDay": { "type": "number", "minimum": 0 },
+          "shortestDay": { "type": "number", "minimum": 0 },
+          "daysBelowThreeKm": { "type": "integer", "minimum": 0 },
+          "consistencyStdev": { "type": "number", "minimum": 0 },
+          "bestThreeDayCombo": { "type": "number", "minimum": 0 },
+          "recentFiveDayAverage": { "type": "number", "minimum": 0 },
+          "distanceRemaining": { "type": "number" },
+          "estimatedDaysToFinish": { "type": ["integer", "null"] },
+          "estimatedFinishDate": { "type": ["string", "null"], "format": "date" },
+          "place": { "type": "integer", "minimum": 1 }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

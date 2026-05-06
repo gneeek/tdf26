@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/competition/points-config.schema.json",
+  "title": "Sprint and climb point locations",
+  "description": "Single source of truth for climb identity, summit segment, and span. Validated cross-file by processing/validate_points.py.",
+  "type": "object",
+  "required": ["sprints", "climbs"],
+  "properties": {
+    "description": { "type": "string" },
+    "sprints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "segment", "km", "points"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "segment": { "type": "integer", "minimum": 1 },
+          "km": { "type": "number", "minimum": 0 },
+          "points": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 0 },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "climbs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "segment", "km", "category", "gradient", "points"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "segment": { "type": "integer", "minimum": 1 },
+          "km": { "type": "number", "minimum": 0 },
+          "length_km": { "type": ["number", "null"] },
+          "category": {
+            "oneOf": [
+              { "type": "integer", "minimum": 1, "maximum": 4 },
+              { "type": "string", "enum": ["HC"] }
+            ]
+          },
+          "gradient": { "type": "number" },
+          "points": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 0 },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
