@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/riders/snapshot.schema.json",
+  "title": "Per-segment rider state snapshot",
+  "description": "Frozen rolled-up state at the publish point of a segment: segment number plus stats, points, and log substructures (each validated against its own schema in the test runner).",
+  "type": "object",
+  "required": ["segment", "stats", "points", "log"],
+  "properties": {
+    "segment": { "type": "integer", "minimum": 0 },
+    "stats": { "type": "object" },
+    "points": { "type": "object" },
+    "log": { "type": "object" }
+  },
+  "additionalProperties": true
+}

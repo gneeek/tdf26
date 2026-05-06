@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/attractions.schema.json",
+  "title": "Off-route attractions near the Stage 9 corridor",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "name",
+      "category",
+      "lat",
+      "lng",
+      "description",
+      "links",
+      "nearest_km",
+      "nearest_distance_m"
+    ],
+    "properties": {
+      "name": { "type": "string", "minLength": 1 },
+      "category": { "type": "string", "minLength": 1 },
+      "lat": { "type": "number" },
+      "lng": { "type": "number" },
+      "description": { "type": "string" },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["url", "label"],
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "label": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "nearest_km": { "type": "number", "minimum": 0 },
+      "nearest_distance_m": { "type": "number", "minimum": 0 },
+      "source": { "type": "string" }
+    },
+    "additionalProperties": true
+  }
+}
