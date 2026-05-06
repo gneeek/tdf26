@@ -30,6 +30,7 @@
 import { ref, watch, nextTick, onUnmounted } from 'vue'
 import 'leaflet/dist/leaflet.css'
 import attractionsData from '~/data/attractions.json'
+import { emojiFor } from '~/utils/attractions'
 import townsDetailData from '~/data/towns-detail.json'
 
 const props = defineProps({
@@ -262,11 +263,6 @@ async function initMap(el) {
 
   // Attractions layer
   const attractionsGroup = L.layerGroup()
-  const categoryEmoji = {
-    food: '🍷', cheese: '🧀', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
-    museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
-    memorial: '🕯️', industrial: '🏭', craft: '🔨',
-  }
 
   // Filter attractions by proximity to current segment
   for (const poi of attractionsData) {
@@ -281,7 +277,7 @@ async function initMap(el) {
       }
     }
 
-    const emoji = categoryEmoji[poi.category] || '📍'
+    const emoji = emojiFor(poi.category)
     const poiIcon = L.divIcon({
       html: `<div style="font-size:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))">${emoji}</div>`,
       className: '',

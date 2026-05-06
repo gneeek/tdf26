@@ -3,7 +3,7 @@
     <h3 class="text-lg font-semibold text-stone-700 mb-4">Nearby Attractions</h3>
     <div class="space-y-3">
       <div v-for="poi in nearby" :key="poi.name" class="flex items-start gap-3">
-        <span class="text-xl shrink-0 mt-0.5">{{ categoryEmoji[poi.category] || '📍' }}</span>
+        <span class="text-xl shrink-0 mt-0.5">{{ emojiFor(poi.category) }}</span>
         <div>
           <span class="font-medium text-stone-800">{{ poi.name }}</span>
           <p class="text-sm text-stone-500 mt-0.5">{{ poi.description }}</p>
@@ -30,16 +30,11 @@ import { computed } from 'vue'
 
 import attractionsData from '~/data/attractions.json'
 import segmentsJson from '~/data/segments.json'
+import { emojiFor } from '~/utils/attractions'
 
 const props = defineProps({
   segment: { type: Number, required: true },
 })
-
-const categoryEmoji = {
-  food: '🍷', cheese: '🧀', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
-  museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
-  memorial: '🕯️', industrial: '🏭', craft: '🔨',
-}
 
 // Segment boundary tolerance: attractions within 0.5 km of a segment's km_start
 // or km_end also appear in the adjacent segment. This prevents boundary cases
