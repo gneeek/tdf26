@@ -107,7 +107,7 @@
           class="text-sm px-3 py-1.5 rounded-full border border-stone-300 hover:border-correze-red hover:text-correze-red transition-colors cursor-pointer"
           @click="searchAttractionWikipedia(poi.name)"
         >
-          {{ categoryEmoji[poi.category] || '📍' }} {{ poi.name }}
+          {{ emojiFor(poi.category) }} {{ poi.name }}
         </button>
       </div>
     </div>
@@ -170,6 +170,7 @@
 <script setup>
 import segmentsJson from '~/data/segments.json'
 import attractionsData from '~/data/attractions.json'
+import { emojiFor } from '~/utils/attractions'
 import { sanitizeAttributionText } from '~/utils/sanitize'
 
 definePageMeta({ layout: 'admin' })
@@ -268,13 +269,6 @@ async function saveSelection() {
   } finally {
     saving.value = false
   }
-}
-
-// --- Nearby attractions for search suggestions ---
-const categoryEmoji = {
-  food: '🍷', cheese: '🧀', market: '🛒', castle: '🏰', church: '⛪', abbey: '⛪',
-  museum: '🏛️', nature: '🌿', bridge: '🌉', archaeology: '🏺',
-  memorial: '🕯️', industrial: '🏭', craft: '🔨',
 }
 
 // Nearby-attraction suggestions for the Wikipedia search helper. Uses the same
