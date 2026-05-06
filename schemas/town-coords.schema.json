@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/town-coords.schema.json",
+  "title": "Town and climb name -> coordinate map",
+  "description": "Lookup table consumed by segment metadata and map rendering.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["type", "lat", "lng"],
+    "properties": {
+      "type": { "type": "string", "enum": ["town", "climb"] },
+      "lat": { "type": "number" },
+      "lng": { "type": "number" },
+      "source": { "type": "string" },
+      "note": { "type": "string" }
+    },
+    "additionalProperties": true
+  }
+}

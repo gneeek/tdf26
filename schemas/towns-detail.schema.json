@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/towns-detail.schema.json",
+  "title": "Per-town editorial detail (population, elevation, blurb)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "name",
+      "km",
+      "population",
+      "elevation",
+      "description",
+      "lat",
+      "lng"
+    ],
+    "properties": {
+      "name": { "type": "string", "minLength": 1 },
+      "km": { "type": "number", "minimum": 0 },
+      "population": { "type": "integer", "minimum": 0 },
+      "elevation": { "type": "number" },
+      "description": { "type": "string" },
+      "lat": { "type": "number" },
+      "lng": { "type": "number" }
+    },
+    "additionalProperties": true
+  }
+}
