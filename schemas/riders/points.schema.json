@@ -7,7 +7,6 @@
   "properties": {
     "riders": {
       "type": "object",
-      "minProperties": 1,
       "additionalProperties": {
         "type": "object",
         "required": ["sprintPoints", "climbPoints", "totalPoints"],

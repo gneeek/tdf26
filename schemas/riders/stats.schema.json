@@ -5,7 +5,12 @@
   "type": "object",
   "required": ["asOf", "entryNumber", "riders"],
   "properties": {
-    "asOf": { "type": "string", "format": "date" },
+    "asOf": {
+      "anyOf": [
+        { "type": "string", "format": "date" },
+        { "type": "string", "maxLength": 0 }
+      ]
+    },
     "entryNumber": { "type": "integer", "minimum": 0 },
     "riders": {
       "type": "object",

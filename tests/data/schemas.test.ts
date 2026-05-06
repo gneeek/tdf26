@@ -37,8 +37,12 @@ for (const p of schemaPaths) {
   ajv.addSchema(loadSchema(p))
 }
 
-type Pair = { file: string, schemaId: string }
+type Pair = { file: string, schemaId: string, fallback?: string }
 
+// Files marked with a `fallback` are gitignored runtime files (rider data
+// is seeded by CI / publish.sh from the .example.json sibling, but the
+// runtime file may not exist when this test runs). The fallback is itself
+// tracked, so the schema is always exercised against at least one file.
 const singleFilePairs: Pair[] = [
   { file: 'data/segments.json', schemaId: 'tdf26/segments.schema.json' },
   { file: 'data/attractions.json', schemaId: 'tdf26/attractions.schema.json' },
@@ -48,10 +52,18 @@ const singleFilePairs: Pair[] = [
   { file: 'data/route.json', schemaId: 'tdf26/route.schema.json' },
   { file: 'data/competition/points-config.json', schemaId: 'tdf26/competition/points-config.schema.json' },
   { file: 'data/riders/rider-config.json', schemaId: 'tdf26/riders/rider-config.schema.json' },
-  { file: 'data/riders/daily-log.json', schemaId: 'tdf26/riders/daily-log.schema.json' },
-  { file: 'data/riders/points.json', schemaId: 'tdf26/riders/points.schema.json' },
-  { file: 'data/riders/stats.json', schemaId: 'tdf26/riders/stats.schema.json' }
+  { file: 'data/riders/daily-log.json', schemaId: 'tdf26/riders/daily-log.schema.json', fallback: 'data/riders/daily-log.example.json' },
+  { file: 'data/riders/points.json', schemaId: 'tdf26/riders/points.schema.json', fallback: 'data/riders/points.example.json' },
+  { file: 'data/riders/stats.json', schemaId: 'tdf26/riders/stats.schema.json', fallback: 'data/riders/stats.example.json' }
 ]
+
+function resolveTarget(pair: Pair): { path: string, source: 'runtime' | 'fallback' } {
+  if (existsSync(resolve(repoRoot, pair.file))) return { path: pair.file, source: 'runtime' }
+  if (pair.fallback && existsSync(resolve(repoRoot, pair.fallback))) {
+    return { path: pair.fallback, source: 'fallback' }
+  }
+  return { path: pair.file, source: 'runtime' }
+}
 
 function listDir(rel: string, suffix: string): string[] {
   const dir = resolve(repoRoot, rel)
@@ -74,10 +86,14 @@ function validate(schemaId: string, data: unknown): { ok: boolean, errors: strin
 }
 
 describe('data/*.json schema validation', () => {
-  for (const { file, schemaId } of singleFilePairs) {
-    it(`${file} matches ${schemaId}`, () => {
-      const data = loadJson(file)
-      const { ok, errors } = validate(schemaId, data)
+  for (const pair of singleFilePairs) {
+    it(`${pair.file} matches ${pair.schemaId}`, () => {
+      const { path, source } = resolveTarget(pair)
+      if (source === 'fallback') {
+        console.info(`${pair.file} not present; validating ${path} instead (gitignored runtime file)`)
+      }
+      const data = loadJson(path)
+      const { ok, errors } = validate(pair.schemaId, data)
       expect(ok, errors).toBe(true)
     })
   }
@@ -115,9 +131,8 @@ describe('data/*.json schema validation', () => {
   it('discovers at least the expected number of files', () => {
     expect(elevationFiles.length).toBeGreaterThanOrEqual(26)
     expect(imageSuggestionFiles.length).toBeGreaterThanOrEqual(1)
-    if (snapshotFiles.length === 0) {
-      console.warn('no rider snapshots found; skipping snapshot validation')
-    }
+    // Snapshots are gitignored runtime artefacts. CI never sees them, but
+    // when present locally they are validated above.
   })
 })
 
