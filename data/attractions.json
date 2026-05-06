@@ -280,7 +280,12 @@
     "lat": 45.268,
     "lng": 1.77,
     "description": "Fromagerie in central Tulle. Regional cheeses including Feuille du Limousin, caillade, and cabecou.",
-    "links": [],
+    "links": [
+      {
+        "url": "https://www.lesdelicesdemel.fr/",
+        "label": "Official site"
+      }
+    ],
     "nearest_km": 68.69,
     "nearest_distance_m": 177
   },
@@ -290,7 +295,12 @@
     "lat": 45.268,
     "lng": 1.769,
     "description": "Wednesday and Saturday morning market at Place Gambetta and Quai Baluze along the Correze river.",
-    "links": [],
+    "links": [
+      {
+        "url": "https://prieurecorreze.com/en/excursion/tulle-market/",
+        "label": "Visitor guide"
+      }
+    ],
     "nearest_km": 68.66,
     "nearest_distance_m": 245
   },
