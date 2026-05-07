@@ -581,7 +581,7 @@ Items the research surfaced that should NOT land in this dossier but should be f
 
 **#503 issue resolution recommendation:** the existing Paris-Corrèze entry in `data/historical-tdf.json` keys to `[25, 26, 27]`; recommendation is to re-key to `[15]` (Chaumeil). Session 2 should reference #503 in PR description and note this recommendation; the actual JSON edit belongs to a future strand.
 
-**CLAUDE.md correction (out-of-scope per scope discipline §8):** subagent A reports CLAUDE.md mentions a 2008 Cipollini Brive win which is factually wrong (Cipollini retired 2005; the actual stage was 1998). Verify in CLAUDE.md whether this claim appears; if so, the CLAUDE.md deprecation strand (#491) or a separate correction strand owns the fix — not this dossier.
+**CLAUDE.md correction — RESOLVED at end of Session 1:** subagent A reported CLAUDE.md mentions a 2008 Cipollini Brive win. End-of-Session-1 grep of `/home/jhs/code/tdf26/CLAUDE.md` for "cipollini" / "2008.*brive" / "brive.*2008" returned **zero matches**. The claim is not in CLAUDE.md; subagent A was reacting to a misread. Thread closed; **Session 2 should not file a CLAUDE.md correction** for this. (Pattern noted in retro carryforwards: subagent verify-or-refute claims about specific repo file contents need source-grep verification before being treated as actionable.)
 
 **Research follow-ups (not data-adds):**
 - ledicodutour.com Ussel page (404) — alternate URL pattern not exhausted
@@ -605,16 +605,38 @@ Full URL census (Session 2 task): the `## Sources` section consolidation must ve
 
 ## Synthesis tasks for Session 2
 
-Concrete handoff list:
+### Environment
+
+- **Worktree path:** `/home/jhs/code/tdf26-tour-history` (created Session 1 via `git -C /home/jhs/code/tdf26 worktree add -b feature/issue-502-tour-history-research /home/jhs/code/tdf26-tour-history main`).
+- **Branch:** `feature/issue-502-tour-history-research` (pushed; tracks `origin/feature/issue-502-tour-history-research`).
+- **Verify branch via `git branch --show-current` immediately before each `git add`/`git commit`** per `feedback_shared_tree_branch_verification.md`.
+- **Strand D's PR may or may not have merged by Session 2 start.** If Strand D merged first, `content/research/` already exists on `main` — no semantic conflict; Session 2's PR adds a sibling file. If Strand D has not merged, this strand's PR creates the directory; both PRs creating the same directory is harmless. No coordination needed beyond awareness.
+
+### Concrete handoff list
 
 1. **Read this dossier in full** plus the strand brief at `docs/strands/strand-tour-history-research.md` (especially §3, §5.2, §8).
-2. **Cross-check segment keying** for every event in sections A, B, C against `data/segments.json` polyline geometry (per `feedback_on_route_checks.md`). The raw notes use approximate town-based keying; some are off-route adjacent and need explicit polyline-distance verification.
-3. **Consolidate per-event sections** — combine duplicates (e.g., 1976 Stage 19 + Stage 20 should be one Tulle entry), harmonize description style, deduplicate sources.
+2. **Cross-check segment keying** for every event in sections A, B, C against `data/segments.json` polyline geometry (per `feedback_on_route_checks.md`). The raw notes use approximate town-based keying; some are off-route adjacent and need explicit polyline-distance verification. Particularly verify: 2001 Stage 16 routing through Tulle (raw notes uncertain), 2024 Stage 11 Corrèze touchpoint (raw notes uncertain), 2023 Femmes Stage 2 Bort-les-Orgues passage (raw notes "borderline").
+3. **Consolidate per-event sections** — combine duplicates (e.g., 1976 Stage 19 + Stage 20 should be one Tulle entry; 1964/1969/1973 Brive double-headers can be one entry each), harmonize description style, deduplicate sources.
 4. **Write the Story arcs section** — pick 2-4 candidates from the inline hooks above, with brief rationale per arc. Final selection deferred to design-phase planning conversation; Session 2 produces the menu, not the choice.
-5. **Curate Hero-image candidates section** — 3-6 specific image candidates with file URL, license, attribution, segment relevance. Spot-check license per file.
-6. **Write consolidated Sources section** — single deduped URL list, grouped by topic.
-7. **Write Carryforwards out of scope** — finalize the data-add follow-up issue list and file the issues; reference #503 explicitly.
-8. **AskUserQuestion (do NOT batch into design-phase planning) only if a material disagreement surfaces during synthesis** — per planning-session call, story-arc and hero-image decisions go to design-phase planning, not inline.
-9. **Run verification commands** — `npm test`, `python3 scripts/validate_entries.py`, `npm run build`.
-10. **Open PR** on milestone v1.4.20, references #502 (does not close), references #503, references #478. PR body: short summary + arcs surfaced + hero-image candidate count + follow-up-issues filed (count + numbers).
-11. **Final report to publisher** per brief §10.
+5. **Curate Hero-image candidates section** — 3-6 specific image candidates with file URL, license, attribution, segment relevance. Spot-check license per file. The Bol d'Or des Monédières Wikimedia category was flagged but not opened by subagent C; check it for hero candidates.
+6. **Write consolidated Sources section** — single deduped URL list, grouped by topic. Re-test bikeraceinfo.com URLs via WebFetch (subagents reached them; parent-shell DNS failed in Session 1 spot-check).
+7. **Write Carryforwards out of scope** — finalize the data-add follow-up issue list (~16 items pre-listed in the carryforwards section) and file the issues. The Cipollini-2008 CLAUDE.md correction thread is **CLOSED** (verified at end of Session 1, claim not present; do not file).
+8. **#503 keying recommendation** — Session 2 should add a comment to issue #503 noting that this dossier surfaced strong evidence the existing `[25, 26, 27]` Paris-Corrèze keying is wrong and recommending re-keying to `[15]` (Chaumeil/Bol d'Or). The actual JSON edit belongs to whichever strand resolves #503; this dossier produces the recommendation only. PR body should reference #503.
+9. **Story-arc / hero-image decisions are NOT inline** — per planning-session call, both go to design-phase planning. Session 2 surfaces the menu, the publisher chooses at the design conversation. AskUserQuestion only if a true mid-synthesis material disagreement surfaces (rare — be selective).
+10. **Run verification commands** — `npm test`, `python3 scripts/validate_entries.py`, `npm run build`.
+11. **Open PR** on milestone v1.4.20, references #502 (does not close), references #503, references #478. PR body: short summary + arcs surfaced + hero-image candidate count + follow-up-issues filed (count + numbers).
+12. **Final report to publisher** per brief §10.
+
+### Items worth surfacing for the publisher's attention before Session 2 acts
+
+These were captured in Session 1's final report and are restated here so Session 2 doesn't have to fish them out of conversation history:
+
+1. **#503 keying fix is non-trivial.** Strong evidence that Paris-Corrèze should re-key to `[15]` (Chaumeil), not `[25, 26, 27]`. Session 2 plan: file as a comment on #503 (not a new issue), reference in PR description; the actual JSON edit belongs to a separate strand.
+
+2. **CLAUDE.md Cipollini-2008 correction thread is CLOSED.** End-of-Session-1 grep confirmed CLAUDE.md does not contain the claim subagent A flagged. Session 2 does NOT file a CLAUDE.md correction.
+
+3. **Coverage scope tag was honored.** Adjacent items (2016, 2023, 2025 men's TdF stages; 2023 Femmes; the Antonin Magne / Luc Leblanc rider entries) are tagged `optional context — design-phase decision`. Publisher chooses inclusion at the design-phase planning conversation.
+
+4. **One open question worth a publisher-level call:** subagent E recommends *against* writing the 1996 Bastille Day Tulle stage as a Tulle-massacre commemoration since no source supports the framing. Worth a publisher decision on whether the eventual page makes that interpretive move at all.
+
+5. **~16 data-add follow-up issues** to be filed. Session 2 may want to ask the publisher whether to bundle as one umbrella issue ("`historical-tdf.json` corridor expansion") or file individually per `feedback_issues_describe_problems.md`. The brief says "file new follow-up issues for any new factual entries" (plural); default is individual issues, but the volume may justify consolidation.
