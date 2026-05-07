@@ -40,7 +40,8 @@
       "length_km": null,
       "category": 4,
       "gradient": 3.2,
-      "points": [2, 1, 0, 0]
+      "points": [2, 1, 0, 0],
+      "aso": false
     },
     {
       "name": "Puy Boubou",
@@ -49,7 +50,8 @@
       "length_km": 2.8,
       "category": 3,
       "gradient": 3.6,
-      "points": [4, 3, 2, 1]
+      "points": [4, 3, 2, 1],
+      "aso": false
     },
     {
       "name": "Côte de Lagleygeolle",
@@ -58,7 +60,8 @@
       "length_km": 5.2,
       "category": 4,
       "gradient": 3.2,
-      "points": [2, 1, 0, 0]
+      "points": [2, 1, 0, 0],
+      "aso": false
     },
     {
       "name": "Côte de Miel",
@@ -67,7 +70,8 @@
       "length_km": 2.4,
       "category": 4,
       "gradient": 1.8,
-      "points": [2, 1, 0, 0]
+      "points": [2, 1, 0, 0],
+      "aso": false
     },
     {
       "name": "Côte des Naves",
@@ -76,7 +80,8 @@
       "length_km": 2.8,
       "category": 2,
       "gradient": 5.6,
-      "points": [6, 4, 2, 1]
+      "points": [6, 4, 2, 1],
+      "aso": true
     },
     {
       "name": "Puy de Lachaud",
@@ -85,7 +90,8 @@
       "length_km": 3.6,
       "category": 2,
       "gradient": 3.2,
-      "points": [6, 4, 2, 1]
+      "points": [6, 4, 2, 1],
+      "aso": false
     },
     {
       "name": "Suc au May",
@@ -94,7 +100,8 @@
       "length_km": 3.8,
       "category": "HC",
       "gradient": 7.1,
-      "points": [10, 8, 6, 4]
+      "points": [10, 8, 6, 4],
+      "aso": true
     },
     {
       "name": "Côte de la Croix de Pey",
@@ -103,7 +110,8 @@
       "length_km": 7,
       "category": 3,
       "gradient": 4.4,
-      "points": [4, 3, 2, 1]
+      "points": [4, 3, 2, 1],
+      "aso": true
     },
     {
       "name": "Mont Bessou",
@@ -112,7 +120,8 @@
       "length_km": 5,
       "category": 4,
       "gradient": 2.7,
-      "points": [2, 1, 0, 0]
+      "points": [2, 1, 0, 0],
+      "aso": true
     },
     {
       "name": "Côte des Gardes",
@@ -121,7 +130,8 @@
       "length_km": 2.2,
       "category": 3,
       "gradient": 4.3,
-      "points": [4, 3, 2, 1]
+      "points": [4, 3, 2, 1],
+      "aso": false
     }
   ]
 }

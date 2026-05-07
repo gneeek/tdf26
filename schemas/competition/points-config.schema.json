@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "tdf26/competition/points-config.schema.json",
   "title": "Sprint and climb point locations",
-  "description": "Single source of truth for climb identity, summit segment, and span. Validated cross-file by processing/validate_points.py.",
+  "description": "Single source of truth for climb identity, summit segment, and span. Validated cross-file by processing/validate_points.py. The `aso` boolean on each climb records whether the climb appears on the official ASO Stage 9 categorised-climb list. Non-ASO regional climbs are first-class entries; UI and per-segment narrative may treat them differently from ASO-categorised climbs but they remain in the data layer and continue to award internal-competition points via processing/calculate_points.py.",
   "type": "object",
   "required": ["sprints", "climbs"],
   "properties": {
@@ -29,7 +29,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "segment", "km", "category", "gradient", "points"],
+        "required": ["name", "segment", "km", "category", "gradient", "points", "aso"],
         "properties": {
           "name": { "type": "string", "minLength": 1 },
           "segment": { "type": "integer", "minimum": 1 },
@@ -46,6 +46,10 @@
             "type": "array",
             "items": { "type": "integer", "minimum": 0 },
             "minItems": 1
+          },
+          "aso": {
+            "type": "boolean",
+            "description": "True if the climb appears on the official ASO Stage 9 categorised-climb list. False for regional climbs that the route passes over but ASO has not categorised."
           }
         },
         "additionalProperties": true
