@@ -1,4 +1,4 @@
-import { execSync } from 'child_process'
+import { execFileSync } from 'child_process'
 import { resolve } from 'path'
 
 export default defineEventHandler(async (event) => {
@@ -9,14 +9,13 @@ export default defineEventHandler(async (event) => {
   const venvPython = resolve('processing/.venv/bin/python')
   const logs: string[] = []
 
-  function run(label: string, cmd: string) {
+  function run(label: string, file: string, args: string[]) {
     logs.push(`--- ${label} ---`)
     try {
-      const output = execSync(cmd, {
+      const output = execFileSync(file, args, {
         cwd: projectDir,
         timeout: 60000,
-        encoding: 'utf8',
-        shell: '/bin/bash'
+        encoding: 'utf8'
       })
       if (output.trim()) logs.push(output.trim())
       logs.push(`✓ ${label} complete`)
@@ -29,13 +28,24 @@ export default defineEventHandler(async (event) => {
   }
 
   if (steps.includes('stats')) {
-    run('Rider Stats', `${venvPython} processing/rider_stats.py --daily-log data/riders/daily-log.json --rider-config data/riders/rider-config.json --output data/riders/stats.json`)
+    run('Rider Stats', venvPython, [
+      'processing/rider_stats.py',
+      '--daily-log', 'data/riders/daily-log.json',
+      '--rider-config', 'data/riders/rider-config.json',
+      '--output', 'data/riders/stats.json'
+    ])
   }
 
   if (steps.includes('weather')) {
     const apiKey = process.env.OPENWEATHERMAP_API_KEY
     if (apiKey) {
-      run('Weather', `${venvPython} processing/weather.py --entry current --api-key ${apiKey} --segments-json data/segments.json --entries-dir content/entries`)
+      run('Weather', venvPython, [
+        'processing/weather.py',
+        '--entry', 'current',
+        '--api-key', apiKey,
+        '--segments-json', 'data/segments.json',
+        '--entries-dir', 'content/entries'
+      ])
     } else {
       logs.push('--- Weather ---')
       logs.push('No OPENWEATHERMAP_API_KEY set, skipped')
