@@ -203,7 +203,7 @@
 
 ### To segs 14-16 (Monédières / Chaumeil / Suc au May)
 - **Monédières range as a *visible feature*** from the upper part of seg 13 — the mountains come into view on the Puy de Lachaud upper plateau, but framing is reserved.
-- **Bol d'Or des Monédières** at Chaumeil (post-Tour criterium, 1954-2000s, Poulidor 5th in 1959 as an amateur) — Chaumeil-anchored, belongs to seg 14.
+- **Bol d'Or des Monédières** at Chaumeil (post-Tour criterium founded 1952 by accordionist Jean Ségurel; ran 1952–1967, revived 1981–2002. Poulidor 3rd in 1959 — behind Gérard Saint and Ercole Baldini — as an amateur). Chaumeil-anchored, belongs to seg 15 per `data/segments.json` (the seg 14/15 line is at km 99.4; Chaumeil sits at km 100.30).
 - **Suc au May 2020 Tour de France stage 12 (Chauvigny → Sarran)** — first appearance of Suc au May in the Tour. Seg 15 material. (Likely already a candidate addition for `data/historical-tdf.json` for seg 15.)
 - **Léon Dautrement** "morceau de Monédières perdu dans le bas Limousin" — reserved per #478.
 - **Bourrée des Monédières** — reserved per `project_next_planning_notes.md`.
