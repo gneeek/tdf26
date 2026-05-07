@@ -8,17 +8,13 @@
     </header>
 
     <section v-if="entries && entries.length" class="space-y-3">
-      <article v-for="entry in entries" :key="entry.path || entry._path" class="group bg-white rounded-lg shadow-sm p-4 hover:shadow-md hover:bg-stone-50 hover:border-l-4 hover:border-correze-red cursor-pointer transition-all border-l-4 border-transparent">
-        <NuxtLink :to="entry.path || entry._path" class="block">
-          <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
-            Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
-          </span>
-          <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
-          <h2 class="text-xl font-serif font-bold text-stone-900 group-hover:text-correze-red transition-colors mt-1">{{ entry.title }}</h2>
-          <p v-if="entry.subtitle" class="text-stone-600 mt-1">{{ entry.subtitle }}</p>
-          <time class="text-sm text-stone-400 mt-2 block">{{ formatDate(entry.publishDate) }}</time>
-        </NuxtLink>
-      </article>
+      <EntryCard
+        v-for="entry in entries"
+        :key="entry.path || entry._path"
+        :entry="entry"
+        density="compact"
+        :heading-level="2"
+      />
     </section>
     <p v-else class="text-stone-500 italic">No entries published yet.</p>
 
@@ -40,14 +36,4 @@ const { data: entries } = await useAsyncData('all-entries', () =>
 )
 
 useHead({ title: 'All entries - Corrèze Travelogue' })
-
-function formatDate(dateStr) {
-  if (!dateStr) return ''
-  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
 </script>
