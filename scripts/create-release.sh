@@ -4,9 +4,13 @@
 # Usage:
 #   ./scripts/create-release.sh <tag> [--title <title>]
 #
+# Tag format is date-based, year-implicit (this is tdf26):
+#   Publication deploys:     W<NN>-seg<N>   (e.g. W19-seg11)
+#   Non-publication deploys: W<NN>.<N>      (e.g. W19.1)
+#
 # Example:
-#   ./scripts/create-release.sh v1.4.14
-#   ./scripts/create-release.sh v1.4.14 --title "v1.4.14 - Segment 9 publication"
+#   ./scripts/create-release.sh W19-seg11
+#   ./scripts/create-release.sh W19-seg11 --title "W19-seg11 - Segment 11 publication"
 #
 # The release body is auto-generated from the git log between the previous tag
 # and HEAD, plus a retro-link placeholder. The publisher can edit the body and
@@ -51,8 +55,8 @@ if [ -z "$TAG" ]; then
     exit 1
 fi
 
-if ! [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo "ERROR: tag must match v<major>.<minor>.<patch> (got: $TAG)" >&2
+if ! [[ "$TAG" =~ ^W[0-9]{2}(-seg[0-9]+|\.[0-9]+)$ ]]; then
+    echo "ERROR: tag must match W<NN>-seg<N> (publication) or W<NN>.<N> (non-publication) (got: $TAG)" >&2
     exit 1
 fi
 

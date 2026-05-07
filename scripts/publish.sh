@@ -3,7 +3,7 @@
 # build site, deploy, and commit the frontmatter changes this script produced
 # so main is reconciled with the deployed artifact before the script exits.
 #
-# Usage: ./scripts/publish.sh [--segment N] [--release-tag vX.Y.Z]
+# Usage: ./scripts/publish.sh [--segment N] [--release-tag W<NN>-segN | W<NN>.N]
 #                             [--skip-deploy] [--skip-weather] [--skip-commit] [--skip-release]
 #
 # Environment variables (loaded from .env if present):
@@ -52,9 +52,11 @@ for arg in "$@"; do
             echo ""
             echo "Options:"
             echo "  --segment N            Segment number to publish (auto-detects if omitted)"
-            echo "  --release-tag vX.Y.Z   Tag and GitHub Release to create after a successful"
-            echo "                         deploy (must match v<major>.<minor>.<patch> format and"
-            echo "                         not already exist). Required unless --skip-release."
+            echo "  --release-tag TAG      Tag and GitHub Release to create after a successful"
+            echo "                         deploy. Date-based, year-implicit (this is tdf26):"
+            echo "                           Publication deploys: W<NN>-seg<N>   (e.g. W19-seg11)"
+            echo "                           Non-publication:     W<NN>.<N>      (e.g. W19.1)"
+            echo "                         Tag must not already exist. Required unless --skip-release."
             echo "  --skip-deploy          Skip the deployment step (also skips commit and release)"
             echo "  --skip-weather         Skip weather fetch"
             echo "  --skip-commit          Deploy but do not commit frontmatter to main"
@@ -101,8 +103,8 @@ if [ "$SKIP_RELEASE" = false ] && [ "$SKIP_DEPLOY" = false ]; then
         echo "ERROR: --release-tag is required (or pass --skip-release to suppress)." >&2
         exit 1
     fi
-    if ! [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-        echo "ERROR: --release-tag must match v<major>.<minor>.<patch> (got: $RELEASE_TAG)." >&2
+    if ! [[ "$RELEASE_TAG" =~ ^W[0-9]{2}(-seg[0-9]+|\.[0-9]+)$ ]]; then
+        echo "ERROR: --release-tag must match W<NN>-seg<N> (publication) or W<NN>.<N> (non-publication) (got: $RELEASE_TAG)." >&2
         exit 1
     fi
     if git rev-parse "$RELEASE_TAG" >/dev/null 2>&1; then
