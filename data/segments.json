@@ -259,7 +259,9 @@
     "min_elevation": 520,
     "max_elevation": 570,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Saint-Augustin"
+    ],
     "climbs": []
   },
   {

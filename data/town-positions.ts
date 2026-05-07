@@ -23,6 +23,7 @@ export const townKmPositions: Record<string, number> = {
   'Sainte-Fortunade': 60.02,     // 124m from village; seg 9 (added 2026-05-06 alongside drift assertion)
   'Tulle': 68.72,                // updated 2026-04-25, 120m from cathedral
   'Naves': 78.19,                // updated 2026-04-25, 373m from village; seg 12
+  'Saint-Augustin': 94.52,       // 9m from village (route runs through bourg); seg 14 (added 2026-05-07, #478)
   'Chaumeil': 100.30,            // updated 2026-04-25, 35m from village; seg 15
   'Treignac': 121.95,            // updated 2026-04-25, 22m from village; seg 18
   'Bugeat': 143.67,              // updated 2026-04-25, 23m from village; seg 21
