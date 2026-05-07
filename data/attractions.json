@@ -602,6 +602,66 @@
     "nearest_distance_m": 249
   },
   {
+    "name": "Église Saint-Augustin de Saint-Augustin",
+    "category": "church",
+    "lat": 45.42442,
+    "lng": 1.83625,
+    "description": "13th-century parish church at the centre of the Saint-Augustin bourg, the village the Stage 9 route runs through at km 94.5. Inscribed Monument Historique on 28 December 1929. Houses a 17th-century retable carved by Pierre Duhamel of Tulle. The Tourondel hamlet (1.3 km off-route, also in seg 14) is associated with an old wooden chapel that locally is said to have inspired the church's nave vault.",
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Saint-Augustin_de_Saint-Augustin",
+        "label": "Wikipédia"
+      },
+      {
+        "url": "https://www.pop.culture.gouv.fr/notice/merimee/PA00099811",
+        "label": "Mérimée (Monument Historique)"
+      }
+    ],
+    "nearest_km": 94.52,
+    "nearest_distance_m": 9,
+    "source": "https://fr.wikipedia.org/wiki/Saint-Augustin_(Corr%C3%A8ze) and Mérimée database PA00099811 (verified 2026-05-07). Coord = bourg centre per OSM place=village; the church sits in the bourg square."
+  },
+  {
+    "name": "Suc au May Table d'orientation",
+    "category": "nature",
+    "lat": 45.4714,
+    "lng": 1.8425,
+    "description": "Panoramic table d'orientation at the 908m summit of the Suc au May, the highest point of the Monédières range. The oldest table d'orientation in the Limousin, inaugurated 25 August 1935 by Henry de Jouvenel — the same Henry de Jouvenel who lived at the Maison de la Sirène in Collonges-la-Rouge (seg 4). On clear days the panorama reaches the Monts d'Auvergne to the east, the Plateau de Millevaches to the north, and the Bas-Limousin valleys to the south. A 15-minute footpath climbs to the summit from a small parking area on the D26 just below the road's high point. Modern paragliding launch site. The road itself peaks ~440m short of the actual summit at km 105.15 (elev 889m on the road, 908m at the summit).",
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Suc_au_May",
+        "label": "Wikipédia"
+      },
+      {
+        "url": "https://www.tourisme-egletons.com/Annuaire/le-suc-au-may.html",
+        "label": "Tourisme Egletons"
+      }
+    ],
+    "nearest_km": 105.48,
+    "nearest_distance_m": 442,
+    "source": "https://fr.wikipedia.org/wiki/Suc_au_May (verified 2026-05-07; Henry de Jouvenel inauguration date cross-checked via Tourisme Egletons). Callback to seg 4 Maison de la Sirène (Henry de Jouvenel + Colette)."
+  },
+  {
+    "name": "Musée du Président Jacques Chirac",
+    "category": "museum",
+    "lat": 45.44262,
+    "lng": 1.91898,
+    "description": "Museum at Sarran, opened June 2000, housing the official gifts received by Jacques Chirac during his presidency (1995-2007). Sarran was the Chirac family home; Chirac is buried in the Sarran communal cemetery. The route passes 3.2 km west of Sarran on the climb out of Saint-Augustin toward Chaumeil; not on-route but adjacent. Pairs with Ussel (seg 25-26), where Chirac began his political career as a municipal councillor in 1965.",
+    "links": [
+      {
+        "url": "https://www.museepresidentjcchirac.fr/",
+        "label": "Museum site"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_du_pr%C3%A9sident_Jacques-Chirac",
+        "label": "Wikipédia"
+      }
+    ],
+    "nearest_km": 99.7,
+    "nearest_distance_m": 3172,
+    "source": "https://www.museepresidentjcchirac.fr/ and Wikipédia (verified 2026-05-07). 3.17 km off route is within the precedent set by Cascades de Gimel (4.3 km, kept in PR #470)."
+  },
+  {
     "name": "Stele des Maquisards",
     "category": "memorial",
     "lat": 45.6,

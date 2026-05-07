@@ -60,6 +60,12 @@
     "lat": 45.4555541,
     "lng": 1.8808583
   },
+  "Saint-Augustin": {
+    "type": "town",
+    "lat": 45.42442,
+    "lng": 1.83625,
+    "source": "https://fr.wikipedia.org/wiki/Saint-Augustin_(Corr%C3%A8ze) (verified 2026-05-07; OSM place=village confirms). Bourg sits 9m off the polyline at km 94.52 (seg 14). Added during seg 14-16 verification (#478) — the route runs through the village; previously absent from town-coords.json and segments.json towns array."
+  },
   "Treignac": {
     "type": "town",
     "lat": 45.5365916,
