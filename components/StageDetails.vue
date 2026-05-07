@@ -48,7 +48,7 @@ const climbData = {
   'Puy Boubou': { length: 2.8, gradient: 4.1 },
   'Côte de Lagleygeolle': { length: 5.2, gradient: 3.9 },
   'Côte de Miel': { length: 6.6, gradient: 3.9 },
-  'Côte des Naves': { length: 2.8, gradient: 6.7 },
+  'Côte de Naves': { length: 2.8, gradient: 6.7 },
   'Puy de Lachaud': { length: 3.6, gradient: 5.3 },
   'Suc au May': { length: 3.8, gradient: 7.7 },
   'Côte de la Croix de Pey': { length: 7.0, gradient: 4.9 },

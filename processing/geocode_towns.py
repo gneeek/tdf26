@@ -30,7 +30,7 @@ CLIMB_SEARCH = {
     "Puy Boubou": "Puy Boubou, Corrèze, France",
     "Côte de Lagleygeolle": "Lagleygeolle, Corrèze, France",
     "Côte de Miel": "Miel, Corrèze, France",
-    "Côte des Naves": "Naves, Corrèze, France",
+    "Côte de Naves": "Naves, Corrèze, France",
     "Puy de Lachaud": "Lachaud, Corrèze, France",
     "Suc au May": "Suc au May, Corrèze, France",
     "Côte de la Croix de Pey": "Croix de Pey, Corrèze, France",
