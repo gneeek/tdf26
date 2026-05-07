@@ -103,17 +103,17 @@
     "lng": 1.76101,
     "note": "Summit coordinate updated 2026-05-03 to match the v1.4.8 points-config correction (climb is the small bump at km 56.54, not the older km 49 characterization). Verified via processing/audit_segment_data.py."
   },
-  "Côte des Naves": {
+  "Côte de Naves": {
     "type": "climb",
-    "lat": 45.30396,
-    "lng": 1.78221,
-    "note": "Summit coordinate updated 2026-05-06 (issue #477) to the polyline position at the points-config summit km 76.59. Old coord was identical to the Naves town centre (45.312319, 1.7666474) — that placed it at km 78.19 / segment 12 / 374m off route, which was wrong. Audit-trail: the elevation profile peak is at km 77.32 (424m); CLAUDE.md gradient 6.7% matches the elevation-derived 6.8%; points-config gradient 5.6% diverges and is flagged for follow-up."
+    "lat": 45.308314,
+    "lng": 1.775128,
+    "note": "Summit coordinate updated 2026-05-07 (issue #490) to the polyline position at the points-config summit km 77.45 — the GPX elevation peak (422m). The earlier coord (45.30396, 1.78221) was the polyline position at the old declared summit km 76.59, a rising-flank position ~860m short of the actual peak. Elevation-derived gradient over the 2.8 km span ending at the peak is 6.27% (gain 175.6 m); points-config gradient corrected from 5.6% to 6.3%. Climb name renamed Côte des Naves → Côte de Naves to match ASO/Tourisme Corrèze (#515)."
   },
   "Puy de Lachaud": {
     "type": "climb",
     "lat": 45.37676,
     "lng": 1.80294,
-    "note": "Summit coordinate updated 2026-05-06 (issue #477) to the polyline position at the points-config summit km 87.54. Old coord (45.336, 1.784) sat at km 81.49 / segment 12 / on a descent — diverged from the points-config km by 6 km. Per publisher decision, coord aligned to points-config km. Caveat: Puy de Lachaud is not on the official ASO 2026 Stage 9 categorised-climb list (Côte des Naves, Suc au May, Côte de la Croix de Pey, Mont Bessou); follow-up may revisit whether the climb stays in points-config."
+    "note": "Summit coordinate updated 2026-05-06 (issue #477) to the polyline position at the points-config summit km 87.54. Old coord (45.336, 1.784) sat at km 81.49 / segment 12 / on a descent — diverged from the points-config km by 6 km. Per publisher decision, coord aligned to points-config km. Caveat: Puy de Lachaud is not on the official ASO 2026 Stage 9 categorised-climb list (Côte de Naves, Suc au May, Côte de la Croix de Pey, Mont Bessou); follow-up may revisit whether the climb stays in points-config."
   },
   "Suc au May": {
     "type": "climb",

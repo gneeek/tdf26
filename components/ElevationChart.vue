@@ -238,7 +238,7 @@ const climbSummitKm = {
   'Puy Boubou': 30.6,
   'Cote de Lagleygeolle': 43.2, 'Côte de Lagleygeolle': 43.2,
   'Cote de Miel': 51.1, 'Côte de Miel': 51.1,
-  'Cote des Naves': 74.8, 'Côte des Naves': 74.8,
+  'Côte de Naves': 74.8,
   'Puy de Lachaud': 85.6,
   'Suc au May': 104.8,
   'Cote de la Croix de Pey': 127, 'Côte de la Croix de Pey': 127,
