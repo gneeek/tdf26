@@ -16,6 +16,10 @@ The dossier is hand-curated and is **not** a parallel source-of-truth for `data/
 
 - **Session 1** (commits 7895c9c + d6bd583): five parallel research subagents produced raw notes across sections A–E (corridor TdF stages, Tour du Limousin, Paris-Corrèze + L'Agglomérée, Corrèze riders, Resistance / post-war context).
 - **Session 2** (this synthesis): polyline-keying verified for off-corridor candidates; raw notes consolidated into per-event corpus; story arcs surfaced; hero-image candidates curated with verified licenses; sources deduped; umbrella-issue body drafted; #503 keying recommendation drafted.
+- **Session 2 outcomes** (live pointers; the draft sections below stay frozen as research artifacts):
+  - PR: [#526](https://github.com/gneeek/tdf26/pull/526) (does not close #502 — refs only)
+  - Umbrella tracker filed: [#527 — historical-tdf.json corridor expansion](https://github.com/gneeek/tdf26/issues/527)
+  - #503 keying recommendation posted: [comment 4401591629](https://github.com/gneeek/tdf26/issues/503#issuecomment-4401591629)
 - **Next**: design-phase planning (story-arc selection, hero-image pick, prominent-launch timing) → draft strand → launch strand. Each is a separate future strand; this one ends at PR open.
 
 ## Per-event corpus
