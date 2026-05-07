@@ -407,30 +407,23 @@ Each entry (~800–1200 words) should weave together:
 
 ## Known Waypoints and Climbs (for segment assignment)
 
-### Major Towns (approximate km)
-- Malemort: km 0
-- Brive-la-Gaillarde: km 3–6
-- Turenne: km 16–18
-- Collonges-la-Rouge: km 22–25
-- Beynat: km 35–40
-- Tulle: km 63–68
-- Naves: km 72–75
-- Chaumeil: km 88–92
-- Treignac: km 115–118
-- Bugeat: km 128–132
-- Meymac: km 155–160
-- Ussel: km 180–185
+Town and climb facts previously listed here have moved to the `data/*.json` files. CLAUDE.md keeps narrative project context; the JSON files are the source of truth for route geometry, town positions, and climb metadata. The pointers below tell you which file to read for which question.
+
+### Major Towns
+- **Per-segment town assignments:** `data/segments.json` — each segment object has a `towns` array naming the towns the route passes through.
+- **Town coordinates and notes:** `data/town-coords.json` — keyed by town name. Includes a `note` field for towns whose city centre sits off the route polyline (e.g., Ussel).
+
+When you need to answer "what town is in segment N?", read `segments.json`. When you need a coordinate for a town, read `town-coords.json`.
 
 ### Categorized Climbs
-- Puy Boubou: 2.8km at 4.1%
-- Côte de Lagleygeolle: 5.2km at 3.9%
-- Côte de Miel: 6.6km at 3.9%
-- Côte des Naves: 2.8km at 6.7%
-- Puy de Lachaud: 3.6km at 5.3%
-- Suc au May: 3.8km at 7.7% (summit ~km 105, elevation 903m)
-- Côte de la Croix de Pey: 7km at 4.9%
-- Mont Bessou: summit 977m (highest point in Corrèze)
-- Côte des Gardes: 2.2km at 4.8%
+- **Climb metadata (segment, summit km, length, gradient, ASO category, points):** `data/competition/points-config.json` — `climbs` array. Single source of truth: `processing/split_gpx.py` imports from here, and `data/segments.json` climb assignments are generated accordingly.
+- **Climb summit coordinates:** `data/town-coords.json` — climbs share the file with towns; `"type": "climb"` distinguishes them.
+
+Two narrative notes that don't fit a JSON shape:
+- **Mont Bessou** is the highest point in Corrèze (summit 977m).
+- **Suc au May** summits around km 105 at approximately 903m elevation.
+
+ASO categorisation (HC, Cat 2, etc.) is on each climb in points-config. Whether the points-config climb list matches the official ASO 2026 Stage 9 categorised-climb list is tracked under issue #492.
 
 ## Development Notes
 
