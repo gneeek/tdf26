@@ -9,6 +9,17 @@
 # Environment variables (loaded from .env if present):
 #   OPENWEATHERMAP_API_KEY  - API key for weather data (optional)
 #   DEPLOY_TARGET           - SSH target (e.g., correze:/var/www/correze-travelogue/)
+#
+# Fail-fast policy
+# - First-time failure modes surface and halt the script (set -e by default).
+# - Recurrence-class failures become autonomous-recovery: the script handles them
+#   without halting because publisher investigation is complete.
+# - Specific recurrence-handled cases (per #496):
+#   1. PR auto-merged before script's own merge call.
+#   2. read -rp with no TTY for dataCutoff.
+#   3. SSH agent benign-noise stutter on deploy.
+# - When a new failure mode fires for the first time, halt and surface; promote to
+#   autonomous-recovery in the next planning if it recurs.
 
 set -e
 
@@ -182,7 +193,12 @@ print(m.group(1) if m else '')
 ")
 if [ -z "$DATA_CUTOFF" ]; then
     echo "No dataCutoff set for segment $SEGMENT."
-    read -rp "Enter data cutoff date (YYYY-MM-DD), or press Enter for today: " DATA_CUTOFF
+    # Only prompt when stdin is a TTY; non-interactive runs (cron, nohup, background
+    # invocation) fall through to today's date. Per #496: a no-TTY `read -rp` exits
+    # non-zero and `set -e` killed the v1.4.17 publish before this fallback could fire.
+    if [ -t 0 ]; then
+        read -rp "Enter data cutoff date (YYYY-MM-DD), or press Enter for today: " DATA_CUTOFF
+    fi
     if [ -z "$DATA_CUTOFF" ]; then
         DATA_CUTOFF=$(date +%Y-%m-%d)
     fi
@@ -256,7 +272,15 @@ elif [ -n "$DEPLOY_TARGET" ]; then
     # Run under `if !` so set -e cannot bail before we print a step-named
     # failure; subshell-local `set -o pipefail` so a left-side tar failure
     # is not masked by a trailing ssh exit of 0.
-    if ! ( set -o pipefail; tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}" ); then
+    #
+    # The ssh stderr is filtered through grep -v to drop the benign
+    # `sign_and_send_pubkey: signing failed for ED25519 ...: agent refused operation`
+    # line that fired on the v1.4.17 publish (per #496). It's noise from the local
+    # agent before ssh falls back to the next key; the deploy itself proceeds.
+    # Real ssh failures still propagate via the ssh exit code + pipefail + the
+    # surrounding `if !`. Filter is anchored on the full benign signature so it
+    # does not swallow other agent-related errors.
+    if ! ( set -o pipefail; tar -czf - -C .output/public . | ssh "${DEPLOY_TARGET%%:*}" "mkdir -p ${DEPLOY_TARGET#*:} && tar -xzf - -C ${DEPLOY_TARGET#*:}" 2> >(grep -v 'sign_and_send_pubkey: signing failed.*agent refused operation' >&2) ); then
         echo "ERROR: Step 8 deploy failed. Site was NOT uploaded to $DEPLOY_TARGET."
         exit 1
     fi
@@ -360,8 +384,19 @@ else
         fi
 
         # Squash-merge into main; --delete-branch removes the remote feature branch.
-        gh pr merge "$PR_NUM" --squash --delete-branch \
-            || { echo "ERROR: gh pr merge --squash failed for PR #$PR_NUM. Resolve manually."; exit 1; }
+        # Pre-check the PR state: branch protection's auto-merge can win the race
+        # against this call (per #496, v1.4.17 publish: PR #495 was auto-merged
+        # ~seconds after we pushed, before this script's merge call ran). When the
+        # PR is already MERGED, the merge call would fail and `set -e` would kill
+        # the script before Step 10 (tag/release). Treating already-merged as
+        # success makes the publish path idempotent across the auto-merge race.
+        PR_STATE=$(gh pr view "$PR_NUM" --json state --jq '.state' 2>/dev/null || echo "UNKNOWN")
+        if [ "$PR_STATE" = "MERGED" ]; then
+            echo "PR #$PR_NUM was already merged before our merge call (auto-merge race) — treating as success."
+        else
+            gh pr merge "$PR_NUM" --squash --delete-branch \
+                || { echo "ERROR: gh pr merge --squash failed for PR #$PR_NUM. Resolve manually."; exit 1; }
+        fi
 
         # Pull the merged main back onto the local checkout
         git -C "$PROJECT_DIR" checkout main \
