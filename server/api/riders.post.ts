@@ -1,12 +1,11 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { resolve } from 'path'
-import { execSync } from 'child_process'
+import { execFileSync } from 'child_process'
 
 function runPython(scriptPath: string, args: string[]) {
   const venvPython = resolve('processing/.venv/bin/python')
-  const cmd = [venvPython, scriptPath, ...args].map(s => JSON.stringify(s)).join(' ')
   try {
-    execSync(cmd, { stdio: ['ignore', 'pipe', 'pipe'] })
+    execFileSync(venvPython, [scriptPath, ...args], { stdio: ['ignore', 'pipe', 'pipe'] })
   } catch (err: unknown) {
     const e = err as { stderr?: Buffer | string; message?: string }
     const stderr = e.stderr ? e.stderr.toString().trim() : ''

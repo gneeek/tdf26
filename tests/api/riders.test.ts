@@ -17,8 +17,8 @@ vi.mock('fs', () => ({
 }))
 
 vi.mock('child_process', () => ({
-  execSync: mockedExec,
-  default: { execSync: mockedExec },
+  execFileSync: mockedExec,
+  default: { execFileSync: mockedExec },
 }))
 
 const sampleConfig = JSON.stringify({
