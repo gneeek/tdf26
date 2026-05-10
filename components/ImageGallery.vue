@@ -13,6 +13,7 @@
             :src="img.src"
             :alt="img.alt"
             class="w-full h-48 object-cover hover:opacity-90 transition-opacity"
+            :style="img.objectPosition ? { objectPosition: img.objectPosition } : null"
             loading="lazy"
           >
         </button>
