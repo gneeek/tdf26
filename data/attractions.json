@@ -325,7 +325,12 @@
     "lat": 45.31,
     "lng": 1.76,
     "description": "Castle near Naves with an 18th-century portal and vestiges of a 14th-century Gothic cloister.",
-    "links": [],
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Ch%C3%A2teau_de_Bach",
+        "label": "Wikipédia"
+      }
+    ],
     "nearest_km": 77.92,
     "nearest_distance_m": 941
   },
