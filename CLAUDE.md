@@ -23,7 +23,7 @@ See `feedback_agent_ownership.md` in the memory system for the full model includ
 
 ## Tech Stack
 
-- **Runtime:** Node.js 20+ (Nuxt/Vue), Python 3.11+ (data processing)
+- **Runtime:** Node.js 22+ (Nuxt/Vue), Python 3.11+ (data processing)
 - **Framework:** Nuxt 3 with Nuxt Content module
 - **Maps:** Leaflet.js with OpenStreetMap tiles
 - **Charts:** Chart.js or D3.js for elevation profiles and rider stats
