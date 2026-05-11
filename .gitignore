@@ -29,7 +29,9 @@ Thumbs.db
 data/riders/daily-log.json
 data/riders/stats.json
 data/riders/points.json
-data/riders/snapshots/
+# Per-segment snapshots are write-once at publish time and tracked
+# so the canonical values for published segments survive a rebuild
+# on another machine.
 
 # Test coverage
 coverage/

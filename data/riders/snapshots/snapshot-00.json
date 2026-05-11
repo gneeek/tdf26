@@ -1,0 +1,320 @@
+{
+  "segment": 0,
+  "stats": {
+    "asOf": "2026-04-05",
+    "entryNumber": 4,
+    "riders": {
+      "justin": {
+        "totalDistanceCapped": 8.0,
+        "dailyAverageActual": 4.62,
+        "dailyAverageCapped": 2.0,
+        "longestDay": 7.5,
+        "shortestDay": 2.9,
+        "daysBelowThreeKm": 1,
+        "consistencyStdev": 2.04,
+        "bestThreeDayCombo": 15.6,
+        "recentFiveDayAverage": 4.62,
+        "distanceRemaining": 177.0,
+        "estimatedDaysToFinish": 88,
+        "estimatedFinishDate": "2026-07-02",
+        "place": 1
+      },
+      "marian": {
+        "totalDistanceCapped": 8.0,
+        "dailyAverageActual": 2.0,
+        "dailyAverageCapped": 2.0,
+        "longestDay": 2.7,
+        "shortestDay": 1,
+        "daysBelowThreeKm": 4,
+        "consistencyStdev": 0.77,
+        "bestThreeDayCombo": 7.0,
+        "recentFiveDayAverage": 2.0,
+        "distanceRemaining": 177.0,
+        "estimatedDaysToFinish": 88,
+        "estimatedFinishDate": "2026-07-02",
+        "place": 2
+      },
+      "nan": {
+        "totalDistanceCapped": 8.0,
+        "dailyAverageActual": 3.25,
+        "dailyAverageCapped": 2.0,
+        "longestDay": 4.7,
+        "shortestDay": 1.9,
+        "daysBelowThreeKm": 1,
+        "consistencyStdev": 1.16,
+        "bestThreeDayCombo": 11.1,
+        "recentFiveDayAverage": 3.25,
+        "distanceRemaining": 177.0,
+        "estimatedDaysToFinish": 88,
+        "estimatedFinishDate": "2026-07-02",
+        "place": 3
+      },
+      "wally": {
+        "totalDistanceCapped": 5.1,
+        "dailyAverageActual": 1.28,
+        "dailyAverageCapped": 1.28,
+        "longestDay": 2.5,
+        "shortestDay": 0.1,
+        "daysBelowThreeKm": 4,
+        "consistencyStdev": 1.2,
+        "bestThreeDayCombo": 5.0,
+        "recentFiveDayAverage": 1.28,
+        "distanceRemaining": 179.9,
+        "estimatedDaysToFinish": 141,
+        "estimatedFinishDate": "2026-08-24",
+        "place": 4
+      }
+    }
+  },
+  "points": {
+    "riders": {
+      "justin": {
+        "sprintPoints": 3,
+        "climbPoints": 2,
+        "totalPoints": 5
+      },
+      "marian": {
+        "sprintPoints": 2,
+        "climbPoints": 0,
+        "totalPoints": 2
+      },
+      "nan": {
+        "sprintPoints": 5,
+        "climbPoints": 1,
+        "totalPoints": 6
+      },
+      "wally": {
+        "sprintPoints": 1,
+        "climbPoints": 0,
+        "totalPoints": 1
+      }
+    },
+    "locations": [
+      {
+        "name": "Sprint - Brive-la-Gaillarde",
+        "type": "sprint",
+        "segment": 1,
+        "km": 3,
+        "category": null,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "nan",
+            "date": "2026-04-02",
+            "points": 5
+          },
+          {
+            "place": 2,
+            "rider": "justin",
+            "date": "2026-04-02",
+            "points": 3
+          },
+          {
+            "place": 3,
+            "rider": "marian",
+            "date": "2026-04-02",
+            "points": 2
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-03",
+            "points": 1
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Sprint - Turenne",
+        "type": "sprint",
+        "segment": 3,
+        "km": 17,
+        "category": null,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Sprint - Before Tulle",
+        "type": "sprint",
+        "segment": 9,
+        "km": 60,
+        "category": null,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Sprint - Bugeat",
+        "type": "sprint",
+        "segment": 19,
+        "km": 130,
+        "category": null,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Sprint - Ussel Finish",
+        "type": "sprint",
+        "segment": 27,
+        "km": 183,
+        "category": null,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Cote de Malemort",
+        "type": "climb",
+        "segment": 1,
+        "km": 5,
+        "category": 4,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "justin",
+            "date": "2026-04-03",
+            "points": 2
+          },
+          {
+            "place": 2,
+            "rider": "nan",
+            "date": "2026-04-03",
+            "points": 1
+          },
+          {
+            "place": 3,
+            "rider": "marian",
+            "date": "2026-04-03",
+            "points": 0
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-03",
+            "points": 0
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Puy Boubou",
+        "type": "climb",
+        "segment": 5,
+        "km": 32.8,
+        "category": 3,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Cote de Lagleygeolle",
+        "type": "climb",
+        "segment": 7,
+        "km": 43.2,
+        "category": 4,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Cote de Miel",
+        "type": "climb",
+        "segment": 9,
+        "km": 56.6,
+        "category": 4,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Cote des Naves",
+        "type": "climb",
+        "segment": 11,
+        "km": 74.8,
+        "category": 2,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Puy de Lachaud",
+        "type": "climb",
+        "segment": 13,
+        "km": 85.6,
+        "category": 2,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Suc au May",
+        "type": "climb",
+        "segment": 15,
+        "km": 104.8,
+        "category": "HC",
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Cote de la Croix de Pey",
+        "type": "climb",
+        "segment": 19,
+        "km": 127,
+        "category": 3,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Mont Bessou",
+        "type": "climb",
+        "segment": 22,
+        "km": 153,
+        "category": 4,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Cote des Gardes",
+        "type": "climb",
+        "segment": 24,
+        "km": 167.2,
+        "category": 3,
+        "awards": [],
+        "reached": false
+      }
+    ]
+  },
+  "log": {
+    "entries": [
+      {
+        "date": "2026-04-01",
+        "distances": {
+          "justin": 7.45,
+          "marian": 1,
+          "nan": 1.9,
+          "wally": 0.4
+        }
+      },
+      {
+        "date": "2026-04-02",
+        "distances": {
+          "justin": 4.72,
+          "marian": 2.5,
+          "nan": 3.4,
+          "wally": 2.5
+        }
+      },
+      {
+        "date": "2026-04-03",
+        "distances": {
+          "justin": 3.42,
+          "marian": 1.8,
+          "nan": 4.7,
+          "wally": 2.1
+        }
+      },
+      {
+        "date": "2026-04-04",
+        "distances": {
+          "justin": 2.89,
+          "marian": 2.7,
+          "nan": 3,
+          "wally": 0.1
+        }
+      }
+    ]
+  }
+}
