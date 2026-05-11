@@ -7,6 +7,7 @@
           :alt="entry.images[0].alt || ''"
           loading="lazy"
           class="w-20 h-20 sm:w-28 sm:h-28 rounded object-cover flex-shrink-0"
+          :style="entry.images[0].objectPosition ? { objectPosition: entry.images[0].objectPosition } : null"
         >
         <div class="min-w-0 flex-1">
           <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
