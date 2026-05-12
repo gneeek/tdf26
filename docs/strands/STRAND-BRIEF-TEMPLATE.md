@@ -45,7 +45,7 @@ Only commands that actually exist in `package.json` / the codebase. Examples tha
 
 - `npm test`
 - `python3 processing/validate_points.py`
-- `python3 scripts/validate_entries.py`
+- `python3 processing/validate_entries.py --entries-dir content/entries --non-interactive`
 - `npm run build`
 - `npx nuxt prepare` (in worktrees, if `.nuxt/` not yet generated)
 
