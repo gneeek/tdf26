@@ -93,3 +93,17 @@ Cadence is publisher-paced via AskUserQuestion checkpoints. List of checkpoints 
 - Dev preview rendered without error.
 - **Cleanup (you run these, do not hand off):** `git -C /home/jhs/code/tdf26 worktree remove tdf26-seg-13` once the PR has merged.
 - Final report posted to publisher: PR link, voice picked, AskUserQuestion checkpoints fired, any open questions surfaced for downstream strands (the Monédières opens at seg 14 — note any framing the publisher pre-decided here that's relevant for the seg 14 drafting brief later).
+
+## 11. Notes from seg 12 close (2026-05-12, post-PR #548)
+
+Compose-with-seg-12 details captured at seg 12 PR open, per `feedback_session_close_decision_persistence.md`.
+
+- **Voice continuity.** Seg 12 used `madrid-review` (warmer, place-essay register; seg 11 was tls-essay). Seg 13's "between-places" texture is fair game for a third register or a return to tls-essay; not pre-decided.
+- **Bowl frame closed at end of seg 12.** Seg 12 established the four-river basin between the Côte de Naves and the Puy de Lachaud as its load-bearing landscape metaphor and closed the metaphor in its final paragraph. Seg 13 has clean room for a different frame on the climb itself; reaching back for "the bowl" would feel borrowed.
+- **Backward-glance hooks available.** Seg 12 left the seg-11 carnyces "in their cases on the Place de l'Église in Tintignac" as a reference point. Seg 13 may reach back further or stay forward-facing; nothing pre-committed.
+- **Puy de Lachaud crest is yours.** Seg 12 stops at the climb's foot (km ~83.94); the climb summits in seg 13 at km 87.54. Seg 12's last paragraph leaves riders descending toward the Vimbelle and starting "the climb the polka-dot board will not count" — that's the handoff line. Side note from seg 12 verification: the climb is correctly named **Côte de Naves** (no s) per #515; **Puy de Lachaud** is the named hill the route crosses, not a categorised climb. Don't confuse the two.
+- **Monédières-coming-into-view is yours.** Seg 12 deferred per dossier; seg 13 can plant the visibility beat without coordinating back.
+- **Literary-footnote precedent at seg 12.** Seg 12 added a fresh expanded footnote (Berque + Donadieu + Hippolyte/Bossis/Burel ONCFS-Rennes I bocage study) tightening the Barthes seg-6 plant. Seg 13 is **not in the Barthes arc** per `project_barthes_callback.md` (the next arc beat is seg 15); awareness only.
+- **MDC validator still not built.** Retro v1.4.18 decision-actionable item is open; manual `::name{...}` ↔ `::` grep is the stopgap. Seg 12 used 2 directives, balanced 2/2; one minute of work.
+- **#547 (`data/attractions.json` divergence at Saint-Augustin retable) filed during seg 12 verification.** Affects seg 14, not seg 13, but if seg 13 reaches into attractions.json for any feature, treat the file as carryforward-suspect per `feedback_brief_content_is_carryforward.md`.
+- **Title-rename precedent.** Seg 12 renamed the placeholder file slug (`12-puy-de-lachaud.md` → `12-naves-coming-home.md`) via `git mv` after the arc-agreement checkpoint settled the title direction. The placeholder slug for seg 13 is `13-chaumeil-and-the-puy-de-lachaud.md`; per the dossier, Chaumeil sits in seg 15 and the texture beat resists destination-anchoring. Expect the slug-rename question at seg 13's arc checkpoint.

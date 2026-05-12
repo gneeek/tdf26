@@ -42,7 +42,7 @@ This session's planning artifacts (`docs/planning/v1.4.19-scope.md` + `docs/plan
 
 | Strand brief | Status |
 |---|---|
-| `strand-seg-12-drafting.md` | Spawn instructions issued at planning. Publisher to run in fresh Claude Code session. Publication W20-seg12, Wed 2026-05-13. |
+| `strand-seg-12-drafting.md` | Closed 2026-05-12. PR [#548](https://github.com/gneeek/tdf26/pull/548) merged; entry `content/entries/12-naves-coming-home.md` on `main`. Filed [#547](https://github.com/gneeek/tdf26/issues/547) (attractions.json Saint-Augustin Duhamel divergence) during Mérimée verification. Retro inputs in `project_next_planning_notes.md`. Publication W20-seg12 still pending production deploy Wed 2026-05-13. |
 | `strand-seg-13-drafting.md` | Spawn Thu 2026-05-14 after seg 12 ships. Publication W20-seg13, Sun 2026-05-17. |
 | `strand-498-verify-segs-17-19.md` | Ready to spawn auto-mode, this week. |
 | `strand-499-verify-segs-20-22.md` | Ready to spawn auto-mode, this week. |
