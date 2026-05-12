@@ -25,7 +25,9 @@ export const townKmPositions: Record<string, number> = {
   'Naves': 78.19,                // updated 2026-04-25, 373m from village; seg 12
   'Saint-Augustin': 94.52,       // 9m from village (route runs through bourg); seg 14 (added 2026-05-07, #478)
   'Chaumeil': 100.30,            // updated 2026-04-25, 35m from village; seg 15
+  'Madranges': 113.31,           // 102m from village; seg 17 (added 2026-05-12, #498)
   'Treignac': 121.95,            // updated 2026-04-25, 22m from village; seg 18
+  'Lestards': 130.39,            // 12m from village (route runs through bourg); seg 19 (added 2026-05-12, #498)
   'Bugeat': 143.67,              // updated 2026-04-25, 23m from village; seg 21
   'Meymac': 168.15,              // updated 2026-04-25, 47m from village; seg 25
   'Ussel': 182.5,                // route-entry point (city centre is 2.5km north of route)
