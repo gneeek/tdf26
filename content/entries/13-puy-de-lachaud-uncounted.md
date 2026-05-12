@@ -1,0 +1,41 @@
+---
+segment: 13
+title: "Puy de Lachaud, Uncounted"
+subtitle: "Km 84-92: the day's third climb, a granite plateau, and the road turns toward the Suc au May"
+publishDate: 2026-05-17
+kmStart: 84
+kmEnd: 92
+gpxFile: /gpx/segment-13.gpx
+elevationData: /data/elevation/segment-13.json
+images: []
+weather: null
+draft: true
+---
+
+# Puy de Lachaud, Uncounted
+
+The Vimbelle slips under the road at the foot of the descent the previous segment ended on, and the gradient comes back the other way at kilometre eighty-three and nine tenths. From there to the next crest is three and six tenths of a kilometre at three point two per cent on average, with a short pitch inside the second kilometre at eleven point seven per cent. The crest at kilometre eighty-seven and a half is one of several Puy de Lachauds in the Massif Central; the better-known of them stands well over a thousand metres, while the one our riders climb tops out, by the project's elevation profile, at something just over five hundred and thirty.
+
+The road climbs through the upper part of the Naves commune and into the southern apron of the granite plateau the route will hold until it falls toward Ussel late in the afternoon. The basement rock under this country is Carboniferous, emplaced as a series of granitic plutons three hundred and sixty to two hundred and ninety million years ago, in the Variscan orogeny that built the Massif Central before the Alps existed. The cover at this elevation is oak and chestnut and pine; the country it shelters has been pastured by hill cattle without much interruption since the place-names settled into anything like their present spelling. The bocage thins as the road climbs. Where the road levels for a hundred metres around kilometre eighty-six, the hedge lines stand further apart and the pasture opens; by the time the riders reach the crest, the proportion of fence to hedge has shifted, and the country is on its way to being plateau country.
+
+At the crest the country opens. To the east the road has come up from the Vimbelle valley; to the west, off the route and out of the bunch's sight-lines, lies the Naves bowl the previous segment held. Ahead and to the north-east the ground rises again in dark blue ridges, the granite reading itself further across the horizon than the granite at the foot of the climb had any way of knowing. The ridges are the Monédières. The stage's hardest climbing is inside them. The road, having reached the day's third high point, levels for a kilometre and then begins to fall toward the next commune line.
+
+The polka-dot board takes no notice of the crest. The Tour's King of the Mountains accounting on Stage Nine recognises four climbs, all categorised by the ASO ahead of the race: the Côte de Naves at kilometre seventy-seven and a half (Category Two, six points to the leader); the Suc au May at one hundred and five, the day's defining climb at seven point one per cent over three and eight tenths kilometres (Hors Catégorie, ten points); the Côte de la Croix de Pey at one hundred and twenty-nine (Category Three, four points); and the Mont Bessou at one hundred and fifty-two, the highest point in Corrèze at nine hundred and seventy-seven metres (Category Four, two points; the road passes under the summit, not over it). Four climbs, twenty-two points. The hill at kilometre eighty-seven and a half does the work of a categorised climb (three and six tenths of a kilometre, an honest average, a short steep ramp inside it) but earns no number on the day's sheet. The project's internal accounting marks it a Cat-2; the official board treats it as terrain.
+
+::press-card{kind="Reference" publication="Tourisme Corrèze" headline="Tour de France 2026: A 100% Corrèze stage" summary="The official summary of Stage 9 with the four categorised climbs the polka-dot competition will recognise: Côte de Naves, Suc au May, Côte de la Croix du Pey, Mont Bessou." url="https://www.tourismecorreze.com/en/events/tour_de_france_2026_a_100_correze_stage"}
+::
+
+The cycling logic of the stage shifts here. From the start in Malemort the day has been climbing out of the Brive basin, threading the *plus beaux villages* of the southern Corrèze, and at Tulle settling into the river valley before lifting onto this plateau. From the next crest the day stops being about Tulle. The bunch is strung and warm; the camera helicopter pulls higher; the road runs north-east toward the Suc au May, which is two segments and roughly seventeen and a half kilometres ahead. What sits between the day's two halves is country read through its use. The villages along the road from here to Chaumeil are hamlets of Naves and of Chamboulive. The local-history beat thins. The hedge-lines hold the cattle; the granite barns are working barns; the slow attrition of the chestnut craft has not yet emptied the hamlets along the road. The density of hedgerow in Corrèze, by the most recent regional survey, is thirty-one metres of hedge per hectare, about half the Limousin regional mean and less than half the densities recorded in neighbouring Creuse. What the road crosses here is the thinning end of the bocage.
+
+The road begins to fall. The crest of the puy is behind, the next commune line is ahead, and the long horizon of the higher ground keeps its distance. The wind on the upper plateau is from somewhere west of north. Ahead the road turns its first quiet attention toward the ridges that will hold the rest of the day.
+
+## Sources
+
+- Stage 9 route and categorised climbs (Côte de Naves at km 77.45 Cat 2, Suc au May at km 105.15 HC, Côte de la Croix de Pey at km 128.99 Cat 3, Mont Bessou at km 152.31 Cat 4; the four climbs total twenty-two KOM points): [Tour de France 2026: A 100% Corrèze stage (Tourisme Corrèze)](https://www.tourismecorreze.com/en/events/tour_de_france_2026_a_100_correze_stage); [Cyclingstage.com, Tour de France 2026 Stage 9](https://www.cyclingstage.com/tour-de-france-2026-route/stage-9-tdf-2026/) (third-party stage profile of the route data ASO published in October 2025).
+- Mont Bessou as the highest point in Corrèze (977 m road crest at km 152.31, geographic peak ~1.3 km off the route): [Mont Bessou (Wikipédia)](https://fr.wikipedia.org/wiki/Mont_Bessou).
+- Limousin granitic basement and the Variscan orogeny (Carboniferous plutons emplaced ~360-290 Ma): [Géologie du Limousin (Wikipédia)](https://fr.wikipedia.org/wiki/G%C3%A9ologie_du_Limousin).
+- Bocage limousin (livestock-led economy, comparative absence of major *remembrement*; hedgerow densities Limousin mean 60 m/ha, Corrèze 31 m/ha, Creuse 80 m/ha): S. Hippolyte, A. Bossis and F. Burel, [*Quel avenir pour le bocage en Limousin?* (ONCFS / Rennes I, July 2008)](https://www.nouvelle-aquitaine.developpement-durable.gouv.fr/IMG/pdf/avenir_espaces_bocagers_cle031bf2.pdf).
+
+---
+
+*Pair-written by Justin Simpson and Claude Opus 4.7. Voice register: tls-essay (scholarly sub-mode) (simpson-registers).*
