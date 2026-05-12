@@ -83,9 +83,9 @@
   },
   "Ussel": {
     "type": "town",
-    "lat": 45.52671,
-    "lng": 2.2937,
-    "note": "Route entry point at km ~182.5, not Ussel city centre (which is ~2.5 km north of the route at 45.5457, 2.3119). Stage 9 finishes at Place Voltaire in Ussel proper."
+    "lat": 45.5459512,
+    "lng": 2.3069481,
+    "note": "Coord updated 2026-05-12 (#500, seg 23-27 verification) to OSM Nominatim Place Voltaire — the de-facto town centre and the Stage 9 sprint-judge location. Previous coord (45.52671, 2.2937) was the route-entry point on the southern outskirts of Ussel commune (km 182.45), not the town centre; the previous note also wrongly claimed the centre was 2.5 km north of the route. The route enters Ussel commune from the south at km 182.45, runs 2.4 km north through central Ussel, and ends at km 184.84 on Avenue Thiers (45.5456, 2.30422) — 216m west of Place Voltaire. The polyline does not extend the final 216m to Place Voltaire; the GPX endpoint sits short of the official sprint-judge line."
   },
   "Puy Boubou": {
     "type": "climb",
@@ -132,7 +132,14 @@
   },
   "Côte des Gardes": {
     "type": "climb",
-    "lat": 45.527,
-    "lng": 2.174
+    "lat": 45.52104,
+    "lng": 2.16783,
+    "note": "Summit coordinate updated 2026-05-12 (issue #500, seg 23-27 verification) to the polyline position at the points-config summit km 170.98 (elev 757m). Old coord (45.527, 2.174) sat 814m off-route. Same correction pattern as Côte de Naves (#490/#515) and Puy de Lachaud (#477) — town-coords now reflects the on-route summit, not a stale labeled hilltop. Caveat: the actual GPX elevation peak is at km 170.766 (760m, 200m before the declared summit km) — same bug class as Naves #490 (declared km past actual peak), at smaller scale; follow-up may revisit whether to migrate the declared summit km."
+  },
+  "Saint-Angel": {
+    "type": "town",
+    "lat": 45.50279,
+    "lng": 2.23231,
+    "source": "OSM (place=village, name=Saint-Angel, verified 2026-05-12). Added during seg 23-27 verification (#500); the commune sits 96m off the polyline at km 176.53 (seg 26). Commune chef-lieu with the Prieuré Saint-Michel-des-Anges (classified Monument Historique 1840)."
   }
 }

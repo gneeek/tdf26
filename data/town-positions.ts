@@ -28,5 +28,6 @@ export const townKmPositions: Record<string, number> = {
   'Treignac': 121.95,            // updated 2026-04-25, 22m from village; seg 18
   'Bugeat': 143.67,              // updated 2026-04-25, 23m from village; seg 21
   'Meymac': 168.15,              // updated 2026-04-25, 47m from village; seg 25
-  'Ussel': 182.5,                // route-entry point (city centre is 2.5km north of route)
+  'Saint-Angel': 176.53,         // 96m from village; seg 26 (added 2026-05-12, #500)
+  'Ussel': 184.84,               // updated 2026-05-12 (#500): polyline endpoint near Place Voltaire on Avenue Thiers; 216m from Place Voltaire (sprint judge). Previous value 182.5 was the route-entry point at the southern edge of Ussel commune; the route continues 2.4km north into the historic centre.
 }

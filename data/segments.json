@@ -473,7 +473,9 @@
     "min_elevation": 630,
     "max_elevation": 687,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Saint-Angel"
+    ],
     "climbs": []
   },
   {
