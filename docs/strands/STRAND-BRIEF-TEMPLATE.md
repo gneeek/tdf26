@@ -96,6 +96,11 @@ Exit criteria specific to the strand's deliverable. Always include the cleanup s
 - **Cleanup (you run these, do not hand off):** `git -C /home/jhs/code/tdf26 worktree remove tdf26-<strand>` once the work has merged or been pulled back into the parent. The strand owns its own worktree teardown; do not leave it for the publisher to discover.
 - Other exit criteria specific to the strand's deliverables (PR open, dossier landed, smoke test green, etc.).
 - Final report posted to publisher: PR link, deliverable path, any open questions surfaced for downstream strands.
+- **Retro inputs written to `project_next_planning_notes.md` at close.** Add a new section header naming the strand (e.g. `## Items surfaced during <strand-name> execution (<date>)`) with two parts:
+  - **Decision-actionable observations:** anything the next planning session needs to decide (scope changes, follow-up issues filed, surface-area discoveries).
+  - **Light-tier pattern observations:** anything worth pattern-watching but not actionable yet (memory candidates, repeated-shape findings, brief-template gaps caught in flight).
+  - **Numeric stats** at the section foot: files-touched (`git diff --stat`), commits on branch, AskUserQuestion checkpoints fired, approximate wall-clock. Skip token/context stats — not agent-accessible today.
+  - Why mandatory: voluntary close-outs in v1.4.18 produced the carryforward record the v1.4.18 retro built on; standardising it makes the practice survive across publishers and agent drift.
 
 ## Lifecycle
 
