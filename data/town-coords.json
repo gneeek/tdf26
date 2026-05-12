@@ -127,8 +127,9 @@
   },
   "Mont Bessou": {
     "type": "climb",
-    "lat": 45.5701029,
-    "lng": 2.1231273
+    "lat": 45.57157,
+    "lng": 2.02363,
+    "note": "Summit coordinate updated 2026-05-12 (issue #499) to the polyline position at the points-config summit km 152.31 / segment 22 / elev 892m (road crest). Old coord (45.5701029, 2.1231273) sat at km 161.18 / segment 23 / elev 973m — the geographic 977m summit, off-route from the road by ~1.3 km. Per the #477 precedent (Puy de Lachaud), coord aligned to points-config km, not to geographic peak. Mont Bessou remains the highest point in Corrèze at 977m; the road passes under the peak rather than over it."
   },
   "Côte des Gardes": {
     "type": "climb",
