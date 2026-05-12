@@ -75,6 +75,12 @@
         "stage": "Bol d'Or des Monédières (criterium series)",
         "route": "Chaumeil",
         "description": "Post-Tour criterium founded in 1952 by Chaumeil-born accordionist Jean Ségurel and run on a circuit around Chaumeil. Held annually 1952–1967, then revived 1981–2002. Winners read like a roll-call of the post-war peloton: Coppi (1953), Anquetil (1955, 1962), Géminiani (1956–58), Poulidor (1963, 1967, with a 3rd place behind Gérard Saint and Ercole Baldini in 1959), Hinault (1982). The criterium is the reason the village punches well above its 350-resident weight in French cycling memory; the Côte des Géants (the climb the 2017 Tour du Limousin used as its finishing-circuit challenge) takes its name from these post-Tour exhibitions."
+      },
+      {
+        "year": null,
+        "stage": "Paris-Corrèze (2001–2012, final stages 2007–2012)",
+        "route": "Final stages closing at Chaumeil",
+        "description": "UCI 2.1 stage race created in 2001 by 1983/1984 Tour de France winner Laurent Fignon with Corrézien motorsport champion Max Mamers and the Conseil général de la Corrèze. From the 2005 edition onward, the final stage closed with five laps of the historic Bol d'Or des Monédières circuit at Chaumeil — explicitly preserving the legacy of the post-Tour criterium. Six confirmed Chaumeil finishes: 2007 (Vigeois → Chaumeil, won by Edvald Boasson Hagen at age 20), 2008 (Brive → Chaumeil), 2009 (Tulle → Chaumeil — the strongest single-stage corridor overlap), 2010, 2011 (Objat → Chaumeil), 2012 (Objat → Chaumeil, final edition). The race did not run in 2013 and has not been organised since. Re-keyed from segments [25, 26, 27] to [15] in seg 23-27 verification (#500) per the #502 tour-history dossier: every documented Paris-Corrèze finish was at Chaumeil (seg 15), not Ussel."
       }
     ]
   },
@@ -104,16 +110,10 @@
     "segments": [25, 26, 27],
     "events": [
       {
-        "year": null,
-        "stage": null,
-        "route": null,
-        "description": "Ussel served as a stage town for the now-defunct Paris-Correze professional race (UCI 2.1) which ran through the 2000s. The 2026 Tour marks Ussel's first appearance as a Tour de France stage town."
-      },
-      {
         "year": 2026,
         "stage": "Stage 10",
         "route": "Aurillac to Le Lioran",
-        "description": "The day after Stage 9, the peloton rides the adjacent Cantal roads from Aurillac to Le Lioran - the same finale where Vingegaard beat Pogacar in a photo finish in 2024."
+        "description": "The day after Stage 9, the peloton rides the adjacent Cantal roads from Aurillac to Le Lioran - the same finale where Vingegaard beat Pogacar in a photo finish in 2024. The 2026 Tour de France Stage 9 finish at Ussel is genuinely the town's first Tour stage appearance — Ussel has never been a Tour de France stage town in any prior edition (verified during seg 23-27 verification #500 via two independent ledicodutour sources). The earlier claim that Ussel had served as a Paris-Corrèze stage town was unverified for pre-2005 editions and contradicted for 2007–2012 (all of which finished at Chaumeil, seg 15); the Paris-Corrèze entry has been re-keyed to seg 15 accordingly."
       }
     ]
   }

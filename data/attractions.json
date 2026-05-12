@@ -472,18 +472,19 @@
   {
     "name": "Chapelle des Penitents",
     "category": "church",
-    "lat": 45.548,
-    "lng": 2.31,
+    "lat": 45.5447182,
+    "lng": 2.3099724,
     "description": "15th-century funeral chapel in Ussel with a classified Baroque altarpiece. Houses sacred art collection.",
     "links": [],
-    "nearest_km": 182.04,
-    "nearest_distance_m": 3129
+    "nearest_km": 184.84,
+    "nearest_distance_m": 459,
+    "source": "OSM Nominatim (verified 2026-05-12 during seg 23-27 verification #500). Previous coord (45.548, 2.31) was off by ~370m and incorrectly produced nearest_distance_m 3129 (treating the chapel as 3 km off-route); the Ussel cluster of four attractions shared the same wrong coord."
   },
   {
     "name": "Musee du Pays d'Ussel",
     "category": "museum",
-    "lat": 45.548,
-    "lng": 2.3105,
+    "lat": 45.5469604,
+    "lng": 2.3074887,
     "description": "Classified Musee de France with collections of art, popular traditions, tapestries, and printing materials.",
     "links": [
       {
@@ -491,33 +492,36 @@
         "label": "Wikipedia (fr)"
       }
     ],
-    "nearest_km": 182.04,
-    "nearest_distance_m": 3147
+    "nearest_km": 184.84,
+    "nearest_distance_m": 296,
+    "source": "OSM Nominatim (verified 2026-05-12 during seg 23-27 verification #500). Previous coord (45.548, 2.3105) was off by ~290m."
   },
   {
     "name": "Marche d'Ussel",
     "category": "market",
     "lat": 45.548,
     "lng": 2.311,
-    "description": "Saturday morning market in the town center and covered market hall behind the church.",
+    "description": "Saturday morning market in the town center and covered market hall behind the church. Coord (45.548, 2.311) is the original cluster coord shared with three other Ussel attractions; it sits ~250m north of Église Saint-Martin (OSM 45.5470, 2.3091) — plausibly correct for the covered market hall described as 'behind the church', but not OSM-confirmed (recurring event, no fixed OSM node). Other three Ussel attractions in this cluster were re-coorded to OSM-verified values during seg 23-27 verification (#500).",
     "links": [],
-    "nearest_km": 182.04,
-    "nearest_distance_m": 3166
+    "nearest_km": 184.88,
+    "nearest_distance_m": 591,
+    "source": "Derived km/distance recomputed 2026-05-12 during seg 23-27 verification (#500). Previous stored nearest_km 182.04 / distance 3166 was inconsistent with the lat/lng — the route runs through central Ussel ending at km 184.84, putting the market ~591m off-route at the polyline endpoint."
   },
   {
     "name": "Aigle Romaine",
     "category": "archaeology",
-    "lat": 45.5485,
-    "lng": 2.311,
-    "description": "2nd-3rd century granite funerary eagle sculpture at Place Voltaire. Marks the Stage 9 finish line.",
+    "lat": 45.5459512,
+    "lng": 2.3069481,
+    "description": "2nd-3rd century granite funerary eagle sculpture at Place Voltaire. Marks the Stage 9 sprint-judge position; the polyline endpoint sits 216m west of the eagle on Avenue Thiers.",
     "links": [
       {
         "url": "https://fr.wikipedia.org/wiki/Aigle_romaine_d%27Ussel",
         "label": "Wikipedia (fr)"
       }
     ],
-    "nearest_km": 182.04,
-    "nearest_distance_m": 3215
+    "nearest_km": 184.84,
+    "nearest_distance_m": 216,
+    "source": "OSM Nominatim Place Voltaire (verified 2026-05-12 during seg 23-27 verification #500). Previous coord (45.5485, 2.311) was off by ~400m and incorrectly produced nearest_distance_m 3215 (treating the sprint-judge sculpture as 3 km off-route)."
   },
   {
     "name": "Huilerie Marty",
@@ -824,6 +828,22 @@
     ],
     "nearest_km": 7.92,
     "nearest_distance_m": 10990
+  },
+  {
+    "name": "Prieuré Saint-Michel-des-Anges de Saint-Angel",
+    "category": "abbey",
+    "lat": 45.5053,
+    "lng": 2.2325,
+    "description": "Fortified Benedictine priory in Saint-Angel village. The fortified church, conventual buildings, and round presbytery tower together were classified as Monument Historique in 1840 — one of the earliest classifications in France, on the original list compiled by Prosper Mérimée. The priory sits in seg 26 (km 176.60, 153m off the polyline).",
+    "links": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Saint-Angel_(Corr%C3%A8ze)",
+        "label": "Wikipédia"
+      }
+    ],
+    "nearest_km": 176.6,
+    "nearest_distance_m": 153,
+    "source": "fr.wikipedia.org/wiki/Saint-Angel_(Corrèze) (verified 2026-05-12 during seg 23-27 verification #500). Coord from Wikipédia commune infobox. Saint-Angel and the priory were absent from attractions.json before this audit; village added to data/segments.json seg 26 towns and to town-coords.json in the same PR."
   },
   {
     "name": "Stade Alexandre-Cueille",
