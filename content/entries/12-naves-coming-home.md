@@ -38,7 +38,7 @@ What the bourg cannot keep out of itself, in the present, is the motorway. The A
 ::video-embed{embedUrl="https://www.youtube.com/embed/ZN8SlliQfbA" caption="Drone view of the Viaduc du Pays de Tulle (a.k.a. Viaduc des Angles), the A89 crossing south of Naves bourg: 854 m of deck and 160 m above the Corrèze valley, built 2000-2002." attribution="Video embedded from YouTube."}
 ::
 
-The road our riders are on falls now toward the Vimbelle, picks up the gradient on the other side, and starts the climb the polka-dot board will not count. At the bottom of the descent, where the road bridges the river and turns north, a white *panneau* at the verge points back to Naves and ahead to Orliac-de-Bar and Saint-Augustin: the country has finished with the bowl, and the road has its next destinations.
+The road our riders are on falls now toward the Vimbelle, picks up the gradient on the other side, and starts climbing again. The polka-dot board takes no notice of the next crest. At the bottom of the descent, where the road bridges the river and turns north, a white *panneau* at the verge points back to Naves and ahead to Orliac-de-Bar and Saint-Augustin: the country has finished with the bowl, and the road has its next destinations.
 
 ::street-view-embed{embedUrl="https://www.google.com/maps/embed?pb=!4v1778621609020!6m8!1m7!1sqxAow9AP035uaXomQWHEaw!2m2!1d45.33828842733281!2d1.792217846272367!3f249.47197221297014!4f8.701827119321607!5f0.4000000000000002" caption="The bottom of the descent off the Naves bowl, where the road bridges the Vimbelle and turns north. The white panneau at the verge points back to Naves and ahead to Orliac-de-Bar and Saint-Augustin."}
 ::
