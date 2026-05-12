@@ -313,7 +313,9 @@
     "min_elevation": 522,
     "max_elevation": 605,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Madranges"
+    ],
     "climbs": []
   },
   {
@@ -349,7 +351,9 @@
     "min_elevation": 619,
     "max_elevation": 851,
     "notable_points": [],
-    "towns": [],
+    "towns": [
+      "Lestards"
+    ],
     "climbs": [
       "Côte de la Croix de Pey"
     ]

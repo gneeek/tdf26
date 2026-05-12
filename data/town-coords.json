@@ -66,10 +66,22 @@
     "lng": 1.83625,
     "source": "https://fr.wikipedia.org/wiki/Saint-Augustin_(Corr%C3%A8ze) (verified 2026-05-07; OSM place=village confirms). Bourg sits 9m off the polyline at km 94.52 (seg 14). Added during seg 14-16 verification (#478) — the route runs through the village; previously absent from town-coords.json and segments.json towns array."
   },
+  "Madranges": {
+    "type": "town",
+    "lat": 45.4756,
+    "lng": 1.7911,
+    "source": "https://en.wikipedia.org/wiki/Madranges (verified 2026-05-12). Plateau de Millevaches gateway commune (pop ~166, area 12.88 km²); bourg sits 102 m off the polyline at km 113.31 (seg 17). Added during seg 17-19 verification (#498) — previously absent from town-coords.json and segments.json towns array."
+  },
   "Treignac": {
     "type": "town",
     "lat": 45.5365916,
     "lng": 1.7935339
+  },
+  "Lestards": {
+    "type": "town",
+    "lat": 45.5164,
+    "lng": 1.8747,
+    "source": "https://en.wikipedia.org/wiki/Lestards (verified 2026-05-12). Hilltop commune on the Plateau de Millevaches (pop ~117, area 18.52 km², elevation 518–894 m); the bourg sits 12 m off the polyline at km 130.39 (seg 19). The Côte de la Croix de Pey climb is named after a granite cross on the historic Chemin des Croix (formerly Chemin des Morts) forest path linking Lestards to Treignac (cross itself at 45.51976, 1.886124, ~620 m off-route). Added during seg 17-19 verification (#498) — previously absent from town-coords.json and segments.json towns array."
   },
   "Bugeat": {
     "type": "town",
@@ -122,8 +134,9 @@
   },
   "Côte de la Croix de Pey": {
     "type": "climb",
-    "lat": 45.5192072,
-    "lng": 1.8741342
+    "lat": 45.523120,
+    "lng": 1.866130,
+    "note": "Summit coordinate updated 2026-05-12 (issue #498) to the polyline position at the points-config declared summit km 128.99 (ele 801 m). The previous coord (45.5192072, 1.8741342) sat ~333 m north of Lestards village and closest-approached the polyline at km 131.83 / ele 830 m, a 2.84 km divergence from the points-config km — flagged by `processing/audit_segment_data.py`. Same alignment principle as Côte de Naves (#490) and Puy de Lachaud (#477). Caveats captured here, not in the data: (1) the mycols/climbfinder community 'summit' of this climb is 821 m at the first crest of our route — km 129.375 in our GPX, ~0.4 km past the points-config km, on a small plateau where elevation peaks at 823 m before a brief dip; (2) the 2020 TdF Stage 12 categorised this climb as Cat 3, 3.8 km @ 6.1% (a tighter anchor than our 7.0 km @ 4.4%, both topping out at the same Lestards-area crest); (3) the road continues to a higher 851 m peak at km 132.52 before entering the Plateau de Millevaches plateau (seg 20 start). The points-config length/gradient is internally consistent with elevation/segment-19.json per tests/utils/climb-gradient.test.ts but diverges from mycols (6.4 km @ 5.1%) and 2020 ASO (3.8 km @ 6.1%) — drift family with Suc au May (#513), sister issue filed."
   },
   "Mont Bessou": {
     "type": "climb",

@@ -79,6 +79,17 @@
     ]
   },
   {
+    "segments": [17, 18, 19],
+    "events": [
+      {
+        "year": 2020,
+        "stage": "Stage 12",
+        "route": "Chauvigny to Sarran",
+        "description": "The same 218 km Hirschi-victory stage that crossed Suc au May (see seg 15) also crossed our segs 17-19 — in the opposite direction. Approaching from the north, the 2020 peloton rolled south through what is now our seg 17 corridor into Treignac, then climbed east up the road our 2026 route descends — the Côte de la Croix du Pey, categorised that day as Cat 3, 3.8 km at 6.1% (a tighter anchor than our points-config 7.0 km at 4.4%; both top out at the same Lestards-area crest). The stage then turned south for Suc au May. For the 2026 Stage 9, this same road network is traversed in reverse: down off Suc au May, through Treignac, up Croix du Pey to the Plateau de Millevaches."
+      }
+    ]
+  },
+  {
     "segments": [22],
     "events": [
       {
