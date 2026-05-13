@@ -3,6 +3,8 @@
 import json
 import os
 
+import pytest
+
 from processing.snapshot_stats import create_snapshot
 
 
@@ -163,6 +165,38 @@ class TestCreateSnapshot:
             snapshot = json.load(f)
 
         assert snapshot["stats"]["asOf"] == "2026-04-07"
+
+    def test_data_cutoff_without_rider_config_raises(self, tmp_path):
+        """Issue #328: silent fallback when rider_config_path is missing is gone.
+        Passing data_cutoff without rider_config_path must fail loudly."""
+        stats = tmp_path / "stats.json"
+        points = tmp_path / "points.json"
+        log = tmp_path / "log.json"
+        output_dir = tmp_path / "snapshots"
+
+        stats.write_text(json.dumps({"asOf": "2026-04-07", "riders": {}}))
+        points.write_text(json.dumps({"riders": {}, "locations": []}))
+        log.write_text(json.dumps({"entries": [{"date": "2026-04-01", "distances": {}}]}))
+
+        with pytest.raises(ValueError, match="rider_config_path is required"):
+            create_snapshot(str(stats), str(points), str(log), 1, str(output_dir),
+                            data_cutoff="2026-04-01")
+
+    def test_data_cutoff_with_missing_config_file_raises(self, tmp_path):
+        """Passing a path that doesn't exist must fail loudly, not silently skip recalculation."""
+        stats = tmp_path / "stats.json"
+        points = tmp_path / "points.json"
+        log = tmp_path / "log.json"
+        output_dir = tmp_path / "snapshots"
+
+        stats.write_text(json.dumps({"asOf": "2026-04-07", "riders": {}}))
+        points.write_text(json.dumps({"riders": {}, "locations": []}))
+        log.write_text(json.dumps({"entries": [{"date": "2026-04-01", "distances": {}}]}))
+
+        with pytest.raises(FileNotFoundError):
+            create_snapshot(str(stats), str(points), str(log), 1, str(output_dir),
+                            data_cutoff="2026-04-01",
+                            rider_config_path=str(tmp_path / "does-not-exist.json"))
 
     def test_overwrites_existing_snapshot(self, tmp_path):
         stats = tmp_path / "stats.json"

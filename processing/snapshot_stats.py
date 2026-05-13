@@ -4,6 +4,7 @@
 import argparse
 import json
 import os
+from datetime import date
 
 from rider_stats import calculate_stats
 
@@ -13,8 +14,44 @@ def load_json(path):
         return json.load(f)
 
 
-def create_snapshot(stats_path, points_path, log_path, segment, output_dir, data_cutoff=None, rider_config_path=None):
-    """Create a snapshot of current rider data for a segment."""
+_RIDER_CONFIG_REQUIRED = object()
+
+
+def create_snapshot(
+    stats_path,
+    points_path,
+    log_path,
+    segment,
+    output_dir,
+    data_cutoff=None,
+    rider_config_path=_RIDER_CONFIG_REQUIRED,
+):
+    """Create a snapshot of current rider data for a segment.
+
+    When data_cutoff is set, rider_config_path must be a path to a readable
+    rider-config.json file: the stats are recalculated from the filtered log so
+    the snapshot's numbers agree with its dataCutoff. Earlier silent-fallback
+    behaviour (continuing with un-recalculated stats when the path was missing
+    or didn't exist) hid configuration errors — see issue #328 acceptance
+    criteria. Callers that genuinely want no recalculation must pass
+    data_cutoff=None explicitly.
+    """
+    if data_cutoff:
+        if rider_config_path is _RIDER_CONFIG_REQUIRED:
+            raise ValueError(
+                "rider_config_path is required when data_cutoff is set. "
+                "Without it, stats cannot be recalculated against the filtered log."
+            )
+        if not rider_config_path or not os.path.exists(rider_config_path):
+            raise FileNotFoundError(
+                f"rider_config_path {rider_config_path!r} not found; cannot recalculate "
+                f"stats for data_cutoff={data_cutoff}."
+            )
+    # When data_cutoff is None we don't need rider_config_path. Coerce sentinel
+    # to None so downstream code can rely on a plain optional path.
+    if rider_config_path is _RIDER_CONFIG_REQUIRED:
+        rider_config_path = None
+
     stats = load_json(stats_path)
     log = load_json(log_path)
 
@@ -26,10 +63,13 @@ def create_snapshot(stats_path, points_path, log_path, segment, output_dir, data
     if data_cutoff and log.get("entries"):
         log["entries"] = [e for e in log["entries"] if e["date"] <= data_cutoff]
 
-    # Recalculate stats from filtered log so numbers match the displayed data
-    if data_cutoff and rider_config_path and os.path.exists(rider_config_path):
+    # Recalculate stats from filtered log so numbers match the displayed data.
+    # reference_date defaults to data_cutoff so the snapshot's
+    # estimatedFinishDate is reproducible (per issue #541): the cutoff is the
+    # canonical "as-of" date for the publication.
+    if data_cutoff:
         rider_config = load_json(rider_config_path)
-        stats = calculate_stats(log, rider_config)
+        stats = calculate_stats(log, rider_config, reference_date=date.fromisoformat(data_cutoff))
 
     # Override asOf to match the last log entry date
     if log.get("entries"):

@@ -3,8 +3,9 @@
 
 import argparse
 import json
+import math
 import statistics
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 
 
 def load_json(path):
@@ -12,22 +13,65 @@ def load_json(path):
         return json.load(f)
 
 
-def calculate_stats(daily_log, rider_config):
-    """Calculate all stats for all riders."""
+def capped_daily_distances(daily_dists, daily_cap):
+    """Apply the rolling daily cap with carry-over to a list of daily distances.
+
+    Each day's cap is the configured daily_cap plus any unused cap carried from
+    earlier days. Returns the list of credited (capped) distances, in input order.
+
+    This helper is the single source of truth for carry-over capping; it is
+    imported by calculate_points.py so the two scripts cannot drift.
+    """
+    capped = []
+    carry = 0.0
+    for d in daily_dists:
+        available = daily_cap + carry
+        credited = min(d, available)
+        capped.append(credited)
+        carry = available - credited
+    return capped
+
+
+def calculate_stats(daily_log, rider_config, reference_date=None):
+    """Calculate all stats for all riders.
+
+    Parameters
+    ----------
+    daily_log, rider_config : dict
+        Parsed JSON data.
+    reference_date : datetime.date, optional
+        The date against which "today"-relative outputs (asOf, estimatedFinishDate)
+        are computed. Defaults to today's date for backwards compatibility with
+        ad-hoc CLI use, but call sites that need reproducible output (publish.sh,
+        snapshots, tests) MUST pass this explicitly. A `date` (not `datetime`) by
+        design: estimated finish dates are reproducible across hours of the day.
+        See issue #541.
+
+    Banker's-rounding rule (see PR for #541, #328):
+        Both estimatedDaysToFinish and estimatedFinishDate use math.floor of the
+        raw float days. estimatedFinishDate = reference_date + floor(days). This
+        matches the seg 11 hotfix and ensures the two displayed values can never
+        disagree.
+    """
+    if reference_date is None:
+        reference_date = date.today()
+    elif isinstance(reference_date, datetime):
+        reference_date = reference_date.date()
+
     riders = {r["id"]: r for r in rider_config["riders"]}
     total_distance = rider_config["totalDistance"]
     daily_cap = rider_config["dailyCap"]
     entries = daily_log["entries"]
 
     if not entries:
-        return {"asOf": datetime.now().strftime("%Y-%m-%d"), "entryNumber": 0, "riders": {}}
+        return {"asOf": reference_date.isoformat(), "entryNumber": 0, "riders": {}}
 
     # Sort entries by date
     entries = sorted(entries, key=lambda e: e["date"])
-    today = datetime.now().strftime("%Y-%m-%d")
+    as_of = reference_date.isoformat()
 
     result = {
-        "asOf": today,
+        "asOf": as_of,
         "entryNumber": len(entries),
         "riders": {},
     }
@@ -70,25 +114,21 @@ def calculate_stats(daily_log, rider_config):
         daily_avg_actual = statistics.mean(daily_dists) if daily_dists else 0
 
         # --- Stats using CAPPED daily distances with carry-over ---
-        # Cap is 2km/day, but unused cap rolls to the next day.
-        # E.g., ride 1km on day 1 -> day 2 cap is 3km (2 + 1 unused)
-        capped_dists = []
-        carry = 0.0
-        for d in daily_dists:
-            available = daily_cap + carry
-            credited = min(d, available)
-            capped_dists.append(credited)
-            carry = available - credited
+        capped_dists = capped_daily_distances(daily_dists, daily_cap)
 
         total_capped = sum(capped_dists)
         daily_avg_capped = statistics.mean(capped_dists) if capped_dists else 0
         distance_remaining = max(0, total_distance - total_capped)
 
         if daily_avg_capped > 0:
-            est_days_to_finish = distance_remaining / daily_avg_capped
-            est_finish_date = (datetime.now() + timedelta(days=est_days_to_finish)).strftime("%Y-%m-%d")
+            est_days_raw = distance_remaining / daily_avg_capped
+            # Floor rule: both displayed days and finish-date offset use the same
+            # integer, so they cannot disagree. See module docstring on rounding.
+            est_days_int = math.floor(est_days_raw)
+            est_finish_date = (reference_date + timedelta(days=est_days_int)).isoformat()
+            est_days_display = est_days_int
         else:
-            est_days_to_finish = None
+            est_days_display = None
             est_finish_date = None
 
         result["riders"][rider_id] = {
@@ -102,7 +142,7 @@ def calculate_stats(daily_log, rider_config):
             "bestThreeDayCombo": round(best_three_day, 1),
             "recentFiveDayAverage": round(recent_five_avg, 2),
             "distanceRemaining": round(distance_remaining, 1),
-            "estimatedDaysToFinish": round(est_days_to_finish) if est_days_to_finish else None,
+            "estimatedDaysToFinish": est_days_display,
             "estimatedFinishDate": est_finish_date,
         }
 
@@ -123,12 +163,18 @@ def main():
     parser.add_argument("--daily-log", default="data/riders/daily-log.json")
     parser.add_argument("--rider-config", default="data/riders/rider-config.json")
     parser.add_argument("--output", default="data/riders/stats.json")
+    parser.add_argument(
+        "--reference-date",
+        default=None,
+        help="ISO date (YYYY-MM-DD) used for asOf and estimatedFinishDate. Defaults to today.",
+    )
     args = parser.parse_args()
 
     daily_log = load_json(args.daily_log)
     rider_config = load_json(args.rider_config)
 
-    stats = calculate_stats(daily_log, rider_config)
+    ref = date.fromisoformat(args.reference_date) if args.reference_date else date.today()
+    stats = calculate_stats(daily_log, rider_config, reference_date=ref)
 
     with open(args.output, "w") as f:
         json.dump(stats, f, indent=2)
