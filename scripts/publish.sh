@@ -157,25 +157,10 @@ print(best if best is not None else 0)
 fi
 echo ""
 
-# Step 1: Update rider stats
-echo "--- Step 1: Updating rider stats ---"
-"$VENV_PYTHON" "$PROJECT_DIR/processing/rider_stats.py" \
-    --daily-log "$PROJECT_DIR/data/riders/daily-log.json" \
-    --rider-config "$PROJECT_DIR/data/riders/rider-config.json" \
-    --output "$PROJECT_DIR/data/riders/stats.json"
-echo ""
-
-# Step 2: Calculate points
-echo "--- Step 2: Calculating points ---"
-"$VENV_PYTHON" "$PROJECT_DIR/processing/calculate_points.py" \
-    --daily-log "$PROJECT_DIR/data/riders/daily-log.json" \
-    --rider-config "$PROJECT_DIR/data/riders/rider-config.json" \
-    --points-config "$PROJECT_DIR/data/competition/points-config.json" \
-    --output "$PROJECT_DIR/data/riders/points.json"
-echo ""
-
-# Step 3: Snapshot stats for current segment
-echo "--- Step 3: Creating stats snapshot for segment $SEGMENT ---"
+# Resolve segment's dataCutoff first, then thread it through every stage so
+# the stats/points/snapshot outputs are reproducible against the cutoff (per
+# issues #541, #328). The order is: find entry file → resolve cutoff → run
+# stats with --reference-date → run points with --data-cutoff → snapshot.
 ENTRY_FILE=$("$VENV_PYTHON" -c "
 import os, re
 entries_dir = '$PROJECT_DIR/content/entries'
@@ -220,6 +205,29 @@ else:
 "
 fi
 echo "Data cutoff for segment $SEGMENT: $DATA_CUTOFF"
+echo ""
+
+# Step 1: Update rider stats (reference-date = data cutoff for reproducibility)
+echo "--- Step 1: Updating rider stats ---"
+"$VENV_PYTHON" "$PROJECT_DIR/processing/rider_stats.py" \
+    --daily-log "$PROJECT_DIR/data/riders/daily-log.json" \
+    --rider-config "$PROJECT_DIR/data/riders/rider-config.json" \
+    --output "$PROJECT_DIR/data/riders/stats.json" \
+    --reference-date "$DATA_CUTOFF"
+echo ""
+
+# Step 2: Calculate points (data-cutoff matches stats so the two cannot drift)
+echo "--- Step 2: Calculating points ---"
+"$VENV_PYTHON" "$PROJECT_DIR/processing/calculate_points.py" \
+    --daily-log "$PROJECT_DIR/data/riders/daily-log.json" \
+    --rider-config "$PROJECT_DIR/data/riders/rider-config.json" \
+    --points-config "$PROJECT_DIR/data/competition/points-config.json" \
+    --output "$PROJECT_DIR/data/riders/points.json" \
+    --data-cutoff "$DATA_CUTOFF"
+echo ""
+
+# Step 3: Snapshot stats for current segment
+echo "--- Step 3: Creating stats snapshot for segment $SEGMENT ---"
 "$VENV_PYTHON" "$PROJECT_DIR/processing/snapshot_stats.py" \
     --stats "$PROJECT_DIR/data/riders/stats.json" \
     --points "$PROJECT_DIR/data/riders/points.json" \

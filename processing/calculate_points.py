@@ -5,16 +5,28 @@ import argparse
 import json
 import random
 
+from rider_stats import capped_daily_distances
+
 
 def load_json(path):
     with open(path, "r") as f:
         return json.load(f)
 
 
+def filter_log_to_cutoff(daily_log, data_cutoff):
+    """Return a log dict containing only entries on or before data_cutoff (ISO date string)."""
+    if data_cutoff is None:
+        return daily_log
+    return {"entries": [e for e in daily_log.get("entries", []) if e["date"] <= data_cutoff]}
+
+
 def calculate_capped_distances(daily_log, rider_config):
     """Calculate cumulative capped distance per rider per day.
 
     Returns dict of rider_id -> list of (date, cumulative_capped_km).
+
+    Carry-over capping delegates to rider_stats.capped_daily_distances so the
+    two scripts cannot drift (see issue #328 acceptance criteria).
     """
     daily_cap = rider_config["dailyCap"]
     entries = sorted(daily_log["entries"], key=lambda e: e["date"])
@@ -22,15 +34,12 @@ def calculate_capped_distances(daily_log, rider_config):
 
     result = {}
     for rider_id in rider_ids:
-        carry = 0.0
-        cumulative = 0.0
+        daily_dists = [e.get("distances", {}).get(rider_id, 0) for e in entries]
+        capped = capped_daily_distances(daily_dists, daily_cap)
         progress = []
-        for entry in entries:
-            dist = entry.get("distances", {}).get(rider_id, 0)
-            available = daily_cap + carry
-            credited = min(dist, available)
+        cumulative = 0.0
+        for entry, credited in zip(entries, capped):
             cumulative += credited
-            carry = available - credited
             progress.append({"date": entry["date"], "cumulative_km": cumulative})
         result[rider_id] = progress
 
@@ -147,11 +156,18 @@ def main():
     parser.add_argument("--points-config", default="data/competition/points-config.json")
     parser.add_argument("--output", default="data/riders/points.json")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for tiebreaking")
+    parser.add_argument(
+        "--data-cutoff",
+        default=None,
+        help="Filter log to entries on or before this date (YYYY-MM-DD). Mirrors snapshot_stats.py.",
+    )
     args = parser.parse_args()
 
     daily_log = load_json(args.daily_log)
     rider_config = load_json(args.rider_config)
     points_config = load_json(args.points_config)
+
+    daily_log = filter_log_to_cutoff(daily_log, args.data_cutoff)
 
     result = calculate_points(daily_log, rider_config, points_config, seed=args.seed)
 
