@@ -13,15 +13,13 @@ Two assertions trap the bug class:
 """
 
 import json
-import os
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import pytest
 
 from processing.calculate_points import calculate_points
 from processing.rider_stats import calculate_stats
-
 
 SNAPSHOT_11_PATH = Path(__file__).resolve().parents[2] / "data" / "riders" / "snapshots" / "snapshot-11.json"
 
@@ -174,8 +172,7 @@ class TestEstimatedFinishConsistency:
             r = result["riders"][rider_id]
             days = r["estimatedDaysToFinish"]
             finish = r["estimatedFinishDate"]
-            # date.fromisoformat works for YYYY-MM-DD strings
-            expected_finish = (ref.replace() + __import__("datetime").timedelta(days=days)).isoformat()
+            expected_finish = (ref + timedelta(days=days)).isoformat()
             assert finish == expected_finish, (
                 f"{rider_id}: cutoff {ref} + {days} days = {expected_finish}, got {finish}"
             )
