@@ -159,3 +159,142 @@ class TestFrontmatterUpdate:
         assert 'title: "Test Entry"' in content
         assert "draft: false" in content
         assert "# Test Entry" in content
+
+
+def write_body(dir_path, filename, body, draft=False):
+    """Write an entry with arbitrary body content under standard frontmatter."""
+    path = os.path.join(dir_path, filename)
+    fm = [
+        "segment: 99",
+        'title: "Test"',
+        "publishDate: 2000-01-01",
+        "images: []",
+        "imagesOptional: true",
+        f"draft: {'true' if draft else 'false'}",
+    ]
+    content = "---\n" + "\n".join(fm) + "\n---\n\n" + body + "\n"
+    with open(path, "w") as f:
+        f.write(content)
+    return path
+
+
+class TestMdcBalanceCheck:
+    """Test the per-file MDC block balance scan."""
+
+    def test_balanced_single_block_no_errors(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        path = write_body(entries_dir, "01.md",
+                          '::inline-figure{src="/x.jpg"}\n::\n')
+        assert mdc_balance_check(path) == []
+
+    def test_unbalanced_open_reports_opener_line(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        path = write_body(entries_dir, "01.md",
+                          '::inline-figure{src="/x.jpg"}\n\nBody text never closed.\n')
+        errors = mdc_balance_check(path)
+        assert len(errors) == 1
+        assert "unclosed MDC block `::inline-figure`" in errors[0]
+        assert ":10:" in errors[0]  # opener is on line 10 after 8-line frontmatter + blank
+
+    def test_orphan_close_reports_close_line(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        path = write_body(entries_dir, "01.md",
+                          'No open block here.\n\n::\n')
+        errors = mdc_balance_check(path)
+        assert len(errors) == 1
+        assert "unmatched MDC close" in errors[0]
+
+    def test_nested_balanced_no_errors(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        path = write_body(entries_dir, "01.md",
+                          '::card\n::inline-figure{src="/x.jpg"}\n::\n::\n')
+        assert mdc_balance_check(path) == []
+
+    def test_inline_form_not_counted_as_open(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        path = write_body(entries_dir, "01.md",
+                          'Some :inline-figure{src="/x.jpg"} text with a single colon.\n')
+        assert mdc_balance_check(path) == []
+
+    def test_code_fence_skipped(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        path = write_body(entries_dir, "01.md",
+                          '```md\n::inline-figure{src="/x.jpg"}\n```\n')
+        assert mdc_balance_check(path) == []
+
+    def test_frontmatter_dash_does_not_open_block(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        # Standard frontmatter is already in write_body; just confirm a body
+        # with no MDC markers returns no errors.
+        path = write_body(entries_dir, "01.md", 'Plain prose only.\n')
+        assert mdc_balance_check(path) == []
+
+    def test_multiple_opens_unbalanced_lists_each(self, entries_dir):
+        from validate_entries import mdc_balance_check
+
+        path = write_body(entries_dir, "01.md",
+                          '::card\n\n::figure\n\nbody\n')
+        errors = mdc_balance_check(path)
+        assert len(errors) == 2
+        assert any("`::card`" in e for e in errors)
+        assert any("`::figure`" in e for e in errors)
+
+
+class TestMdcCliIntegration:
+    """Test the CLI main loop aggregates MDC errors and exits non-zero."""
+
+    def test_cli_green_on_balanced_dir(self, entries_dir, capsys):
+        import validate_entries as ve
+
+        write_body(entries_dir, "01.md",
+                   '::inline-figure{src="/x.jpg"}\n::\n')
+        # Stub argv
+        import sys
+        old_argv = sys.argv
+        sys.argv = ["validate_entries", "--entries-dir", entries_dir, "--non-interactive"]
+        try:
+            ve.main()
+        finally:
+            sys.argv = old_argv
+        out = capsys.readouterr().out
+        assert "MDC blocks balanced" in out
+
+    def test_cli_red_on_unbalanced_dir(self, entries_dir, capsys):
+        import validate_entries as ve
+
+        write_body(entries_dir, "01.md",
+                   '::inline-figure{src="/x.jpg"}\n\nbody never closed.\n')
+        import sys
+        old_argv = sys.argv
+        sys.argv = ["validate_entries", "--entries-dir", entries_dir, "--non-interactive"]
+        try:
+            with pytest.raises(SystemExit) as exc:
+                ve.main()
+            assert exc.value.code == 1
+        finally:
+            sys.argv = old_argv
+        out = capsys.readouterr().out
+        assert "Unbalanced MDC blocks detected" in out
+
+    def test_cli_skips_draft_entries(self, entries_dir, capsys):
+        import validate_entries as ve
+
+        write_body(entries_dir, "01.md",
+                   '::inline-figure{src="/x.jpg"}\n\nbody never closed.\n',
+                   draft=True)
+        import sys
+        old_argv = sys.argv
+        sys.argv = ["validate_entries", "--entries-dir", entries_dir, "--non-interactive"]
+        try:
+            ve.main()
+        finally:
+            sys.argv = old_argv
+        out = capsys.readouterr().out
+        assert "Unbalanced" not in out
