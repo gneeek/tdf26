@@ -1,74 +1,93 @@
 # Planning continuation note
 
-> **Singleton convention:** at most one open planning continuation lives at this path. When a planning session closes that this note tracked, rename to a date-stamped archive (e.g. `docs/planning/2026-05-12-archive.md`) or delete. New sessions overwrite or replace this file.
+> **Singleton convention:** at most one open planning continuation lives at this path. When a planning session closes that this note tracked, rename to a date-stamped archive (e.g. `docs/planning/2026-05-22-archive.md`) or delete. New sessions overwrite or replace this file.
 
 ## Status at handoff
 
-The 2026-05-12 planning session closed the evening of 2026-05-12. There is **no open planning continuation** at this moment. This note exists as a forward-looking pointer for the next planning session, not a mid-session handoff.
+[Retro v1.4.19](https://github.com/gneeek/tdf26/wiki/Retro-v1.4.19) fired 2026-05-22, covering `W20-seg12` + `W20-seg13` + `W21-seg14`. The next planning session is expected Mon 2026-05-25 / Tue 2026-05-26 to (a) close v1.4.19 once its minimal-set issues land, (b) set the theme and scope of v1.4.20.
 
-Next planning trigger is whichever fires first:
+Same-day pre-planning trim (2026-05-22) recorded below: v1.4.19 narrowed to a four-issue minimal close-out set; ten issues reassigned to v1.4.20.
 
-- **Retro after `W20-seg12` production deploy** — fires after the seg 12 publication on Wed 2026-05-13 (production-deploy-bounded per Topic 9c). Retro surfaces its own outputs into `project_next_planning_notes.md`; a planning session typically follows.
-- **Retro after `W20-seg13`** (Sun 2026-05-17) or **`W21-seg14`** (Wed 2026-05-20) — each is a separate retro window under the production-deploy-bounded rule.
-- **Carryforwards reach a threshold** that warrants a session before the next retro fires.
-- **Publisher schedules an explicit session.**
+## Pre-planning trim decision (2026-05-22)
+
+Retro v1.4.19 surfaced that the milestone was past its original close-out target (`W21-seg14` = 2026-05-21) with 14 open issues, and that the "Reader uplift" half of the milestone title had no shipped item. The publisher took **Path B**: stretch v1.4.19 to close after seg 15 or seg 16 with a minimal scope, rather than close the milestone now and reassign all 14 (Path A).
+
+### Kept in v1.4.19 (4 issues)
+
+- [#513](https://github.com/gneeek/tdf26/issues/513) — Suc au May points-config drift. Seg 15 is Suc au May; must land before seg 15 publish (Sun 2026-05-24).
+- [#564](https://github.com/gneeek/tdf26/issues/564) — Chirac burial location in `data/attractions.json`. Seg 15 dossier reaches for Sarran/Chirac adjacency; small data fix.
+- [#535](https://github.com/gneeek/tdf26/issues/535) — Improve entry-card thumbnail selection. Honours the "at least one reader-uplift item ships visibly" criterion in the original scope file; strand brief already written at `docs/strands/strand-535-entry-card-thumbnails.md`.
+- [#518](https://github.com/gneeek/tdf26/issues/518) — Climb summit km drift assertion. Five-instance carry (Lachaud, Naves, Mont Bessou, Croix de Pey, Côte des Gardes); Retro v1.4.19 promoted from candidate to must-have.
+
+### Reassigned to v1.4.20 (10 issues)
+
+[#311](https://github.com/gneeek/tdf26/issues/311), [#326](https://github.com/gneeek/tdf26/issues/326), [#466](https://github.com/gneeek/tdf26/issues/466), [#476](https://github.com/gneeek/tdf26/issues/476), [#479](https://github.com/gneeek/tdf26/issues/479), [#481](https://github.com/gneeek/tdf26/issues/481), [#483](https://github.com/gneeek/tdf26/issues/483), [#486](https://github.com/gneeek/tdf26/issues/486), [#487](https://github.com/gneeek/tdf26/issues/487), [#517](https://github.com/gneeek/tdf26/issues/517).
+
+Rationale: none are reader-visible by the seg 15/16 cycle deadline, none are blocking, and the milestone-as-tag honesty cost of carrying them another cycle is lower than the schedule cost of forcing them in now.
+
+### Sequenced execution this weekend (publisher-driven)
+
+1. Dependabot sweep (8 open PRs).
+2. Seg 15 draft + publish cycle (publishes Sun 2026-05-24).
+3. v1.4.19 planning session at Mon 2026-05-25 / Tue 2026-05-26.
+
+The four kept v1.4.19 issues line up with these phases: #513 and #564 ride the seg 15 cycle; #535 and #518 are planning-session work after.
+
+## Next planning trigger
+
+Mon 2026-05-25 / Tue 2026-05-26 session will:
+
+- Close v1.4.19 once the four kept issues land, or accept further slippage explicitly with a slip-rate-tally row.
+- Set the theme and full scope of v1.4.20 against its now-larger 17-issue list.
+- Decide whether seg 15 and seg 16 cycles belong to v1.4.19's tail or to v1.4.20's head.
 
 ## Reading order for the next session
 
-1. **This note**, then archive it the moment a real continuation is needed.
-2. **`project_next_planning_notes.md`** in agent memory — short as of 2026-05-12 evening (117 lines after the big sweep). Top section "State at handoff to next planning (2026-05-12 evening)" lists decisions recorded today and new artifacts; "Carryforwards for the next planning session" is the active-thread list.
-3. **`docs/planning/v1.4.19-scope.md`** — milestone-scope artifact for the cycle in progress. Retros for `W20-seg12` / `W20-seg13` / `W21-seg14` read this as "what we said we would do."
-4. **`docs/planning/MILESTONE-SCOPE-TEMPLATE.md`** — template the v1.4.19 scope used. Next scope file (when v1.4.20 firms up) uses this template too.
-5. **`docs/planning/2026-05-12-archive.md`** — historical planning notes content swept out of memory at session close, preserved for retro reference.
-6. **`docs/planning/2026-05-07-archive.md`** — older archive from the prior planning session.
+1. **This note.**
+2. **[Retro v1.4.19](https://github.com/gneeek/tdf26/wiki/Retro-v1.4.19)** — its "What we lack" section has eight new carryforward candidates for the v1.4.20 scope.
+3. **`project_next_planning_notes.md`** in agent memory.
+4. **`docs/planning/v1.4.19-scope.md`** — preserved as point-in-time artifact from 2026-05-12, not rewritten.
+5. **`docs/planning/2026-05-12-archive.md`** — prior session archive.
 
 ## State of work at handoff
 
 ### Releases
 
-- **v1.4.18 — closed.** All carryforward issues moved to v1.4.19/v1.4.20/v1.6.0 or fixed inline at session close.
-- **v1.4.19** — Reader uplift and segs 14-16 prep. 16 open issues; spans `W20-seg12` (Wed 2026-05-13) through `W21-seg14` (Wed 2026-05-20). Full scope in [v1.4.19-scope.md](v1.4.19-scope.md).
-- **v1.4.20 - TBD.** 10 open issues. Theme set at the planning session that closes v1.4.19.
+- **v1.4.19** — open. 18 issues closed, 4 kept (per above), 10 reassigned. Close-out target shifted from `W21-seg14` to whichever cycle the four kept issues land in.
+- **v1.4.20 - TBD** — 17 open issues. Theme set at the planning session that closes v1.4.19.
 - **v1.5.0 / v1.6.0** — held for July (Tour de France) / Admin Tooling cycle respectively.
 
-### PRs at session close
+### Production deploys this cycle
 
-- [#543](https://github.com/gneeek/tdf26/pull/543) — STRAND-BRIEF-TEMPLATE.md path fix (closes #510). Awaiting merge.
-- [#544](https://github.com/gneeek/tdf26/pull/544) — STRAND-BRIEF-TEMPLATE.md §10 Retro inputs sub-bullet. Awaiting merge.
+- `W20-seg12` (Wed 2026-05-15), `W20-seg13` (Sun 2026-05-17), `W21-seg14` (Thu 2026-05-21) all shipped on-cadence.
 
-This session's planning artifacts (`docs/planning/v1.4.19-scope.md` + `docs/planning/2026-05-12-archive.md` + updated `docs/planning/NEXT.md`) need a third PR — see the close-out commit checklist below.
+### Upcoming cycles
 
-### Strand state
+- `W21-seg15`, Sun 2026-05-24 — Suc au May, the Barthes arc "develops" beat per `project_barthes_callback.md`. No drafting brief yet at brief-write time of this note; scaffold via `/strand-brief` before spawn.
+- `W22-seg16`, Wed 2026-05-27.
 
-| Strand brief | Status |
-|---|---|
-| `strand-seg-12-drafting.md` | Closed 2026-05-12. PR [#548](https://github.com/gneeek/tdf26/pull/548) merged; entry `content/entries/12-naves-coming-home.md` on `main`. Filed [#547](https://github.com/gneeek/tdf26/issues/547) (attractions.json Saint-Augustin Duhamel divergence) during Mérimée verification. Retro inputs in `project_next_planning_notes.md`. Publication W20-seg12 still pending production deploy Wed 2026-05-13. |
-| `strand-seg-13-drafting.md` | Spawn Thu 2026-05-14 after seg 12 ships. Publication W20-seg13, Sun 2026-05-17. |
-| `strand-498-verify-segs-17-19.md` | Ready to spawn auto-mode, this week. |
-| `strand-499-verify-segs-20-22.md` | Ready to spawn auto-mode, this week. |
-| `strand-500-verify-segs-23-26.md` | Ready to spawn auto-mode, this week. |
-| `strand-voices-design-session.md` | Authored; separate cadence. Spawn when publisher schedules. |
-| Older briefs (`strand-d-content-research.md`, `strand-i-verify-segs-14-16.md`, `strand-claude-md-deprecation.md`, `strand-climb-data.md`, `strand-publish-sh-fail-fast.md`, `strand-skill-strand-brief.md`, `strand-publisher-contract.md`, `strand-tour-history-research.md`, `strand-441-codeql-shell-injection.md`, `strand-519-date-based-tags.md`, `strand-522-entrycard-extraction.md`) | Spawned-and-merged historical briefs. Candidate for sweep at next retro per the strand-brief lifecycle convention. |
+### Open PRs
 
-### Open carryforwards
+Fluid as of this note; the dependabot sweep is one of the three priorities above. Refresh `gh pr list` at planning time.
 
-Active threads (not blocking) per `project_next_planning_notes.md`:
+## Open carryforwards
+
+Active threads (not decision-pending; carry forward to next planning unless cleared):
 
 - Recommended-option calibration — monitor for rubber-stamping.
 - Tully/Piers explainer pages — unfold#44 blocks tdf26#529.
-- Existing milestone names under date-based scheme — future-only; first instance when v1.4.20 firms or v1.4.21 created.
-- Voices design session — spawn on its own cadence.
-- Strand-as-first-class unfold candidate — re-evaluate after v1.4.19 ships under multi-strand cadence.
-
-No decision-actionable carryforwards at the moment.
+- Existing milestone names under date-based scheme — future-only; first instance whenever v1.4.21 is created.
+- Voices design session — spawn when publisher schedules it.
+- Strand-as-first-class unfold candidate — re-evaluate with the v1.4.19 cycle's multi-strand evidence in hand.
+- Retro v1.4.19 "What we lack" items (8) — promotion-decision-actionable at next planning. Climb-coord assertion (#518) and tour-history reader surface (#502) are the two carrying >1 retro per the slip-rate tally row at the bottom of the retro page.
 
 ## Pointers
 
-- v1.4.19 milestone-scope: `/home/jhs/code/tdf26/docs/planning/v1.4.19-scope.md`
+- v1.4.19 milestone-scope (point-in-time): `/home/jhs/code/tdf26/docs/planning/v1.4.19-scope.md`
 - Milestone-scope template: `/home/jhs/code/tdf26/docs/planning/MILESTONE-SCOPE-TEMPLATE.md`
 - Strand briefs: `/home/jhs/code/tdf26/docs/strands/`
 - Planning-notes file (durable input/output): `/home/jhs/.claude/projects/-home-jhs-code-tdf26/memory/project_next_planning_notes.md`
 - 2026-05-12 archive: `/home/jhs/code/tdf26/docs/planning/2026-05-12-archive.md`
-- 2026-05-07 archive: `/home/jhs/code/tdf26/docs/planning/2026-05-07-archive.md`
 - Roadmap (wiki): https://github.com/gneeek/tdf26/wiki/Roadmap
+- Retro v1.4.19 (wiki): https://github.com/gneeek/tdf26/wiki/Retro-v1.4.19
 - Slip-rate tally (wiki): https://github.com/gneeek/tdf26/wiki/Slip-rate-tally
