@@ -85,12 +85,24 @@
         "stage": "Stage 17",
         "route": "Brive to Montlucon",
         "description": "Serge Baguet of Belgium won the breakaway finish into Montlucon; Lance Armstrong in yellow (results subsequently annulled for doping). Brive's most recent Tour departure before 2012. The previous day's Stage 16 finish at Sarran — a presidential-courtesy stage town for then-sitting-President Jacques Chirac — was adjacent to the corridor (Sarran sits ~10 km north of seg 15)."
+      },
+      {
+        "year": 2024,
+        "stage": "Tour du Limousin Stage 3",
+        "route": "La Riviere-de-Mansac to Argentat-sur-Dordogne",
+        "description": "Adjacent context — the start at La Riviere-de-Mansac sits in the Brive agglomeration ~15 km west of Brive, and the stage ran south-east toward Argentat well off the Stage 9 polyline. Jefferson Cepeda soloed in from 10 km out; Alex Baudin won the GC. The Tour du Limousin is the corridor's regular pro race — the resident that the 2026 Tour visits as guest."
       }
     ]
   },
   {
     "segments": [10],
     "events": [
+      {
+        "year": 1976,
+        "stage": "Stage 19",
+        "route": "Sainte-Foy-la-Grande to Tulle",
+        "description": "Hubert Mathis of France won by 7 seconds from a 9-man breakaway; Italy's Enrico Paolini second. Lucien Van Impe held yellow. The previous year's winner Bernard Thevenet abandoned during this stage. The first half of a two-day Tulle visit — the next morning Stage 20 (Tulle to Puy-de-Dome) launched Van Impe toward his only Grand Tour victory (see the 1976 Stage 20 entry)."
+      },
       {
         "year": 1976,
         "stage": "Stage 20",
@@ -100,12 +112,30 @@
         "videoTitle": "TV broadcast (YouTube)"
       },
       {
+        "year": 1979,
+        "stage": "Tour du Limousin Stage 5",
+        "route": "Tulle to Tulle",
+        "description": "Final stage of the 1979 Tour du Limousin, a circuit race departing and finishing in Tulle — a full Correze loop on roads that overlap large parts of the Stage 9 corridor's mid-section."
+      },
+      {
+        "year": 1987,
+        "stage": "Tour du Limousin Stage 4",
+        "route": "Tulle to Limoges",
+        "description": "Final stage of the 1987 Tour du Limousin, departing from Tulle. Kim Andersen won the stage; Charly Mottet — the Systeme U rider who'd lost the Tour de France yellow jersey on the corridor's Chaumeil stage two weeks earlier (see seg 15) — won the GC."
+      },
+      {
         "year": 1996,
         "stage": "Stage 14",
         "route": "Besse-en-Chandesse to Tulle",
         "description": "Bastille Day stage into Tulle won in a sprint by Djamolidine Abdoujaparov, the Tashkent Terror. Bjarne Riis in yellow on his way to overall victory.",
         "videoUrl": "https://www.youtube.com/watch?v=3WUztWV7_tQ",
         "videoTitle": "TV broadcast (YouTube)"
+      },
+      {
+        "year": 1997,
+        "stage": "Tour du Limousin Stage 2",
+        "route": "Le Moutier-d'Ahun to Tulle",
+        "description": "Tulle finish. Frederic Guesdon won the stage ahead of Frederic Magnien and Arvis Piziks. Guesdon would go on to win Paris-Roubaix the following spring — his Tulle stage was a marker for the breakthrough year."
       }
     ]
   },
