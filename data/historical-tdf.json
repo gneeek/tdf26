@@ -49,6 +49,42 @@
         "stage": "Stage 20",
         "route": "Brive to Puy-de-Dome",
         "description": "Pierre Matignon, the lanterne rouge of the race, attacked from a small group and held off the field for one of the most romantic stage wins in Tour history. Merckx held yellow. Brive was the launch pad for the underdog day."
+      },
+      {
+        "year": 1973,
+        "stage": "Stage 17",
+        "route": "Sainte-Foy-la-Grande to Brive",
+        "description": "Claude Tollet of France won the stage into Brive; Luis Ocana in yellow. The third Brive double-header in nine years — Ocana dominated the Massif Central transitions and won the next day's Stage 18 to the Puy-de-Dome, on his way to his only Tour victory."
+      },
+      {
+        "year": 1973,
+        "stage": "Stage 18",
+        "route": "Brive to Puy-de-Dome",
+        "description": "Luis Ocana of Spain won the mountaintop finish at the Puy-de-Dome, dominating the Massif Central transition en route to his only Tour win. Brive was the launch pad."
+      },
+      {
+        "year": 1987,
+        "stage": "Stage 12",
+        "route": "Brive to Bordeaux",
+        "description": "Davis Phinney of the USA (7-Eleven) won the sprint — a rare American sprint win of the 1980s. Martial Gayant in yellow. The previous day, Stage 11 had finished at Chaumeil with Gayant's Systeme U teammate Charly Mottet losing the jersey on the same day Gayant inherited it (see seg 15). The corridor finished the day at Chaumeil, slept in Brive, and departed for Bordeaux."
+      },
+      {
+        "year": 1998,
+        "stage": "Stage 6",
+        "route": "La Chatre to Brive",
+        "description": "Mario Cipollini of Italy won the sprint into Brive — his second consecutive stage win of the race. Stuart O'Grady in yellow. The first of three consecutive days the 1998 Tour spent in or around the Correze; the Festina doping scandal would break the next evening, on the eve of Stage 7."
+      },
+      {
+        "year": 1998,
+        "stage": "Stage 8",
+        "route": "Brive to Montauban",
+        "description": "Jacky Durand of France won from the breakaway as the Festina-less peloton left the corridor; Laurent Desbiens in yellow. The 1998 Tour had spent three full days in the Correze (Stage 6 finish at Brive, Stage 7 ITT around Tulle, Stage 8 departure from Brive) — the corridor was the geographic stage on which the Festina story broke (see seg 12-13 for Stage 7)."
+      },
+      {
+        "year": 2001,
+        "stage": "Stage 17",
+        "route": "Brive to Montlucon",
+        "description": "Serge Baguet of Belgium won the breakaway finish into Montlucon; Lance Armstrong in yellow (results subsequently annulled for doping). Brive's most recent Tour departure before 2012. The previous day's Stage 16 finish at Sarran — a presidential-courtesy stage town for then-sitting-President Jacques Chirac — was adjacent to the corridor (Sarran sits ~10 km north of seg 15)."
       }
     ]
   },
