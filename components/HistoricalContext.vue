@@ -5,7 +5,7 @@
       <div v-for="(event, idx) in events" :key="idx" class="border-l-4 border-correze-red pl-4">
         <div v-if="event.year" class="flex items-baseline gap-2 mb-1">
           <span class="font-mono font-bold text-correze-red">{{ event.year }}</span>
-          <span v-if="event.stage" class="text-sm text-stone-500">{{ event.stage }}</span>
+          <span v-if="event.stage" class="text-sm font-medium text-stone-700">{{ event.stage }}</span>
           <span v-if="event.route" class="text-sm text-stone-400">{{ event.route }}</span>
         </div>
         <p class="text-sm text-stone-600 leading-relaxed">{{ event.description }}</p>
@@ -16,6 +16,16 @@
           rel="noopener"
           class="text-sm text-correze-red hover:underline mt-1 inline-block"
         >▶ {{ event.videoTitle || 'Watch on YouTube' }}</a>
+        <div v-if="event.photos && event.photos.length" class="mt-1 flex flex-wrap gap-x-4">
+          <a
+            v-for="(photo, pIdx) in event.photos"
+            :key="pIdx"
+            :href="photo.url"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-correze-red hover:underline inline-block"
+          >📷 {{ photo.title }}</a>
+        </div>
       </div>
     </div>
   </div>
