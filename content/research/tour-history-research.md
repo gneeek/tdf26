@@ -585,23 +585,23 @@ Each item below describes a gap (per `feedback_issues_describe_problems.md`). Th
 
 On-corridor events:
 
-- [ ] 1951 Stage 10: Clermont-Ferrand → Brive (men's TdF; seg 1; pairs with already-corpus 1951 Stage 11 Koblet solo). Source: https://www.bikeraceinfo.com/tdf/tdf1951.html
-- [ ] 1964 Stage 19: Bordeaux → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Anquetil-Poulidor Puy-de-Dôme launch pad). Source: https://www.bikeraceinfo.com/tdf/tdf1964.html
-- [ ] 1969 Stage 19: Libourne → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Hoban + Matignon underdog). Source: https://www.bikeraceinfo.com/tdf/tdf1969.html
-- [ ] 1973 Stage 17: Sainte-Foy-la-Grande → Brive + Stage 18: Brive → Puy-de-Dôme (men's TdF; seg 1; Ocaña era). Source: https://www.bikeraceinfo.com/tdf/tdf1973.html
-- [ ] 1976 Stage 19: Sainte-Foy-la-Grande → Tulle (men's TdF; seg 10; pairs with already-corpus 1976 Stage 20). Source: https://www.bikeraceinfo.com/tdf/tdf1976.html
-- [ ] 1987 Stage 12: Brive → Bordeaux (men's TdF; seg 1; Davis Phinney; pairs with #478's Chaumeil work). Source: https://www.bikeraceinfo.com/tdf/tdf1987.html
-- [ ] 1998 Stage 6: La Châtre → Brive (men's TdF; seg 1; Cipollini). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html
-- [ ] 1998 Stage 7 ITT: Meyrignac-l'Église → Corrèze town (men's TdF; mid-corridor segs 12-13 vicinity; Ullrich + Festina expulsion). Source: https://www.procyclingstats.com/race/tour-de-france/1998/stage-7
-- [ ] 1998 Stage 8: Brive → Montauban (men's TdF; seg 1; Jacky Durand). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html
-- [ ] 2001 Stage 17: Brive → Montluçon (men's TdF; seg 1; Serge Baguet). Source: https://www.bikeraceinfo.com/tdf/tdf2001.html
-- [ ] Tour du Limousin 1979 Stage 5: Tulle → Tulle (regional race; seg 10).
-- [ ] Tour du Limousin 1987 Stage 4: Tulle → Limoges (regional race; seg 10).
-- [ ] Tour du Limousin 1997 Stage 2: Le Moutier-d'Ahun → Tulle (regional race; seg 10).
-- [ ] Tour du Limousin 2009 Stage 1: Limoges → Ussel (regional race; seg 27 — same finish town as 2026 TdF Stage 9). Source: https://fr.wikipedia.org/wiki/Tour_du_Limousin_2009
-- [ ] Tour du Limousin 2024 Stage 3: La Rivière de Mansac → Argentat (regional race; near seg 1).
-- [ ] Tour du Limousin 2025 Stage 3: Saint-Jal → Masseret (regional race; corridor-adjacent north of seg 12-15).
-- [ ] Paris-Corrèze 2007 / 2008 / 2009 / 2010 / 2011 / 2012 final stages at Chaumeil (regional race; seg 15). The existing `[25, 26, 27]` keying is wrong (see #503 + dossier §Paris-Corrèze); recommendation is to re-key to `[15]` and consider per-edition entries surfacing the 2008 (Brive start) and 2009 (Tulle → Chaumeil corridor-spanning) editions.
+- [x] 1951 Stage 10: Clermont-Ferrand → Brive (men's TdF; seg 1; pairs with already-corpus 1951 Stage 11 Koblet solo). Source: https://www.bikeraceinfo.com/tdf/tdf1951.html — landed in PR #581 (session 3).
+- [x] 1964 Stage 19: Bordeaux → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Anquetil-Poulidor Puy-de-Dôme launch pad). Source: https://www.bikeraceinfo.com/tdf/tdf1964.html — both landed in PR #581 (session 3).
+- [x] 1969 Stage 19: Libourne → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Hoban + Matignon underdog). Source: https://www.bikeraceinfo.com/tdf/tdf1969.html — both landed in PR #581 (session 3).
+- [x] 1973 Stage 17: Sainte-Foy-la-Grande → Brive + Stage 18: Brive → Puy-de-Dôme (men's TdF; seg 1; Ocaña era). Source: https://www.bikeraceinfo.com/tdf/tdf1973.html — both landed in PR #581 (session 3).
+- [x] 1976 Stage 19: Sainte-Foy-la-Grande → Tulle (men's TdF; seg 10; pairs with already-corpus 1976 Stage 20). Source: https://www.bikeraceinfo.com/tdf/tdf1976.html — landed in PR #581 (session 3).
+- [x] 1987 Stage 12: Brive → Bordeaux (men's TdF; seg 1; Davis Phinney; pairs with #478's Chaumeil work). Source: https://www.bikeraceinfo.com/tdf/tdf1987.html — landed in PR #581 (session 3).
+- [x] 1998 Stage 6: La Châtre → Brive (men's TdF; seg 1; Cipollini). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html — landed in PR #581 (session 3).
+- [x] 1998 Stage 7 ITT: Meyrignac-l'Église → Corrèze town (men's TdF; mid-corridor segs 12-13 vicinity; Ullrich + Festina expulsion). Source: https://www.procyclingstats.com/race/tour-de-france/1998/stage-7 — landed in PR #581 (session 3) as new group `[12, 13]`.
+- [x] 1998 Stage 8: Brive → Montauban (men's TdF; seg 1; Jacky Durand). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html — landed in PR #581 (session 3).
+- [x] 2001 Stage 17: Brive → Montluçon (men's TdF; seg 1; Serge Baguet). Source: https://www.bikeraceinfo.com/tdf/tdf2001.html — landed in PR #581 (session 3).
+- [x] Tour du Limousin 1979 Stage 5: Tulle → Tulle (regional race; seg 10) — landed in PR #581 (session 3).
+- [x] Tour du Limousin 1987 Stage 4: Tulle → Limoges (regional race; seg 10) — landed in PR #581 (session 3).
+- [x] Tour du Limousin 1997 Stage 2: Le Moutier-d'Ahun → Tulle (regional race; seg 10) — landed in PR #581 (session 3).
+- [x] Tour du Limousin 2009 Stage 1: Limoges → Ussel (regional race; seg 27 — same finish town as 2026 TdF Stage 9). Source: https://fr.wikipedia.org/wiki/Tour_du_Limousin_2009 — landed in PR #581 (session 3) as new group `[27]`.
+- [x] Tour du Limousin 2024 Stage 3: La Rivière de Mansac → Argentat (regional race; near seg 1) — landed in PR #581 (session 3) as `[1, 2]` adjacent-context entry.
+- [x] Tour du Limousin 2025 Stage 3: Saint-Jal → Masseret (regional race; corridor-adjacent north of seg 12-15) — landed in PR #581 (session 3) as new group `[12]` adjacent-context entry.
+- [x] Paris-Corrèze 2007 / 2008 / 2009 / 2010 / 2011 / 2012 final stages at Chaumeil (regional race; seg 15). Re-keying landed earlier (in seg 23-27 verification PR #500) — entry already present in `[15]` group; PR #581 did not duplicate. Per-edition stage rows (2008 Brive start, 2009 Tulle → Chaumeil) deferred; not landed in session 3 because the consolidated `[15]` Paris-Corrèze entry already names them inline.
 
 Closes when each event has been added to `data/historical-tdf.json` with verified segment keying. The exact polyline-keying for each event is in the dossier's per-event corpus.
 
@@ -680,3 +680,30 @@ The four flaky URLs all have alternative coverage:
 - `Passage_Tour_de_France_2020.jpg`: CC BY-SA 4.0 (GAFUCRU, 2020-07-26). Verified.
 - `Les_Monédières.jpg`: Free Art License — copyleft, free for commercial + non-commercial (Phiffou, photographed 2004-11-19). Verified.
 - `Raymond_Poulidor_-_IMG_1906_(cropped)_(cropped).JPG`: CC BY-SA 3.0 (Poudou99, 2012-04-03). Verified.
+
+### Session 3 (corridor expansion landing, 2026-05-24)
+
+Session 3 was the data-population strand for #527 (PR #581). Moderate scope chosen at the AskUserQuestion checkpoint: land all dossier carryforwards that pass single-source verification.
+
+**Events landed in `data/historical-tdf.json`** (19 events across 4 commits, batches of 5/7/5/3):
+
+Seg [1, 2] additions (12 events): 1951 S10, 1964 S19, 1964 S20, 1969 S19, 1969 S20, 1973 S17, 1973 S18, 1987 S12, 1998 S6, 1998 S8, 2001 S17, Tour du Limousin 2024 S3 (adjacent).
+
+Seg [10] additions (4 events): 1976 S19, Tour du Limousin 1979 S5, Tour du Limousin 1987 S4, Tour du Limousin 1997 S2.
+
+New keying groups: `[12]` (Tour du Limousin 2025 S3, adjacent); `[12, 13]` (1998 Stage 7 ITT — Ullrich, first post-Festina stage); `[27]` (Tour du Limousin 2009 S1 Limoges → Ussel — the closest documented finish-line antecedent to the 2026 TdF Stage 9 finish).
+
+**Schema use:** existing shape (`segments` int[]; `events[].year` int|null, `stage` string, `route` string, `description` string, optional `videoUrl`/`videoTitle`). No new fields added; `description` carries inline source-attribution context where the link mattered (e.g., "see seg 15" cross-references; "verified during seg 23-27 verification #500" pointers retained from prior work).
+
+**Verification posture:** dossier-cited single-source claims were trusted for routine details (stage winner, year, route termini). Three substantive cross-checks during landing:
+
+- 1976 Stage 19 Bernard Thévenet abandonment: dossier places it on the 1976 Sainte-Foy-la-Grande → Tulle stage, not the 1973 Brive double-header — applied accordingly.
+- 1998 Festina expulsion timing: dossier framing "morning the Festina scandal broke" was tightened to "Festina had been expelled the previous evening" (the expulsion happened the night before Stage 7 ITT, not the morning of). Phrasing in the 1998 S7 ITT description corrected accordingly.
+- 1997 Tour du Limousin Stage 2 third-place rider: dossier says "Piziks"; resolved as Arvis Piziks (Latvian rider) in the description.
+
+**Not landed in session 3:**
+
+- Per-edition Paris-Corrèze stage rows (2008 Brive start, 2009 Tulle → Chaumeil corridor-spanning) — the consolidated `[15]` Paris-Corrèze entry from earlier work already names them inline; per-edition rows would duplicate without adding reader-facing information.
+- Backfill of thin existing entries (the 1996 Stage 14 Tulle entry's Hollande-anachronism point, etc.) — out of Moderate scope.
+
+**Surprises during session:** none material. The HistoricalContext.vue component renders plain text from `event.description` (mustache interpolation, no markdown), confirming that any inline asterisks/bolds would have rendered literally — no such markup was used.
