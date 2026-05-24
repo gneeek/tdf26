@@ -45,6 +45,9 @@ The road climbs out of Chaumeil and onto the categorised climb. The Suc au May, 
 
 At the actual summit, off the road, sits the table d'orientation. A hexagonal Volvic stone base, an enamelled-lava engraving by M. Seurat of the Auvergne enamelled-lava factory naming the visible peaks from the Monts d'Auvergne in the east to the Plateau de Millevaches in the north to the lower Limousin valleys in the south, the hundred and thirty-second such table placed in France and North Africa, the oldest in the Limousin. It was inaugurated on the twenty-fifth of August nineteen hundred and thirty-five by Henry de Jouvenel[^jouvenel], at the time senator of the Corrèze, former minister, former French ambassador to Italy. The Jouvenel of the Suc au May is the same Henry de Jouvenel whose Maison de la Sirène at Collonges-la-Rouge, twelve segments back at kilometre twenty-two, was the house he kept with Colette. The 2026 route climbs to within four hundred and forty-two metres of a marker placed by the man whose Collonges house the riders passed eighty kilometres ago. The corridor's longest verified cross-segment thread closes at a stone the riders do not, on the climbing day, walk fifteen minutes to see.
 
+::video-embed{embedUrl="https://www.youtube.com/embed/ZXQasOzc9zg" caption="Aerial view of the Suc au May summit and its table d'orientation – the marker the road climbs past but does not reach." attribution="Source: YouTube channel CAM ON BIG AIR."}
+::
+
 The road turns off the high point and begins to descend. Segment sixteen owns the descent off the massif.
 
 [^calmis]: *Chaumeil* derives from the prélatin Celtic root *calmis* ("plateau désert, lande" – desert plateau, heath), with the Latin diminutive suffix *-iculus*: the small heath. The Occitan *chaumo / chalmo* is the cognate that becomes the modern French *chaume*. Source: [Chaumeil – Wikipédia](https://fr.wikipedia.org/wiki/Chaumeil), §Toponymie.
