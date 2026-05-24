@@ -146,7 +146,7 @@
         "year": 1987,
         "stage": "Stage 11 (men's)",
         "route": "Poitiers to Chaumeil",
-        "description": "255 km finish at Chaumeil on Saturday 11 July 1987. Martial Gayant (Système U) won solo from a breakaway 13 km out, ahead of Laudelino Cubino and Kim Andersen. Charly Mottet, Gayant's Système U teammate, lost the yellow jersey on the same stage. The same day saw the women's Tour de France Féminin Stage 3 also finish in Chaumeil — the only year both editions of the Tour finished a stage in the village on the same day.",
+        "description": "255 km finish at Chaumeil on Saturday 11 July 1987. Martial Gayant (Système U) won solo from a breakaway 13 km out, ahead of Laudelino Cubino and Kim Andersen. Charly Mottet, Gayant's Système U teammate, lost the yellow jersey on the same stage. The same day saw the women's Tour de France Féminin Stage 3 also finish in Chaumeil – the only year both editions of the Tour finished a stage in the village on the same day.",
         "photos": [
           { "url": "https://www.memoirefilmiquenouvelleaquitaine.fr/photos/tour-de-france-1987-36", "title": "Stage finish (L'Echo du Centre archive)" },
           { "url": "https://www.memoirefilmiquenouvelleaquitaine.fr/photos/tour-de-france-1987-5", "title": "Podium with the Chiracs (L'Echo du Centre archive)" }
@@ -162,25 +162,30 @@
         "year": 2017,
         "stage": "Tour du Limousin Stage 3 (50th edition)",
         "route": "Saint-Pantaléon-de-Larche to Chaumeil",
-        "description": "184.7 km Chaumeil finish on Thursday 17 August 2017, the queen stage of the 50th-anniversary Tour du Limousin. Won by Cyril Gautier (AG2R-La Mondiale). The stage climbed Côte de la Vaysse and Côte de Lestards before three finishing circuits over the Côte des Géants in Chaumeil — the closest pro-cycling shadow on the Stage 9 corridor before the 2026 Tour."
+        "description": "184.7 km Chaumeil finish on Thursday 17 August 2017, the queen stage of the 50th-anniversary Tour du Limousin. Won by Cyril Gautier (AG2R-La Mondiale). The stage climbed Côte de la Vaysse and Côte de Lestards before three finishing circuits over the Côte des Géants in Chaumeil."
       },
       {
         "year": 2020,
         "stage": "Stage 12",
         "route": "Chauvigny to Sarran",
-        "description": "First Tour de France appearance of the Suc au May. 218 km — the longest stage of the 2020 Tour — on Thursday 10 September 2020. Marc Hirschi (Sunweb) won solo, his winning move launched on the Suc au May descent. The stage was dedicated to Raymond Poulidor through Saint-Léonard-de-Noblat. The finish at Sarran (4 km off the Stage 9 route at km 99.7) was a tribute to the Chirac family home."
+        "description": "First Tour de France appearance of the Suc au May. 218 km, the longest stage of the 2020 Tour, on Thursday 10 September 2020. Marc Hirschi (Sunweb) won solo, his winning move launched on the Suc au May descent. The stage was dedicated to Raymond Poulidor through Saint-Léonard-de-Noblat. The finish at Sarran was a tribute to the Chirac family home.",
+        "videoUrl": "https://www.youtube.com/watch?v=kApckfm8AqI",
+        "videoTitle": "Stage 12 highlights: Hirschi solo win (TNT Sports, YouTube)"
       },
       {
         "year": 1952,
         "stage": "Bol d'Or des Monédières",
         "route": "Chaumeil",
-        "description": "Post-Tour criterium founded in 1952 by Chaumeil-born accordionist Jean Ségurel and run on a circuit around Chaumeil. Held annually 1952–1967, then revived 1981–2002. Winners read like a roll-call of the post-war peloton: Coppi (1953), Anquetil (1955, 1962), Géminiani (1956–58), Poulidor (1963, 1967, with a 3rd place behind Gérard Saint and Ercole Baldini in 1959), Hinault (1982). The criterium is the reason the village punches well above its 350-resident weight in French cycling memory; the Côte des Géants (the climb the 2017 Tour du Limousin used as its finishing-circuit challenge) takes its name from these post-Tour exhibitions."
+        "description": "Post-Tour criterium founded in 1952 by Chaumeil-born accordionist Jean Ségurel and run on a circuit around Chaumeil. Held annually 1952–1967, then revived 1981–2002. Winners read like a roll-call of the post-war peloton: Coppi (1953), Anquetil (1955, 1962), Géminiani (1956–58), Poulidor (1963, 1967, with a 3rd place behind Gérard Saint and Ercole Baldini in 1959), Hinault (1982). The criterium is the reason the village punches well above its 350-resident weight in French cycling memory; the Côte des Géants (the climb the 2017 Tour du Limousin used as its finishing-circuit challenge) takes its name from these post-Tour exhibitions.",
+        "photos": [
+          { "url": "https://www.memoirefilmiquenouvelleaquitaine.fr/dossiers/le-bol-d-or-des-monedieres-2", "title": "Cinémathèque archive: Bol d'Or dossier (text, archival photos, Manoury film notes)" }
+        ]
       },
       {
         "year": 2001,
         "stage": "Paris-Corrèze",
         "route": "Final stages closing at Chaumeil",
-        "description": "UCI 2.1 stage race created in 2001 by 1983/1984 Tour de France winner Laurent Fignon with Corrézien motorsport champion Max Mamers and the Conseil général de la Corrèze. From the 2005 edition onward, the final stage closed with five laps of the historic Bol d'Or des Monédières circuit at Chaumeil — explicitly preserving the legacy of the post-Tour criterium. Six confirmed Chaumeil finishes: 2007 (Vigeois → Chaumeil, won by Edvald Boasson Hagen at age 20), 2008 (Brive → Chaumeil), 2009 (Tulle → Chaumeil — the strongest single-stage corridor overlap), 2010, 2011 (Objat → Chaumeil), 2012 (Objat → Chaumeil, final edition). The race did not run in 2013 and has not been organised since. Re-keyed from segments [25, 26, 27] to [15] in seg 23-27 verification (#500) per the #502 tour-history dossier: every documented Paris-Corrèze finish was at Chaumeil (seg 15), not Ussel."
+        "description": "UCI 2.1 stage race created in 2001 by 1983/1984 Tour de France winner Laurent Fignon with Corrézien motorsport champion Max Mamers and the Conseil général de la Corrèze. From the 2005 edition onward, the final stage closed with five laps of the historic Bol d'Or des Monédières circuit at Chaumeil, explicitly preserving the legacy of the post-Tour criterium. Six confirmed Chaumeil finishes: 2007 (Vigeois → Chaumeil, won by Edvald Boasson Hagen at age 20), 2008 (Brive → Chaumeil), 2009 (Tulle → Chaumeil), 2010, 2011 (Objat → Chaumeil), 2012 (Objat → Chaumeil, final edition). The race did not run in 2013 and has not been organised since."
       }
     ]
   },
