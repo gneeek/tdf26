@@ -49,6 +49,20 @@ ELEVATION_RISING_INTO_SUMMIT_TOL_M = 5.0
 # smoothing window in elevation_profile.py.
 GRADIENT_CONSISTENCY_REL_TOL = 0.20
 
+# Canonical points scale per climb category. The project uses a custom
+# 4-position rider-competition scale (not the official polka-dot scale):
+# rank-1 points = 2 × (5 − category) for numeric Cat 4–1, with HC continuing
+# the linear progression. #513 surfaced this as the source of truth after
+# the Suc au May entry (category="HC", points=[10,8,6,4]) was discovered to
+# be internally inconsistent with the existing Cat 2–4 entries.
+CATEGORY_POINTS_SCALE = {
+    4: [2, 1, 0, 0],
+    3: [4, 3, 2, 1],
+    2: [6, 4, 2, 1],
+    1: [8, 6, 4, 2],
+    "HC": [10, 8, 6, 4],
+}
+
 
 def load_elevation_track(elevation_dir, segments):
     """Concatenate per-segment elevation files into a single (cum_km, ele) sequence.
@@ -130,6 +144,33 @@ def validate_elevation(climbs, track):
                         f"{expected_gain:.0f}m gain; GPX shows {actual_gain:.0f}m "
                         f"({rel_err * 100:+.0f}% from expected, tolerance ±{int(GRADIENT_CONSISTENCY_REL_TOL * 100)}%)"
                     )
+    return errors
+
+
+def validate_category_points_scale(climbs):
+    """Each climb's points array must match the canonical scale for its category.
+
+    Catches drift between the `category` and `points` fields — for example, an
+    HC-labelled climb whose points array is actually the Cat 1 prefix
+    [10, 8, 6, 4] (the #513 Suc au May bug).
+    """
+    errors = []
+    for c in climbs:
+        name = c["name"]
+        category = c.get("category")
+        points = c.get("points")
+        expected = CATEGORY_POINTS_SCALE.get(category)
+        if expected is None:
+            errors.append(
+                f"climb {name!r}: category {category!r} has no canonical points scale "
+                f"(expected one of {sorted(CATEGORY_POINTS_SCALE.keys(), key=str)})"
+            )
+            continue
+        if points != expected:
+            errors.append(
+                f"climb {name!r}: category {category!r} expects points {expected}; "
+                f"got {points}"
+            )
     return errors
 
 
@@ -219,6 +260,7 @@ def main():
 
     errors = validate(points_config, segments)
     errors += validate_elevation(points_config.get("climbs", []), track)
+    errors += validate_category_points_scale(points_config.get("climbs", []))
 
     if errors:
         print(f"FAIL: {len(errors)} divergence(s):")
