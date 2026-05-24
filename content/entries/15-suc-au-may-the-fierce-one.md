@@ -8,8 +8,9 @@ kmEnd: 106
 gpxFile: /gpx/segment-15.gpx
 elevationData: /data/elevation/segment-15.json
 images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Mus%C3%A9e_de_la_Maison_des_Mon%C3%A9di%C3%A8res_%C3%A0_Chaumeil_01.jpg/1280px-Mus%C3%A9e_de_la_Maison_des_Mon%C3%A9di%C3%A8res_%C3%A0_Chaumeil_01.jpg","alt":"Interior of the Musée Jean Ségurel at the Maison des Monédières in Chaumeil, the seasonal museum the entry names","author":"Celeda","authorUrl":"https://commons.wikimedia.org/wiki/User:Celeda","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_de_la_Maison_des_Mon%C3%A9di%C3%A8res_%C3%A0_Chaumeil_01.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/TOsucMay.JPG/1280px-TOsucMay.JPG","alt":"The table d'orientation at the Suc au May summit, inaugurated 25 August 1935 by Henry de Jouvenel","author":"Anthospace","authorUrl":"https://commons.wikimedia.org/wiki/User:Anthospace","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:TOsucMay.JPG"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Chaumeil_-_La_place_de_l%27%C3%A9glise.jpg/1280px-Chaumeil_-_La_place_de_l%27%C3%A9glise.jpg","alt":"La place de l'église, the church square in the Chaumeil bourg","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/User:Renhour48","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Chaumeil_-_La_place_de_l%27%C3%A9glise.jpg"}]
-weather: null
+weather: {"fetchedAt": "2026-05-24", "current": {"temp": 32, "conditions": "Clear sky", "wind": "6 km/h ESE"}, "forecast": null}
 draft: false
+dataCutoff: 2026-05-24
 ---
 
 # Suc au May - The Fierce One
