@@ -17,7 +17,6 @@ the build does not depend on network availability.
 """
 
 import argparse
-import io
 import json
 import os
 import re
