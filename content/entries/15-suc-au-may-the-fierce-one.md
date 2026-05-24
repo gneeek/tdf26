@@ -1,17 +1,73 @@
 ---
 segment: 15
 title: "Suc au May - The Fierce One"
-subtitle: "Km 98-106"
+subtitle: "Km 98-106: Chaumeil, the climb to the road-peak, and the summit four hundred metres off the bitumen"
 publishDate: 2026-05-24
 kmStart: 98
 kmEnd: 106
 gpxFile: /gpx/segment-15.gpx
 elevationData: /data/elevation/segment-15.json
-images: []
+images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Mus%C3%A9e_de_la_Maison_des_Mon%C3%A9di%C3%A8res_%C3%A0_Chaumeil_01.jpg/1280px-Mus%C3%A9e_de_la_Maison_des_Mon%C3%A9di%C3%A8res_%C3%A0_Chaumeil_01.jpg","alt":"Interior of the Musée Jean Ségurel at the Maison des Monédières in Chaumeil, the seasonal museum the entry names","author":"Celeda","authorUrl":"https://commons.wikimedia.org/wiki/User:Celeda","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_de_la_Maison_des_Mon%C3%A9di%C3%A8res_%C3%A0_Chaumeil_01.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/TOsucMay.JPG/1280px-TOsucMay.JPG","alt":"The table d'orientation at the Suc au May summit, inaugurated 25 August 1935 by Henry de Jouvenel","author":"Anthospace","authorUrl":"https://commons.wikimedia.org/wiki/User:Anthospace","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:TOsucMay.JPG"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Chaumeil_-_La_place_de_l%27%C3%A9glise.jpg/1280px-Chaumeil_-_La_place_de_l%27%C3%A9glise.jpg","alt":"La place de l'église, the church square in the Chaumeil bourg","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/User:Renhour48","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Chaumeil_-_La_place_de_l%27%C3%A9glise.jpg"}]
 weather: null
-draft: true
+draft: false
 ---
 
 # Suc au May - The Fierce One
 
-*Content coming soon.*
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Le_sud_des_Mon%C3%A9di%C3%A8res_vers_Chaumeil.JPG/1920px-Le_sud_des_Mon%C3%A9di%C3%A8res_vers_Chaumeil.JPG" alt="The south of the Monédières massif, looking toward Chaumeil from the Suc au May summit (908 m)" caption="The south of the Monédières massif, looking toward Chaumeil from the Suc au May summit – the view the 1935 table d'orientation names, with the village in the middle distance and the lower-Limousin valleys beyond." author="Babsy" authorUrl="https://commons.wikimedia.org/wiki/User:Babsy" license="CC BY-SA 3.0" licenseUrl="https://creativecommons.org/licenses/by-sa/3.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Le_sud_des_Mon%C3%A9di%C3%A8res_vers_Chaumeil.JPG"}
+::
+
+The commune line is at kilometre ninety-eight, and the road enters Chaumeil on a gradient that has been firming through the closing kilometre of the previous segment. Three and a half kilometres past the bourg, the same gradient becomes the Suc au May. Chaumeil is small. Population one hundred and sixty-four in the 2023 census, area thirty-one and seven tenths square kilometres of granitic upland on the southern flank of the Monédières massif, elevation range five hundred and twenty-four to nine hundred and eleven metres. The bourg sits at kilometre one hundred and three tenths, on the high side of the road, at five hundred and seventy metres. The name is exactly what the place is. *Chaumeil*, from the prélatin *calmis* with the Latin diminutive suffix *-iculus*, is the small *chaume*, the small heath[^calmis]. The cognate Occitan *chaumo* survives in regional speech for the same kind of upland clearing. A village called for the heath it sits in, in the tongue the heath was first called by.
+
+What the size of the village does not predict is the weight Chaumeil carries in French folk-music and French cycling memory. The two are not separable here. The Monédières heath gave its name to a tune; a Chaumeil-born accordionist carried the tune to the national record; and the same Chaumeil drew a post-war cycling generation back every summer for fifty years to ride a criterium on its lanes. The size of the present village is a measure of the country's twentieth-century depopulation, not of what the village has been doing.
+
+The tune first. *La Bourrée des Monédières* is, in the regional vocabulary of Limousin folk music, two things at once[^bourree]. It is the name of a sub-style of the Limousin and Auvergnat *bourrée* – a triple-time three-step dance carried on violins in pairs, played in the Massif Central from at least the seventeenth century and probably much earlier – and the name of a specific tune, played by the violinists of the Monédières and centred on Chaumeil, that came to stand for the sub-style. The violinists are anonymous. The tune is not. The *Bourrée* the Chaumeil violinists played is the *Bourrée* a Chaumeil-born accordionist named Jean Ségurel recorded in arrangement at some point in the 1930s, and it is the recorded version that the tune is now known by[^segurel].
+
+::video-embed{embedUrl="https://www.youtube.com/embed/WgabbiMcjdg" caption="Jean Ségurel et ses Troubadours, Bourrée des Monédières. The canonical arrangement, in Ségurel's own accordion recording with his Troubadours ensemble." attribution="Source: YouTube channel Chansons, Folklore et Variété."}
+::
+
+Ségurel was born at Chaumeil on the thirteenth of October nineteen hundred and eight; he died at Chaumeil on the twenty-ninth of December nineteen hundred and seventy-eight; he is buried in the Chaumeil cemetery. His other recording, *Bruyères corréziennes* (1936; words by the schoolteacher Jean Leymarie), pressed six hundred thousand copies by 1945 and is the song that put the name of the corridor's heath plant into French wartime and post-war memory. Charles de Gaulle pinned the Légion d'honneur on him in 1968. His wife was elected mayor of Chaumeil. The Maison des Monédières in the bourg, ground floor, holds the Musée Jean Ségurel; it is open seasonally and shares the building with the village tourist office.
+
+The cycling part of the village's twentieth century comes back to this same name. From the early 1950s through the early 2000s, with a long pause and a long revival, Chaumeil hosted a post-Tour-de-France criterium that the road through the bourg formed half the circuit of. The roll-call of the criterium's winners is the roll-call of the post-war peloton. The criterium is the reason the Tour, in 1987, was at Chaumeil twice in one day.
+
+The day was Saturday the eleventh of July nineteen hundred and eighty-seven. Stage eleven of the men's race, Poitiers to Chaumeil over two hundred and fifty-five kilometres: Martial Gayant of Système U went clear with thirteen kilometres remaining and held the breakaway home alone, ahead of Laudelino Cubino and Kim Andersen[^men-1987]. On the same stage, Gayant's own teammate Charly Mottet lost the yellow jersey he had carried into the day. Stage three of the women's race, the Tour de France Féminin, Linards to Chaumeil over seventy-two and a half kilometres: Roberta Bonanomi of Italy won ahead of Maria Canins and Jeannie Longo, taking the yellow jersey, on the same village's finish line, on the same Saturday[^women-1987]. Longo, who crashed twice in the stage, went on to win the overall race that ran the eighth to the twenty-sixth of July. The two finishes are the only occasion on record on which both editions of the Tour finished a stage in the same village on the same day. The criterium era is the reason Chaumeil was a place the Tour could come to; the 1987 double-finish was the moment the rest of the Tour caught up with the village's own scale of cycling memory.
+
+::video-embed{embedUrl="https://www.youtube.com/embed/Lb9gKDY48Us" caption="Tour de France 1987, Stage 11, Poitiers to Chaumeil. Martial Gayant's solo win, in the original French television broadcast." attribution="Source: YouTube channel Retro Cycling."}
+::
+
+::street-view-embed{embedUrl="https://www.google.com/maps/embed?pb=!4v1748100000000!6m8!1m7!1sIH2dNAV0LoQpc5krKYAV-Q!2m2!1d45.4557832!2d1.8815126!3f361.61!4f-10.26!5f0.7820865974627469" caption="The rond-point at Chaumeil where the D26 bears north toward the Suc au May climb, with the road sign pointing the way." titlePrefix="Street View" attribution="Interactive view. Imagery © Google Street View."}
+::
+
+The road climbs out of Chaumeil and onto the categorised climb. The Suc au May, in the road's geometry, is short and severe. The categorised section runs about three and a half kilometres from the village to the road's high point at kilometre one hundred and five and a sixth, with a sharp pitch on the elevation profile near the road-peak. The road-peak sits at eight hundred and eighty-nine metres. The Suc au May, in the *summit's* geometry, is somewhere else. The actual summit, nine hundred and eight metres, rises nineteen metres above the road's high point and four hundred and forty-two metres off the polyline, reached by a fifteen-minute footpath from a small parking area on the D26 just before the road-peak. The *suc*, in Occitan, is the summit word. The fierce one of the Monédières keeps its summit off the bitumen. The climbing rider is delivered to the road-peak; the named summit is elsewhere.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Passage_Tour_de_France_2020.jpg/1280px-Passage_Tour_de_France_2020.jpg" alt="A rider on the Suc au May road during Stage 12 of the 2020 Tour de France" caption="The Suc au May road on a Tour day: a rider during Stage 12 of the 2020 Tour de France (Chauvigny to Sarran, 10 September 2020), the first time the Tour climbed the Suc au May." author="GAFUCRU" authorUrl="https://commons.wikimedia.org/wiki/User:GAFUCRU" license="CC BY-SA 4.0" licenseUrl="https://creativecommons.org/licenses/by-sa/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Passage_Tour_de_France_2020.jpg"}
+::
+
+At the actual summit, off the road, sits the table d'orientation. A hexagonal Volvic stone base, an enamelled-lava engraving by M. Seurat of the Auvergne enamelled-lava factory naming the visible peaks from the Monts d'Auvergne in the east to the Plateau de Millevaches in the north to the lower Limousin valleys in the south, the hundred and thirty-second such table placed in France and North Africa, the oldest in the Limousin. It was inaugurated on the twenty-fifth of August nineteen hundred and thirty-five by Henry de Jouvenel[^jouvenel], at the time senator of the Corrèze, former minister, former French ambassador to Italy. The Jouvenel of the Suc au May is the same Henry de Jouvenel whose Maison de la Sirène at Collonges-la-Rouge, twelve segments back at kilometre twenty-two, was the house he kept with Colette. The 2026 route climbs to within four hundred and forty-two metres of a marker placed by the man whose Collonges house the riders passed eighty kilometres ago. The corridor's longest verified cross-segment thread closes at a stone the riders do not, on the climbing day, walk fifteen minutes to see.
+
+The road turns off the high point and begins to descend. Segment sixteen owns the descent off the massif.
+
+[^calmis]: *Chaumeil* derives from the prélatin Celtic root *calmis* ("plateau désert, lande" – desert plateau, heath), with the Latin diminutive suffix *-iculus*: the small heath. The Occitan *chaumo / chalmo* is the cognate that becomes the modern French *chaume*. Source: [Chaumeil – Wikipédia](https://fr.wikipedia.org/wiki/Chaumeil), §Toponymie.
+
+[^bourree]: *Musique limousine – Wikipédia* describes the *bourrée* as "*une danse propre au territoire limousin*", and lists the *bourrée des Monédières* among the regional variants. The tune predates Ségurel – it was played by the violinists of the Monédières region, particularly the Chaumeil violinists – and his recording fixed the version that has become canonical. Sources: [Musique limousine – Wikipédia](https://fr.wikipedia.org/wiki/Musique_limousine); *Folklore du Bas-Limousin* (Les Pastoureaux de la Couze), [Violons Populaires en Nouvelle-Aquitaine](https://violons-populaires-nouvelle-aquitaine.fr/portfolio/les-pastoureaux-de-la-couze-folklore-du-bas-limousin/).
+
+[^segurel]: Jean Ségurel (13 October 1908, Chaumeil - 29 December 1978, Chaumeil; buried Chaumeil cemetery). Accordionist, composer, *chef d'orchestre*; founded *Les Troubadours corréziens* in the early 1930s with the schoolteachers Jean Leymarie and Roger Leyssène; composed *Bruyères corréziennes* in 1936 (lyrics by Leymarie), 600,000 copies pressed by 1945; Chevalier de la Légion d'honneur 1968, the cross presented by Charles de Gaulle. His wife was elected mayor of Chaumeil. Primary sources: [Jean Ségurel – Wikipédia](https://fr.wikipedia.org/wiki/Jean_S%C3%A9gurel); [data.bnf.fr authority record 13958098](https://data.bnf.fr/13958098/jean_segurel/).
+
+[^men-1987]: Stage 11 of the 1987 men's Tour de France: see the Tour de France History entry below for the card with source and period photos.
+
+[^women-1987]: Stage 3 of the 1987 women's Tour de France Féminin: see the Tour de France History entry below. Primary source linked in §Sources.
+
+[^jouvenel]: Henry de Jouvenel (1876-1935; marriage to Colette 1912-1924) inaugurated the table d'orientation on 25 August 1935, weeks before his own death on 5 October of that year. Sources: [Suc au May – Wikipédia](https://fr.wikipedia.org/wiki/Suc_au_May); [Détours en Limousin – Suc au May](https://www.detours-en-limousin.com/Suc-au-May); [Henry de Jouvenel – Wikipédia](https://fr.wikipedia.org/wiki/Henry_de_Jouvenel).
+
+## Sources
+
+- Chaumeil commune: [Chaumeil – Wikipédia](https://fr.wikipedia.org/wiki/Chaumeil).
+- *La Bourrée des Monédières*: [Musique limousine – Wikipédia](https://fr.wikipedia.org/wiki/Musique_limousine); [*Folklore du Bas-Limousin* (Les Pastoureaux de la Couze)](https://violons-populaires-nouvelle-aquitaine.fr/portfolio/les-pastoureaux-de-la-couze-folklore-du-bas-limousin/); [*Dits, Chants et Danses Populaires du Limousin*](https://violons-populaires-nouvelle-aquitaine.fr/portfolio/dits-chants-et-danses-populaires-du-limousin/).
+- Jean Ségurel: [Wikipédia](https://fr.wikipedia.org/wiki/Jean_S%C3%A9gurel); [BnF authority record 13958098](https://data.bnf.fr/13958098/jean_segurel/); *Jean Ségurel: Un accordéon dans la bruyère* (biography), [Libraria Occitana](https://www.libraria-occitana.org/en/product/jean-segurel-un-accordeon-dans-la-bruyere/).
+- 1987 Tours at Chaumeil (men's + women's): see the Tour de France History cards below; [1987 Tour de France – Wikipedia](https://en.wikipedia.org/wiki/1987_Tour_de_France); [1987 Tour de France Féminin – Wikipedia](https://en.wikipedia.org/wiki/1987_Tour_de_France_F%C3%A9minin).
+- Suc au May summit and table d'orientation: [Suc au May – Wikipédia](https://fr.wikipedia.org/wiki/Suc_au_May); [Détours en Limousin – Suc au May](https://www.detours-en-limousin.com/Suc-au-May); [Tourisme Ventadour-Egletons-Monédières – Suc au May](https://www.tourisme-egletons.com/Annuaire/le-suc-au-may.html).
+- Henry de Jouvenel: [Wikipédia](https://fr.wikipedia.org/wiki/Henry_de_Jouvenel).
+
+---
+
+*Pair-written by Justin Simpson and Claude Opus 4.7. Voice register: tls-essay (scholarly sub-mode).*
