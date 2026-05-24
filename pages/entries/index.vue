@@ -12,7 +12,6 @@
         v-for="entry in entries"
         :key="entry.path || entry._path"
         :entry="entry"
-        density="compact"
         :heading-level="2"
       />
     </section>

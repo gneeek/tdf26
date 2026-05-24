@@ -3,11 +3,11 @@
     <NuxtLink :to="entry.path || entry._path" :class="showThumbnail ? 'flex gap-4 items-start' : 'block'">
       <template v-if="showThumbnail">
         <img
-          :src="entry.images[0].src"
-          :alt="entry.images[0].alt || ''"
+          :src="thumbnailImage.src"
+          :alt="thumbnailImage.alt || ''"
           loading="lazy"
           class="w-20 h-20 sm:w-28 sm:h-28 rounded object-cover flex-shrink-0"
-          :style="entry.images[0].objectPosition ? { objectPosition: entry.images[0].objectPosition } : null"
+          :style="thumbnailImage.objectPosition ? { objectPosition: thumbnailImage.objectPosition } : null"
         >
         <div class="min-w-0 flex-1">
           <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
@@ -33,6 +33,8 @@
 </template>
 
 <script setup>
+import thumbnailManifest from '~/data/entry-thumbnails.json'
+
 const props = defineProps({
   entry: { type: Object, required: true },
   density: { type: String, default: 'standard', validator: v => ['standard', 'compact'].includes(v) },
@@ -44,4 +46,14 @@ const { formatDate } = useFormatDate()
 const showThumbnail = computed(() =>
   props.density === 'standard' && props.entry.images && props.entry.images.length > 0,
 )
+
+const thumbnailImage = computed(() => {
+  const images = props.entry.images || []
+  const manifestEntry = thumbnailManifest[String(props.entry.segment)]
+  if (manifestEntry) {
+    const match = images.find(img => img.src === manifestEntry.src)
+    if (match) return match
+  }
+  return images[0]
+})
 </script>
