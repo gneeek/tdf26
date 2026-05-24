@@ -19,6 +19,36 @@
         "stage": "Stage 15",
         "route": "Departure from Brive",
         "description": "The Tour departed from Brive-la-Gaillarde heading to Villeneuve-sur-Lot."
+      },
+      {
+        "year": 1951,
+        "stage": "Stage 10",
+        "route": "Clermont-Ferrand to Brive",
+        "description": "Bernardo Ruiz of Spain won the Massif Central stage into Brive; Roger Leveque held yellow. The first half of the only year Brive hosted both a finish and the next day's start — the following morning, Brive launched Stage 11 to Agen, on which Hugo Koblet rode his legendary 135 km solo (see the 1951 Stage 11 entry above)."
+      },
+      {
+        "year": 1964,
+        "stage": "Stage 19",
+        "route": "Bordeaux to Brive",
+        "description": "Edouard Sels of Belgium won the sprint into Brive; Jacques Anquetil in yellow. Brive was the launch pad for the next day's Stage 20 to the Puy-de-Dome — the day of the most-photographed duel in Tour history, Anquetil and Raymond Poulidor riding shoulder-to-shoulder up the volcanic plug."
+      },
+      {
+        "year": 1964,
+        "stage": "Stage 20",
+        "route": "Brive to Puy-de-Dome",
+        "description": "Julio Jimenez of Spain won the mountaintop finish at the Puy-de-Dome; Anquetil held yellow to the line after the shoulder-to-shoulder duel with Poulidor on the volcanic plug. Anquetil lost seconds on the climb but kept the jersey by 14 seconds on the final podium — his fifth and last Tour win."
+      },
+      {
+        "year": 1969,
+        "stage": "Stage 19",
+        "route": "Libourne to Brive",
+        "description": "Barry Hoban of Great Britain won the sprint into Brive; Eddy Merckx in yellow on his way to the first of his five Tour wins. Hoban was Britain's most prolific Tour stage winner of the 1960s and 70s — eight career stages."
+      },
+      {
+        "year": 1969,
+        "stage": "Stage 20",
+        "route": "Brive to Puy-de-Dome",
+        "description": "Pierre Matignon, the lanterne rouge of the race, attacked from a small group and held off the field for one of the most romantic stage wins in Tour history. Merckx held yellow. Brive was the launch pad for the underdog day."
       }
     ]
   },
