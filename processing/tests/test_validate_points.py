@@ -6,9 +6,11 @@ import os
 import pytest
 
 from processing.validate_points import (
+    CATEGORY_POINTS_SCALE,
     elevation_at_km,
     load_elevation_track,
     validate,
+    validate_category_points_scale,
     validate_elevation,
 )
 
@@ -157,3 +159,55 @@ class TestValidateElevation:
         track = load_elevation_track(elev_dir, segments)
         errors = validate_elevation(points.get("climbs", []), track)
         assert errors == [], f"real climbs have elevation divergences: {errors}"
+
+
+class TestValidateCategoryPointsScale:
+    """#513: catch drift between climb `category` and `points` array.
+
+    Note on scope: the original #513 Suc au May bug was a wrong category
+    label (HC where Cat 2 was correct), not a category↔points drift —
+    pre-fix points [10, 8, 6, 4] happened to match the project's HC scale,
+    so this assertion would NOT have fired against it. What this assertion
+    does catch is future drift between the two fields (e.g., someone edits
+    `category` to 3 without updating `points` from [6, 4, 2, 1]).
+    """
+
+    def test_drift_between_category_and_points_fires(self):
+        # Synthetic drift: category says Cat 2 but points are the Cat 3 array.
+        climbs = [{"name": "Drift Climb", "category": 2, "points": [4, 3, 2, 1]}]
+        errors = validate_category_points_scale(climbs)
+        assert any("Drift Climb" in e and "category 2" in e and "[6, 4, 2, 1]" in e for e in errors), errors
+
+    def test_post_fix_suc_au_may_passes(self):
+        climbs = [{"name": "Suc au May", "category": 2, "points": [6, 4, 2, 1]}]
+        assert validate_category_points_scale(climbs) == []
+
+    def test_pre_fix_suc_au_may_was_internally_self_consistent(self):
+        # Documents why the assertion did not catch the original #513 bug:
+        # the project's inferred scale extrapolates HC = [10, 8, 6, 4], which
+        # the pre-fix entry happened to match. The bug was the category label,
+        # not category↔points drift. See class docstring.
+        climbs = [{"name": "Suc au May", "category": "HC", "points": [10, 8, 6, 4]}]
+        assert validate_category_points_scale(climbs) == []
+
+    def test_each_canonical_scale_passes(self):
+        climbs = [
+            {"name": f"Test Cat {cat}", "category": cat, "points": pts}
+            for cat, pts in CATEGORY_POINTS_SCALE.items()
+        ]
+        assert validate_category_points_scale(climbs) == []
+
+    def test_unknown_category_fails(self):
+        climbs = [{"name": "Mystery", "category": "ZZ", "points": [1, 0, 0, 0]}]
+        errors = validate_category_points_scale(climbs)
+        assert any("no canonical points scale" in e for e in errors)
+
+    def test_real_data_passes(self):
+        root = os.path.join(os.path.dirname(__file__), "..", "..")
+        points_path = os.path.join(root, "data", "competition", "points-config.json")
+        if not os.path.exists(points_path):
+            pytest.skip("real data not found")
+        with open(points_path) as f:
+            points = json.load(f)
+        errors = validate_category_points_scale(points.get("climbs", []))
+        assert errors == [], f"real climbs have category-points drift: {errors}"

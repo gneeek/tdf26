@@ -98,9 +98,9 @@
       "segment": 15,
       "km": 105.15,
       "length_km": 3.8,
-      "category": "HC",
+      "category": 2,
       "gradient": 7.1,
-      "points": [10, 8, 6, 4],
+      "points": [6, 4, 2, 1],
       "aso": true
     },
     {
