@@ -19,12 +19,90 @@
         "stage": "Stage 15",
         "route": "Departure from Brive",
         "description": "The Tour departed from Brive-la-Gaillarde heading to Villeneuve-sur-Lot."
+      },
+      {
+        "year": 1951,
+        "stage": "Stage 10",
+        "route": "Clermont-Ferrand to Brive",
+        "description": "Bernardo Ruiz of Spain won the Massif Central stage into Brive; Roger Leveque held yellow. The first half of the only year Brive hosted both a finish and the next day's start — the following morning, Brive launched Stage 11 to Agen, on which Hugo Koblet rode his legendary 135 km solo (see the 1951 Stage 11 entry above)."
+      },
+      {
+        "year": 1964,
+        "stage": "Stage 19",
+        "route": "Bordeaux to Brive",
+        "description": "Edouard Sels of Belgium won the sprint into Brive; Jacques Anquetil in yellow. Brive was the launch pad for the next day's Stage 20 to the Puy-de-Dome — the day of the most-photographed duel in Tour history, Anquetil and Raymond Poulidor riding shoulder-to-shoulder up the volcanic plug."
+      },
+      {
+        "year": 1964,
+        "stage": "Stage 20",
+        "route": "Brive to Puy-de-Dome",
+        "description": "Julio Jimenez of Spain won the mountaintop finish at the Puy-de-Dome; Anquetil held yellow to the line after the shoulder-to-shoulder duel with Poulidor on the volcanic plug. Anquetil lost seconds on the climb but kept the jersey by 14 seconds on the final podium — his fifth and last Tour win."
+      },
+      {
+        "year": 1969,
+        "stage": "Stage 19",
+        "route": "Libourne to Brive",
+        "description": "Barry Hoban of Great Britain won the sprint into Brive; Eddy Merckx in yellow on his way to the first of his five Tour wins. Hoban was Britain's most prolific Tour stage winner of the 1960s and 70s — eight career stages."
+      },
+      {
+        "year": 1969,
+        "stage": "Stage 20",
+        "route": "Brive to Puy-de-Dome",
+        "description": "Pierre Matignon, the lanterne rouge of the race, attacked from a small group and held off the field for one of the most romantic stage wins in Tour history. Merckx held yellow. Brive was the launch pad for the underdog day."
+      },
+      {
+        "year": 1973,
+        "stage": "Stage 17",
+        "route": "Sainte-Foy-la-Grande to Brive",
+        "description": "Claude Tollet of France won the stage into Brive; Luis Ocana in yellow. The third Brive double-header in nine years — Ocana dominated the Massif Central transitions and won the next day's Stage 18 to the Puy-de-Dome, on his way to his only Tour victory."
+      },
+      {
+        "year": 1973,
+        "stage": "Stage 18",
+        "route": "Brive to Puy-de-Dome",
+        "description": "Luis Ocana of Spain won the mountaintop finish at the Puy-de-Dome, dominating the Massif Central transition en route to his only Tour win. Brive was the launch pad."
+      },
+      {
+        "year": 1987,
+        "stage": "Stage 12",
+        "route": "Brive to Bordeaux",
+        "description": "Davis Phinney of the USA (7-Eleven) won the sprint — a rare American sprint win of the 1980s. Martial Gayant in yellow. The previous day, Stage 11 had finished at Chaumeil with Gayant's Systeme U teammate Charly Mottet losing the jersey on the same day Gayant inherited it (see seg 15). The corridor finished the day at Chaumeil, slept in Brive, and departed for Bordeaux."
+      },
+      {
+        "year": 1998,
+        "stage": "Stage 6",
+        "route": "La Chatre to Brive",
+        "description": "Mario Cipollini of Italy won the sprint into Brive — his second consecutive stage win of the race. Stuart O'Grady in yellow. The first of three consecutive days the 1998 Tour spent in or around the Correze; the Festina doping scandal would break the next evening, on the eve of Stage 7."
+      },
+      {
+        "year": 1998,
+        "stage": "Stage 8",
+        "route": "Brive to Montauban",
+        "description": "Jacky Durand of France won from the breakaway as the Festina-less peloton left the corridor; Laurent Desbiens in yellow. The 1998 Tour had spent three full days in the Correze (Stage 6 finish at Brive, Stage 7 ITT around Tulle, Stage 8 departure from Brive) — the corridor was the geographic stage on which the Festina story broke (see seg 12-13 for Stage 7)."
+      },
+      {
+        "year": 2001,
+        "stage": "Stage 17",
+        "route": "Brive to Montlucon",
+        "description": "Serge Baguet of Belgium won the breakaway finish into Montlucon; Lance Armstrong in yellow (results subsequently annulled for doping). Brive's most recent Tour departure before 2012. The previous day's Stage 16 finish at Sarran — a presidential-courtesy stage town for then-sitting-President Jacques Chirac — was adjacent to the corridor (Sarran sits ~10 km north of seg 15)."
+      },
+      {
+        "year": 2024,
+        "stage": "Tour du Limousin Stage 3",
+        "route": "La Riviere-de-Mansac to Argentat-sur-Dordogne",
+        "description": "Adjacent context — the start at La Riviere-de-Mansac sits in the Brive agglomeration ~15 km west of Brive, and the stage ran south-east toward Argentat well off the Stage 9 polyline. Jefferson Cepeda soloed in from 10 km out; Alex Baudin won the GC. The Tour du Limousin is the corridor's regular pro race — the resident that the 2026 Tour visits as guest."
       }
     ]
   },
   {
     "segments": [10],
     "events": [
+      {
+        "year": 1976,
+        "stage": "Stage 19",
+        "route": "Sainte-Foy-la-Grande to Tulle",
+        "description": "Hubert Mathis of France won by 7 seconds from a 9-man breakaway; Italy's Enrico Paolini second. Lucien Van Impe held yellow. The previous year's winner Bernard Thevenet abandoned during this stage. The first half of a two-day Tulle visit — the next morning Stage 20 (Tulle to Puy-de-Dome) launched Van Impe toward his only Grand Tour victory (see the 1976 Stage 20 entry)."
+      },
       {
         "year": 1976,
         "stage": "Stage 20",
@@ -34,12 +112,30 @@
         "videoTitle": "TV broadcast (YouTube)"
       },
       {
+        "year": 1979,
+        "stage": "Tour du Limousin Stage 5",
+        "route": "Tulle to Tulle",
+        "description": "Final stage of the 1979 Tour du Limousin, a circuit race departing and finishing in Tulle — a full Correze loop on roads that overlap large parts of the Stage 9 corridor's mid-section."
+      },
+      {
+        "year": 1987,
+        "stage": "Tour du Limousin Stage 4",
+        "route": "Tulle to Limoges",
+        "description": "Final stage of the 1987 Tour du Limousin, departing from Tulle. Kim Andersen won the stage; Charly Mottet — the Systeme U rider who'd lost the Tour de France yellow jersey on the corridor's Chaumeil stage two weeks earlier (see seg 15) — won the GC."
+      },
+      {
         "year": 1996,
         "stage": "Stage 14",
         "route": "Besse-en-Chandesse to Tulle",
         "description": "Bastille Day stage into Tulle won in a sprint by Djamolidine Abdoujaparov, the Tashkent Terror. Bjarne Riis in yellow on his way to overall victory.",
         "videoUrl": "https://www.youtube.com/watch?v=3WUztWV7_tQ",
         "videoTitle": "TV broadcast (YouTube)"
+      },
+      {
+        "year": 1997,
+        "stage": "Tour du Limousin Stage 2",
+        "route": "Le Moutier-d'Ahun to Tulle",
+        "description": "Tulle finish. Frederic Guesdon won the stage ahead of Frederic Magnien and Arvis Piziks. Guesdon would go on to win Paris-Roubaix the following spring — his Tulle stage was a marker for the breakthrough year."
       }
     ]
   },
@@ -114,6 +210,39 @@
         "stage": "Stage 10",
         "route": "Aurillac to Le Lioran",
         "description": "The day after Stage 9, the peloton rides the adjacent Cantal roads from Aurillac to Le Lioran - the same finale where Vingegaard beat Pogacar in a photo finish in 2024. The 2026 Tour de France Stage 9 finish at Ussel is genuinely the town's first Tour stage appearance — Ussel has never been a Tour de France stage town in any prior edition (verified during seg 23-27 verification #500 via two independent ledicodutour sources). The earlier claim that Ussel had served as a Paris-Corrèze stage town was unverified for pre-2005 editions and contradicted for 2007–2012 (all of which finished at Chaumeil, seg 15); the Paris-Corrèze entry has been re-keyed to seg 15 accordingly."
+      }
+    ]
+  },
+  {
+    "segments": [12],
+    "events": [
+      {
+        "year": 2025,
+        "stage": "Tour du Limousin Stage 3",
+        "route": "Saint-Jal to Masseret",
+        "description": "Adjacent context — Saint-Jal sits ~12 km north of Tulle on the plateau between segs 12 and 15, off the Stage 9 polyline; Masseret is further north in Correze, also off-route. Paul Lapeira (Decathlon AG2R La Mondiale) won the stage; Ewen Costiou won the GC. The closest Tour du Limousin overlap of the corridor's mid-section in recent years."
+      }
+    ]
+  },
+  {
+    "segments": [12, 13],
+    "events": [
+      {
+        "year": 1998,
+        "stage": "Stage 7 ITT",
+        "route": "Meyrignac-l'Eglise to Correze",
+        "description": "Jan Ullrich won the 58 km individual time trial in 1h15:25, taking yellow. The ITT looped between two communes — Meyrignac-l'Eglise and the town of Correze, both north-east of Tulle on the plateau the Stage 9 corridor traverses in segs 12-13; the ITT route's exact relationship to the 2026 polyline is approximate. Festina had been expelled the previous evening for the doping scandal that would define the 1998 Tour, making this the first stage of the post-Festina race. The 1998 Tour spent three consecutive days in the Correze: Stage 6 finish at Brive, this ITT, and Stage 8 departure from Brive (see seg 1-2)."
+      }
+    ]
+  },
+  {
+    "segments": [27],
+    "events": [
+      {
+        "year": 2009,
+        "stage": "Tour du Limousin Stage 1",
+        "route": "Limoges to Ussel",
+        "description": "Borut Bozic (Vacansoleil) won the 159.6 km opening stage and took the leader's jersey; Mathieu Perget won the GC. The closest documented precedent for the 2026 Tour de France Stage 9 finish at Ussel — same finish town, 17 years earlier, in the smaller regional race. Per the seg 23-27 verification (#500) and the tour-history dossier (PR #526), Ussel had never hosted a Tour de France stage finish before 2026; this Tour du Limousin opener is the strongest documented finish-line antecedent."
       }
     ]
   }
