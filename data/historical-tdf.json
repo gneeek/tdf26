@@ -212,5 +212,38 @@
         "description": "The day after Stage 9, the peloton rides the adjacent Cantal roads from Aurillac to Le Lioran - the same finale where Vingegaard beat Pogacar in a photo finish in 2024. The 2026 Tour de France Stage 9 finish at Ussel is genuinely the town's first Tour stage appearance — Ussel has never been a Tour de France stage town in any prior edition (verified during seg 23-27 verification #500 via two independent ledicodutour sources). The earlier claim that Ussel had served as a Paris-Corrèze stage town was unverified for pre-2005 editions and contradicted for 2007–2012 (all of which finished at Chaumeil, seg 15); the Paris-Corrèze entry has been re-keyed to seg 15 accordingly."
       }
     ]
+  },
+  {
+    "segments": [12],
+    "events": [
+      {
+        "year": 2025,
+        "stage": "Tour du Limousin Stage 3",
+        "route": "Saint-Jal to Masseret",
+        "description": "Adjacent context — Saint-Jal sits ~12 km north of Tulle on the plateau between segs 12 and 15, off the Stage 9 polyline; Masseret is further north in Correze, also off-route. Paul Lapeira (Decathlon AG2R La Mondiale) won the stage; Ewen Costiou won the GC. The closest Tour du Limousin overlap of the corridor's mid-section in recent years."
+      }
+    ]
+  },
+  {
+    "segments": [12, 13],
+    "events": [
+      {
+        "year": 1998,
+        "stage": "Stage 7 ITT",
+        "route": "Meyrignac-l'Eglise to Correze",
+        "description": "Jan Ullrich won the 58 km individual time trial in 1h15:25, taking yellow. The ITT looped between two communes — Meyrignac-l'Eglise and the town of Correze, both north-east of Tulle on the plateau the Stage 9 corridor traverses in segs 12-13; the ITT route's exact relationship to the 2026 polyline is approximate. Festina had been expelled the previous evening for the doping scandal that would define the 1998 Tour, making this the first stage of the post-Festina race. The 1998 Tour spent three consecutive days in the Correze: Stage 6 finish at Brive, this ITT, and Stage 8 departure from Brive (see seg 1-2)."
+      }
+    ]
+  },
+  {
+    "segments": [27],
+    "events": [
+      {
+        "year": 2009,
+        "stage": "Tour du Limousin Stage 1",
+        "route": "Limoges to Ussel",
+        "description": "Borut Bozic (Vacansoleil) won the 159.6 km opening stage and took the leader's jersey; Mathieu Perget won the GC. The closest documented precedent for the 2026 Tour de France Stage 9 finish at Ussel — same finish town, 17 years earlier, in the smaller regional race. Per the seg 23-27 verification (#500) and the tour-history dossier (PR #526), Ussel had never hosted a Tour de France stage finish before 2026; this Tour du Limousin opener is the strongest documented finish-line antecedent."
+      }
+    ]
   }
 ]
