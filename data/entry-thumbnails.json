@@ -1,0 +1,55 @@
+{
+  "10": {
+    "reason": "landscape ratio=1.50 idx=0",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/La_Corr%C3%A8ze_%C3%A0_Tulle.JPG/1280px-La_Corr%C3%A8ze_%C3%A0_Tulle.JPG"
+  },
+  "11": {
+    "manual": true,
+    "reason": "publisher override: prefer carnyx (portrait with objectPosition: top)",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/3/3d/CarnyxDeTintignac1.jpg"
+  },
+  "12": {
+    "reason": "landscape ratio=1.50 idx=0",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Naves_Panorama.jpg/1280px-Naves_Panorama.jpg"
+  },
+  "13": {
+    "reason": "landscape ratio=1.50 idx=1",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Paysage_rural_Chamboulive.JPG/1280px-Paysage_rural_Chamboulive.JPG"
+  },
+  "14": {
+    "reason": "landscape ratio=1.51 idx=2",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Le_tourondel_chateau.JPG/1280px-Le_tourondel_chateau.JPG"
+  },
+  "2": {
+    "reason": "landscape ratio=1.50 idx=2",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Turenne_fda.jpg/500px-Turenne_fda.jpg"
+  },
+  "3": {
+    "reason": "landscape ratio=1.51 idx=2",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828497459402%29.jpg/960px-Collonges-la-Rouge_%28Corr%C3%A8ze%29._%2828497459402%29.jpg"
+  },
+  "4": {
+    "reason": "fallback-no-landscape",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Meyssac_-_%C3%89glise_03.jpg/960px-Meyssac_-_%C3%89glise_03.jpg"
+  },
+  "5": {
+    "reason": "landscape ratio=1.50 idx=1",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anem_%C3%B2c_%21_Per_la_lenga_occitana_%21-2.jpg/960px-Anem_%C3%B2c_%21_Per_la_lenga_occitana_%21-2.jpg"
+  },
+  "6": {
+    "reason": "landscape ratio=1.50 idx=2",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Tumba_de_Antonio_Machado_en_Colliure.jpg/960px-Tumba_de_Antonio_Machado_en_Colliure.jpg"
+  },
+  "7": {
+    "reason": "landscape ratio=1.50 idx=2",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Saint-Cernin-de-Larche_-_Dolmen_de_la_Chassagne_01.JPG/960px-Saint-Cernin-de-Larche_-_Dolmen_de_la_Chassagne_01.JPG"
+  },
+  "8": {
+    "reason": "landscape ratio=1.33 idx=2",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Beynat_-_mont%C3%A9e_de_la_place_du_Champ_de_Foire.jpg/960px-Beynat_-_mont%C3%A9e_de_la_place_du_Champ_de_Foire.jpg"
+  },
+  "9": {
+    "reason": "landscape ratio=1.50 idx=0",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg/960px-02-26_Sainte_Fortunade_-_%C3%A9glise_2.jpg"
+  }
+}

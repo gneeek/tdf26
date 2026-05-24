@@ -61,3 +61,6 @@ coverage/
 
 # Output of processing/suggest_images.py — regenerable, noisy in diffs
 data/image-suggestions/
+
+# Download cache for processing/pick_entry_thumbnails.py — regenerable
+data/.thumbnail-dimension-cache.json
