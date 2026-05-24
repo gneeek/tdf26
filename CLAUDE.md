@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-A cycling travelogue blog following the 185km route of Stage 9 of the 2026 Tour de France, from Malemort to Ussel through the Corrèze department of France. The route is divided into 26 segments of approximately 7.1km each. One blog entry per segment is published twice weekly from early April to early July 2026, building anticipation toward the actual stage on Sunday, July 12, 2026.
+A cycling travelogue blog following the 185km route of Stage 9 of the 2026 Tour de France, from Malemort to Ussel through the Corrèze department of France. The route is divided into 27 segments with alternating lengths (odd-numbered ~8km, even-numbered ~6km, per `processing/split_gpx.py`). One blog entry per segment is published twice weekly from early April to early July 2026, building anticipation toward the actual stage on Sunday, July 12, 2026.
 
 The project has four pillars:
 1. **Route data processing** — GPX parsing, segment splitting, elevation profiles, power estimates
@@ -94,7 +94,7 @@ correze-travelogue/
 
 - Read `data/master.gpx` using `gpxpy`
 - Calculate cumulative distance along the full track
-- Split into 26 segments of approximately 7.1km each (185km / 26)
+- Split into 27 segments with alternating lengths (odd-numbered ~8km, even-numbered ~6km; default `num_segments=27` in `split_gpx.py`)
 - For each segment, output:
   - A standalone GPX file (`data/segments/segment-NN.gpx`)
   - Metadata entry in `data/segments.json`:
@@ -377,20 +377,7 @@ The actual script (`scripts/publish.sh`) has additional steps for points calcula
 
 ## Publication Schedule
 
-26 entries, published twice weekly. Example starting April 2, 2026:
-
-| Entry | Segment | Publish Date | Key Feature |
-|-------|---------|-------------|-------------|
-| 1 | Km 0–7 | Thu Apr 2 | Malemort, Brive-la-Gaillarde |
-| 2 | Km 7–14 | Mon Apr 6 | Approach to Turenne |
-| 3 | Km 14–21 | Thu Apr 9 | Turenne (Plus Beau Village) |
-| 4 | Km 21–28 | Mon Apr 13 | Collonges-la-Rouge |
-| 5 | Km 28–35 | Thu Apr 16 | Puy Boubou climb |
-| ... | ... | ... | ... |
-| 25 | Km 170–178 | Thu Jul 2 | Approach to Ussel |
-| 26 | Km 178–185 | Mon Jul 6 | Ussel — Place Voltaire finish |
-
-Full schedule to be generated once GPX is parsed and segments are confirmed.
+27 entries, published twice weekly on Sundays and Wednesdays starting Sunday April 5, 2026, with the final finish-line entry timed for race-week. Authoritative schedule lives in entry frontmatter (`publishDate:` field of each `content/entries/*.md`); the wiki Roadmap surfaces upcoming cycles.
 
 ## Content Topics Per Entry
 
@@ -487,8 +474,8 @@ Primary location categories to query for each segment:
 | 18–20 | Category:Plateau de Millevaches | Heathland, forests, remote landscapes |
 | 19–20 | Category:Bugeat | Small town, Millevaches gateway |
 | 22 | Category:Mont Bessou | Summit views (highest point in Corrèze) |
-| 23–24 | Category:Meymac | Benedictine abbey, medieval town |
-| 25–26 | Category:Ussel, Corrèze | Town centre, Place Voltaire |
+| 25 | Category:Meymac | Benedictine abbey, medieval town |
+| 27 | Category:Ussel, Corrèze | Town centre, Place Voltaire |
 
 ### Confirmed CC-Licensed Photographers on Commons
 
@@ -543,11 +530,11 @@ These photographers have Corrèze-specific content confirmed as CC BY-SA:
 - One of the least populated areas of France; vast heathland and peat bogs
 - Regional Natural Park (Parc naturel régional de Millevaches en Limousin)
 
-**Meymac (Segments 23–24):**
+**Meymac (Segment 25):**
 - Benedictine Abbaye Saint-André (founded 1085)
 - Centre d'Art Contemporain housed in the abbey
 
-**Ussel (Segments 25–26):**
+**Ussel (Segment 27):**
 - Historical gateway between the Limousin lowlands and the Auvergne highlands
 - Jacques Chirac began his political career as a municipal councillor here
 - Stage finish on Avenue Thiers, sprint judged at Place Voltaire
