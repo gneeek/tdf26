@@ -585,23 +585,23 @@ Each item below describes a gap (per `feedback_issues_describe_problems.md`). Th
 
 On-corridor events:
 
-- [x] 1951 Stage 10: Clermont-Ferrand → Brive (men's TdF; seg 1; pairs with already-corpus 1951 Stage 11 Koblet solo). Source: https://www.bikeraceinfo.com/tdf/tdf1951.html — landed in PR #581 (session 3).
-- [x] 1964 Stage 19: Bordeaux → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Anquetil-Poulidor Puy-de-Dôme launch pad). Source: https://www.bikeraceinfo.com/tdf/tdf1964.html — both landed in PR #581 (session 3).
-- [x] 1969 Stage 19: Libourne → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Hoban + Matignon underdog). Source: https://www.bikeraceinfo.com/tdf/tdf1969.html — both landed in PR #581 (session 3).
-- [x] 1973 Stage 17: Sainte-Foy-la-Grande → Brive + Stage 18: Brive → Puy-de-Dôme (men's TdF; seg 1; Ocaña era). Source: https://www.bikeraceinfo.com/tdf/tdf1973.html — both landed in PR #581 (session 3).
-- [x] 1976 Stage 19: Sainte-Foy-la-Grande → Tulle (men's TdF; seg 10; pairs with already-corpus 1976 Stage 20). Source: https://www.bikeraceinfo.com/tdf/tdf1976.html — landed in PR #581 (session 3).
-- [x] 1987 Stage 12: Brive → Bordeaux (men's TdF; seg 1; Davis Phinney; pairs with #478's Chaumeil work). Source: https://www.bikeraceinfo.com/tdf/tdf1987.html — landed in PR #581 (session 3).
-- [x] 1998 Stage 6: La Châtre → Brive (men's TdF; seg 1; Cipollini). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html — landed in PR #581 (session 3).
-- [x] 1998 Stage 7 ITT: Meyrignac-l'Église → Corrèze town (men's TdF; mid-corridor segs 12-13 vicinity; Ullrich + Festina expulsion). Source: https://www.procyclingstats.com/race/tour-de-france/1998/stage-7 — landed in PR #581 (session 3) as new group `[12, 13]`.
-- [x] 1998 Stage 8: Brive → Montauban (men's TdF; seg 1; Jacky Durand). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html — landed in PR #581 (session 3).
-- [x] 2001 Stage 17: Brive → Montluçon (men's TdF; seg 1; Serge Baguet). Source: https://www.bikeraceinfo.com/tdf/tdf2001.html — landed in PR #581 (session 3).
-- [x] Tour du Limousin 1979 Stage 5: Tulle → Tulle (regional race; seg 10) — landed in PR #581 (session 3).
-- [x] Tour du Limousin 1987 Stage 4: Tulle → Limoges (regional race; seg 10) — landed in PR #581 (session 3).
-- [x] Tour du Limousin 1997 Stage 2: Le Moutier-d'Ahun → Tulle (regional race; seg 10) — landed in PR #581 (session 3).
-- [x] Tour du Limousin 2009 Stage 1: Limoges → Ussel (regional race; seg 27 — same finish town as 2026 TdF Stage 9). Source: https://fr.wikipedia.org/wiki/Tour_du_Limousin_2009 — landed in PR #581 (session 3) as new group `[27]`.
-- [x] Tour du Limousin 2024 Stage 3: La Rivière de Mansac → Argentat (regional race; near seg 1) — landed in PR #581 (session 3) as `[1, 2]` adjacent-context entry.
-- [x] Tour du Limousin 2025 Stage 3: Saint-Jal → Masseret (regional race; corridor-adjacent north of seg 12-15) — landed in PR #581 (session 3) as new group `[12]` adjacent-context entry.
-- [x] Paris-Corrèze 2007 / 2008 / 2009 / 2010 / 2011 / 2012 final stages at Chaumeil (regional race; seg 15). Re-keying landed earlier (in seg 23-27 verification PR #500) — entry already present in `[15]` group; PR #581 did not duplicate. Per-edition stage rows (2008 Brive start, 2009 Tulle → Chaumeil) deferred; not landed in session 3 because the consolidated `[15]` Paris-Corrèze entry already names them inline.
+- [x] 1951 Stage 10: Clermont-Ferrand → Brive (men's TdF; seg 1; pairs with already-corpus 1951 Stage 11 Koblet solo). Source: https://www.bikeraceinfo.com/tdf/tdf1951.html — landed in PR #601 (session 3).
+- [x] 1964 Stage 19: Bordeaux → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Anquetil-Poulidor Puy-de-Dôme launch pad). Source: https://www.bikeraceinfo.com/tdf/tdf1964.html — both landed in PR #601 (session 3).
+- [x] 1969 Stage 19: Libourne → Brive + Stage 20: Brive → Puy-de-Dôme (men's TdF; seg 1; Hoban + Matignon underdog). Source: https://www.bikeraceinfo.com/tdf/tdf1969.html — both landed in PR #601 (session 3).
+- [x] 1973 Stage 17: Sainte-Foy-la-Grande → Brive + Stage 18: Brive → Puy-de-Dôme (men's TdF; seg 1; Ocaña era). Source: https://www.bikeraceinfo.com/tdf/tdf1973.html — both landed in PR #601 (session 3).
+- [x] 1976 Stage 19: Sainte-Foy-la-Grande → Tulle (men's TdF; seg 10; pairs with already-corpus 1976 Stage 20). Source: https://www.bikeraceinfo.com/tdf/tdf1976.html — landed in PR #601 (session 3).
+- [x] 1987 Stage 12: Brive → Bordeaux (men's TdF; seg 1; Davis Phinney; pairs with #478's Chaumeil work). Source: https://www.bikeraceinfo.com/tdf/tdf1987.html — landed in PR #601 (session 3).
+- [x] 1998 Stage 6: La Châtre → Brive (men's TdF; seg 1; Cipollini). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html — landed in PR #601 (session 3).
+- [x] 1998 Stage 7 ITT: Meyrignac-l'Église → Corrèze town (men's TdF; mid-corridor segs 12-13 vicinity; Ullrich + Festina expulsion). Source: https://www.procyclingstats.com/race/tour-de-france/1998/stage-7 — landed in PR #601 (session 3) as new group `[12, 13]`.
+- [x] 1998 Stage 8: Brive → Montauban (men's TdF; seg 1; Jacky Durand). Source: https://www.bikeraceinfo.com/tdf/tdf1998.html — landed in PR #601 (session 3).
+- [x] 2001 Stage 17: Brive → Montluçon (men's TdF; seg 1; Serge Baguet). Source: https://www.bikeraceinfo.com/tdf/tdf2001.html — landed in PR #601 (session 3).
+- [x] Tour du Limousin 1979 Stage 5: Tulle → Tulle (regional race; seg 10) — landed in PR #601 (session 3).
+- [x] Tour du Limousin 1987 Stage 4: Tulle → Limoges (regional race; seg 10) — landed in PR #601 (session 3).
+- [x] Tour du Limousin 1997 Stage 2: Le Moutier-d'Ahun → Tulle (regional race; seg 10) — landed in PR #601 (session 3).
+- [x] Tour du Limousin 2009 Stage 1: Limoges → Ussel (regional race; seg 27 — same finish town as 2026 TdF Stage 9). Source: https://fr.wikipedia.org/wiki/Tour_du_Limousin_2009 — landed in PR #601 (session 3) as new group `[27]`.
+- [x] Tour du Limousin 2024 Stage 3: La Rivière de Mansac → Argentat (regional race; near seg 1) — landed in PR #601 (session 3) as `[1, 2]` adjacent-context entry.
+- [x] Tour du Limousin 2025 Stage 3: Saint-Jal → Masseret (regional race; corridor-adjacent north of seg 12-15) — landed in PR #601 (session 3) as new group `[12]` adjacent-context entry.
+- [x] Paris-Corrèze 2007 / 2008 / 2009 / 2010 / 2011 / 2012 final stages at Chaumeil (regional race; seg 15). Re-keying landed earlier (in seg 23-27 verification PR #500) — entry already present in `[15]` group; PR #601 did not duplicate. Per-edition stage rows (2008 Brive start, 2009 Tulle → Chaumeil) deferred; not landed in session 3 because the consolidated `[15]` Paris-Corrèze entry already names them inline.
 
 Closes when each event has been added to `data/historical-tdf.json` with verified segment keying. The exact polyline-keying for each event is in the dossier's per-event corpus.
 
@@ -683,7 +683,7 @@ The four flaky URLs all have alternative coverage:
 
 ### Session 3 (corridor expansion landing, 2026-05-24)
 
-Session 3 was the data-population strand for #527 (PR #581). Moderate scope chosen at the AskUserQuestion checkpoint: land all dossier carryforwards that pass single-source verification.
+Session 3 was the data-population strand for #527 (PR #601). Moderate scope chosen at the AskUserQuestion checkpoint: land all dossier carryforwards that pass single-source verification.
 
 **Events landed in `data/historical-tdf.json`** (19 events across 4 commits, batches of 5/7/5/3):
 
