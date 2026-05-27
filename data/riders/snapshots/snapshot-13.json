@@ -1,0 +1,873 @@
+{
+  "segment": 13,
+  "stats": {
+    "asOf": "2026-05-16",
+    "entryNumber": 46,
+    "riders": {
+      "justin": {
+        "totalDistanceCapped": 92.0,
+        "dailyAverageActual": 4.06,
+        "dailyAverageCapped": 2.0,
+        "longestDay": 8.5,
+        "shortestDay": 0.3,
+        "daysBelowThreeKm": 18,
+        "consistencyStdev": 2.29,
+        "bestThreeDayCombo": 21.0,
+        "recentFiveDayAverage": 3.62,
+        "distanceRemaining": 93.0,
+        "estimatedDaysToFinish": 46,
+        "estimatedFinishDate": "2026-07-02",
+        "place": 1
+      },
+      "marian": {
+        "totalDistanceCapped": 91.4,
+        "dailyAverageActual": 3.48,
+        "dailyAverageCapped": 1.99,
+        "longestDay": 9.1,
+        "shortestDay": 0.9,
+        "daysBelowThreeKm": 24,
+        "consistencyStdev": 2.01,
+        "bestThreeDayCombo": 19.1,
+        "recentFiveDayAverage": 2.48,
+        "distanceRemaining": 93.6,
+        "estimatedDaysToFinish": 47,
+        "estimatedFinishDate": "2026-07-03",
+        "place": 4
+      },
+      "nan": {
+        "totalDistanceCapped": 92.0,
+        "dailyAverageActual": 3.31,
+        "dailyAverageCapped": 2.0,
+        "longestDay": 6.1,
+        "shortestDay": 1,
+        "daysBelowThreeKm": 20,
+        "consistencyStdev": 1.2,
+        "bestThreeDayCombo": 16.3,
+        "recentFiveDayAverage": 4.16,
+        "distanceRemaining": 93.0,
+        "estimatedDaysToFinish": 46,
+        "estimatedFinishDate": "2026-07-02",
+        "place": 2
+      },
+      "wally": {
+        "totalDistanceCapped": 92.0,
+        "dailyAverageActual": 2.41,
+        "dailyAverageCapped": 2.0,
+        "longestDay": 4.4,
+        "shortestDay": 0.1,
+        "daysBelowThreeKm": 33,
+        "consistencyStdev": 1.16,
+        "bestThreeDayCombo": 12.3,
+        "recentFiveDayAverage": 3.14,
+        "distanceRemaining": 93.0,
+        "estimatedDaysToFinish": 46,
+        "estimatedFinishDate": "2026-07-02",
+        "place": 3
+      }
+    }
+  },
+  "points": {
+    "riders": {
+      "justin": {
+        "sprintPoints": 31,
+        "climbPoints": 8,
+        "totalPoints": 39
+      },
+      "marian": {
+        "sprintPoints": 36,
+        "climbPoints": 9,
+        "totalPoints": 45
+      },
+      "nan": {
+        "sprintPoints": 40,
+        "climbPoints": 19,
+        "totalPoints": 59
+      },
+      "wally": {
+        "sprintPoints": 34,
+        "climbPoints": 9,
+        "totalPoints": 43
+      }
+    },
+    "locations": [
+      {
+        "name": "Sprint - Brive-la-Gaillarde",
+        "type": "sprint",
+        "segment": 1,
+        "km": 3,
+        "category": null,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "nan",
+            "date": "2026-04-02",
+            "points": 5
+          },
+          {
+            "place": 2,
+            "rider": "justin",
+            "date": "2026-04-02",
+            "points": 3
+          },
+          {
+            "place": 3,
+            "rider": "marian",
+            "date": "2026-04-02",
+            "points": 2
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-03",
+            "points": 1
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Sprint - Turenne",
+        "type": "sprint",
+        "segment": 3,
+        "km": 17,
+        "category": null,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "nan",
+            "date": "2026-04-09",
+            "points": 20
+          },
+          {
+            "place": 2,
+            "rider": "marian",
+            "date": "2026-04-09",
+            "points": 17
+          },
+          {
+            "place": 3,
+            "rider": "justin",
+            "date": "2026-04-09",
+            "points": 15
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-13",
+            "points": 13
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Sprint - Before Tulle",
+        "type": "sprint",
+        "segment": 9,
+        "km": 60,
+        "category": null,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "wally",
+            "date": "2026-04-30",
+            "points": 20
+          },
+          {
+            "place": 2,
+            "rider": "marian",
+            "date": "2026-04-30",
+            "points": 17
+          },
+          {
+            "place": 3,
+            "rider": "nan",
+            "date": "2026-04-30",
+            "points": 15
+          },
+          {
+            "place": 4,
+            "rider": "justin",
+            "date": "2026-05-01",
+            "points": 13
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Sprint - Bugeat",
+        "type": "sprint",
+        "segment": 19,
+        "km": 130,
+        "category": null,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Sprint - Ussel Finish",
+        "type": "sprint",
+        "segment": 27,
+        "km": 183,
+        "category": null,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "C\u00f4te de Malemort",
+        "type": "climb",
+        "segment": 1,
+        "km": 5,
+        "category": 4,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "justin",
+            "date": "2026-04-03",
+            "points": 2
+          },
+          {
+            "place": 2,
+            "rider": "nan",
+            "date": "2026-04-03",
+            "points": 1
+          },
+          {
+            "place": 3,
+            "rider": "marian",
+            "date": "2026-04-03",
+            "points": 0
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-03",
+            "points": 0
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Puy Boubou",
+        "type": "climb",
+        "segment": 5,
+        "km": 29.06,
+        "category": 3,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "marian",
+            "date": "2026-04-15",
+            "points": 4
+          },
+          {
+            "place": 2,
+            "rider": "justin",
+            "date": "2026-04-15",
+            "points": 3
+          },
+          {
+            "place": 3,
+            "rider": "nan",
+            "date": "2026-04-15",
+            "points": 2
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-19",
+            "points": 1
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "C\u00f4te de Lagleygeolle",
+        "type": "climb",
+        "segment": 7,
+        "km": 44.99,
+        "category": 4,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "nan",
+            "date": "2026-04-23",
+            "points": 2
+          },
+          {
+            "place": 2,
+            "rider": "marian",
+            "date": "2026-04-23",
+            "points": 1
+          },
+          {
+            "place": 3,
+            "rider": "justin",
+            "date": "2026-04-23",
+            "points": 0
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-24",
+            "points": 0
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "C\u00f4te de Miel",
+        "type": "climb",
+        "segment": 9,
+        "km": 56.5,
+        "category": 4,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "nan",
+            "date": "2026-04-29",
+            "points": 2
+          },
+          {
+            "place": 2,
+            "rider": "marian",
+            "date": "2026-04-29",
+            "points": 1
+          },
+          {
+            "place": 3,
+            "rider": "justin",
+            "date": "2026-04-29",
+            "points": 0
+          },
+          {
+            "place": 4,
+            "rider": "wally",
+            "date": "2026-04-29",
+            "points": 0
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "C\u00f4te de Naves",
+        "type": "climb",
+        "segment": 11,
+        "km": 77.45,
+        "category": 2,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "nan",
+            "date": "2026-05-09",
+            "points": 6
+          },
+          {
+            "place": 2,
+            "rider": "wally",
+            "date": "2026-05-09",
+            "points": 4
+          },
+          {
+            "place": 3,
+            "rider": "marian",
+            "date": "2026-05-09",
+            "points": 2
+          },
+          {
+            "place": 4,
+            "rider": "justin",
+            "date": "2026-05-10",
+            "points": 1
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Puy de Lachaud",
+        "type": "climb",
+        "segment": 13,
+        "km": 87.54,
+        "category": 2,
+        "awards": [
+          {
+            "place": 1,
+            "rider": "nan",
+            "date": "2026-05-14",
+            "points": 6
+          },
+          {
+            "place": 2,
+            "rider": "wally",
+            "date": "2026-05-14",
+            "points": 4
+          },
+          {
+            "place": 3,
+            "rider": "justin",
+            "date": "2026-05-15",
+            "points": 2
+          },
+          {
+            "place": 4,
+            "rider": "marian",
+            "date": "2026-05-15",
+            "points": 1
+          }
+        ],
+        "reached": true
+      },
+      {
+        "name": "Suc au May",
+        "type": "climb",
+        "segment": 15,
+        "km": 105.15,
+        "category": "HC",
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "C\u00f4te de la Croix de Pey",
+        "type": "climb",
+        "segment": 19,
+        "km": 128.99,
+        "category": 3,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "Mont Bessou",
+        "type": "climb",
+        "segment": 22,
+        "km": 152.31,
+        "category": 4,
+        "awards": [],
+        "reached": false
+      },
+      {
+        "name": "C\u00f4te des Gardes",
+        "type": "climb",
+        "segment": 25,
+        "km": 170.98,
+        "category": 3,
+        "awards": [],
+        "reached": false
+      }
+    ]
+  },
+  "log": {
+    "entries": [
+      {
+        "date": "2026-04-01",
+        "distances": {
+          "justin": 7.45,
+          "marian": 1,
+          "nan": 1.9,
+          "wally": 0.4
+        }
+      },
+      {
+        "date": "2026-04-02",
+        "distances": {
+          "justin": 4.72,
+          "marian": 2.5,
+          "nan": 3.4,
+          "wally": 2.5
+        }
+      },
+      {
+        "date": "2026-04-03",
+        "distances": {
+          "justin": 3.42,
+          "marian": 1.8,
+          "nan": 4.7,
+          "wally": 2.1
+        }
+      },
+      {
+        "date": "2026-04-04",
+        "distances": {
+          "justin": 2.91,
+          "marian": 2.7,
+          "nan": 3,
+          "wally": 0.2
+        }
+      },
+      {
+        "date": "2026-04-05",
+        "distances": {
+          "justin": 2.7,
+          "marian": 1.5,
+          "nan": 4.2,
+          "wally": 1.3
+        }
+      },
+      {
+        "date": "2026-04-06",
+        "distances": {
+          "justin": 2.9,
+          "marian": 2,
+          "nan": 2.5,
+          "wally": 2
+        }
+      },
+      {
+        "date": "2026-04-07",
+        "distances": {
+          "justin": 7.9,
+          "marian": 3,
+          "nan": 5,
+          "wally": 0.8
+        }
+      },
+      {
+        "date": "2026-04-08",
+        "distances": {
+          "justin": 5.82,
+          "marian": 0.9,
+          "nan": 2.4,
+          "wally": 2.4
+        }
+      },
+      {
+        "date": "2026-04-09",
+        "distances": {
+          "justin": 1.08,
+          "marian": 2.7,
+          "nan": 2.4,
+          "wally": 2.1
+        }
+      },
+      {
+        "date": "2026-04-10",
+        "distances": {
+          "justin": 3.57,
+          "marian": 2.3,
+          "nan": 3.5,
+          "wally": 0.2
+        }
+      },
+      {
+        "date": "2026-04-11",
+        "distances": {
+          "justin": 6.11,
+          "marian": 3.5,
+          "nan": 3.2,
+          "wally": 1.6
+        }
+      },
+      {
+        "date": "2026-04-12",
+        "distances": {
+          "justin": 5.93,
+          "marian": 3.8,
+          "nan": 1.2,
+          "wally": 0.1
+        }
+      },
+      {
+        "date": "2026-04-13",
+        "distances": {
+          "justin": 6.05,
+          "marian": 1.9,
+          "nan": 2.7,
+          "wally": 2.2
+        }
+      },
+      {
+        "date": "2026-04-14",
+        "distances": {
+          "justin": 8.53,
+          "marian": 9.1,
+          "nan": 2.7,
+          "wally": 1.7
+        }
+      },
+      {
+        "date": "2026-04-15",
+        "distances": {
+          "justin": 4.51,
+          "marian": 5.9,
+          "nan": 2.4,
+          "wally": 1.3
+        }
+      },
+      {
+        "date": "2026-04-16",
+        "distances": {
+          "justin": 8.01,
+          "marian": 4.1,
+          "nan": 4,
+          "wally": 1.6
+        }
+      },
+      {
+        "date": "2026-04-17",
+        "distances": {
+          "justin": 5.01,
+          "marian": 1.5,
+          "nan": 4.7,
+          "wally": 2.6
+        }
+      },
+      {
+        "date": "2026-04-18",
+        "distances": {
+          "justin": 7.75,
+          "marian": 7.75,
+          "nan": 1.2,
+          "wally": 2.7
+        }
+      },
+      {
+        "date": "2026-04-19",
+        "distances": {
+          "justin": 2.6,
+          "marian": 2.6,
+          "nan": 4.1,
+          "wally": 3.1
+        }
+      },
+      {
+        "date": "2026-04-20",
+        "distances": {
+          "justin": 1.35,
+          "marian": 4.95,
+          "nan": 2.8,
+          "wally": 1.8
+        }
+      },
+      {
+        "date": "2026-04-21",
+        "distances": {
+          "justin": 3.52,
+          "marian": 4.8,
+          "nan": 3.9,
+          "wally": 4.1
+        }
+      },
+      {
+        "date": "2026-04-22",
+        "distances": {
+          "justin": 3.5,
+          "marian": 5.25,
+          "nan": 5,
+          "wally": 2.6
+        }
+      },
+      {
+        "date": "2026-04-23",
+        "distances": {
+          "justin": 1.4,
+          "marian": 3.22,
+          "nan": 3.8,
+          "wally": 3.6
+        }
+      },
+      {
+        "date": "2026-04-24",
+        "distances": {
+          "justin": 3.8,
+          "marian": 3.8,
+          "nan": 3.2,
+          "wally": 4.3
+        }
+      },
+      {
+        "date": "2026-04-25",
+        "distances": {
+          "justin": 7.2,
+          "marian": 5.16,
+          "nan": 2.5,
+          "wally": 4.4
+        }
+      },
+      {
+        "date": "2026-04-26",
+        "distances": {
+          "justin": 4.95,
+          "marian": 3.3,
+          "nan": 5.1,
+          "wally": 2.7
+        }
+      },
+      {
+        "date": "2026-04-27",
+        "distances": {
+          "justin": 2.9,
+          "marian": 2.85,
+          "nan": 6.1,
+          "wally": 2.3
+        }
+      },
+      {
+        "date": "2026-04-28",
+        "distances": {
+          "justin": 7.5,
+          "marian": 6,
+          "nan": 5.1,
+          "wally": 2.6
+        }
+      },
+      {
+        "date": "2026-04-29",
+        "distances": {
+          "justin": 1.8,
+          "marian": 1.9,
+          "nan": 3.1,
+          "wally": 1.5
+        }
+      },
+      {
+        "date": "2026-04-30",
+        "distances": {
+          "justin": 1.6,
+          "marian": 2.6,
+          "nan": 3.1,
+          "wally": 4.4
+        }
+      },
+      {
+        "date": "2026-05-01",
+        "distances": {
+          "justin": 2.3,
+          "marian": 2.3,
+          "nan": 1,
+          "wally": 2.5
+        }
+      },
+      {
+        "date": "2026-05-02",
+        "distances": {
+          "justin": 4.4,
+          "marian": 4.4,
+          "nan": 2.2,
+          "wally": 2.7
+        }
+      },
+      {
+        "date": "2026-05-03",
+        "distances": {
+          "justin": 1.55,
+          "marian": 1.55,
+          "nan": 2.4,
+          "wally": 2.7
+        }
+      },
+      {
+        "date": "2026-05-04",
+        "distances": {
+          "justin": 3.3,
+          "marian": 3.9,
+          "nan": 2.7,
+          "wally": 2.1
+        }
+      },
+      {
+        "date": "2026-05-05",
+        "distances": {
+          "justin": 3.4,
+          "marian": 4.9,
+          "nan": 2.6,
+          "wally": 2.6
+        }
+      },
+      {
+        "date": "2026-05-06",
+        "distances": {
+          "justin": 2.7,
+          "marian": 6.2,
+          "nan": 3.1,
+          "wally": 4
+        }
+      },
+      {
+        "date": "2026-05-07",
+        "distances": {
+          "justin": 3.8,
+          "marian": 7.7,
+          "nan": 3.9,
+          "wally": 3.9
+        }
+      },
+      {
+        "date": "2026-05-08",
+        "distances": {
+          "justin": 0.35,
+          "marian": 2,
+          "nan": 2.3,
+          "wally": 2.7
+        }
+      },
+      {
+        "date": "2026-05-09",
+        "distances": {
+          "justin": 1.5,
+          "marian": 1.5,
+          "nan": 2.2,
+          "wally": 3
+        }
+      },
+      {
+        "date": "2026-05-10",
+        "distances": {
+          "justin": 7.36,
+          "marian": 7.35,
+          "nan": 4.1,
+          "wally": 0.5
+        }
+      },
+      {
+        "date": "2026-05-11",
+        "distances": {
+          "justin": 1.6,
+          "marian": 1.7,
+          "nan": 2,
+          "wally": 3.4
+        }
+      },
+      {
+        "date": "2026-05-12",
+        "distances": {
+          "justin": 5.94,
+          "marian": 5,
+          "nan": 5.4,
+          "wally": 2.4
+        }
+      },
+      {
+        "date": "2026-05-13",
+        "distances": {
+          "justin": 1.65,
+          "marian": 1,
+          "nan": 2.6,
+          "wally": 3.1
+        }
+      },
+      {
+        "date": "2026-05-14",
+        "distances": {
+          "justin": 0.6,
+          "marian": 1.6,
+          "nan": 4,
+          "wally": 3.6
+        }
+      },
+      {
+        "date": "2026-05-15",
+        "distances": {
+          "justin": 3.2,
+          "marian": 2.8,
+          "nan": 5.2,
+          "wally": 4.4
+        }
+      },
+      {
+        "date": "2026-05-16",
+        "distances": {
+          "justin": 6.7,
+          "marian": 2,
+          "nan": 3.6,
+          "wally": 2.2
+        }
+      }
+    ]
+  }
+}
