@@ -254,5 +254,18 @@
         "description": "Borut Bozic (Vacansoleil) won the 159.6 km opening stage and took the leader's jersey; Mathieu Perget won the GC. The closest documented precedent for the 2026 Tour de France Stage 9 finish at Ussel — same finish town, 17 years earlier, in the smaller regional race. Per the seg 23-27 verification (#500) and the tour-history dossier (PR #526), Ussel had never hosted a Tour de France stage finish before 2026; this Tour du Limousin opener is the strongest documented finish-line antecedent."
       }
     ]
+  },
+  {
+    "segments": [16],
+    "events": [
+      {
+        "year": 2020,
+        "stage": "Stage 12",
+        "route": "Chauvigny to Sarran",
+        "description": "On Stage 12 of the 2020 Tour (Chauvigny to Sarran, 10 September 2020, that edition's longest stage at 218 km), Marc Hirschi of Sunweb won alone after launching his decisive solo on the Suc au May descent, the road this segment covers. In 2020 the race climbed to the Suc au May from the Treignac side and dropped south toward Sarran; in 2026 it crests from Chaumeil and descends this way instead, running Hirschi's winning road in reverse.",
+        "videoUrl": "https://www.youtube.com/watch?v=kApckfm8AqI",
+        "videoTitle": "Stage 12 highlights: Hirschi solo win (TNT Sports, YouTube)"
+      }
+    ]
   }
 ]
