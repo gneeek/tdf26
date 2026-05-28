@@ -7,14 +7,20 @@ kmStart: 106
 kmEnd: 112
 gpxFile: /gpx/segment-16.gpx
 elevationData: /data/elevation/segment-16.json
-images: []
+images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ruisseau_de_Boulou.jpg/1280px-Ruisseau_de_Boulou.jpg","alt":"The Ruisseau de Boulou, a small stream in the Madranges commune named in the entry as an affluent of the Vézère","author":"Fc42","authorUrl":"https://commons.wikimedia.org/wiki/User:Fc42","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Ruisseau_de_Boulou.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Plateau_de_Millevaches%2C_La_Nouaille.JPG/1280px-Plateau_de_Millevaches%2C_La_Nouaille.JPG","alt":"The Plateau de Millevaches at La Nouaille, the flat heathland that opens to the north as the descent drops","author":"Babsy","authorUrl":"https://commons.wikimedia.org/wiki/User:Babsy","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Plateau_de_Millevaches,_La_Nouaille.JPG"}]
 weather: null
 draft: true
 ---
 
 # The Long Exhale
 
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Plateau_limousin_depuis_le_Suc_au_May.JPG/1920px-Plateau_limousin_depuis_le_Suc_au_May.JPG" alt="The Plateau limousin seen from the Suc au May summit, looking out over the country the descent drops into" caption="The Plateau limousin from the Suc au May summit – the country the descent drops into, with the Plateau de Millevaches running flat across the middle distance and the lower Limousin folded out beyond." author="Babsy" authorUrl="https://commons.wikimedia.org/wiki/User:Babsy" license="CC BY-SA 3.0" licenseUrl="https://creativecommons.org/licenses/by-sa/3.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Plateau_limousin_depuis_le_Suc_au_May.JPG"}
+::
+
 Segment sixteen picks the road up at eight hundred and fifty-three metres, already below the high point of the climb that has just ended, and for six kilometres it does almost nothing but go down. This is the descent the climbing day was owed. The parcours loses a little over two hundred and sixty metres before kilometre one hundred and twelve, a touch above four per cent on average and close to nine in the steepest pitch, the kind of grade that asks a rider to sit up and let the road do the work rather than to reach for the brakes. After the Suc au May, everything is downhill in the only sense the legs care about.
+
+::street-view-embed{embedUrl="https://www.google.com/maps/embed?pb=!4v1748400000000!6m8!1m7!1ssmEnPwrv_CY6_tXJI2t0tw!2m2!1d1.8492318!2d45.480541!3f286.32!4f18.76!5f0.7820865974627469" caption="A hairpin on the descent off the Suc au May, on the D26 above Madranges – the road this segment runs down." titlePrefix="Street View" attribution="Interactive view. Imagery © Google Street View."}
+::
 
 There is no monument here and no village the road bothers to enter. What there is, for the first kilometre or two, is the massif coming apart beside and behind the rider. To the east the named summits stay in view as they fall away. They are *puys* here, the word this granite country keeps for a height[^puy]: the Puy de la Monédière, the highest of them at nine hundred and twenty-two metres, then the Puy de la Jarrige and the Puy Messou, all within a metre or two of the Suc au May and none of them on the route. To the north the Plateau de Millevaches opens out, flat and pale and enormous. There is no marked viewpoint on this stretch, no table of orientation, nothing built to stop at. On a descent the view is not a place you arrive at. It is the thing you are doing.
 
@@ -25,6 +31,9 @@ I find the watershed more moving than the summit, which is probably a minority v
 The river the descent is chasing is a modest thing. The Madrange[^madrange] rises on this same massif, at the col du Bos, and runs some twenty-one kilometres down to the Vézère, and along the way it once turned a line of mills, the moulins of Praderie and Chaillac and Pierotte and Rieux, all of them now silent or gone. The descent and the stream start from the same heights and reach the same river by different routes, the rider on tarmac and the water on stone, and only one of them is in any hurry.
 
 The race has been here before, going the other way. When the Tour last climbed the Suc au May, on Stage 12 in 2020, it came up from the Treignac side, up the road this descent now runs down, and Marc Hirschi launched the solo that won him the stage on this very slope. The road the riders will brake down in July is a road a Tour stage was already won on, climbed then, descended now. It is not the only Tour history this corner of the Corrèze holds, though the rest is a subject for an essay of its own, nearer the start of the race.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/2020_Tour_de_France%2C_2nd_stage%2C_Marc_Hirschi.jpg/1280px-2020_Tour_de_France%2C_2nd_stage%2C_Marc_Hirschi.jpg" alt="Marc Hirschi at the 2020 Tour de France, the rider who won Stage 12 by launching his solo on this descent" caption="Marc Hirschi at the 2020 Tour de France – the rider who, on Stage 12 of that edition, launched the solo that won him the stage on the road this descent now runs down." author="C. Martino" authorUrl="https://commons.wikimedia.org/wiki/User:Martin_Myst%C3%A8re" license="CC BY-SA 4.0" licenseUrl="https://creativecommons.org/licenses/by-sa/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:2020_Tour_de_France,_2nd_stage,_Marc_Hirschi.jpg"}
+::
 
 The four of us keeping the walking ledger for this blog cross watersheds we never notice, on the way to the shops or around a park, two kilometres a day at the cap and no massif in sight. A line like the one on the Monédières is drawn on every patch of ground that drains anywhere at all. Mostly we are simply on one side of one without thinking about it, which is the ordinary condition of living on a continent rather than a fact anyone is asked to feel.
 
