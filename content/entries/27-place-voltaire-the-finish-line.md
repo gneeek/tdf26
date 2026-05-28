@@ -2,7 +2,7 @@
 segment: 27
 title: "Place Voltaire - The Finish Line"
 subtitle: "Km 182-184.8: The final sprint into Ussel"
-publishDate: 2026-07-09
+publishDate: 2026-07-03
 kmStart: 182
 kmEnd: 184.8
 gpxFile: /gpx/segment-27.gpx
