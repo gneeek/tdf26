@@ -7,7 +7,8 @@
   "Brive-la-Gaillarde": {
     "type": "town",
     "lat": 45.1584982,
-    "lng": 1.5332389
+    "lng": 1.5332389,
+    "note": "Town centre sits ~2.6 km off the route polyline, beyond split_gpx.py's 1000 m town-proximity threshold, so Brive is deliberately absent from every segment's generated towns array in segments.json (the route skirts Brive rather than passing through its centre). This is by design, not an omission (#506): split_gpx.py's module docstring cites Brive as the canonical example of correct off-route exclusion. Brive's relationship to the route is instead captured as 'Sprint - Brive-la-Gaillarde' (seg 1, km 3) in data/competition/points-config.json."
   },
   "Turenne": {
     "type": "town",
