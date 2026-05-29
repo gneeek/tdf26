@@ -369,8 +369,13 @@
     "category": "bridge",
     "lat": 45.5365,
     "lng": 1.7945,
-    "description": "13th/14th-century stone bridge with three arches spanning the Vezere. Iconic view of the medieval town.",
-    "links": [],
+    "description": "Granite bridge of three broken arches spanning the Vezere, the 'Pont ancien sur la Vezere' (also Vieux Pont / Pont Medieval), inscribed Monument Historique on 1 April 1963. Iconic view of the medieval town.",
+    "links": [
+      {
+        "url": "https://www.pop.culture.gouv.fr/notice/merimee/PA00099910",
+        "label": "Mérimée (Monument Historique)"
+      }
+    ],
     "nearest_km": 121.99,
     "nearest_distance_m": 81
   },
@@ -679,16 +684,6 @@
     "links": [],
     "nearest_km": 143.64,
     "nearest_distance_m": 448
-  },
-  {
-    "name": "Pont de la Tourmente",
-    "category": "bridge",
-    "lat": 45.534,
-    "lng": 1.795,
-    "description": "Medieval fortified bridge in Treignac over the Vezere. Site of Hundred Years' War skirmishes when English forces raided the Bas-Limousin.",
-    "links": [],
-    "nearest_km": 121.91,
-    "nearest_distance_m": 319
   },
   {
     "name": "La Table de Jean",
