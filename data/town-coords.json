@@ -7,7 +7,8 @@
   "Brive-la-Gaillarde": {
     "type": "town",
     "lat": 45.1584982,
-    "lng": 1.5332389
+    "lng": 1.5332389,
+    "note": "Town centre sits ~2.6 km off the route polyline, beyond split_gpx.py's 1000 m town-proximity threshold, so Brive is deliberately absent from every segment's generated towns array in segments.json (the route skirts Brive rather than passing through its centre). This is by design, not an omission (#506): split_gpx.py's module docstring cites Brive as the canonical example of correct off-route exclusion. Brive's relationship to the route is instead captured as 'Sprint - Brive-la-Gaillarde' (seg 1, km 3) in data/competition/points-config.json."
   },
   "Turenne": {
     "type": "town",
@@ -70,7 +71,7 @@
     "type": "town",
     "lat": 45.4756,
     "lng": 1.7911,
-    "source": "https://en.wikipedia.org/wiki/Madranges (verified 2026-05-12). Plateau de Millevaches gateway commune (pop ~166, area 12.88 km²); bourg sits 102 m off the polyline at km 113.31 (seg 17). Added during seg 17-19 verification (#498) — previously absent from town-coords.json and segments.json towns array."
+    "source": "https://en.wikipedia.org/wiki/Madranges (verified 2026-05-12). Plateau de Millevaches gateway commune (pop ~166, area 12.88 km²); bourg sits 65.5 m off the polyline at km 113.48 (seg 17; recomputed against segment-17.gpx for #624). Added during seg 17-19 verification (#498) — previously absent from town-coords.json and segments.json towns array."
   },
   "Treignac": {
     "type": "town",

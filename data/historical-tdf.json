@@ -159,12 +159,6 @@
         "description": "72.5 km finish at Chaumeil on Saturday 11 July 1987, the same day as the men's stage. Roberta Bonanomi (Italy) won the stage ahead of Maria Canins and Jeannie Longo, taking the yellow jersey. Longo went on to win the overall race (8–26 July 1987). The Tour de France Féminin ran in parallel with the men's race from 1984 to 1989."
       },
       {
-        "year": 2017,
-        "stage": "Tour du Limousin Stage 3 (50th edition)",
-        "route": "Saint-Pantaléon-de-Larche to Chaumeil",
-        "description": "184.7 km Chaumeil finish on Thursday 17 August 2017, the queen stage of the 50th-anniversary Tour du Limousin. Won by Cyril Gautier (AG2R-La Mondiale). The stage climbed Côte de la Vaysse and Côte de Lestards before three finishing circuits over the Côte des Géants in Chaumeil."
-      },
-      {
         "year": 2020,
         "stage": "Stage 12",
         "route": "Chauvigny to Sarran",
@@ -186,6 +180,17 @@
         "stage": "Paris-Corrèze",
         "route": "Final stages closing at Chaumeil",
         "description": "UCI 2.1 stage race created in 2001 by 1983/1984 Tour de France winner Laurent Fignon with Corrézien motorsport champion Max Mamers and the Conseil général de la Corrèze. From the 2005 edition onward, the final stage closed with five laps of the historic Bol d'Or des Monédières circuit at Chaumeil, explicitly preserving the legacy of the post-Tour criterium. Six confirmed Chaumeil finishes: 2007 (Vigeois → Chaumeil, won by Edvald Boasson Hagen at age 20), 2008 (Brive → Chaumeil), 2009 (Tulle → Chaumeil), 2010, 2011 (Objat → Chaumeil), 2012 (Objat → Chaumeil, final edition). The race did not run in 2013 and has not been organised since."
+      }
+    ]
+  },
+  {
+    "segments": [15, 18, 19],
+    "events": [
+      {
+        "year": 2017,
+        "stage": "Tour du Limousin Stage 3 (50th edition)",
+        "route": "Saint-Pantaléon-de-Larche to Chaumeil",
+        "description": "184.7 km Chaumeil finish on Thursday 17 August 2017, the queen stage of the 50th-anniversary Tour du Limousin. Won by Cyril Gautier (AG2R-La Mondiale). The stage climbed Côte de la Vaysse and Côte de Lestards before three finishing circuits over the Côte des Géants in Chaumeil. The Côte de Lestards is the same crest as 2026 Stage 9's Côte de la Croix de Pey (segs 18-19, climbed from the Treignac side), so the stage's corridor footprint spans seg 15 (the Chaumeil finish) and segs 18-19 (the Lestards crossing); keyed to all three for #603."
       }
     ]
   },
