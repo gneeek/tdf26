@@ -172,6 +172,38 @@ for f in sorted(os.listdir(entries_dir)):
         print(os.path.join(entries_dir, f))
         break
 ")
+
+# Pre-flight (#617): the target must be publishable before any work happens.
+# Bail if the segment resolved to no entry file. Then auto-flip draft: true ->
+# false so the build does not silently exclude the entry: seg 16 shipped with
+# draft: true, nuxt generate filtered it, and production 404'd until a manual
+# rebuild+redeploy. The flip mutates the same ENTRY_FILE that Step 9 stages, so
+# it reconciles to main in the frontmatter PR alongside dataCutoff/weather.
+if [ -z "$ENTRY_FILE" ] || [ ! -f "$ENTRY_FILE" ]; then
+    echo "ERROR: no entry file found for segment $SEGMENT. Cannot publish."
+    exit 1
+fi
+ENTRY_DRAFT=$("$VENV_PYTHON" -c "
+import re
+content = open('$ENTRY_FILE').read()
+m = re.search(r'^draft:\s*(\S+)', content, re.M)
+print(m.group(1).lower() if m else '')
+")
+if [ "$ENTRY_DRAFT" = "true" ]; then
+    echo "Segment $SEGMENT entry is draft: true; flipping to draft: false before build."
+    "$VENV_PYTHON" -c "
+import re
+path = '$ENTRY_FILE'
+content = open(path).read()
+content, n = re.subn(r'^draft:\s*true\s*\$', 'draft: false', content, count=1, flags=re.M)
+if n == 1:
+    open(path, 'w').write(content)
+    print('Flipped draft: false in ' + path)
+else:
+    raise SystemExit('ERROR: could not flip draft field in ' + path)
+"
+fi
+
 DATA_CUTOFF=$("$VENV_PYTHON" -c "
 import re
 content = open('$ENTRY_FILE').read()
@@ -243,8 +275,13 @@ echo "--- Step 4: Fetching weather ---"
 if [ "$SKIP_WEATHER" = true ]; then
     echo "Skipped."
 elif [ -n "$OPENWEATHERMAP_API_KEY" ]; then
+    # Target the segment being published explicitly (#619). Passing "current"
+    # resolves to the most recently published (draft:false, date<=today) entry,
+    # which during a publish run is segment N-1 if N is still draft at this
+    # point: N gets no weather and N-1 gets a retroactive rewrite (content-rule
+    # violation). --segment is the authoritative target.
     "$VENV_PYTHON" "$PROJECT_DIR/processing/weather.py" \
-        --entry current \
+        --entry "$SEGMENT" \
         --api-key "$OPENWEATHERMAP_API_KEY" \
         --segments-json "$PROJECT_DIR/data/segments.json" \
         --entries-dir "$PROJECT_DIR/content/entries"
@@ -403,9 +440,21 @@ else
         PR_STATE=$(gh pr view "$PR_NUM" --json state --jq '.state' 2>/dev/null || echo "UNKNOWN")
         if [ "$PR_STATE" = "MERGED" ]; then
             echo "PR #$PR_NUM was already merged before our merge call (auto-merge race) — treating as success."
-        else
-            gh pr merge "$PR_NUM" --squash --delete-branch \
-                || { echo "ERROR: gh pr merge --squash failed for PR #$PR_NUM. Resolve manually."; exit 1; }
+        elif ! gh pr merge "$PR_NUM" --squash --delete-branch; then
+            # The pre-check above only narrows the window: auto-merge can still win
+            # the race BETWEEN that check and this call, in which case `gh pr merge`
+            # fails on the --delete-branch step (HTTP 404, branch already gone) even
+            # though main is correctly fast-forwarded (#618, fired on seg 15 + 16).
+            # Re-query state: if the PR is now MERGED the failure is the benign
+            # branch-delete 404 and we proceed to the tag/release step; otherwise
+            # it is a real merge failure and we halt as before.
+            PR_STATE=$(gh pr view "$PR_NUM" --json state --jq '.state' 2>/dev/null || echo "UNKNOWN")
+            if [ "$PR_STATE" = "MERGED" ]; then
+                echo "PR #$PR_NUM merged via another path during our merge call; branch-delete likely 404'd. Treating as success."
+            else
+                echo "ERROR: gh pr merge --squash failed for PR #$PR_NUM (state: $PR_STATE). Resolve manually."
+                exit 1
+            fi
         fi
 
         # Pull the merged main back onto the local checkout
