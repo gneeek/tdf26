@@ -70,7 +70,7 @@
     "type": "town",
     "lat": 45.4756,
     "lng": 1.7911,
-    "source": "https://en.wikipedia.org/wiki/Madranges (verified 2026-05-12). Plateau de Millevaches gateway commune (pop ~166, area 12.88 km²); bourg sits 102 m off the polyline at km 113.31 (seg 17). Added during seg 17-19 verification (#498) — previously absent from town-coords.json and segments.json towns array."
+    "source": "https://en.wikipedia.org/wiki/Madranges (verified 2026-05-12). Plateau de Millevaches gateway commune (pop ~166, area 12.88 km²); bourg sits 65.5 m off the polyline at km 113.48 (seg 17; recomputed against segment-17.gpx for #624). Added during seg 17-19 verification (#498) — previously absent from town-coords.json and segments.json towns array."
   },
   "Treignac": {
     "type": "town",
