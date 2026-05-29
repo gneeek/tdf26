@@ -209,13 +209,7 @@ kmStart: 0
 kmEnd: 7.1
 gpxFile: /gpx/segment-01.gpx
 elevationData: /data/elevation/segment-01.json
-images:
-  - src: /images/segment-01/malemort-centre.jpg
-    alt: "Malemort town centre"
-    attribution: "Photo by Jean Dupont, CC BY-SA 4.0, Wikimedia Commons"
-  - src: /images/segment-01/brive-panorama.jpg
-    alt: "View toward Brive-la-Gaillarde"
-    attribution: "Photo by Marie Claire, CC BY 2.0, Flickr"
+images: [{"src": "/images/segment-01/malemort-centre.jpg", "alt": "Malemort town centre", "attribution": "Photo by Jean Dupont, CC BY-SA 4.0, Wikimedia Commons"}, {"src": "/images/segment-01/brive-panorama.jpg", "alt": "View toward Brive-la-Gaillarde", "attribution": "Photo by Marie Claire, CC BY 2.0, Flickr"}]
 weather: null  # Populated by publish script
 draft: false
 ---
@@ -226,6 +220,8 @@ The name alone should give our four riders pause...
 
 [Narrative content here — scenery, history, culture, cycling context]
 ```
+
+**Image frontmatter convention — use inline JSON.** The `images` field must be a single-line JSON array of objects (`images: [{"src": ..., "alt": ..., "attribution": ...}]`), as shown above — not a multi-line YAML block list. Rationale: the frontmatter parsers are currently regex-based, and only the inline-JSON form yields real per-image fields. `processing/validate_entries.py` accepts the YAML block-list form but parses it crudely (it counts `- src:` lines and drops `alt`/`attribution`), and this fragility is the class of bug behind the seg-9 publish-day crash. Full YAML-list support is gated on #326 (consolidation onto a single real parser); until that lands, inline JSON is the required form for every new entry.
 
 ## Phase 3: Rider Stats Tracker
 
