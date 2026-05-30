@@ -232,19 +232,10 @@ const chartData = computed(() => {
 
 // townKmPositions is imported from ~/data/town-positions (shared with StageDetails.vue)
 
-// Known climb summit positions (km_end from KNOWN_CLIMBS)
-const climbSummitKm = {
-  'Cote de Malemort': 5,
-  'Puy Boubou': 30.6,
-  'Cote de Lagleygeolle': 43.2, 'Côte de Lagleygeolle': 43.2,
-  'Cote de Miel': 51.1, 'Côte de Miel': 51.1,
-  'Côte de Naves': 74.8,
-  'Puy de Lachaud': 85.6,
-  'Suc au May': 104.8,
-  'Cote de la Croix de Pey': 127, 'Côte de la Croix de Pey': 127,
-  'Mont Bessou': 153,
-  'Cote des Gardes': 167.2, 'Côte des Gardes': 167.2,
-}
+// Climb summit km comes from CLIMB_DISPLAY (derived from points-config.json by
+// canonical climb name) — see utils/stage-totals.ts. Deriving by the canonical
+// name removes the former dual ASCII/accented key map, which drifted from
+// points-config and broke on the Naves rename (#517).
 
 function buildLabelItems() {
   if (!props.segments.length || !props.elevationData) return []
@@ -290,8 +281,8 @@ function buildLabelItems() {
       for (const climb of seg.climbs) {
         if (placed.has(climb)) continue
         placed.add(climb)
-        // Use known summit km if available, otherwise find peak in segment range
-        const summitKm = climbSummitKm[climb]
+        // Use canonical summit km if available, otherwise find peak in segment range
+        const summitKm = CLIMB_DISPLAY.get(climb)?.km
         let peakIdx = 0
         if (summitKm != null) {
           const targetKm = summitKm - kmOffset
