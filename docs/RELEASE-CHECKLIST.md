@@ -75,7 +75,7 @@ v1.4.19 (8-strand blitz).
 ## 5. Review, verify, merge
 
 - [ ] CI green. `npm test`; `bash -n` for any touched shell script; the shell-test harness once #508 lands.
-- [ ] **Rendered-page verification** (the build-and-preview step). The *automated* render-check (CI generates the site and asserts each entry page renders, no blank/500) is owned by **#322**. Until #322 lands, do this manually: `npm run build` + a `nuxt generate` static preview — **not** the SSR runtime (`feedback_production_preview`). *(Ownership split with #322: #322 implements the verification step; this checklist only references it.)*
+- [ ] **Rendered-page verification** (the build-and-preview step). The *automated* render-check now runs in CI (#322): `nuxt generate` then `tests/e2e/build-verify.sh`, which asserts every non-draft entry page renders — substantive size, no error boundary, and its **own title** present (catches the v1.3.4 frontmatter-corruption class where a page built but rendered blank), plus that the rendered entry count matches the non-draft entries on disk. CI failing this step blocks the merge. A manual `nuxt generate` static preview (**not** the SSR runtime, `feedback_production_preview`) remains the recommended final human look before deploy for anything CI can't judge (layout, imagery, prose).
 - [ ] Visible / blast-radius actions (push, deploy, force) confirmed with the publisher unless pre-authorised for a defined scope.
 - [ ] Merge to `main` via PR (squash). Verify the merge via the GitHub API before post-merge steps (`feedback_pr_polling`). Never push directly to `main`.
 
