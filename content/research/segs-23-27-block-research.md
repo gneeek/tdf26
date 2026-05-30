@@ -26,6 +26,8 @@
 
 ---
 
+> **Climb figures — read them from `data/competition/points-config.json`, and note a stale figure in this dossier (drafter note added 2026-05-30).** As of v1.4.21 (#654, #517/#588/#486) `StageDetails.vue` and `ElevationChart.vue` derive every climb's gradient, length, and summit km directly from `points-config.json` — there is no longer a hand-kept copy in the components, so prose must match `points-config.json` exactly or the entry text will disagree with its own rendered card/chart. **⚠️ Côte des Gardes (seg 25): this dossier says "2.2 km at 4.8%" (below, in the seg 25 cycling section and the seg 27 finish-geometry note), but the route-geometry corrections in #650 changed the canonical gradient to 4.3%.** Canonical now = **summit km 170.73, length_km 2.2, gradient 4.3%.** Write 4.3%, not 4.8%. (The separate summit-km caveat below — declared km vs the GPX elevation peak ~200 m earlier — is unrelated and still stands.) Quote `points-config.json`, not this dossier's older number, CLAUDE.md, or any prior draft.
+
 ## Segment 23 (km 154.0-162.0) — high descent off the Mont Bessou roof
 
 **Verified thin / descent corridor with no on-route landmark.** No towns, no climbs in `segments.json`. Start (45.56966, 2.04283) → end (45.56963, 2.12662); +172m / −113m; min 872m / max 973m. Note the elevations: this stays high (872-973m the whole way), so the "descent" here is gentle and undulating high-plateau crossing, *not* the steep drop — that comes in seg 24. **Drafters must not invent on-route landmarks.**
