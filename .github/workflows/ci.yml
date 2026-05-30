@@ -28,6 +28,9 @@ jobs:
       - name: Lint JavaScript
         run: npx eslint .
 
+      - name: Guard against hand-rolled frontmatter parsers (#326)
+        run: bash scripts/check-frontmatter-parsers.sh
+
       - name: Run JavaScript tests with coverage
         run: npm run test:coverage
 
