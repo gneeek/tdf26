@@ -60,6 +60,33 @@ check_not_contains() {
   fi
 }
 
+# Fixed-string variant of check_contains (no regex). Used for entry titles,
+# which can carry punctuation that would otherwise be read as regex.
+check_contains_fixed() {
+  local file="$OUTPUT_DIR/$1"
+  local pattern="$2"
+  local label="${3:-$2}"
+  if [ -f "$file" ] && grep -Fq "$pattern" "$file"; then
+    pass "$1 contains: $label"
+  else
+    fail "$1 missing: $label"
+  fi
+}
+
+# Assert a generated file is at least min bytes. A blank/error stub is tiny;
+# every real entry page is tens of KB (smallest observed ~53 KB).
+check_min_size() {
+  local file="$OUTPUT_DIR/$1"
+  local min="$2"
+  local size=0
+  [ -f "$file" ] && size=$(wc -c < "$file")
+  if [ "$size" -ge "$min" ]; then
+    pass "$1 substantive ($size bytes)"
+  else
+    fail "$1 too small ($size bytes < $min) - possible blank/error page"
+  fi
+}
+
 echo ""
 echo "Build verification: $OUTPUT_DIR"
 echo "================================"
@@ -144,6 +171,46 @@ check_file "admin/index.html"
 echo ""
 echo "Content data:"
 check_dir "__nuxt_content"
+
+# --- Per-entry render check (#322): every non-draft entry page renders ---
+# Targets the v1.3.4 bug class: a frontmatter-injection bug (dataCutoff) shipped
+# a page that built fine but rendered blank / without its content. The page
+# shell ("Corrèze" in the layout) survives such a failure, so the load-bearing
+# assertion is that each entry renders its OWN title - proof the frontmatter
+# parsed and the body rendered, not just the chrome. We also assert the page is
+# substantive and carries no error boundary, and that the count of rendered
+# non-draft entries matches the count on disk (catches a silently dropped entry,
+# the seg-16 draft-filtering class).
+echo ""
+echo "Per-entry render check (#322):"
+MIN_ENTRY_BYTES=20000
+EXPECTED=0
+RENDERED=0
+for entry_file in "$PROJECT_DIR"/content/entries/*.md; do
+  grep -q "^draft: true" "$entry_file" && continue
+  EXPECTED=$((EXPECTED + 1))
+  slug=$(basename "$entry_file" .md)
+  rel="entries/$slug/index.html"
+  if [ ! -f "$OUTPUT_DIR/$rel" ]; then
+    fail "non-draft entry not rendered: $slug"
+    continue
+  fi
+  RENDERED=$((RENDERED + 1))
+  check_min_size "$rel" "$MIN_ENTRY_BYTES"
+  check_not_contains "$rel" "__nuxt_error" "no Nuxt error boundary ($slug)"
+  check_not_contains "$rel" "Page not found" "no 404 body ($slug)"
+  title=$(grep -m1 '^title:' "$entry_file" | sed -E 's/^title:[[:space:]]*//; s/^"//; s/"$//')
+  if [ -n "$title" ]; then
+    check_contains_fixed "$rel" "$title" "own title rendered ($slug)"
+  else
+    fail "$slug has no title in frontmatter"
+  fi
+done
+if [ "$EXPECTED" -gt 0 ] && [ "$RENDERED" -eq "$EXPECTED" ]; then
+  pass "all $EXPECTED non-draft entries rendered"
+else
+  fail "rendered $RENDERED of $EXPECTED non-draft entries"
+fi
 
 # --- Summary ---
 echo ""
