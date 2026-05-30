@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs'
 import { resolve, join } from 'path'
 
+import { splitFrontmatter } from '~/server/utils/frontmatter'
+
 export default defineEventHandler((event) => {
   const query = getQuery(event)
   const filename = query.filename as string
@@ -12,14 +14,5 @@ export default defineEventHandler((event) => {
   const filePath = join(resolve('content/entries'), filename)
   const content = readFileSync(filePath, 'utf8')
 
-  // Split frontmatter and body
-  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
-  if (!match) {
-    return { frontmatter: '', body: content }
-  }
-
-  return {
-    frontmatter: match[1],
-    body: match[2]
-  }
+  return splitFrontmatter(content)
 })
