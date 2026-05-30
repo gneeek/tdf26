@@ -1,6 +1,8 @@
 import { writeFileSync } from 'fs'
 import { resolve, join } from 'path'
 
+import { joinFrontmatter } from '~/server/utils/frontmatter'
+
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const { filename, frontmatter, content: markdownBody } = body
@@ -11,8 +13,7 @@ export default defineEventHandler(async (event) => {
 
   const filePath = join(resolve('content/entries'), filename)
 
-  const fileContent = `---\n${frontmatter.trim()}\n---\n${markdownBody}`
-  writeFileSync(filePath, fileContent)
+  writeFileSync(filePath, joinFrontmatter(frontmatter, markdownBody))
 
   return { success: true, filename }
 })

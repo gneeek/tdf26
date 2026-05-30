@@ -1,6 +1,8 @@
 import { readFileSync, existsSync, readdirSync } from 'fs'
 import { resolve, join } from 'path'
 
+import { parseFrontmatter } from '~/server/utils/frontmatter'
+
 export default defineEventHandler((event) => {
   const query = getQuery(event)
   const segment = parseInt(query.segment as string)
@@ -27,14 +29,11 @@ export default defineEventHandler((event) => {
 
   for (const filename of files) {
     const content = readFileSync(join(entriesDir, filename), 'utf8')
-    const segMatch = content.match(/^segment:\s*(\d+)/m)
-    if (segMatch && parseInt(segMatch[1]) === segment) {
+    const fm = parseFrontmatter(content)
+    if (fm.segment === segment) {
       entryFilename = filename
-      const imagesMatch = content.match(/^images:\s*(\[[\s\S]*?\])\s*$/m)
-      if (imagesMatch) {
-        try {
-          entryImages = JSON.parse(imagesMatch[1])
-        } catch {}
+      if (Array.isArray(fm.images)) {
+        entryImages = fm.images
       }
       break
     }
