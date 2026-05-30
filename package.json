@@ -14,6 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:shell": "bats tests/shell",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -41,6 +42,7 @@
     "@vue/test-utils": "^2.4.10",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
+    "bats": "^1.13.0",
     "eslint": "^10.4.0",
     "happy-dom": "^20.9.0",
     "vitest": "^4.1.2"
