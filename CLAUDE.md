@@ -1,5 +1,7 @@
 # Corrèze Travelogue — Project Specification
 
+> **Keep this file to load-bearing every-session instruction.** Bulk reference appendices (cycling history, CC image sources, historical/cultural sources by area) were relocated under #627 to `docs/reference/` and the `content/research/` dossiers. Do not re-add large reference tables or source lists here; add a pointer instead. See the `## References` section near the end for the map.
+
 ## Project Overview
 
 A cycling travelogue blog following the 185km route of Stage 9 of the 2026 Tour de France, from Malemort to Ussel through the Corrèze department of France. The route is divided into 27 segments with alternating lengths (odd-numbered ~8km, even-numbered ~6km, per `processing/split_gpx.py`). One blog entry per segment is published twice weekly from early April to early July 2026, building anticipation toward the actual stage on Sunday, July 12, 2026.
@@ -421,116 +423,10 @@ ASO categorisation (HC, Cat 2, etc.) is on each climb in points-config. Whether 
 - Prioritize mobile-responsive design; entries will be shared on social media
 - New repositories in this ecosystem use Apache 2.0 for code repos and CC BY-SA 4.0 for content/text repos. The `gh repo create --license` default is Apache 2.0, which is wrong for content-centric repos such as `unfold`; pass the correct flag explicitly at creation time.
 
-## References: Cycling History Along the Route
+## References
 
-### Tour de France History in the Corridor
+The bulk reference appendices that used to live here were relocated under #627 to keep this file to load-bearing every-session instruction. Consult these surfaces when drafting; do not copy their contents back into this file.
 
-**Brive-la-Gaillarde (km 3–6)** — multiple Tour visits:
-- **1951 Tour, Stage 11 (Brive → Agen):** Hugo Koblet's legendary 135km solo breakaway, holding off Coppi, Bobet, Bartali, Magni, Géminiani, and Robic. One of the greatest solo rides in Tour history. Source: bikeraceinfo.com/tdf/tdf1951.html
-- **1996 Tour, Stage 15:** Departure from Brive to Villeneuve-sur-Lot.
-- **2012 Tour, Stage 18 (Blagnac → Brive):** Mark Cavendish sprint victory in the rainbow jersey. Bradley Wiggins in yellow. Source: cyclehistory.wordpress.com and procyclingstats.com
-
-**Tulle (km 63–68)** — the departmental capital has hosted Tour du Limousin stages and is the base for local cycling clubs (Tulle Cyclisme Compétition). The L'Agglomérée cyclosportive departs from Tulle annually and in 2026 covers 40km of the Stage 9 route including Suc au May.
-
-**Nearby/overlapping Tour stages:**
-- **2024 Tour, Stage 11 (Évaux-les-Bains → Le Lioran):** 211km through the Massif Central with 4,350m climbing. Vingegaard vs Pogačar battle. Terrain very similar to Stage 9's second half. Dailymotion highlights: dailymotion.com/video/x90ywby
-- **2024 Tour, Stage 12 (Aurillac → Villeneuve-sur-Lot):** Passed through the Cantal just south of the Stage 9 route.
-- **2026 Tour, Stage 10 (Aurillac → Le Lioran):** Takes place the day after Stage 9, using Cantal roads adjacent to the Corrèze route. Same finale as 2024 where Vingegaard beat Pogačar in a photo finish.
-
-### Regional Cycling Races
-
-**Tour du Limousin** — 4-day professional stage race (UCI 2.1), held annually since 1968. Routes through Corrèze, Haute-Vienne, Creuse, and Dordogne on many of the same roads. Now called Tour du Limousin-Périgord-Nouvelle-Aquitaine. Wikipedia: en.wikipedia.org/wiki/Tour_du_Limousin
-
-**Paris-Corrèze** — defunct professional race (UCI 2.1) that ran through the 2000s with stages finishing in Corrèze towns including Ussel. Archived results: autobus.cyclingnews.com
-
-**L'Agglomérée Cyclosportive (Tulle, April 5, 2026)** — amateur sportive riding 40km of the actual Stage 9 route including the Suc au May climb. 85km and 105km options. Organized by Tulle Cyclisme Compétition. This event falls during the blog's first week of publication — potential tie-in content. Source: lagglomeree.agglo-tulle.fr
-
-**La Corrézienne VTT** — mountain bike tour of the Corrèze department. Source: cyclotourisme-correze.fr
-
-### CycleBlaze Touring Journals
-
-CycleBlaze.com hosts touring journals with photos and ride reports through the exact towns on this route, including Turenne, Collonges-la-Rouge, and Curemonte. These provide ground-level cycling perspectives on the terrain. Example: cycleblaze.com/journals/pyreneesannsteve/turenne-collanges-la-rouge-and-curemonte/ — Check individual journal CC licenses before use.
-
-## References: Creative Commons Image Sources
-
-### Wikimedia Commons Categories (all CC BY-SA)
-
-Primary location categories to query for each segment:
-
-| Segment(s) | Wikimedia Commons Category | Notes |
-|------------|---------------------------|-------|
-| 1–2 | Category:Malemort, Category:Brive-la-Gaillarde | Town views, river Corrèze |
-| 3 | Category:Turenne (Corrèze) | Castle ruins, hilltop village, panoramic views |
-| 4 | Category:Collonges-la-Rouge | Extensive collection; red sandstone architecture |
-| 5–6 | Category:Beynat | Smaller collection |
-| 9–10 | Category:Tulle | River valley, cathedral, town views |
-| 11–12 | Category:Naves, Corrèze | Limited |
-| 15 | Category:Monédières | Suc au May area, heathland panoramas |
-| 17 | Category:Treignac | Medieval bridge, granite town |
-| 18–20 | Category:Plateau de Millevaches | Heathland, forests, remote landscapes |
-| 19–20 | Category:Bugeat | Small town, Millevaches gateway |
-| 22 | Category:Mont Bessou | Summit views (highest point in Corrèze) |
-| 25 | Category:Meymac | Benedictine abbey, medieval town |
-| 27 | Category:Ussel, Corrèze | Town centre, Place Voltaire |
-
-### Confirmed CC-Licensed Photographers on Commons
-
-These photographers have Corrèze-specific content confirmed as CC BY-SA:
-- **E gargadennec** — Collonges-la-Rouge header images
-- **Alertomalibu** — Collonges village streets, Castel de Vassinhac
-- **Accrochoc** — Collonges architectural details, tympanum
-- **Sail over** — Maison de la Sirène, Collonges
-
-### Other CC/Open Image Sources
-
-- **Unsplash** — search "Corrèze", "Limousin", "Dordogne valley" for landscape photography (Unsplash license, free for all uses)
-- **Flickr Creative Commons** — search by geographic coordinates for each segment; filter by CC BY or CC BY-SA
-- **Wikimedia Commons geosearch API** — `suggest_images.py` should query: `https://commons.wikimedia.org/w/api.php?action=query&list=geosearch&gscoord={lat}|{lng}&gsradius=5000&gsnamespace=6&gslimit=50`
-
-### Video Sources
-
-- **Dailymotion / Tour de France official channel** — ASO publishes stage highlight videos. Embeddable but check redistribution terms per video:
-  - 2024 TdF Stage 11 highlights (Massif Central): dailymotion.com/video/x90ywby
-  - 2024 TdF Stage 11 route preview: dailymotion.com/video/x9sik7s (check — may be 2026 stage 9 preview)
-  - 2025 TdF highlights reel: dailymotion.com/video/x9npbe4
-- **YouTube** — search "cycling Corrèze", "vélo Corrèze", "Suc au May cycling", "Plateau de Millevaches vélo" for amateur ride-along videos. Many cycling YouTubers post CC-licensed or embeddable content.
-- **Tour du Limousin** — official race footage may be available via France 3 Nouvelle-Aquitaine archives or the race's social media channels.
-
-## References: Historical and Cultural Sources for Entry Content
-
-### Key Historical Topics by Area
-
-**Malemort / Brive area (Segments 1–2):**
-- Malemort is primarily known for rugby (CA Brive), not cycling — first-ever Tour de France visit
-- Brive: Edmond Michelet museum (WWII Resistance), medieval old town
-- The 2012 Cavendish sprint finish provides strong cycling narrative content
-
-**Turenne (Segment 3):**
-- One of the most powerful viscounties in France; the Turenne viscounts controlled much of the Corrèze from the medieval period until 1738 when sold to Louis XV
-- Henri de La Tour d'Auvergne, Marshal of France, born in the castle
-- "Plus Beaux Villages de France" designation
-
-**Collonges-la-Rouge (Segment 4):**
-- Founded by monks of Charroux Abbey (8th century), pilgrimage stop on the Way of St. James to Santiago de Compostela via Rocamadour
-- Red sandstone colored by iron oxide — unique geological feature
-- Birthplace of the "Plus Beaux Villages de France" association (founded by mayor Charles Ceyrac)
-- Maison de la Sirène belonged to Henry de Jouvenel, husband of the writer Colette
-
-**Tulle (Segments 9–10):**
-- Historic lace-making and accordion-manufacturing centre
-- WWII: site of the Tulle massacre (June 9, 1944) — 99 men hanged by the SS Das Reich division
-- Departmental prefecture; François Hollande was mayor before becoming President of France
-
-**Plateau de Millevaches (Segments 18–20):**
-- Name derives from Celtic/Occitan roots meaning "thousand springs" (not "thousand cows")
-- One of the least populated areas of France; vast heathland and peat bogs
-- Regional Natural Park (Parc naturel régional de Millevaches en Limousin)
-
-**Meymac (Segment 25):**
-- Benedictine Abbaye Saint-André (founded 1085)
-- Centre d'Art Contemporain housed in the abbey
-
-**Ussel (Segment 27):**
-- Historical gateway between the Limousin lowlands and the Auvergne highlands
-- Jacques Chirac began his political career as a municipal councillor here
-- Stage finish on Avenue Thiers, sprint judged at Place Voltaire
+- **Cycling history along the route** (Tour de France in the corridor, Tour du Limousin, Paris-Corrèze, L'Agglomérée) → `content/research/tour-history-research.md`. Two items the dossier does not own (La Corrézienne VTT, CycleBlaze touring journals) → `docs/reference/cycling-history.md`.
+- **Creative Commons image sources** (per-segment Wikimedia categories, confirmed CC photographers, geosearch API, video sources) → `docs/reference/cc-image-sources.md`.
+- **Historical and cultural sources by area** (key topics per area; for segments with a research dossier, that dossier is the source of truth) → `docs/reference/historical-cultural-sources.md`.
