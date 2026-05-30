@@ -1,5 +1,13 @@
 # Strand: publish.sh redeploy / deploy-only recovery path (#630)
 
+> **Status: PARKED — #630 closed won't-fix on 2026-05-30 (deferred, not rejected).**
+> Operator-only benefit and speculative: no publish has yet needed a second pass, so the
+> flag would pre-pay a debt not yet incurred. Removed from v1.4.20 (returned it to 10 issues).
+> **Reopen trigger:** an actual publish that needs a second pass (a finalize PR merges after
+> the initial run and the deployed artifact must be rebuilt + re-uploaded). Cheaper interim
+> option if discoverability bites first: option (b), a sub-runbook in the recovery playbook —
+> not the flag. This brief is the ready-to-pick-up design; the rest below assumes execution.
+
 Single-issue implementation strand (deviation: "Target issues" + "Workflow per issue" are collapsed into §4–5). Adds the missing second-pass recovery path to `scripts/publish.sh` so an operator can rebuild-and-re-upload the current `main` artifact without re-running the stats/points/snapshot/weather/frontmatter/release pipeline.
 
 ## 1. Goal
