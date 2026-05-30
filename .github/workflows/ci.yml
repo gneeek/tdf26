@@ -31,6 +31,9 @@ jobs:
       - name: Run JavaScript tests with coverage
         run: npm run test:coverage
 
+      - name: Run shell tests (bats)
+        run: npm run test:shell
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
