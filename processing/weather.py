@@ -4,9 +4,16 @@
 import argparse
 import json
 import os
-import re
+import sys
 import urllib.parse
 import urllib.request
+
+# Make the canonical frontmatter parser importable when this file is run as a
+# script, via runpy (the shell tests), or imported as processing.weather. None
+# of those reliably puts processing/ on sys.path, so add it explicitly.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import frontmatter  # noqa: E402
 
 OPENWEATHERMAP_API = "https://api.openweathermap.org/data/2.5/weather"
 
@@ -64,14 +71,7 @@ def inject_weather_into_entry(entry_path, weather_data):
 
     # Replace the weather field in frontmatter
     if weather_data:
-        weather_yaml = json.dumps(weather_data)
-        content = re.sub(
-            r'^weather:.*$',
-            f'weather: {weather_yaml}',
-            content,
-            count=1,
-            flags=re.MULTILINE,
-        )
+        content = frontmatter.set_field(content, "weather", json.dumps(weather_data))
 
     with open(entry_path, "w") as f:
         f.write(content)
@@ -92,14 +92,12 @@ def find_current_entry(entries_dir, segments_json):
             content = f.read()
 
         # Extract segment number and publishDate from frontmatter
-        seg_match = re.search(r'^segment:\s*(\d+)', content, re.MULTILINE)
-        date_match = re.search(r'^publishDate:\s*(\S+)', content, re.MULTILINE)
-        draft_match = re.search(r'^draft:\s*(\S+)', content, re.MULTILINE)
+        fm = frontmatter.parse(content)
+        seg_num = fm.get("segment")
+        pub_date = fm.get("publishDate")
 
-        if seg_match and date_match:
-            seg_num = int(seg_match.group(1))
-            pub_date = date_match.group(1)
-            is_draft = draft_match.group(1).lower() == "true" if draft_match else False
+        if seg_num is not None and pub_date:
+            is_draft = fm.get("draft") is True
 
             if not is_draft and pub_date <= today:
                 entries.append((seg_num, pub_date, path))

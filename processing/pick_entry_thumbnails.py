@@ -19,14 +19,13 @@ the build does not depend on network availability.
 import argparse
 import json
 import os
-import re
 import sys
 import time
 from pathlib import Path
 from urllib.parse import unquote
 
+import frontmatter
 import requests
-import yaml
 from PIL import Image
 
 WIKIMEDIA_PREFIX = "https://upload.wikimedia.org/"
@@ -39,15 +38,6 @@ TARGET_RATIO = 1.5  # 3:2 wins ties; portraits are rejected outright
 OBJECT_POSITION_BONUS = 0.05
 API_BATCH_SIZE = 50
 API_SLEEP_SECONDS = 1.0
-
-
-def parse_frontmatter(filepath):
-    with open(filepath) as f:
-        content = f.read()
-    m = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-    if not m:
-        return {}
-    return yaml.safe_load(m.group(1)) or {}
 
 
 def wikimedia_filename(url):
@@ -201,7 +191,7 @@ def main():
         if not filename.endswith(".md"):
             continue
         filepath = entries_dir / filename
-        fm = parse_frontmatter(filepath)
+        fm = frontmatter.parse_file(filepath)
         seg = fm.get("segment")
         if seg is None or seg <= 0:
             continue

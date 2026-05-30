@@ -12,40 +12,12 @@ import re
 import sys
 from datetime import date
 
+import frontmatter
+
 MDC_OPEN_RE = re.compile(r'^(::+)([A-Za-z][A-Za-z0-9_-]*)(\s*\{.*\})?\s*$')
 MDC_CLOSE_RE = re.compile(r'^(::+)\s*$')
 CODE_FENCE_RE = re.compile(r'^(```+|~~~+)')
 FRONTMATTER_FENCE = '---'
-
-
-def parse_frontmatter(filepath):
-    """Parse YAML frontmatter from a markdown file. Returns a dict."""
-    with open(filepath) as f:
-        content = f.read()
-
-    match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
-    if not match:
-        return {}
-
-    fm = {}
-    for line in match.group(1).split('\n'):
-        # Simple key: value parsing
-        m = re.match(r'^(\w+):\s*(.*)', line)
-        if m:
-            key, val = m.group(1), m.group(2).strip()
-            if val == 'true':
-                fm[key] = True
-            elif val == 'false':
-                fm[key] = False
-            elif val == 'null':
-                fm[key] = None
-            elif val == '[]':
-                fm[key] = []
-            elif val.startswith('[') and val.endswith(']') and val != '[]':
-                fm[key] = val  # non-empty array, keep as string marker
-            else:
-                fm[key] = val
-    return fm
 
 
 def find_entries_to_validate(entries_dir, today=None):
@@ -65,7 +37,7 @@ def find_entries_to_validate(entries_dir, today=None):
             continue
 
         filepath = os.path.join(entries_dir, filename)
-        fm = parse_frontmatter(filepath)
+        fm = frontmatter.parse_file(filepath)
 
         # Skip drafts
         if fm.get('draft') is True:
@@ -80,11 +52,10 @@ def find_entries_to_validate(entries_dir, today=None):
         if fm.get('imagesOptional') is True:
             continue
 
-        # Skip if images is a non-empty array
-        images = fm.get('images', [])
-        if isinstance(images, str) and images.startswith('['):
-            # Non-empty array string like [{src: ...}]
-            continue
+        # Skip if images is a non-empty array. The canonical parser yields a
+        # real list (the old hand-rolled parser kept a non-empty array as a
+        # string marker; both reduce to "does this entry have any images").
+        images = fm.get('images') or []
         if isinstance(images, list) and len(images) > 0:
             continue
 
@@ -163,7 +134,7 @@ def find_entries_for_mdc_check(entries_dir):
         if not filename.endswith('.md'):
             continue
         filepath = os.path.join(entries_dir, filename)
-        fm = parse_frontmatter(filepath)
+        fm = frontmatter.parse_file(filepath)
         if fm.get('draft') is True:
             continue
         paths.append(filepath)
@@ -175,18 +146,9 @@ def set_images_optional(filepath):
     with open(filepath) as f:
         content = f.read()
 
-    # Insert imagesOptional: true before the closing ---
-    # Find the end of frontmatter
-    match = re.match(r'^(---\n)(.*?)(\n---)', content, re.DOTALL)
-    if not match:
+    new_content = frontmatter.set_field(content, 'imagesOptional', 'true')
+    if new_content == content:
         return
-
-    before = match.group(1)
-    fm_content = match.group(2)
-    after = match.group(3)
-    rest = content[match.end():]
-
-    new_content = before + fm_content + '\nimagesOptional: true' + after + rest
 
     with open(filepath, 'w') as f:
         f.write(new_content)
