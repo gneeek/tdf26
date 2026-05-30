@@ -243,15 +243,23 @@ def split_into_segments(
         )
 
         # Find towns in this segment via route-proximity (#341).
-        # Half-open [km_start, km_end) so a town landing exactly on a boundary
-        # only appears once.
+        # Half-open [km_start, km_end) so a town landing exactly on an interior
+        # boundary only appears once. The final segment's interval is closed at
+        # both ends (#639): Ussel's closest-approach km sits at the route's
+        # total km (km_end), which the half-open rule would otherwise drop. The
+        # inclusive end is restricted to the last segment so interior boundaries
+        # keep their dedup, and the lower bound (km_start) is still enforced so
+        # the final segment only claims towns within its own span. (The
+        # proximity km is rounded to 2dp and can land just past the unrounded
+        # km_end, so the upper comparison uses a small epsilon.)
+        is_last_segment = seg_num == actual_segments
         towns = []
         town_positions = {}
         for name, prox in town_proximity.items():
             if prox["distance_m"] > town_max_distance_m:
                 continue
             km = prox["km"]
-            if km_start <= km < km_end:
+            if km_start <= km < km_end or (is_last_segment and km_start <= km <= km_end + 0.01):
                 towns.append(name)
                 town_positions[name] = km
 

@@ -15,6 +15,9 @@
     "towns": [
       "Malemort"
     ],
+    "town_positions": {
+      "Malemort": 0.0
+    },
     "climbs": [
       "Côte de Malemort"
     ]
@@ -35,6 +38,9 @@
     "towns": [
       "Turenne"
     ],
+    "town_positions": {
+      "Turenne": 11.85
+    },
     "climbs": []
   },
   {
@@ -54,6 +60,10 @@
       "Ligneyrac",
       "Collonges-la-Rouge"
     ],
+    "town_positions": {
+      "Ligneyrac": 17.49,
+      "Collonges-la-Rouge": 21.79
+    },
     "climbs": []
   },
   {
@@ -72,6 +82,9 @@
     "towns": [
       "Meyssac"
     ],
+    "town_positions": {
+      "Meyssac": 23.57
+    },
     "climbs": [
       "Puy Boubou"
     ]
@@ -90,6 +103,7 @@
     "max_elevation": 404,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": [
       "Puy Boubou"
     ]
@@ -110,6 +124,9 @@
     "towns": [
       "Lanteuil"
     ],
+    "town_positions": {
+      "Lanteuil": 37.93
+    },
     "climbs": [
       "Côte de Lagleygeolle"
     ]
@@ -130,6 +147,9 @@
     "towns": [
       "Beynat"
     ],
+    "town_positions": {
+      "Beynat": 46.22
+    },
     "climbs": [
       "Côte de Lagleygeolle"
     ]
@@ -148,6 +168,7 @@
     "max_elevation": 568,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": [
       "Côte de Miel"
     ]
@@ -168,6 +189,9 @@
     "towns": [
       "Sainte-Fortunade"
     ],
+    "town_positions": {
+      "Sainte-Fortunade": 60.0
+    },
     "climbs": [
       "Côte de Miel"
     ]
@@ -188,6 +212,9 @@
     "towns": [
       "Tulle"
     ],
+    "town_positions": {
+      "Tulle": 68.69
+    },
     "climbs": []
   },
   {
@@ -204,6 +231,7 @@
     "max_elevation": 424,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": [
       "Côte de Naves"
     ]
@@ -224,6 +252,9 @@
     "towns": [
       "Naves"
     ],
+    "town_positions": {
+      "Naves": 78.17
+    },
     "climbs": [
       "Puy de Lachaud"
     ]
@@ -242,6 +273,7 @@
     "max_elevation": 532,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": [
       "Puy de Lachaud"
     ]
@@ -262,6 +294,9 @@
     "towns": [
       "Saint-Augustin"
     ],
+    "town_positions": {
+      "Saint-Augustin": 94.52
+    },
     "climbs": []
   },
   {
@@ -280,6 +315,9 @@
     "towns": [
       "Chaumeil"
     ],
+    "town_positions": {
+      "Chaumeil": 100.27
+    },
     "climbs": [
       "Suc au May"
     ]
@@ -298,6 +336,7 @@
     "max_elevation": 853,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": []
   },
   {
@@ -316,6 +355,9 @@
     "towns": [
       "Madranges"
     ],
+    "town_positions": {
+      "Madranges": 113.5
+    },
     "climbs": []
   },
   {
@@ -334,6 +376,9 @@
     "towns": [
       "Treignac"
     ],
+    "town_positions": {
+      "Treignac": 121.92
+    },
     "climbs": [
       "Côte de la Croix de Pey"
     ]
@@ -354,6 +399,9 @@
     "towns": [
       "Lestards"
     ],
+    "town_positions": {
+      "Lestards": 130.52
+    },
     "climbs": [
       "Côte de la Croix de Pey"
     ]
@@ -372,6 +420,7 @@
     "max_elevation": 827,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": []
   },
   {
@@ -390,6 +439,9 @@
     "towns": [
       "Bugeat"
     ],
+    "town_positions": {
+      "Bugeat": 143.65
+    },
     "climbs": [
       "Mont Bessou"
     ]
@@ -408,6 +460,7 @@
     "max_elevation": 892,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": [
       "Mont Bessou"
     ]
@@ -426,6 +479,7 @@
     "max_elevation": 973,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": []
   },
   {
@@ -442,6 +496,7 @@
     "max_elevation": 940,
     "notable_points": [],
     "towns": [],
+    "town_positions": {},
     "climbs": []
   },
   {
@@ -460,6 +515,9 @@
     "towns": [
       "Meymac"
     ],
+    "town_positions": {
+      "Meymac": 168.1
+    },
     "climbs": [
       "Côte des Gardes"
     ]
@@ -480,6 +538,9 @@
     "towns": [
       "Saint-Angel"
     ],
+    "town_positions": {
+      "Saint-Angel": 176.53
+    },
     "climbs": []
   },
   {
@@ -498,6 +559,9 @@
     "towns": [
       "Ussel"
     ],
+    "town_positions": {
+      "Ussel": 184.84
+    },
     "climbs": []
   }
 ]
