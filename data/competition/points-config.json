@@ -61,7 +61,8 @@
       "category": 4,
       "gradient": 3.2,
       "points": [2, 1, 0, 0],
-      "aso": false
+      "aso": false,
+      "summit_is_kom_line": true
     },
     {
       "name": "Côte de Miel",
@@ -91,7 +92,8 @@
       "category": 2,
       "gradient": 3.2,
       "points": [6, 4, 2, 1],
-      "aso": false
+      "aso": false,
+      "summit_is_kom_line": true
     },
     {
       "name": "Suc au May",
@@ -106,10 +108,10 @@
     {
       "name": "Côte de la Croix de Pey",
       "segment": 19,
-      "km": 128.99,
+      "km": 129.54,
       "length_km": 7,
       "category": 3,
-      "gradient": 4.4,
+      "gradient": 4.9,
       "points": [4, 3, 2, 1],
       "aso": true
     },
@@ -126,7 +128,7 @@
     {
       "name": "Côte des Gardes",
       "segment": 25,
-      "km": 170.98,
+      "km": 170.73,
       "length_km": 2.2,
       "category": 3,
       "gradient": 4.3,

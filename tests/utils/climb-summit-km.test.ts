@@ -37,22 +37,26 @@ interface Climb {
   km: number
   length_km: number | null
   gradient: number
+  summit_is_kom_line?: boolean
 }
 
 const TOLERANCE_KM = 0.35
 const TOLERANCE_M = 10
 const UPPER_PAD_KM = 1.5
 
-// Climbs whose declared summit km is known to drift from the GPX argmax.
-// Each maps to the follow-up issue tracking the data fix. The assertion
-// is asserted-but-skipped for these; remove from the map when the data
-// fix lands (see PR that closes the referenced issue).
-const KNOWN_FAILING: Record<string, number> = {
-  'Côte de Lagleygeolle': 589,
-  'Puy de Lachaud': 590,
-  'Côte de la Croix de Pey': 591,
-}
-
+// Permanent by-design exemption: a climb flagged `summit_is_kom_line` declares
+// its summit km as a scoring / KOM line that is intentionally placed below the
+// GPX elevation peak (an ASO-style categorised summit on a continuously rising
+// flank, where the road keeps climbing — uncounted — past the points line).
+// For such climbs the declared km is NOT meant to be the argmax, so this
+// placement assertion does not apply. This replaces the former ad-hoc
+// KNOWN_FAILING skip-list (#589 Côte de Lagleygeolle, #590 Puy de Lachaud):
+// those were never data bugs to be "fixed" — the published entries
+// 07-road-through-beynat.md and 13-puy-de-lachaud-uncounted.md deliberately
+// anchor the scored summit below the true crest. The flag is the typed,
+// self-documenting source of truth for the exemption; relocating the km to the
+// GPX crest would contradict that fixed content (and, for Lagleygeolle, move
+// the climb into a different segment). See also #492 (ASO 2026 categorisation).
 describe('points-config climb summit km vs GPX argmax', () => {
   const track = buildTrack()
 
@@ -60,9 +64,11 @@ describe('points-config climb summit km vs GPX argmax', () => {
     if (climb.length_km == null) continue
     const winLow = climb.km - climb.length_km
     const winHigh = climb.km + UPPER_PAD_KM
-    const knownFailIssue = KNOWN_FAILING[climb.name]
-    const testFn = knownFailIssue ? it.skip : it
-    const titleSuffix = knownFailIssue ? ` [skipped: #${knownFailIssue}]` : ''
+    const exempt = climb.summit_is_kom_line === true
+    const testFn = exempt ? it.skip : it
+    const titleSuffix = exempt
+      ? ' [exempt: summit km is a KOM/scoring line below the GPX peak, by design]'
+      : ''
     testFn(`${climb.name}: declared summit km ${climb.km} matches GPX argmax in [${winLow.toFixed(2)}, ${winHigh.toFixed(2)}] within ±${TOLERANCE_KM} km / ±${TOLERANCE_M} m${titleSuffix}`, () => {
       let argmaxKm = climb.km
       let argmaxElev = -Infinity
