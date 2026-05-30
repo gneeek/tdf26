@@ -18,6 +18,32 @@ export const CATEGORIZED_CLIMBS: Set<string> = new Set(
   pointsConfig.climbs.map(c => c.name),
 )
 
+// Per-climb display values (summit km, length, gradient) derived directly from
+// points-config.json keyed by the canonical climb name. This is the single
+// derivation consumed by both StageDetails.vue (gradient + summit km) and
+// ElevationChart.vue (summit km label placement). It replaces the hand-kept
+// `climbData` / `climbSummitKm` literals those components used to carry, which
+// drifted from points-config (#517 #588 #486) and broke on accent/rename of the
+// lookup key. Deriving by the canonical name removes the key-drift surface
+// entirely. tests/utils/climb-display.test.ts asserts this map stays byte-equal
+// to points-config so a re-introduced literal would fire red.
+export interface ClimbDisplay {
+  name: string
+  /** Cumulative km of the scored summit along the full stage. */
+  km: number
+  /** Climb length in km; null where points-config leaves it unset. */
+  length_km: number | null
+  /** Average gradient, per cent. */
+  gradient: number
+}
+
+export const CLIMB_DISPLAY: Map<string, ClimbDisplay> = new Map(
+  pointsConfig.climbs.map(c => [
+    c.name,
+    { name: c.name, km: c.km, length_km: c.length_km, gradient: c.gradient },
+  ]),
+)
+
 export interface StageTotals {
   totalDistance: number
   totalElevationGain: number

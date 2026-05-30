@@ -31,7 +31,7 @@
 <script setup>
 import segmentsJson from '~/data/segments.json'
 import { townKmPositions } from '~/data/town-positions'
-import { deriveTotals, CATEGORIZED_CLIMBS } from '~/utils/stage-totals'
+import { deriveTotals, CATEGORIZED_CLIMBS, CLIMB_DISPLAY } from '~/utils/stage-totals'
 
 const totals = deriveTotals(segmentsJson)
 
@@ -43,18 +43,9 @@ function isPassed(km) {
   return props.currentKm > 0 && Number(km) < props.currentKm
 }
 
-// Known climb details from CLAUDE.md
-const climbData = {
-  'Puy Boubou': { length: 2.8, gradient: 4.1 },
-  'Côte de Lagleygeolle': { length: 5.2, gradient: 3.9 },
-  'Côte de Miel': { length: 6.6, gradient: 3.9 },
-  'Côte de Naves': { length: 2.8, gradient: 6.7 },
-  'Puy de Lachaud': { length: 3.6, gradient: 5.3 },
-  'Suc au May': { length: 3.8, gradient: 7.7 },
-  'Côte de la Croix de Pey': { length: 7.0, gradient: 4.9 },
-  'Mont Bessou': { length: 5.0, gradient: 3.5 },
-  'Côte des Gardes': { length: 2.2, gradient: 4.8 },
-}
+// Climb gradient + summit km come from CLIMB_DISPLAY (derived from
+// points-config.json by canonical name) — no second copy to drift. See
+// utils/stage-totals.ts.
 
 // Extract towns with their approximate km and elevation
 const townSet = new Map()
@@ -81,12 +72,12 @@ for (const seg of segmentsJson) {
     for (const climb of seg.climbs) {
       if (!CATEGORIZED_CLIMBS.has(climb)) continue
       if (!climbSet.has(climb)) {
-        const data = climbData[climb] || {}
+        const data = CLIMB_DISPLAY.get(climb)
         climbSet.set(climb, {
           name: climb,
-          km: seg.km_start.toFixed(0),
-          gradient: data.gradient || '?',
-          length: data.length || '?'
+          km: data ? data.km.toFixed(0) : seg.km_start.toFixed(0),
+          gradient: data ? data.gradient : '?',
+          length: data?.length_km ?? '?'
         })
       }
     }
