@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tdf26/frontmatter.schema.json",
+  "title": "Blog entry frontmatter",
+  "description": "Single source of truth for content/entries/*.md YAML frontmatter field definitions. Read by the canonical parsers (processing/frontmatter.py, server/utils/frontmatter.ts) and validated against every entry by tests. Adding a new frontmatter field means adding it here, not to a hand-rolled parser. Consolidates the parsers tracked by issue #326.",
+  "type": "object",
+  "required": [
+    "segment",
+    "title",
+    "subtitle",
+    "publishDate",
+    "kmStart",
+    "kmEnd",
+    "gpxFile",
+    "elevationData",
+    "images",
+    "weather",
+    "draft"
+  ],
+  "properties": {
+    "segment": { "type": "integer", "minimum": 0, "maximum": 27 },
+    "title": { "type": "string", "minLength": 1 },
+    "subtitle": { "type": "string", "minLength": 1 },
+    "publishDate": { "type": "string", "format": "date" },
+    "kmStart": { "type": "number", "minimum": 0 },
+    "kmEnd": { "type": "number", "minimum": 0 },
+    "gpxFile": { "type": ["string", "null"] },
+    "elevationData": { "type": ["string", "null"] },
+    "draft": { "type": "boolean" },
+    "dataCutoff": { "type": "string", "format": "date" },
+    "imagesOptional": { "type": "boolean" },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["src", "alt", "author", "license", "licenseUrl"],
+        "properties": {
+          "src": { "type": "string", "minLength": 1 },
+          "alt": { "type": "string" },
+          "author": { "type": "string" },
+          "authorUrl": { "type": "string" },
+          "license": { "type": "string" },
+          "licenseUrl": { "type": ["string", "null"] },
+          "sourceUrl": { "type": "string" },
+          "objectPosition": { "type": "string" },
+          "recommended": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "weather": {
+      "type": ["object", "null"],
+      "properties": {
+        "fetchedAt": { "type": "string", "format": "date" },
+        "current": {
+          "type": "object",
+          "properties": {
+            "temp": { "type": "number" },
+            "conditions": { "type": "string" },
+            "wind": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "forecast": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

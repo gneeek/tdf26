@@ -48,26 +48,13 @@ preflight_draft_check() {
         echo "ERROR: no entry file found for segment $segment. Cannot publish."
         exit 1
     fi
+    local fm_py="$PROJECT_DIR/processing/frontmatter.py"
     local entry_draft
-    entry_draft=$("$py" -c "
-import re
-content = open('$entry_file').read()
-m = re.search(r'^draft:\s*(\S+)', content, re.M)
-print(m.group(1).lower() if m else '')
-")
+    entry_draft=$("$py" "$fm_py" get "$entry_file" draft)
     if [ "$entry_draft" = "true" ]; then
         echo "Segment $segment entry is draft: true; flipping to draft: false before build."
-        "$py" -c "
-import re
-path = '$entry_file'
-content = open(path).read()
-content, n = re.subn(r'^draft:\s*true\s*\$', 'draft: false', content, count=1, flags=re.M)
-if n == 1:
-    open(path, 'w').write(content)
-    print('Flipped draft: false in ' + path)
-else:
-    raise SystemExit('ERROR: could not flip draft field in ' + path)
-"
+        "$py" "$fm_py" set "$entry_file" draft false
+        echo "Flipped draft: false in $entry_file"
     fi
 }
 
@@ -210,25 +197,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Auto-detect current segment if not specified
 if [ -z "$SEGMENT" ]; then
-    SEGMENT=$("$VENV_PYTHON" -c "
-import json, os, re
-from datetime import datetime
-today = datetime.now().strftime('%Y-%m-%d')
-entries_dir = '$PROJECT_DIR/content/entries'
-best = None
-for f in sorted(os.listdir(entries_dir)):
-    if not f.endswith('.md'): continue
-    content = open(os.path.join(entries_dir, f)).read()
-    seg = re.search(r'^segment:\s*(\d+)', content, re.M)
-    date = re.search(r'^publishDate:\s*(\S+)', content, re.M)
-    draft = re.search(r'^draft:\s*(\S+)', content, re.M)
-    if seg and date and draft:
-        if draft.group(1) == 'false' and date.group(1) <= today:
-            s = int(seg.group(1))
-            if best is None or s > best:
-                best = s
-print(best if best is not None else 0)
-")
+    SEGMENT=$("$VENV_PYTHON" "$PROJECT_DIR/processing/frontmatter.py" \
+        current-segment "$PROJECT_DIR/content/entries")
     echo "Auto-detected current segment: $SEGMENT"
 fi
 echo ""
@@ -237,29 +207,16 @@ echo ""
 # the stats/points/snapshot outputs are reproducible against the cutoff (per
 # issues #541, #328). The order is: find entry file → resolve cutoff → run
 # stats with --reference-date → run points with --data-cutoff → snapshot.
-ENTRY_FILE=$("$VENV_PYTHON" -c "
-import os, re
-entries_dir = '$PROJECT_DIR/content/entries'
-for f in sorted(os.listdir(entries_dir)):
-    if not f.endswith('.md'): continue
-    content = open(os.path.join(entries_dir, f)).read()
-    seg = re.search(r'^segment:\s*(\d+)', content, re.M)
-    if seg and int(seg.group(1)) == $SEGMENT:
-        print(os.path.join(entries_dir, f))
-        break
-")
+ENTRY_FILE=$("$VENV_PYTHON" "$PROJECT_DIR/processing/frontmatter.py" \
+    find-entry "$PROJECT_DIR/content/entries" "$SEGMENT")
 
 # Pre-flight (#617): the target must be publishable before any work happens.
 # Bails on a missing entry file and auto-flips draft: true -> false. The logic
 # lives in preflight_draft_check() (defined near the top) so it is unit-tested.
 preflight_draft_check "$VENV_PYTHON" "$ENTRY_FILE" "$SEGMENT"
 
-DATA_CUTOFF=$("$VENV_PYTHON" -c "
-import re
-content = open('$ENTRY_FILE').read()
-m = re.search(r'^dataCutoff:\s*(\S+)', content, re.M)
-print(m.group(1) if m else '')
-")
+DATA_CUTOFF=$("$VENV_PYTHON" "$PROJECT_DIR/processing/frontmatter.py" \
+    get "$ENTRY_FILE" dataCutoff)
 if [ -z "$DATA_CUTOFF" ]; then
     echo "No dataCutoff set for segment $SEGMENT."
     # Only prompt when stdin is a TTY; non-interactive runs (cron, nohup, background
@@ -271,20 +228,11 @@ if [ -z "$DATA_CUTOFF" ]; then
     if [ -z "$DATA_CUTOFF" ]; then
         DATA_CUTOFF=$(date +%Y-%m-%d)
     fi
-    # Write dataCutoff to frontmatter
-    "$VENV_PYTHON" -c "
-path = '$ENTRY_FILE'
-content = open(path).read()
-# Insert dataCutoff before the closing --- of frontmatter
-parts = content.split('---', 2)
-if len(parts) >= 3:
-    parts[1] = parts[1].rstrip() + '\ndataCutoff: $DATA_CUTOFF\n'
-    content = '---'.join(parts)
-    open(path, 'w').write(content)
-    print('Set dataCutoff: $DATA_CUTOFF in ' + path)
-else:
-    print('ERROR: Could not find frontmatter delimiters in ' + path)
-"
+    # Write dataCutoff to frontmatter (inserted before the closing --- by the
+    # canonical parser's surgical set_field)
+    "$VENV_PYTHON" "$PROJECT_DIR/processing/frontmatter.py" \
+        set "$ENTRY_FILE" dataCutoff "$DATA_CUTOFF"
+    echo "Set dataCutoff: $DATA_CUTOFF in $ENTRY_FILE"
 fi
 echo "Data cutoff for segment $SEGMENT: $DATA_CUTOFF"
 echo ""
