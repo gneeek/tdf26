@@ -41,6 +41,10 @@ import { useImageLightbox } from '~/composables/useImageLightbox'
 
 const props = defineProps({
   src: { type: String, required: true },
+  // Optional full-resolution / uncropped source shown in the lightbox. When a
+  // figure displays a cropped derivative (e.g. a banner), set this to the
+  // original so clicking opens the full frame. Defaults to `src`.
+  lightboxSrc: { type: String, default: '' },
   alt: { type: String, default: '' },
   caption: { type: String, default: '' },
   author: { type: String, default: '' },
@@ -55,7 +59,7 @@ const { show } = useImageLightbox()
 
 function openInLightbox() {
   show({
-    src: props.src,
+    src: props.lightboxSrc || props.src,
     alt: props.alt,
     caption: props.caption,
     author: props.author,
