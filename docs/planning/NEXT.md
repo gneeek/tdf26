@@ -2,6 +2,8 @@
 
 > **Singleton convention:** at most one open planning continuation lives at this path. When a planning session closes that this note tracked, rename to a date-stamped archive (e.g. `docs/planning/2026-06-XX-archive.md`) or delete. New sessions overwrite this file.
 
+> **NEXT ACTION (flagged 2026-06-03): run a full planning session once segment 18 ships today.** The 2026-06-03 session was scoped to the seg-18 publication process *only* (publisher's call — publish day, fresh rider stats in hand). Much of v1.4.20 has drained since the 2026-05-28 handoff (gate fixes, spine #508/#322/#479, geometry-drift, data corrections, release ceremony, segs 17/18/19 drafted), and the carryforward list in `project_next_planning_notes.md` has grown well past the ~15-item trigger noted below — so the planning session is due. Read those close-outs as the primary input.
+
 ## Status at handoff (2026-05-28 planning session close)
 
 Segs 1–16 are published (seg 16 shipped 2026-05-28). **v1.4.19 is closed** (drained, 23 issues). **v1.4.20 is themed: "Publish-pipeline hardening"** and trimmed to a 10-issue set. The next planning session has no fixed trigger — it fires when v1.4.20 drains, or sooner if the carryforward list (below) grows past ~15 items.
