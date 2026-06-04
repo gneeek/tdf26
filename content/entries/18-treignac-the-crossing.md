@@ -10,7 +10,7 @@ elevationData: /data/elevation/segment-18.json
 images: [{"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Treignac_Vue_de_la_vall%C3%A9e_de_la_V%C3%A9z%C3%A8re_1.jpg/1280px-Treignac_Vue_de_la_vall%C3%A9e_de_la_V%C3%A9z%C3%A8re_1.jpg", "alt": "The Vézère gorge at Treignac, the town climbing the granite spur above the river", "author": "René Hourdry", "authorUrl": "https://commons.wikimedia.org/wiki/User:Renhour48", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Treignac_Vue_de_la_vall%C3%A9e_de_la_V%C3%A9z%C3%A8re_1.jpg"}, {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Treignac_Panorama.jpg/1280px-Treignac_Panorama.jpg", "alt": "Panorama of Treignac, granite roofs and the surrounding plateau", "author": "René Hourdry", "authorUrl": "https://commons.wikimedia.org/wiki/User:Renhour48", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0", "sourceUrl": "https://commons.wikimedia.org/wiki/File:Treignac_Panorama.jpg"}]
 weather: {"fetchedAt": "2026-06-03", "current": {"temp": 15, "conditions": "Overcast clouds", "wind": "6 km/h SSW"}, "forecast": null}
 draft: false
-dataCutoff: 2026-06-03
+dataCutoff: 2026-06-02
 ---
 
 # Treignac: The Old Crossing
