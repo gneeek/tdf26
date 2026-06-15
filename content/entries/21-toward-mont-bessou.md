@@ -10,6 +10,7 @@ elevationData: /data/elevation/segment-21.json
 images: []
 weather: null
 draft: true
+dataCutoff: 2026-06-13
 ---
 
 # Toward Mont Bessou
