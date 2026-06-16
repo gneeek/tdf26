@@ -1,18 +1,70 @@
 ---
 segment: 21
-title: "Toward Mont Bessou"
-subtitle: "Km 140-148"
+title: "The Granite Town"
+subtitle: "Km 140-148: Bugeat, the high bourg of stone and rail, and what it lost in April 1944"
 publishDate: 2026-06-14
 kmStart: 140
 kmEnd: 148
 gpxFile: /gpx/segment-21.gpx
 elevationData: /data/elevation/segment-21.json
-images: []
+images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Bugeat_Entr%C3%A9e.jpg/1280px-Bugeat_Entr%C3%A9e.jpg","alt":"The granite-built approach to Bugeat, houses and trees along the road into the high-Plateau town","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Renhour48","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Bugeat_Entr%C3%A9e.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Bugeat_Le_pont_du_chemin_de_fer.jpg/1280px-Bugeat_Le_pont_du_chemin_de_fer.jpg","alt":"The railway bridge at Bugeat carrying the line over the road","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Renhour48","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Bugeat_Le_pont_du_chemin_de_fer.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Fontaine_Saint_Pardoux_Bugeat_Bassin_Fontaine_Vue_Face.jpg/1280px-Fontaine_Saint_Pardoux_Bugeat_Bassin_Fontaine_Vue_Face.jpg","alt":"The Saint-Pardoux fountain and its granite basin at Bugeat","author":"Pjmgand","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Pjmgand","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Fontaine_Saint_Pardoux_Bugeat_Bassin_Fontaine_Vue_Face.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Bugeat_Plaque_hommage_aux_d%C3%A9port%C3%A9s.jpg/1280px-Bugeat_Plaque_hommage_aux_d%C3%A9port%C3%A9s.jpg","alt":"A plaque at Bugeat in homage to the deportees of the town","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Renhour48","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Bugeat_Plaque_hommage_aux_d%C3%A9port%C3%A9s.jpg"}]
 weather: null
 draft: true
 dataCutoff: 2026-06-13
 ---
 
-# Toward Mont Bessou
+# The Granite Town
 
-*Content coming soon.*
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Bugeat_Panorama1.jpg/1280px-Bugeat_Panorama1.jpg" alt="The town of Bugeat seen from above, granite houses gathered on the high Plateau de Millevaches" caption="Bugeat from above: the granite town on the high Plateau, gathered on its railway and its high ground, the one real town of this high crossing." author="René Hourdry" authorUrl="https://commons.wikimedia.org/wiki/Special:Contributions/Renhour48" license="CC BY-SA 4.0" licenseUrl="https://creativecommons.org/licenses/by-sa/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Bugeat_Panorama1.jpg"}
+::
+
+For the six kilometres before this one the stage crosses no town at all, only the open moor of the Plateau de Millevaches; and then the road comes off the heath and into Bugeat, the first proper town since Treignac and the only one between the empty moor behind it and the rising ground ahead. It arrives as a town of stone. The houses are granite and the church is granite and the war memorial is granite, so that the place takes its colour from the rock it stands on, a grey that goes gold when the sun is on it and the colour of a wet slate roof when it is not.
+
+::video-embed{embedUrl="https://www.youtube.com/embed/8IGxZu7F_AY" caption="Coming into Bugeat on the D979, the road the stage takes through the town, with the granite houses in low evening sun." attribution="Source: Victor François (via YouTube)."}
+::
+
+The town keeps a small museum to that stone, the Maison du Granite, in its tourist office, where one learns that the local rock is not one grey but several, and that the variants have names: the pink granite of Pérols up the valley, the ochre granite of Bugeat itself. What raised the place above a granite village was the railway, which reached it in eighteen eighty-three and turned a remote upland parish into a junction with a station and a reason for outsiders to stop. The third thing is altitude. At a little over seven hundred metres Bugeat is high enough to be worth training at, and since nineteen sixty it has kept an altitude-sport centre, the Espace Mille Sources, among the lakes and the planted forests. Stone, rail, thin air: the town carries its three identities lightly, the way places do that have had to make a living out of whatever the ground would give.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Bugeat_La_gare_2.jpg/1280px-Bugeat_La_gare_2.jpg" alt="The railway station at Bugeat seen from the street side" caption="Bugeat station, from the street. The line reached the town in eighteen eighty-three and made a remote granite parish into somewhere with a timetable." author="René Hourdry" authorUrl="https://commons.wikimedia.org/wiki/Special:Contributions/Renhour48" license="CC BY-SA 4.0" licenseUrl="https://creativecommons.org/licenses/by-sa/4.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Bugeat_La_gare_2.jpg"}
+::
+
+Bugeat was, for a generation, a communist commune, as much of this red corner of the Limousin was. Its long-serving mayor, Félix Lestang, a peasant and timber-merchant born just up the valley at Pérols-sur-Vézère, ran the town from nineteen thirty-two to nineteen fifty-nine, and at the Liberation, in November nineteen forty-five, served for a time as president of the departmental council of the Corrèze.[^lestang] None of which is incidental to the spring of nineteen forty-four. The same remoteness that gave the town its railway-end quiet gave the maquis of the Plateau their cover, and the occupier knew it.
+
+What came was not the column that would burn Tulle and Oradour-sur-Glane two months later; that was a different German formation, and the distinction matters to the people who keep the date. The unit that swept the Dordogne and the Corrèze that spring was the Brehmer Division, hunting maquisards and Jews across the high country. On the sixth of April, nineteen forty-four, it came to Bugeat. Four farmers were shot at the hamlet of L'Échameil, men in their thirties, forties and fifties; a fifth man, Chaïm Rozent, a Jewish résistant, was taken in the town and shot apart from the others, having refused under torture, it is said, to give up the maquis.
+
+The same morning, ten Jewish women and children were arrested in Bugeat and deported, by way of Drancy, on Convoi 72; of the ten, one came back. The youngest was a boy of three and a half, taken with his mother. There were two sisters of six and sixteen, and two more girls of nine and eleven taken with theirs; the oldest were women of sixty-seven and of seventy. Three generations went out of one small town in a single day, and all but one of them into the camps.[^bugeat44] The four men of L'Échameil have had a stèle at the pont de Vezou since nineteen forty-seven, and a ceremony is still held there each April. The names of the deported were gathered into the town's memory more slowly: a plaque to the fusillés and the déportés was unveiled at the town hall in May twenty twenty-five, eighty-one years on, which is a long time for a small place to go on counting its dead and a sign that it has not stopped.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Mairie_Bugeat_plaque_m%C3%A9morielle_mai_2025_deux.jpg/1280px-Mairie_Bugeat_plaque_m%C3%A9morielle_mai_2025_deux.jpg" alt="A memorial plaque on the Bugeat town hall, unveiled in May 2025, listing the town's shot and deported of 1944" caption="The plaque to the fusillés and déportés of Bugeat, unveiled at the town hall in May twenty twenty-five, eighty-one years after the morning of the sixth of April, nineteen forty-four." author="Pjmgand" authorUrl="https://commons.wikimedia.org/wiki/Special:Contributions/Pjmgand" license="CC0" licenseUrl="https://creativecommons.org/publicdomain/zero/1.0/" sourceUrl="https://commons.wikimedia.org/wiki/File:Mairie_Bugeat_plaque_m%C3%A9morielle_mai_2025_deux.jpg"}
+::
+
+For a town this far up, Bugeat has seen a fair amount of bicycle racing, though not yet the Tour de France. It has twice been a stage town of the Tour du Limousin, the region's own professional race: a stage ran from here to Limoges in nineteen ninety-two, and in twenty twenty-one a stage set off from the Espace Mille Sources, the altitude centre that carries the name of Alain Mimoun, the Olympic marathon champion who helped bring it into being.[^mimoun] The Plateau's one town already knows the look of a peloton and the noise of a publicity caravan, then. What it has not seen, in all the years the race has run, is the Tour de France itself, which crosses Bugeat for the first time in twenty twenty-six.
+
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Centre_sportif_de_Bugeat.jpg/1280px-Centre_sportif_de_Bugeat.jpg" alt="The sports buildings of the Espace Mille Sources altitude centre at Bugeat" caption="The Espace Mille Sources at Bugeat, the altitude-training centre founded in nineteen sixty under the patronage of the marathon champion Alain Mimoun, and the start of a Tour du Limousin stage in twenty twenty-one." author="Christophe Delattre" authorUrl="https://commons.wikimedia.org/wiki/Special:Contributions/Chrisdel62" license="CC0" licenseUrl="https://creativecommons.org/publicdomain/zero/1.0/" sourceUrl="https://commons.wikimedia.org/wiki/File:Centre_sportif_de_Bugeat.jpg"}
+::
+
+The four of us keeping the walking ledger for this blog have arrived, by our own slow arithmetic, at a dead heat. On the capped count the race runs by, all four stand level at a hundred and forty-eight of the hundred and eighty-five kilometres, with thirty-seven still to go and not a kilometre between us; the only difference is how hard each is working to hold the line. It is a small thing to bring into a town like this one, and it is offered as a small thing.
+
+::street-view-embed{embedUrl="https://www.google.com/maps/embed?pb=!4v1781567668770!6m8!1m7!1sTVxgIq-CGCWowFW24j2P_g!2m2!1d45.59748930499808!2d1.927912300859205!3f317.44391152267895!4f-18.124153156364102!5f0.7820865974627469" caption="Street level in Bugeat, on the granite-built road the stage rides through the town."}
+::
+
+Beyond Bugeat the road tilts up again, gathering itself for Mont Bessou and the high point of the whole day, which is the next segment's business. What stays, on the way out, is the granite: in the houses, in the war memorial on the Place du Champ de foire, in the stèle down at the pont de Vezou with its four names and its date. A town that builds in the local stone builds to last, which is a plain virtue when the thing kept is a house and a harder one when the thing kept is a list of the dead. Bugeat keeps both, in the same grey rock, and the road goes up and over and leaves it to its keeping.
+
+[^lestang]: Félix Lestang (born Pérols-sur-Vézère, 1889; died Bugeat, 1967), a peasant and timber-merchant who joined the Communist Party at its founding in 1920, was mayor of Bugeat from 1932 to 1959 and a councillor (*conseiller général*) of the Corrèze from 1937 to 1961; he became president of the departmental council in November 1945. Sources: [Bugeat, Wikipédia](https://fr.wikipedia.org/wiki/Bugeat); [LESTANG Félix, Le Maitron](https://fusilles-40-44.maitron.fr/lestang-felix-ne-etienne/).
+
+[^bugeat44]: On 6 April 1944 the Brehmer Division (not the Das Reich division, which destroyed Tulle and Oradour-sur-Glane two months later) carried out an anti-maquis and anti-Jewish sweep at Bugeat. Four farmers were shot at the hamlet of L'Échameil: Léon Gane (37), Antoine Gourinal (44), Antoine Nauche (56) and Henri Vacher (50). A fifth man, the Jewish résistant Chaïm Rozent (33), was shot the same day at l'Église-aux-Bois. Ten Jewish women and children arrested that morning were deported on Convoi 72, which left Drancy on 29 April 1944 for Auschwitz; only one survived. They were Lucie Fribourg (70), Carola Hoch (49), Anna Izbicka (6), Jeanne Izbicka (16), Anna Kleinberg (11), Maryem Kleinberg (40), Rosa Kleinberg (9), Brana Tencer (37), Serge Tencer (3½) and Clara Uhlmann (67). A stèle to the four men of L'Échameil was inaugurated at the pont de Vezou in 1947; a plaque to the *fusillés et déportés* was unveiled at the town hall on 8 May 2025. The events are recounted in Jean-Marie Borzeix, *Jeudi saint* (Paris: Stock, 2008). Source: [Fusillés et déportés de Bugeat, Wikipédia](https://fr.wikipedia.org/wiki/Fusill%C3%A9s_et_d%C3%A9port%C3%A9s_de_Bugeat).
+
+[^mimoun]: The Espace 1000 Sources at Bugeat, an altitude-training centre at about 720 m, was created in 1960 with the involvement of Alain Mimoun (1921–2013), Olympic marathon champion at Melbourne in 1956; an expansion of its accommodation and pitches was backed by Jacques Chirac in 1989, and the centre carries Mimoun's name today. Source: [Espace 1000 Sources, histoire du centre](https://www.espace1000sources.fr/le-centre/lhistoire-du-centre).
+
+## Sources
+
+- Bugeat: the granite town, the named local stone, the railway of 1883, the communist commune, the church of Saint-Pardoux: [Bugeat – Wikipédia](https://fr.wikipedia.org/wiki/Bugeat).
+- The killings and deportations of 6 April 1944, the Brehmer Division, the men of L'Échameil, Chaïm Rozent, the ten deported on Convoi 72, and the memorials of 1947 and 2025: [Fusillés et déportés de Bugeat – Wikipédia](https://fr.wikipedia.org/wiki/Fusill%C3%A9s_et_d%C3%A9port%C3%A9s_de_Bugeat).
+- Félix Lestang, communist mayor of Bugeat and president of the departmental council at the Liberation: [LESTANG Félix – Le Maitron](https://fusilles-40-44.maitron.fr/lestang-felix-ne-etienne/).
+- The Espace 1000 Sources, Alain Mimoun, and the centre's history: [Espace 1000 Sources – histoire du centre](https://www.espace1000sources.fr/le-centre/lhistoire-du-centre).
+- The 2021 Tour du Limousin stage starting from Bugeat: [France Bleu – Tour du Limousin 2021, 3e étape Bugeat](https://www.francebleu.fr/sports/cyclisme/en-direct-tour-du-limousin-perigord-nouvelle-aquitaine-2021-suivez-la-3e-etape-entre-bugeat-et-1628604663).
+- The Maison du Granite and the "pink Pérols, ochre Bugeat" stone: [Tourisme Corrèze – Maison du Granite](https://www.tourismecorreze.com/en/tourisme_detail/maison_du_granite.html).
+- Mont Bessou crossed by the Tour de France for the first time in 2026: [Rêve de Vélo – Étape 9 (Malemort–Ussel), parcours](https://events.revedevelo.com/etape-9-tour-de-france-2026-malemort-ussel-parcours/).
+
+---
+
+*Pair-written by Justin Simpson and Claude Opus 4.8. Voice register: tls-essay.*
