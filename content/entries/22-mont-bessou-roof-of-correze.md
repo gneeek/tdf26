@@ -8,8 +8,8 @@ kmEnd: 154
 gpxFile: /gpx/segment-22.gpx
 elevationData: /data/elevation/segment-22.json
 images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Millevache_Plateau_near_Meymac.JPG/1280px-Millevache_Plateau_near_Meymac.JPG","alt":"The view over the edge of the Plateau de Millevaches from the summit of Mont Bessou","author":"Sjwells53","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Sjwells53","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Millevache_Plateau_near_Meymac.JPG"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/L%27Ars%2C_Plateau_Millevaches.JPG/1280px-L%27Ars%2C_Plateau_Millevaches.JPG","alt":"Open moorland and conifer plantation on the Plateau de Millevaches near L'Ars","author":"Avocat jean","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Avocat_jean","license":"CC BY-SA 4.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:L%27Ars,_Plateau_Millevaches.JPG"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/BalisageLongeyroux.jpg/1280px-BalisageLongeyroux.jpg","alt":"A waymarking stone on the heather-path trail through the Longeroux peat bog","author":"Smcj~frwiki","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Smcj~frwiki","license":"CC0","licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/","sourceUrl":"https://commons.wikimedia.org/wiki/File:BalisageLongeyroux.jpg"}]
-weather: null
-draft: true
+weather: {"fetchedAt": "2026-06-18", "current": {"temp": 22, "conditions": "Scattered clouds", "wind": "3 km/h E"}, "forecast": null}
+draft: false
 dataCutoff: 2026-06-16
 ---
 
