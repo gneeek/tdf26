@@ -8,8 +8,8 @@ kmEnd: 168
 gpxFile: /gpx/segment-24.gpx
 elevationData: /data/elevation/segment-24.json
 images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Douglaseraie_des_Farges.jpg/1280px-Douglaseraie_des_Farges.jpg","alt":"A dense Douglas-fir plantation in the state forest above Meymac, the kind of conifer the descent drops through","author":"Gulokhar","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Gulokhar","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Douglaseraie_des_Farges.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Chablis_douglas.jpg/1280px-Chablis_douglas.jpg","alt":"A Douglas fir thrown by the wind on the plateau near Meymac, its shallow root-plate torn from the waterlogged granite soil","author":"Amalo","authorUrl":"https://commons.wikimedia.org/wiki/Special:Contributions/Amalo","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Chablis_douglas.jpg"}]
-weather: null
-draft: true
+weather: {"fetchedAt": "2026-06-27", "current": {"temp": 30, "conditions": "Clear sky", "wind": "12 km/h S"}, "forecast": null}
+draft: false
 dataCutoff: 2026-06-23
 ---
 
