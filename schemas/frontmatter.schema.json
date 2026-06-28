@@ -5,20 +5,26 @@
   "description": "Single source of truth for content/entries/*.md YAML frontmatter field definitions. Read by the canonical parsers (processing/frontmatter.py, server/utils/frontmatter.ts) and validated against every entry by tests. Adding a new frontmatter field means adding it here, not to a hand-rolled parser. Consolidates the parsers tracked by issue #326.",
   "type": "object",
   "required": [
-    "segment",
     "title",
     "subtitle",
     "publishDate",
-    "kmStart",
-    "kmEnd",
-    "gpxFile",
-    "elevationData",
     "images",
     "weather",
     "draft"
   ],
+  "comment": "Segment entries additionally require segment/kmStart/kmEnd/gpxFile/elevationData; 'special' (non-segment) entries such as the July-2 tour-history essay (#502) do not. The allOf below requires the segment fields only when 'special' is absent.",
+  "allOf": [
+    {
+      "if": { "not": { "required": ["special"] } },
+      "then": {
+        "required": ["segment", "kmStart", "kmEnd", "gpxFile", "elevationData"]
+      }
+    }
+  ],
   "properties": {
     "segment": { "type": "integer", "minimum": 0, "maximum": 27 },
+    "special": { "type": "string", "minLength": 1 },
+    "issue": { "type": "integer" },
     "title": { "type": "string", "minLength": 1 },
     "subtitle": { "type": "string", "minLength": 1 },
     "publishDate": { "type": "string", "format": "date" },

@@ -5,6 +5,7 @@ title: "Poulidor Country"
 subtitle: "A cycling corridor that has never made a champion, and the finish line it waited a century for"
 publishDate: 2026-07-02
 images: []
+imagesOptional: true
 weather: null
 draft: true
 ---
@@ -28,7 +29,7 @@ All of which goes where the stage goes, which is to Ussel. For a town of its sta
 
 The rider the parish would most have wanted to see it has been gone since 2019; Poulidor, who understood waiting better than anyone the sport has thrown up, did not live to watch the Tour finally stop where he had so often only passed. It is high country up there, the last lift of the Millevaches plateau before the land tips away toward the Dordogne, and on a July evening the light stays on the granite a long while after the valleys have gone to shadow.
 
-[^bolddor]: The Bol d'Or des Monédières, a post-Tour exhibition criterium, was run at Chaumeil from 1952 to 2002. Among the riders who appeared on its closed circuit were Jean Robic, Fausto Coppi, Raphaël Géminiani, Bernard Hinault and Laurent Fignon. Chaumeil lies about thirty-five metres from the 2026 Stage 9 route near kilometre one hundred; the research dossier records the stage's ascent of the Suc au May as passing roughly two kilometres from the Bol d'Or's Chaumeil finish line. Source: [Bol d'Or des Monédières, Wikipedia](https://en.wikipedia.org/wiki/Bol_d%27Or_des_Mon%C3%A9di%C3%A8res).
+[^bolddor]: The Bol d'Or des Monédières, a post-Tour exhibition criterium, was run at Chaumeil from 1952 to 2002. Among the riders who appeared on its closed circuit were Jean Robic, Fausto Coppi, Raphaël Géminiani, Bernard Hinault and Laurent Fignon. Chaumeil lies about thirty-five metres from the 2026 Stage 9 route near kilometre one hundred, and the stage climbs the Suc au May within about two kilometres of the village where the criterium finished. Source: [Bol d'Or des Monédières, Wikipedia](https://en.wikipedia.org/wiki/Bol_d%27Or_des_Mon%C3%A9di%C3%A8res).
 
 [^poulidor]: Raymond Poulidor (1936-2019), born at Masbaraud-Mérignat in the Creuse, started fourteen editions of the Tour de France and finished twelve, with three second places and five thirds on the general classification and seven stage wins, but never wore the yellow jersey, the record behind his nickname "L'Éternel Second." He won the Bol d'Or des Monédières at Chaumeil in 1963, 1966 and 1967. Sources: [Raymond Poulidor, Wikipedia](https://en.wikipedia.org/wiki/Raymond_Poulidor); [Bol d'Or des Monédières, Wikipedia](https://en.wikipedia.org/wiki/Bol_d%27Or_des_Mon%C3%A9di%C3%A8res).
 

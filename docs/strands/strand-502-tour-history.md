@@ -1,5 +1,8 @@
 # Strand: #502 tour-history feature — the /tour-history aggregate route
 
+> **SUPERSEDED (2026-06-28) — the `/tour-history` aggregate-route shape in this brief was not built.**
+> Publisher decision (2026-06-28, confirming `NEXT.md` and `docs/planning/v1.4.20-scope.md`): #502 ships as a **standalone July-2 essay entry** ("Poulidor Country"), not as a data-driven `/tour-history` route. The essay was designed and drafted under `docs/strands/strand-july-special-tour-history.md` (2026-06-16) and finalized + given site-rendering support for non-segment "special" entries in the PR that carries this banner. The route + `historical-tdf.json` corridor expansion in §4 of this brief are **parked**, not done: #502 remains an open umbrella with a downstream launch issue, and the route can still be the post-project realization if revisited. Per the publisher, the data-layer work (corpus expansion, the #503 Paris-Corrèze re-key) is **out of scope** for the essay strand and stays tracked under #503/#527. The body below is preserved as the original brief; do not act on its route/data instructions without re-confirming.
+
 Feature strand for [#502](https://github.com/gneeek/tdf26/issues/502) (the `/tour-history` aggregate reader surface for Tour de France history along the 2026 Stage 9 corridor), targeted at a pre-stage launch (~July 2, ahead of the actual stage Sun 2026-07-12). **NOT a travelogue entry** — it is data + a route/page. **Fully parallel-safe** with the seg 25/26/27 drafting strands (it touches `data/` + new route files, not `content/entries/`), so it can start now.
 
 ## 1. Goal
