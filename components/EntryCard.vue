@@ -13,6 +13,7 @@
           <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
             Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
           </span>
+          <span v-else-if="entry.special" class="text-sm text-correze-red font-semibold">Tour history</span>
           <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
           <component :is="`h${headingLevel}`" class="text-xl font-serif font-bold text-stone-900 group-hover:text-correze-red transition-colors mt-1">{{ entry.title }}</component>
           <p v-if="entry.subtitle" class="text-stone-600 mt-1">{{ entry.subtitle }}</p>
@@ -23,6 +24,7 @@
         <span v-if="entry.segment > 0" class="text-sm text-correze-red font-semibold">
           Segment {{ entry.segment }} - Km {{ entry.kmStart }}-{{ entry.kmEnd }}
         </span>
+        <span v-else-if="entry.special" class="text-sm text-correze-red font-semibold">Tour history</span>
         <span v-else class="text-sm text-correze-red font-semibold">Preview</span>
         <component :is="`h${headingLevel}`" class="text-xl font-serif font-bold text-stone-900 group-hover:text-correze-red transition-colors mt-1">{{ entry.title }}</component>
         <p v-if="entry.subtitle" class="text-stone-600 mt-1">{{ entry.subtitle }}</p>

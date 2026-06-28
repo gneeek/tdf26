@@ -1,7 +1,7 @@
 <template>
   <article v-if="page" class="max-w-3xl mx-auto">
     <header class="mb-8">
-      <span class="text-sm text-correze-red font-semibold">
+      <span v-if="!isSpecial" class="text-sm text-correze-red font-semibold">
         Segment {{ page.segment }} - Km {{ page.kmStart }}-{{ page.kmEnd }}
       </span>
       <h1 class="text-3xl sm:text-4xl font-serif font-semibold text-stone-900 mt-2 tracking-wide">{{ page.title }}</h1>
@@ -9,21 +9,26 @@
       <time class="text-sm text-stone-400 mt-3 block">{{ formatDate(page.publishDate) }}</time>
     </header>
 
-    <RiderStrip :snapshot="riderSnapshot" />
+    <!-- Segment chrome: maps, profiles, rider standings. Omitted for "special"
+         (non-segment) entries such as the July-2 tour-history essay, which
+         render as a clean standalone essay. -->
+    <template v-if="!isSpecial">
+      <RiderStrip :snapshot="riderSnapshot" />
 
-    <SegmentMap
-      :segment="page.segment"
-      :segments="segments"
-      :route-coords="routeCoords"
-      :town-coords="townCoords"
-      :rider-stats="riderSnapshot?.stats || riderStats"
-      :rider-config="riderConfig"
-      class="mb-8"
-    />
+      <SegmentMap
+        :segment="page.segment"
+        :segments="segments"
+        :route-coords="routeCoords"
+        :town-coords="townCoords"
+        :rider-stats="riderSnapshot?.stats || riderStats"
+        :rider-config="riderConfig"
+        class="mb-8"
+      />
 
-    <ElevationChart :elevation-data="elevationData" :segments="segments" :current-segment="page.segment" :rider-stats="riderSnapshot?.stats || riderStats" :rider-config="riderConfig" :rider-points="riderSnapshot?.points || riderPoints" class="mb-8" />
+      <ElevationChart :elevation-data="elevationData" :segments="segments" :current-segment="page.segment" :rider-stats="riderSnapshot?.stats || riderStats" :rider-config="riderConfig" :rider-points="riderSnapshot?.points || riderPoints" class="mb-8" />
 
-    <PowerStats :elevation-data="elevationData" class="mb-8" />
+      <PowerStats :elevation-data="elevationData" class="mb-8" />
+    </template>
 
     <div class="prose md:prose-lg max-w-none font-serif">
       <ContentRenderer :value="page" />
@@ -31,17 +36,19 @@
 
     <ImageGallery :images="page.images" />
 
-    <NearbyAttractions :segment="page.segment" />
+    <template v-if="!isSpecial">
+      <NearbyAttractions :segment="page.segment" />
 
-    <HistoricalContext :segment="page.segment" />
+      <HistoricalContext :segment="page.segment" />
 
-    <UpcomingPoints :segment="page.segment" />
+      <UpcomingPoints :segment="page.segment" />
 
-    <WeatherWidget :weather="page.weather" />
+      <WeatherWidget :weather="page.weather" />
 
-    <div id="rider-dashboard" class="scroll-mt-4">
-      <RiderDashboard :snapshot="riderSnapshot" />
-    </div>
+      <div id="rider-dashboard" class="scroll-mt-4">
+        <RiderDashboard :snapshot="riderSnapshot" />
+      </div>
+    </template>
 
     <nav class="mt-12 pt-8 border-t border-stone-200 flex justify-between">
       <NuxtLink
@@ -77,24 +84,45 @@ const { data: page } = await useAsyncData(`entry-${route.path}`, () =>
 
 const today = new Date().toISOString().split('T')[0]
 
+// "Special" (non-segment) entries have no segment number; they sit in the
+// reading order by date, so their prev/next walk publishDate rather than the
+// segment sequence. Segment entries keep the segment-ordered nav.
+const isSpecial = computed(() => page.value?.segment == null)
+
 const { data: prev } = await useAsyncData(`prev-${route.path}`, () =>
-  queryCollection('entries')
-    .where('segment', '<', page.value?.segment)
-    .where('draft', '=', false)
-    .where('publishDate', '<=', today)
-    .order('segment', 'DESC')
-    .limit(1)
-    .first()
+  isSpecial.value
+    ? queryCollection('entries')
+        .where('draft', '=', false)
+        .where('publishDate', '<', page.value?.publishDate)
+        .where('publishDate', '<=', today)
+        .order('publishDate', 'DESC')
+        .limit(1)
+        .first()
+    : queryCollection('entries')
+        .where('segment', '<', page.value?.segment)
+        .where('draft', '=', false)
+        .where('publishDate', '<=', today)
+        .order('segment', 'DESC')
+        .limit(1)
+        .first()
 )
 
 const { data: next } = await useAsyncData(`next-${route.path}`, () =>
-  queryCollection('entries')
-    .where('segment', '>', page.value?.segment)
-    .where('draft', '=', false)
-    .where('publishDate', '<=', today)
-    .order('segment', 'ASC')
-    .limit(1)
-    .first()
+  isSpecial.value
+    ? queryCollection('entries')
+        .where('draft', '=', false)
+        .where('publishDate', '>', page.value?.publishDate)
+        .where('publishDate', '<=', today)
+        .order('publishDate', 'ASC')
+        .limit(1)
+        .first()
+    : queryCollection('entries')
+        .where('segment', '>', page.value?.segment)
+        .where('draft', '=', false)
+        .where('publishDate', '<=', today)
+        .order('segment', 'ASC')
+        .limit(1)
+        .first()
 )
 
 const segments = segmentsJson

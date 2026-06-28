@@ -121,7 +121,10 @@ const { data: entries } = await useAsyncData('entries', () =>
     .all()
 )
 
-const latestEntry = computed(() => entries.value?.[0])
-const latestKmEnd = computed(() => latestEntry.value?.kmEnd || 0)
-const latestSegment = computed(() => latestEntry.value?.segment || 0)
+// Stage progress (summary, km marker, route highlight) tracks the latest
+// published *segment*. Skip "special" non-segment entries (e.g. the July-2
+// tour-history essay) so they don't reset the marker to 0 on their day.
+const latestSegmentEntry = computed(() => entries.value?.find(e => e.segment != null))
+const latestKmEnd = computed(() => latestSegmentEntry.value?.kmEnd || 0)
+const latestSegment = computed(() => latestSegmentEntry.value?.segment || 0)
 </script>
