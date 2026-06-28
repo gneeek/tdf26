@@ -145,7 +145,19 @@ def test_read_parity_on_every_entry():
 # --- write parity ----------------------------------------------------------
 
 def test_set_images_optional_byte_identical():
+    # The real caller -- validate_entries.set_images_optional, gated by
+    # find_entries_without_images -- only ever runs on entries that do NOT
+    # already declare imagesOptional. On that domain the canonical set_field
+    # (append-when-absent) is byte-identical to the old appender, which is the
+    # behaviour this migration must preserve. The two legitimately diverge only
+    # when the field is already present: the old impl blindly appends a second
+    # (duplicate) line, while set_field replaces in place. That case cannot
+    # occur in production, and set_field's replace-in-place behaviour is covered
+    # directly by test_frontmatter.TestSetField. So assert parity only over the
+    # production input domain.
     for name, _path, content in _entries():
+        if fm.parse(content).get('imagesOptional') is not None:
+            continue
         assert fm.set_field(content, 'imagesOptional', 'true') == old_set_images_optional(content), name
 
 
