@@ -8,16 +8,19 @@
 
 Segs 1–24 are published (`W26-seg24`, 2026-06-27). The infrastructure chapter closed two retros ago; the project is in **run-mode** and **closes after the real Stage 9 on 2026-07-12**. See the [W23-seg18 retro](https://github.com/gneeek/tdf26/wiki/Retro-W23-seg18-W26-seg24).
 
-**Remaining content (drafting today / in flight):**
+**Done since the triage opened (merged to main, fast — parallel sessions):**
+- **Seg 25 — Meymac** drafted and merged as `content/entries/25-meymac-and-the-cote-des-gardes.md` (#704/#705); re-slugged off the stub; tracking issue #703 closed.
+- **#502 — Tour-history essay** "Poulidor Country" shipped (#702); the umbrella issue #502 stays open.
+- **Dependabot** npm group landed via #707; #689 closed (superseded); the `strand-deps-689.md` brief is spent.
+- **Strand briefs merged** (#701, #706).
 
-| Work | Strand brief | PR | Notes |
-|------|--------------|----|-------|
-| Seg 25 — Meymac (saintsbury, the set-piece) | `docs/strands/strand-seg-25-drafting.md` | #701 | Tracking issue #703; plants the Ventadour + abbey threads for 26/27 |
-| #502 — Tour-history surface (pre-stage launch) | `docs/strands/strand-502-tour-history.md` | #701 | Parallel-safe (data + route, not entries) |
-| Segs 26 → 27 (Saint-Angel, then the Ussel finish) | `docs/strands/strand-segs-26-27-drafting.md` | #706 | **Parked behind seg 25 + #502** — reviews their merged output first |
-| Dependabot #689 (npm minor-and-patch group) | `docs/strands/strand-deps-689.md` | #706 | Independent; rebase then merge-on-green |
+**Remaining content (unblocked, ready to run):**
 
-**Dependency order:** seg 25 + #502 merge before segs 26–27 run. Dependabot anytime.
+| Work | Strand brief | Status |
+|------|--------------|--------|
+| Segs 26 → 27 (Saint-Angel, then the Ussel finish) | `docs/strands/strand-segs-26-27-drafting.md` | **Unblocked** — its Phase-0 prerequisite (merged seg 25 + #502) is satisfied; segs 26/27 are still stubs |
+
+Segs 26 and 27 are the only remaining content. Seg 27 closes the 27-segment arc.
 
 ## Decisions made (2026-06-28 endgame triage)
 
@@ -28,7 +31,7 @@ Segs 1–24 are published (`W26-seg24`, 2026-06-27). The infrastructure chapter 
 
 ## Sequenced execution (what is left)
 
-1. **Finish the content** (this week): run seg 25 + #502, merge; then run segs 26–27; land the dependabot bump anytime.
+1. **Finish the content** (this week): seg 25 + #502 + the dependabot bump are done; run the segs 26–27 strand to draft the last two entries.
 2. **Land the finish** (through 2026-07-03): seg 27 closes the 27-segment arc; the Tour-history surface goes live for the stage-week reader peak.
 3. **Close the project** (after the 2026-07-12 stage): execute the three endgame issues — closing retro (#708), archive/handoff (#709), unfold harvest ([unfold#46](https://github.com/gneeek/unfold/issues/46)).
 
