@@ -3,7 +3,7 @@ special: tour-history
 issue: 502
 title: "Poulidor Country"
 subtitle: "A cycling corridor that has never made a champion, and the finish line it waited a century for"
-publishDate: 2026-07-02
+publishDate: 2026-07-03
 images: []
 imagesOptional: true
 weather: null
