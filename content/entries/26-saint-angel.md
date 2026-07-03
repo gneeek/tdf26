@@ -8,8 +8,8 @@ kmEnd: 182
 gpxFile: /gpx/segment-26.gpx
 elevationData: /data/elevation/segment-26.json
 images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Saint-Angel_%28Corr%C3%A8ze%29_Prieur%C3%A9_Saint-Michel-des-Anges_377.jpg/1280px-Saint-Angel_%28Corr%C3%A8ze%29_Prieur%C3%A9_Saint-Michel-des-Anges_377.jpg","alt":"The late-Gothic pointed west portal of the priory church of Saint-Michel-des-Anges at Saint-Angel","author":"GFreihalter","authorUrl":"https://commons.wikimedia.org/wiki/User:GFreihalter","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Saint-Angel_(Corr%C3%A8ze)_Prieur%C3%A9_Saint-Michel-des-Anges_377.jpg"},{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Saint-Angel_%28Corr%C3%A8ze%29_Prieur%C3%A9_Saint-Michel-des-Anges_381.jpg/1280px-Saint-Angel_%28Corr%C3%A8ze%29_Prieur%C3%A9_Saint-Michel-des-Anges_381.jpg","alt":"A weathered carved coat of arms set in a Gothic blind arch on the granite wall of the priory church at Saint-Angel","author":"GFreihalter","authorUrl":"https://commons.wikimedia.org/wiki/User:GFreihalter","license":"CC BY-SA 3.0","licenseUrl":"https://creativecommons.org/licenses/by-sa/3.0","sourceUrl":"https://commons.wikimedia.org/wiki/File:Saint-Angel_(Corr%C3%A8ze)_Prieur%C3%A9_Saint-Michel-des-Anges_381.jpg"}]
-weather: null
-draft: true
+weather: {"fetchedAt": "2026-07-03", "current": {"temp": 21, "conditions": "Clear sky", "wind": "10 km/h NNE"}, "forecast": null}
+draft: false
 dataCutoff: 2026-06-30
 ---
 
