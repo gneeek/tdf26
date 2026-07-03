@@ -203,6 +203,27 @@ class TestRankings:
         assert result["riders"]["bob"]["place"] == 1
         assert result["riders"]["alice"]["place"] == 2
 
+    def test_tie_broken_by_actual_distance(self):
+        # Both riders tie on capped distance (4.0 each under cap 2), but bob —
+        # listed second in the roster — rode far more actual distance. The
+        # maillot jaune tiebreaker (pages/rules.vue) awards the lead by actual
+        # distance ridden, so bob must place ahead of alice despite the stable
+        # sort's roster order. Guards against the regression fixed in the
+        # yellow-jersey tiebreaker issue.
+        log = make_log([2.0, 2.0], [10.0, 10.0])
+        result = calculate_stats(log, make_config(daily_cap=2))
+        assert result["riders"]["alice"]["totalDistanceCapped"] == 4.0
+        assert result["riders"]["bob"]["totalDistanceCapped"] == 4.0
+        assert result["riders"]["bob"]["totalDistanceActual"] == 20.0
+        assert result["riders"]["alice"]["totalDistanceActual"] == 4.0
+        assert result["riders"]["bob"]["place"] == 1
+        assert result["riders"]["alice"]["place"] == 2
+
+    def test_total_distance_actual_field(self):
+        log = make_log([2.0, 4.0, 6.0])
+        result = calculate_stats(log, make_config())
+        assert result["riders"]["alice"]["totalDistanceActual"] == 12.0
+
     def test_all_riders_have_place(self):
         log = make_log([1.0], [2.0])
         result = calculate_stats(log, make_config())
@@ -222,7 +243,8 @@ class TestOutputStructure:
         log = make_log([2.0, 3.0, 1.0])
         result = calculate_stats(log, make_config())
         expected_fields = {
-            "totalDistanceCapped", "dailyAverageActual", "dailyAverageCapped",
+            "totalDistanceCapped", "totalDistanceActual",
+            "dailyAverageActual", "dailyAverageCapped",
             "longestDay", "shortestDay", "daysBelowThreeKm",
             "consistencyStdev", "bestThreeDayCombo", "recentFiveDayAverage",
             "distanceRemaining", "estimatedDaysToFinish", "estimatedFinishDate",

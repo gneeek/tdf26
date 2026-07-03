@@ -6,6 +6,7 @@
     "riders": {
       "justin": {
         "totalDistanceCapped": 176.0,
+        "totalDistanceActual": 424.8,
         "dailyAverageActual": 4.83,
         "dailyAverageCapped": 2.0,
         "longestDay": 11.0,
@@ -17,10 +18,11 @@
         "distanceRemaining": 9.0,
         "estimatedDaysToFinish": 4,
         "estimatedFinishDate": "2026-07-01",
-        "place": 1
+        "place": 2
       },
       "marian": {
         "totalDistanceCapped": 176.0,
+        "totalDistanceActual": 318.4,
         "dailyAverageActual": 3.62,
         "dailyAverageCapped": 2.0,
         "longestDay": 9.1,
@@ -32,10 +34,11 @@
         "distanceRemaining": 9.0,
         "estimatedDaysToFinish": 4,
         "estimatedFinishDate": "2026-07-01",
-        "place": 2
+        "place": 3
       },
       "nan": {
         "totalDistanceCapped": 176.0,
+        "totalDistanceActual": 427.0,
         "dailyAverageActual": 4.85,
         "dailyAverageCapped": 2.0,
         "longestDay": 9.7,
@@ -47,10 +50,11 @@
         "distanceRemaining": 9.0,
         "estimatedDaysToFinish": 4,
         "estimatedFinishDate": "2026-07-01",
-        "place": 3
+        "place": 1
       },
       "wally": {
         "totalDistanceCapped": 176.0,
+        "totalDistanceActual": 222.1,
         "dailyAverageActual": 2.52,
         "dailyAverageCapped": 2.0,
         "longestDay": 4.4,
