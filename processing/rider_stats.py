@@ -133,6 +133,7 @@ def calculate_stats(daily_log, rider_config, reference_date=None):
 
         result["riders"][rider_id] = {
             "totalDistanceCapped": round(total_capped, 1),
+            "totalDistanceActual": round(sum(daily_dists), 1),
             "dailyAverageActual": round(daily_avg_actual, 2),
             "dailyAverageCapped": round(daily_avg_capped, 2),
             "longestDay": round(longest_day, 1),
@@ -146,10 +147,14 @@ def calculate_stats(daily_log, rider_config, reference_date=None):
             "estimatedFinishDate": est_finish_date,
         }
 
-    # Calculate rankings by total capped distance
+    # Calculate rankings by total capped distance. Ties are broken by total
+    # actual (uncapped) distance ridden — the maillot jaune tiebreaker
+    # documented on pages/rules.vue. Without the secondary key, Python's stable
+    # sort silently broke ties by rider-config roster order, which contradicted
+    # the stated rule once riders converged on the daily cap (see issue).
     ranked = sorted(
         result["riders"].items(),
-        key=lambda x: x[1]["totalDistanceCapped"],
+        key=lambda x: (x[1]["totalDistanceCapped"], x[1]["totalDistanceActual"]),
         reverse=True,
     )
     for place, (rider_id, stats) in enumerate(ranked, 1):
