@@ -2,7 +2,7 @@
 segment: 27
 title: "Place Voltaire: The Finish Line"
 subtitle: "Km 182-184.8: the run into Ussel, the high place, and the finish the whole route has ridden toward"
-publishDate: 2026-07-05
+publishDate: 2026-07-04
 kmStart: 182
 kmEnd: 184.8
 gpxFile: /gpx/segment-27.gpx
@@ -10,12 +10,12 @@ elevationData: /data/elevation/segment-27.json
 images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Ussel_-_Porte_gothique.jpg/1280px-Ussel_-_Porte_gothique.jpg","alt":"A Gothic stone gateway in the medieval old town of Ussel","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/User:Renhour48","license":"CC0","licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/","sourceUrl":"https://commons.wikimedia.org/wiki/File:Ussel_-_Porte_gothique.jpg"}]
 weather: null
 draft: true
-dataCutoff: 2026-06-23
+dataCutoff: 2026-07-02
 ---
 
 # Place Voltaire: The Finish Line
 
-::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Arrivant_%C3%A0_Ussel_-_panoramio.jpg/1280px-Arrivant_%C3%A0_Ussel_-_panoramio.jpg" lightboxSrc="https://upload.wikimedia.org/wikipedia/commons/9/9f/Arrivant_%C3%A0_Ussel_-_panoramio.jpg" alt="A loaded touring bicycle leaning by the Ussel town-entry sign, the road running on into the town" caption="Arriving at Ussel: a loaded bicycle at the town sign, the road running gently up into the granite. The town the whole route has ridden toward. Cropped to a banner from the original; click to see the full frame." author="Gilles Guillamot" authorUrl="https://commons.wikimedia.org/wiki/File:Arrivant_%C3%A0_Ussel_-_panoramio.jpg" license="CC BY-SA 3.0" licenseUrl="https://creativecommons.org/licenses/by-sa/3.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Arrivant_%C3%A0_Ussel_-_panoramio.jpg"}
+::inline-figure{src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Arrivant_%C3%A0_Ussel_-_panoramio.jpg/1280px-Arrivant_%C3%A0_Ussel_-_panoramio.jpg" lightboxSrc="https://upload.wikimedia.org/wikipedia/commons/9/9f/Arrivant_%C3%A0_Ussel_-_panoramio.jpg" alt="A loaded touring bicycle leaning by the Ussel town-entry sign, the road running on into the town" caption="Arriving at Ussel: a loaded bicycle at the town sign, the road running gently up into the granite. The town the whole route has ridden toward." author="Gilles Guillamot" authorUrl="https://commons.wikimedia.org/wiki/File:Arrivant_%C3%A0_Ussel_-_panoramio.jpg" license="CC BY-SA 3.0" licenseUrl="https://creativecommons.org/licenses/by-sa/3.0" sourceUrl="https://commons.wikimedia.org/wiki/File:Arrivant_%C3%A0_Ussel_-_panoramio.jpg"}
 ::
 
 The road has been coming down to this for the better part of two hundred kilometres, and it arrives, in the end, quietly: a town sign at the verge, a long straight street climbing gently between houses, the granite closing in on both sides as the open country gives out behind. Ussel does not announce itself from a distance, the way a cathedral town will. It sits on its hill between two small rivers, the Diège and the Sarsonne, at something over six hundred metres, the last lift of the Plateau de Millevaches before the land tips away west toward the Dordogne. For all that height, the rivers run to the Atlantic, the Diège carrying the town's water down to the Dordogne and so to the sea, while the Loire's own headwaters rise on the same plateau a little to the north and go the other way entirely. The divide is up here somewhere, undramatic, a matter of which ditch a drop of rain happens to choose. The finish is in the town.
@@ -40,7 +40,23 @@ The town keeps, too, its own quiet roster of those who lived and ended here, and
 
 Our own four arrive too, and it is right that they should arrive together. By the careful, capped, half-imaginary reckoning the standings have kept since April, holding each of them to two kilometres a day, they have come up the route abreast for weeks, and they reach Ussel level, as they reached every town before it level, no one of them ahead. The truer count says a thing the cap was built to hide and cannot quite: that each of the four passed the whole hundred and eighty-five kilometres of this route long before the road did, by the plain arithmetic of ground actually walked, and simply kept walking, so that the line they cross here is one they each crossed, in private, weeks ago. Both are true. They arrive together at the high place, by the count that flatters them with company; and each of them, alone, got here a good while before.
 
+That is the generous reading, the one the capped reckoning keeps, and it is true. A finish line is less generous. Asked the plain question a line asks, the four do not, in the event, coast across it abreast: they wind it up on the Avenue Thiers, and in the last hundred metres the tie the standings held all spring comes quietly apart. It is Nan who comes off the wheel first, a half-length that the capped column never showed but the legs always knew: Nan across, then Justin, then Marian, then Wally, in the order the true count had them all along. Level on the scoreboard, and sorted on the road.
+
 The road ends on the Avenue Thiers, a little short of the eagle, and there is nothing past it but the town going on about its July. Twenty-seven times the road has come into a place, and the blog has tried to say what the place was; this is the last of them, a high granite town between two small rivers, a Roman bird with a borrowed head, a duke's house in a narrow street, and a finish line a century of the Tour somehow never found until now. The riders, the real and the imagined, are in. There is no next essay, and no need of one. The road runs out of plateau and out of places, on a flat street under the eagle, and stops, where it always meant to, at the heights.
+
+A last liberty, and an invented one. This blog has kept a rule against putting words in living mouths, and it sets the rule down this once, at the line, marking what follows plainly as a wish and not a report. Christian Prudhomme, who has directed the Tour de France since 2007 and who took his own love of the race, by his account, from Raymond Poulidor, has of course never heard of us. But if he were to look up the long road to Ussel and find four riders and their readers waiting at the top of it, he might, one likes to think, say something not far from this.
+
+> Mes amis. You have ridden all spring toward a town whose name means the high place, and you have arrived. I did not give the Tour its finish at Ussel; you did, months before the race will, and you kept it company the whole way, with the granite and the abbeys, the accordion at Tulle.
+>
+> Raymond Poulidor, our Poupou, l'éternel second, the *maillot jaune des cœurs* who never once wore the real one, said the truest thing anyone has said about winning and not winning. «J'aurais bien sûr aimé l'emporter. Mais si je l'avais fait, je ne sais pas si on parlerait encore de moi.»[^poulidor] And for those of you who require a translation: he would, of course, have loved to win it, but had he done so, he is not sure anyone would still be speaking of him now. It was Poulidor who gave me the love of this race. What you have done, these months, from wherever in the world you did it, is keep that love alive out of season, when the roads are empty and no one is watching. *Merci d'avoir gardé l'esprit du Tour vivant toute l'année, et partout.* Thank you for keeping the spirit of the Tour alive all year, and everywhere.
+>
+> And now come and watch [the real one](https://www.letour.fr/en/). It [begins today](https://www.letour.fr/en/stage-1). *Le Tour commence aujourd'hui*: we roll out of Barcelona this afternoon, and there is a whole race between here and Paris. Vous avez fait votre route; venez voir la nôtre. You have made your road; come and see ours.
+
+::press-card{kind="Further reading" publication="inrng.com" date="July 2024" headline="The Top Job" summary="What the job of Tour de France director actually involves, and how the role took its modern shape: the post Christian Prudhomme holds." url="https://inrng.com/2024/07/the-top-job/"}
+::
+
+::press-card{kind="Further reading" publication="Cyclingnews" headline="Prudhomme: my journey from fan to journalist to Tour de France race director" summary="Christian Prudhomme in his own words, on how he came to love the race and then to run it." url="https://www.cyclingnews.com/features/prudhomme-my-journey-from-fan-to-journalist-to-tour-de-france-race-director/"}
+::
 
 [^eagle]: The *Aigle romaine* of Ussel is a funerary eagle carved in granite, generally dated to the Roman period (about the second or third century), found near the moulin du Peuch on the Sarsonne, where it is thought to have crowned a lost funerary monument. It was discovered without its head; the present head was added in 1804 by a sculptor named Pic when the eagle was re-erected to mark Napoleon's coronation, and it now stands on the Place Voltaire (cleaned and given greater prominence during the square's refurbishment in 2009). Sources: [Aigle romaine, Tourisme Corrèze](https://www.tourismecorreze.com/en/randonnees/aigle-romaine/18109/poi/2079541); [Ussel, Corrèze, Wikipedia](https://en.wikipedia.org/wiki/Ussel,_Corr%C3%A8ze).
 
@@ -50,6 +66,8 @@ The road ends on the Avenue Thiers, a little short of the eagle, and there is no
 
 [^limouzin]: René Limouzin (1926-2020) was an accordionist and writer of the Haute-Corrèze, born at Saint-Pardoux-le-Vieux, near Ussel, and a player of the dance-hall and wedding circuit in his youth before turning to writing; he published many books on the traditional life of the Limousin (among them the best-selling *Les Cèpes de la colère*) and died at Ussel. Source: [René Limouzin, France 3 Nouvelle-Aquitaine](https://france3-regions.franceinfo.fr/nouvelle-aquitaine/correze/ussel/paroles-anciens-rene-limouzin-accordeon-puis-ecriture-n-plus-finir-1657806.html).
 
+[^poulidor]: The address from Christian Prudhomme is invented for this entry; the material inside it is not. Raymond Poulidor (1936-2019), eight times a Tour de France podium finisher and never once in the yellow jersey, was universally *l'éternel second* and the *maillot jaune des cœurs*, the yellow jersey of hearts; the quotation is genuine and widely reported at his death. Prudhomme's remark that Poulidor gave him his own love of the Tour de France is likewise genuine, from his tribute at that time. Sources: [Mort de Raymond Poulidor, franceinfo](https://www.franceinfo.fr/sports/cyclisme/mort-de-raymond-poulidor-eternel-second-mais-maillot-jaune-des-coeurs_4456449.html); [Le directeur du Tour lui rend hommage, franceinfo](https://www.franceinfo.fr/sports/cyclisme/raymond-poulidor-le-directeur-du-tour-christian-prudhomme-lui-rend-hommage_3701141.html).
+
 ## Sources
 
 - The name of Ussel from Gaulish *uxello* ("high, elevated"), the town's altitude and site between the Diège and the Sarsonne, and the Diège as a tributary of the Dordogne (Atlantic drainage): [Ussel (Corrèze), Wikipédia](https://fr.wikipedia.org/wiki/Ussel_(Corr%C3%A8ze)).
@@ -58,7 +76,9 @@ The road ends on the Avenue Thiers, a little short of the eagle, and there is no
 - Jacques Chirac's first election as deputy for the Ussel constituency in 1967: [Assemblée nationale](https://www2.assemblee-nationale.fr/sycomore/fiche/(num_dept)/1798).
 - René Limouzin, accordionist and writer of the Haute-Corrèze: [France 3 Nouvelle-Aquitaine](https://france3-regions.franceinfo.fr/nouvelle-aquitaine/correze/ussel/paroles-anciens-rene-limouzin-accordeon-puis-ecriture-n-plus-finir-1657806.html).
 - The Stage 9 finale: the Côte des Gardes as the last climb about fourteen kilometres out, roughly 3,500 m of climbing over 185 km, and the flat run-in to Ussel: [Tour de France 2026, Stage 9, cyclingstage.com](https://www.cyclingstage.com/tour-de-france-2026-route/stage-9-tdf-2026/).
+- Raymond Poulidor as *l'éternel second* and *maillot jaune des cœurs*, his quotation on winning, and Christian Prudhomme's tribute that Poulidor gave him the love of the Tour de France: [franceinfo, Poulidor's death](https://www.franceinfo.fr/sports/cyclisme/mort-de-raymond-poulidor-eternel-second-mais-maillot-jaune-des-coeurs_4456449.html); [franceinfo, Prudhomme's tribute](https://www.franceinfo.fr/sports/cyclisme/raymond-poulidor-le-directeur-du-tour-christian-prudhomme-lui-rend-hommage_3701141.html).
+- The 2026 Tour de France Grand Départ, a team time trial through Barcelona on 4 July 2026: [Tour de France 2026, Stage 1, cyclingstage.com](https://www.cyclingstage.com/tour-de-france-2026-route/stage-1-tdf-2026/).
 
 ---
 
-*Pair-written by Justin Simpson and Claude Opus 4.8. Voice register: tls-essay (simpson-registers). This is the twenty-seventh and final entry of the Corrèze Stage 9 travelogue.*
+*Pair-written by Justin Simpson and Claude Opus 4.8. Voice register: tls-essay (simpson-registers), closing with an envoi in the imagined voice of Tour de France director Christian Prudhomme; that address is invented, the Poulidor quotation within it genuine. This is the twenty-seventh and final entry of the Corrèze Stage 9 travelogue.*
