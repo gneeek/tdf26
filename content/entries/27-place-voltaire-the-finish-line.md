@@ -8,8 +8,8 @@ kmEnd: 184.8
 gpxFile: /gpx/segment-27.gpx
 elevationData: /data/elevation/segment-27.json
 images: [{"src":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Ussel_-_Porte_gothique.jpg/1280px-Ussel_-_Porte_gothique.jpg","alt":"A Gothic stone gateway in the medieval old town of Ussel","author":"René Hourdry","authorUrl":"https://commons.wikimedia.org/wiki/User:Renhour48","license":"CC0","licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/","sourceUrl":"https://commons.wikimedia.org/wiki/File:Ussel_-_Porte_gothique.jpg"}]
-weather: null
-draft: true
+weather: {"fetchedAt": "2026-07-04", "current": {"temp": 28, "conditions": "Clear sky", "wind": "11 km/h NNE"}, "forecast": null}
+draft: false
 dataCutoff: 2026-07-02
 ---
 
